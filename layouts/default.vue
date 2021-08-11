@@ -36,8 +36,8 @@
           <v-tab to="/">Home</v-tab>
           <v-tab disabled>Forum</v-tab>
           <v-tab to="/cannabis-testing-labs">Lab Directory</v-tab>
-          <v-tab disabled>Lab Suppiers</v-tab>
-          <v-tab disabled>Job Board</v-tab>
+          <v-tab disabled>Suppiers</v-tab>
+          <v-tab disabled>Jobs</v-tab>
         </v-tabs>
       </div>
       <v-btn icon class="pink" @click.stop="rightDrawer = !rightDrawer">
@@ -58,7 +58,10 @@
       </v-list>
     </v-navigation-drawer>
     <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span
+        >&copy; {{ new Date().getFullYear() }} | Advertise | Add Your Lab | Add
+        Your Supplier | Privacy | T&C</span
+      >
     </v-footer>
   </v-app>
 </template>
