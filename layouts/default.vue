@@ -60,7 +60,7 @@
     <v-footer :absolute="!fixed" app>
       <span
         >&copy; {{ new Date().getFullYear() }} | Advertise | Add Your Lab | Add
-        Your Supplier | Privacy | T&C</span
+        Your Lab Supplier | Add Your Job Post | Privacy | T&C</span
       >
     </v-footer>
   </v-app>

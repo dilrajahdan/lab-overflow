@@ -1,6 +1,9 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  env: {
+    baseURL: (process.env.NODE_ENV === 'production' ? 'http://laboverflow.com' : 'http://localhost:3000')
+  },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 

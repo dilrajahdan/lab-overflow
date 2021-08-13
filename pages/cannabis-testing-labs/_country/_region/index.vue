@@ -58,26 +58,26 @@
           <v-row>
             <v-col cols="9" class="yellowC">
               <v-list two-line>
-                <v-list-item-group v-model="selected">
-                  <template v-for="(item, index) in items">
+                <v-list-item-group v-model="selectedLab">
+                  <template v-for="(item, index) in labs">
                     <v-list-item
-                      :key="item.title"
-                      :to="{ path: `${params.region}/sigma` }"
+                      :key="item.slug"
+                      :to="{ path: `${params.region}/${item.slug}` }"
                     >
-                      <template #default="{ active }">
+                      <template #default="{}">
                         <v-list-item-content>
                           <v-list-item-title
-                            v-text="item.title"
+                            v-text="item['Lab']"
                           ></v-list-item-title>
 
                           <v-list-item-subtitle
                             class="text--primary"
-                            v-text="item.headline"
+                            v-text="item['Address']"
                           ></v-list-item-subtitle>
 
-                          <v-list-item-subtitle
+                          <!-- <v-list-item-subtitle
                             v-text="item.subtitle"
-                          ></v-list-item-subtitle>
+                          ></v-list-item-subtitle> -->
                         </v-list-item-content>
 
                         <v-list-item-action>
@@ -88,11 +88,7 @@
                             mdi-certificate
                           </v-icon>
 
-                          <v-icon v-if="!active" color="grey lighten-1">
-                            mdi-car-pickup
-                          </v-icon>
-
-                          <v-icon v-else color="yellow darken-3">
+                          <v-icon color="grey lighten-1">
                             mdi-car-pickup
                           </v-icon>
                         </v-list-item-action>
@@ -124,17 +120,19 @@
 </template>
 <script>
 export default {
-  asyncData({ params }) {
-    // console.log('params',params)
-    // const country = params.country // When calling /abc the slug will be "abc"
-    // const region = params.region // When calling /abc the slug will be "abc"
-    // return { country, region , params}
-    return { params }
+  async asyncData({ $content, params }) {
+    const labs = await $content('labs').sortBy('updatedAt', 'asc').fetch()
+    return {
+      labs,
+      params,
+    }
   },
   data() {
     return {
+      // active: null,
       selectedCountry: 'USA',
       selectedRegion: '1',
+      selectedLab: null,
       items: [
         {
           action: '15 min',
