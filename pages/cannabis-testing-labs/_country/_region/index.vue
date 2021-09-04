@@ -61,8 +61,9 @@
             <v-card-text v-else>
               <p class="overline">Country</p>
               <v-radio-group v-model="country" @change="changeCountry(country)">
-                <v-radio label="USA" value="usa"></v-radio>
                 <v-radio label="Canada" value="canada"></v-radio>
+                <v-radio label="Europe" value="europe"></v-radio>
+                <v-radio label="USA" value="usa"></v-radio>
                 <!-- <v-radio label="Europe" value="europe"></v-radio> -->
               </v-radio-group>
 
@@ -102,24 +103,7 @@
         <v-col cols="12" md="6" order-md="1" class="greenC">
           <v-row>
             <v-col cols="12" class="yellowC">
-              <!-- <v-toolbar color="pink" dark>
-               
-
-                <v-toolbar-title>Lab Directory</v-toolbar-title>
-
-                <v-spacer></v-spacer>
-
-                <v-btn icon>
-                  <v-icon>mdi-magnify</v-icon>
-                </v-btn>
-
-                <v-btn icon>
-                  <v-icon>mdi-checkbox-marked-circle</v-icon>
-                </v-btn>
-              </v-toolbar> -->
               <v-card>
-                <!-- <h1 class="overline"></h1> -->
-
                 <v-card-title>
                   Cannabis testing labs in
                   {{ regionLabel }},
@@ -356,8 +340,10 @@ export default {
       let defaultRegion
       if (country === 'usa') {
         defaultRegion = this.slugize(this.defaultRegion[0].name)
-      } else {
+      } else if (country === 'canada') {
         defaultRegion = this.slugize(this.defaultRegion[1].name)
+      } else {
+        defaultRegion = this.slugize(this.defaultRegion[2].name)
       }
 
       this.$router.push({

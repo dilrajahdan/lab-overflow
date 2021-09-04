@@ -44,6 +44,8 @@ export default {
     '@nuxtjs/vuetify',
     // https://google-analytics.nuxtjs.org/setup
     '@nuxtjs/google-analytics',
+    // https://timbenniks.dev/writings/easy-dynamic-routes-in-your-nuxt-sitemap
+    '@/modules/sitemapRouteGenerator',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -67,6 +69,7 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+
     theme: {
       dark: false,
       themes: {

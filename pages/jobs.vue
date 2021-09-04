@@ -31,7 +31,46 @@
 
     <v-container>
       <!-- {{ jobs }} -->
-      <v-row>
+      <v-row class="d-none">
+        <v-col>
+          <v-card color="grey lighten-2 ">
+            <v-tabs v-model="tab" background-color="transparent" grow>
+              <v-tab v-for="item in items" :key="item">
+                {{ item }}
+              </v-tab>
+            </v-tabs>
+
+            <v-tabs-items v-model="tab">
+              <v-tab-item v-for="item in items" :key="item">
+                <v-card color="basil" flat>
+                  <v-card-text>
+                    <!-- {{ text }} -->
+
+                    <v-chip-group
+                      v-model="selectedLocation"
+                      active-class="primary--text"
+                      column
+                    >
+                      <v-chip>All</v-chip>
+
+                      <v-chip v-for="tag in items" :key="tag">
+                        {{ tag }}
+                      </v-chip>
+                    </v-chip-group>
+                  </v-card-text>
+                </v-card>
+              </v-tab-item>
+            </v-tabs-items>
+
+            <!-- <v-tabs fixed-tabs >
+              <v-tab>Location</v-tab>
+              <v-tab>Role</v-tab>
+              <v-tab>Type</v-tab>
+            </v-tabs> -->
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-row class="mt-0">
         <v-col cols="12" sm="4" :class="{ 'd-none': isMobileLayout }">
           <!-- <v-btn class="mb-3" min-width="100%" color="primary">Post Job</v-btn> -->
           <v-card>
@@ -85,7 +124,6 @@
         </v-col>
         <v-col cols="12" sm="8">
           <section class="job-details grey lighten-4">
-            <!-- :class="{ 'job-details--mobile': isMobileLayout }" -->
             <div class="d-none" :class="{ 'd-inline': isMobileLayout }">
               <v-btn to="/jobs" class="mb-3" text>Back</v-btn>
             </div>
@@ -105,6 +143,13 @@ export default {
   async asyncData({ $content, params }) {
     const jobs = await $content('jobs').fetch()
     // console.log('jobs', jobs)
+
+    // Get unique titles
+    // Get unique locations
+    // Get unique types
+    // Populate Form inputs/chips
+    // Write computed function to filter results
+
     return {
       jobs,
       params,
@@ -112,7 +157,13 @@ export default {
   },
   data: () => ({
     selectedItem: null,
+    selectedLocation: 0,
+    selectedType: 0,
+    selectedRole: 0,
     title: 'Cannabis Testing Jobs',
+    tab: 0,
+    items: ['Location', 'Role', 'Type'],
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   }),
   head() {
     return {
@@ -128,15 +179,10 @@ export default {
   },
   computed: {
     isMobileLayout() {
-      console.log('route', this.$route.name === 'jobs-slug')
       return this.$vuetify.breakpoint.xsOnly && this.$route.name === 'jobs-slug'
     },
   },
 
-  updated() {
-    // `this` points to the vm instance
-    console.log('a is: ', this.params.slug)
-  },
   methods: {
     slugize(str) {
       return str.toLowerCase().replace(/ /gi, '-')
@@ -147,14 +193,5 @@ export default {
 
 <style lang="scss">
 .job-details {
-  // background: red;
-}
-.job-details--mobile {
-  // background: yellow;
-  // padding: 2em;
-
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 </style>
