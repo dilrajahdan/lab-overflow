@@ -1,136 +1,376 @@
 <template>
   <v-container>
-    <!-- <h2>{{ $route.params }}</h2> -->
-    <nuxt-link class="my-6 d-block" to="/">Back to results</nuxt-link>
-    <!-- <p>Cannabis Testing Lab in Canada, BC</p> -->
-    <!-- <v-breadcrumbs :items="items"></v-breadcrumbs> -->
-
-    <header class="details-header">
-      <!-- <h1>Lab Details</h1> -->
-      <h2 class="overline">Cannabis Testing Lab in Canada, BC</h2>
-    </header>
+    <v-row class="mt-0">
+      <v-col>
+        <v-btn
+          color=""
+          outlined
+          dark
+          class="mt-0 mb-6 d-blockX secondary"
+          :to="`/cannabis-testing-labs/${params.country}/${params.region}`"
+        >
+          <v-icon left>mdi-arrow-left</v-icon>
+          Back to results</v-btn
+        >
+      </v-col></v-row
+    >
 
     <div class="details-body">
       <v-card class="mx-autoD">
-        <v-img
-          src="/testalize-me-0jE8ynV4mis-unsplash.jpg"
-          height="200px"
-        ></v-img>
+        <v-row>
+          <v-col cols="12" sm="3" class="flex-grow-0">
+            <v-img
+              src="/testalize-me-0jE8ynV4mis-unsplash.jpg"
+              height="150px"
+              max-width="100%"
+              class="mx-3"
+            ></v-img>
+          </v-col>
+          <v-col cols="12" sm="9">
+            <v-card-title class="display-1"> {{ lab.Lab }} </v-card-title>
+            <v-card-subtitle>{{ lab.Address }} </v-card-subtitle>
 
-        <v-card-title> Sigma Analytical </v-card-title>
+            <v-row>
+              <v-col cols="12" sm="4">
+                <v-card-text class="pb-0">Accreditation</v-card-text>
+                <v-card-subtitle class="pt-0 font-weight-bold">{{
+                  lab.Accredited || '-'
+                }}</v-card-subtitle>
 
-        <v-card-subtitle> Mr A Abrahim </v-card-subtitle>
+                <v-card-text class="pb-0"> Pick-up service</v-card-text>
+                <v-card-subtitle class="pt-0 font-weight-bold">
+                  <template v-if="lab['Pickup Service'] !== ''"> Yes </template>
+                  <template v-else> No </template>
+                </v-card-subtitle>
+              </v-col>
 
-        <v-card-text>
-          <p>
-            <v-icon color="yellow darken-3"> mdi-certificate </v-icon> GMP
-            Certified
-          </p>
-          <p>
-            <v-icon v-if="!active" color="grey lighten-1">
-              mdi-car-pickup
-            </v-icon>
+              <v-col cols="12" sm="4">
+                <v-card-text class="pb-0"> Cannabis license</v-card-text>
+                <v-card-subtitle class="pt-0 font-weight-bold">{{
+                  lab.Licence || '-'
+                }}</v-card-subtitle>
 
-            <v-icon v-else color="yellow darken-3"> mdi-car-pickup </v-icon>
-            Pick-up Service
-          </p>
-        </v-card-text>
+                <v-card-text class="pb-0"> License type</v-card-text>
+                <v-card-subtitle class="pt-0 font-weight-bold">{{
+                  lab['Licence Type'] || '-'
+                }}</v-card-subtitle>
+              </v-col>
 
-        <v-card-actions>
-          <v-btn color="primary" text @click="show = !show"> Contact </v-btn>
+              <v-col cols="12" sm="4">
+                <v-card-text class="pb-0">Sample types</v-card-text>
+                <v-card-subtitle class="pt-0 font-weight-bold">{{
+                  lab['Sample Types'] || '-'
+                }}</v-card-subtitle>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
 
-          <v-spacer></v-spacer>
-
-          <v-btn icon @click="show = !show">
-            <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-          </v-btn>
+        <v-card-actions class="">
+          <!-- <v-btn color="primary" @click="showCallBack()">
+            Request callback
+          </v-btn> -->
+          <v-row>
+            <v-col>
+              <v-btn class="primary" min-width="100%" @click="showCallBack()"
+                >Request Callback</v-btn
+              >
+            </v-col>
+            <v-col class="flex-grow-0">
+              <v-btn text color="primary " @click="showContactDetails()">
+                Contact details
+              </v-btn>
+            </v-col>
+          </v-row>
         </v-card-actions>
 
         <v-expand-transition>
-          <div v-show="show">
+          <div v-show="showDetails">
             <v-divider></v-divider>
 
-            <v-row>
-              <v-col>
-                <v-card-text class="pb-0"> Phone </v-card-text>
-                <v-card-subtitle class="pt-0 font-weight-bold"
-                  ><a href="tel:000000000">000-000-000</a></v-card-subtitle
-                >
+            <v-row align="center" justify="center" class="pinkD pt-0 mt-0 mb-3">
+              <!-- <v-col>
+                <v-card-text class="pb-0"> Contact name </v-card-text>
+                <v-card-subtitle class="pt-0 pb-0 font-weight-bold">{{
+                  fullName
+                }}</v-card-subtitle>
               </v-col>
+
               <v-col>
                 <v-card-text class="pb-0"> Email </v-card-text>
-                <v-card-subtitle class="pt-0 font-weight-bold"
-                  ><a href="mailto:email@lab.com"
-                    >email@lab.com</a
-                  ></v-card-subtitle
+                <v-card-subtitle class="pt-0 pb-0 font-weight-bold">
+                  <a :href="`mailto:${lab.Email}`">{{ lab.Email }}</a>
+                </v-card-subtitle>
+              </v-col> -->
+
+              <v-col>
+                <v-card-text class="py-0"> Phone </v-card-text>
+                <v-card-subtitle
+                  v-if="lab.cleanPhone"
+                  class="pt-0 pb-0 font-weight-bold"
+                  ><a :href="`tel:${lab.cleanPhone}`">{{
+                    lab.Phone
+                  }}</a></v-card-subtitle
                 >
               </v-col>
+
               <v-col>
-                <v-card-text class="pb-0"> URL </v-card-text>
-                <v-card-subtitle class="pt-0 font-weight-bold"
-                  ><a href="http://sigma.com">sigma.com</a></v-card-subtitle
+                <v-card-text class="py-0"> URL </v-card-text>
+                <v-card-subtitle class="pt-0 pb-0 font-weight-bold"
+                  ><a
+                    target="_blank"
+                    :href="`http://${lab.URL}?ref=laboverflow.com`"
+                    >{{ lab.URL }}</a
+                  ></v-card-subtitle
                 >
               </v-col>
             </v-row>
           </div>
         </v-expand-transition>
+
+        <!-- Request callback dialog -->
+        <v-dialog v-model="showRequestCallback" max-width="600px">
+          <v-card>
+            <v-form
+              ref="requestForm"
+              v-model="validRequestForm"
+              method="POST"
+              accept-charset="UTF-8"
+              @submit.prevent="submitForm()"
+            >
+              <v-card-title>
+                <span class="text-h5">Request callback from {{ lab.Lab }}</span>
+              </v-card-title>
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col cols="12" sm="6">
+                      <v-text-field
+                        v-model="requestForm.name"
+                        name="name"
+                        type="text"
+                        class="my-0X"
+                        label="Name*"
+                        :rules="nameRules"
+                        required
+                      ></v-text-field>
+                      <v-text-field
+                        v-model="requestForm.email"
+                        name="email"
+                        type="email"
+                        class="my-0X"
+                        label="Email*"
+                        :rules="emailRules"
+                        required
+                      ></v-text-field>
+                      <v-text-field
+                        v-model="requestForm.phone"
+                        name="phone"
+                        type="tel"
+                        class="my-0X"
+                        label="Phone*"
+                        :rules="nameRules"
+                        required
+                      ></v-text-field>
+
+                      <!-- <v-text-field
+                        v-model="requestForm.company"
+                        name="company"
+                        label="Company name*"
+                        :rules="nameRules"
+                        required
+                      ></v-text-field> -->
+                      <v-select
+                        v-model="requestForm.time"
+                        name="time"
+                        :items="['Morning', 'Afternoon', 'Evening']"
+                        :rules="[(v) => !!v || 'Item is required']"
+                        label="Best time to phone*"
+                        required
+                      ></v-select>
+                    </v-col>
+
+                    <v-col cols="12" sm="6">
+                      <span>Business type</span>
+                      <v-radio-group
+                        v-model="requestForm.businessType"
+                        :rules="[(v) => !!v || 'Item is required']"
+                        mandatory
+                      >
+                        <v-radio
+                          name="businessType"
+                          label="Cultivator"
+                          value="Cultivator"
+                        ></v-radio>
+                        <v-radio
+                          name="businessType"
+                          label="Extractor"
+                          value="Extractor"
+                        ></v-radio>
+                        <v-radio
+                          name="businessType"
+                          label="Dispensary"
+                          value="Dispensary"
+                        ></v-radio>
+                        <v-radio
+                          name="businessType"
+                          label="Grower"
+                          value="Grower"
+                        ></v-radio>
+                        <v-radio
+                          name="businessType"
+                          label="Producer"
+                          value="Producer"
+                        ></v-radio>
+                        <v-radio
+                          name="businessType"
+                          label="Lab"
+                          value="Lab"
+                        ></v-radio>
+                        <v-radio
+                          name="businessType"
+                          label="Consultant"
+                          value="Consultant"
+                        ></v-radio>
+                      </v-radio-group>
+                    </v-col>
+                  </v-row>
+                </v-container>
+                <input type="hidden" name="_gotcha" />
+
+                <small>*indicates required field</small>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn text @click="showRequestCallback = false">
+                  Cancel
+                </v-btn>
+                <v-btn
+                  color="primary"
+                  :disabled="!validRequestForm"
+                  type="submit"
+                >
+                  Request callback
+                </v-btn>
+              </v-card-actions>
+            </v-form>
+          </v-card>
+        </v-dialog>
       </v-card>
 
-      <v-card :loading="loading" class="Xmx-auto my-6">
-        <template slot="progress">
-          <v-progress-linear
-            color="deep-purple"
-            height="10"
-            indeterminate
-          ></v-progress-linear>
+      <!-- Snackbar  -->
+      <v-snackbar v-model="snackbar" :timeout="timeout">
+        Callback request has been sent
+
+        <template #action="{ attrs }">
+          <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+            Close
+          </v-btn>
         </template>
+      </v-snackbar>
 
-        <!-- <v-img
-          height="200"
-          src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-        ></v-img> -->
-
-        <v-card-title>Assays performed</v-card-title>
-
-        <!-- <v-card-title>Tonight's availability</v-card-title> -->
+      <!-- Assays -->
+      <v-card class="Xmx-auto my-6">
+        <v-card-title class="mb-3">Assays (Tests) performed</v-card-title>
+        <v-card-subtitle>Safety</v-card-subtitle>
 
         <v-card-text>
-          <v-chip-group
-            v-model="assaySelection"
-            active-class="deep-purple accent-4 white--text"
-            column
-            multiple
+          <v-chip
+            class="mr-1 mb-1"
+            :color="lab['Pesticides'] ? 'deep-purple accent-4' : ''"
+            :text-color="lab['Pesticides'] ? 'white' : ''"
+            filter-icon="mdi-add"
           >
-            <v-chip>Pesticides</v-chip>
-
-            <v-chip>Mycotoxins</v-chip>
-
-            <v-chip>Heavy Metals</v-chip>
-
-            <v-chip>Microbiological</v-chip>
-            <v-chip>Residual Solvents</v-chip>
-            <v-chip>Moisture Activity</v-chip>
-            <v-chip>Terpenes</v-chip>
-            <v-chip>Cannabinoid</v-chip>
-            <v-chip>Stability</v-chip>
-          </v-chip-group>
+            <v-icon left>{{
+              lab['Pesticides'] ? 'mdi-check-bold' : 'mdi-close-thick'
+            }}</v-icon>
+            Pesticides</v-chip
+          >
+          <v-chip
+            class="mr-1 mb-1"
+            :color="lab['Mycotoxins'] ? 'deep-purple accent-4' : ''"
+            :text-color="lab['Mycotoxins'] ? 'white' : ''"
+          >
+            <v-icon left>{{
+              lab['Mycotoxins'] ? 'mdi-check-bold' : 'mdi-close-thick'
+            }}</v-icon>
+            Mycotoxins</v-chip
+          >
+          <v-chip
+            class="mr-1 mb-1"
+            :color="lab['Heavy Metals'] ? 'deep-purple accent-4' : ''"
+            :text-color="lab['Heavy Metals'] ? 'white' : ''"
+          >
+            <v-icon left>{{
+              lab['Heavy Metals'] ? 'mdi-check-bold' : 'mdi-close-thick'
+            }}</v-icon>
+            Heavy Metals</v-chip
+          >
+          <v-chip
+            class="mr-1 mb-1"
+            :color="lab['Microbiological'] ? 'deep-purple accent-4' : ''"
+            :text-color="lab['Microbiological'] ? 'white' : ''"
+          >
+            <v-icon left>{{
+              lab['Microbiological'] ? 'mdi-check-bold' : 'mdi-close-thick'
+            }}</v-icon>
+            Microbiological</v-chip
+          >
+          <v-chip
+            class="mr-1 mb-1"
+            :color="lab['Residual Solvents'] ? 'deep-purple accent-4' : ''"
+            :text-color="lab['Residual Solvents'] ? 'white' : ''"
+          >
+            <v-icon left>{{
+              lab['Residual Solvents'] ? 'mdi-check-bold' : 'mdi-close-thick'
+            }}</v-icon>
+            Residual Solvents</v-chip
+          >
+          <v-chip
+            class="mr-1 mb-1"
+            :color="lab['Moisture Activity'] ? 'deep-purple accent-4' : ''"
+            :text-color="lab['Moisture Activity'] ? 'white' : ''"
+          >
+            <v-icon left>{{
+              lab['Moisture Activity'] ? 'mdi-check-bold' : 'mdi-close-thick'
+            }}</v-icon>
+            Moisture Activity</v-chip
+          >
+          <v-chip
+            class="mr-1 mb-1"
+            :color="lab['Stability'] ? 'deep-purple accent-4' : ''"
+            :text-color="lab['Stability'] ? 'white' : ''"
+          >
+            <v-icon left>{{
+              lab['Stability'] ? 'mdi-check-bold' : 'mdi-close-thick'
+            }}</v-icon>
+            Stability</v-chip
+          >
         </v-card-text>
 
-        <v-card-title>Company information</v-card-title>
-        <v-row>
-          <v-col>
-            <v-card-text class="pb-0"> Licence </v-card-text>
-            <v-card-subtitle class="pt-0 font-weight-bold"
-              >000-000-000</v-card-subtitle
-            >
-          </v-col>
-          <v-col>
-            <v-card-text class="pb-0"> Licence type</v-card-text>
-            <v-card-subtitle class="pt-0 font-weight-bold"
-              >Analytical Testing</v-card-subtitle
-            >
-          </v-col>
-        </v-row>
+        <v-card-subtitle>Profiling</v-card-subtitle>
+        <v-card-text>
+          <v-chip
+            class="mr-1 mb-1"
+            :color="lab['Cannabinoid'] ? 'deep-purple accent-4' : ''"
+            :text-color="lab['Cannabinoid'] ? 'white' : ''"
+          >
+            <v-icon left>{{
+              lab['Cannabinoid'] ? 'mdi-check-bold' : 'mdi-close-thick'
+            }}</v-icon>
+            Cannabinoid</v-chip
+          >
+          <v-chip
+            class="mr-1 mb-1"
+            :color="lab['Terpenes'] ? 'deep-purple accent-4' : ''"
+            :text-color="lab['Terpenes'] ? 'white' : ''"
+          >
+            <v-icon left>{{
+              lab['Terpenes'] ? 'mdi-check-bold' : 'mdi-close-thick'
+            }}</v-icon>
+            Terpenes</v-chip
+          >
+        </v-card-text>
       </v-card>
     </div>
   </v-container>
@@ -138,26 +378,165 @@
 
 <script>
 export default {
+  async asyncData({ $content, params }) {
+    // Get lab data
+    let lab = await $content('labs').where({ slug: params.lab }).fetch()
+    lab = lab[0]
+
+    // Convert numbert to string
+    lab.Phone = `${lab.Phone}`
+
+    // Clean data
+    if (lab.Phone) {
+      // console.log('lab.Phone', lab.Phone, typeof lab.Phone)
+
+      lab.cleanPhone = lab.Phone.replace(/ /gi, '')
+        .replace(/\(/gi, '')
+        .replace(/\)/gi, '')
+    } else {
+      lab.cleanPhone = '-'
+    }
+
+    // Get data for meta description
+    // =========
+    // Get regions data for filters
+    const allRegions = await $content('regions').fetch()
+    const allLabs = await $content('labs').only(['Region']).fetch()
+    allRegions.forEach((country) => {
+      country.states.forEach((region) => {
+        const labsInRegions = allLabs.filter(
+          (lab) => lab.Region === region.abbreviation
+        )
+        region.labs = labsInRegions.length
+      })
+    })
+
+    // Get formatted Country label - map params.country to slug
+    const selectedCountry = allRegions.filter((country) => {
+      return params.country === country.slug
+    })
+
+    // Get formatted Region label - map params.region to region name to get the abbreviation code
+    const selectedRegion = selectedCountry[0].states.filter((region) => {
+      return params.region === region.name.toLowerCase().replace(/ /gi, '-')
+    })
+
+    const country = selectedCountry[0].name
+    const region = selectedRegion[0].name
+
+    const title = `${lab.Lab} - ${region}, ${country}.`
+    const description = `${lab.Lab} is a cannabis testing lab located in ${region}, ${country}.`
+
+    return {
+      title,
+      description,
+      lab,
+      params,
+    }
+  },
   data: () => ({
-    show: null,
-    assaySelection: [0, 1, 2, 3, 4, 5, 6, 7],
-    items: [
-      {
-        text: 'USA',
-        disabled: false,
-        href: 'breadcrumbs_dashboard',
-      },
-      {
-        text: 'CA',
-        disabled: false,
-        href: 'breadcrumbs_link_1',
-      },
-      {
-        text: 'Sigma',
-        disabled: true,
-        href: 'breadcrumbs_link_2',
-      },
+    snackbar: false,
+    timeout: 2000,
+    showRequestCallback: null,
+    showDetails: null,
+    requestForm: {
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      time: '',
+      businessType: null,
+    },
+    validRequestForm: true,
+    nameRules: [
+      (v) => !!v || 'Name is required',
+      // (v) => (v && v.length <= 10) || 'Name must be less than 10 characters',
+    ],
+    emailRules: [
+      (v) => !!v || 'E-mail is required',
+      (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
     ],
   }),
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'Lab Directory',
+          name: 'description',
+          content: this.description,
+        },
+      ],
+    }
+  },
+  computed: {
+    fullName() {
+      return `${this.lab['First Name']} ${this.lab['Last Name']}`
+    },
+  },
+  methods: {
+    showContactDetails() {
+      this.showDetails = !this.showDetails
+
+      const trackingEventData = {
+        eventCategory: `${this.params.country}/${this.params.region}/${this.params.lab}`,
+        eventAction: 'click',
+        eventLabel: 'contact details clicked',
+        eventValue: this.showDetails ? 'show' : 'hide',
+      }
+
+      // console.log(trackingEventData)
+      this.$ga.event(trackingEventData)
+    },
+    showCallBack() {
+      this.showRequestCallback = !this.showRequestCallback
+
+      const trackingEventData = {
+        eventCategory: `${this.params.country}/${this.params.region}/${this.params.lab}`,
+        eventAction: 'click',
+        eventLabel: 'request callback clicked',
+        eventValue: this.showRequestCallback ? 'show' : 'hide',
+      }
+
+      // console.log(trackingEventData)
+      this.$ga.event(trackingEventData)
+    },
+    submitForm() {
+      // this.$refs.requestForm.validate()
+      if (this.validRequestForm === true) {
+        // Post form
+
+        this.requestForm.path = this.$route.path
+
+        this.$axios
+          .post('https://formcarry.com/s/rM8akNWCcUw', this.requestForm)
+          .then((res) => {
+            // Perform Success Action
+
+            console.info(this.$refs.requestForm)
+            // Close dialog
+            this.showRequestCallback = !this.showRequestCallback
+            // Send tracking info
+            const trackingEventData = {
+              eventCategory: `${this.params.country}/${this.params.region}/${this.params.lab}`,
+              eventAction: 'click',
+              eventLabel: 'request callback sent',
+              eventValue: this.showDetails ? 'show' : 'hide',
+            }
+            this.$ga.event(trackingEventData)
+            // Notify user
+            this.snackbar = true
+          })
+        // .catch((error) => {
+        //   // error.response.status Check status code
+        // })
+        // .finally(() => {
+        //   // Perform action in always
+        // })
+
+        // this.$refs.requestForm.$el.submit()
+      }
+    },
+  },
 }
 </script>

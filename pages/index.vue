@@ -1,31 +1,73 @@
 <template>
-  <v-row justify="center" align="center" class="mt-6">
-    <v-col cols="12" sm="8" md="6">
-      <!-- <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card> -->
-      <v-card>
-        <v-card-title class="headline">
-          The Cannabis Testing Forum for Lab Professionals
-        </v-card-title>
-        <v-card-text>
-          <p>
-            Talk anonymously with other professionals to improve your methods
-          </p>
-          <p>Connect with other Labs and industry professionals</p>
-          <p>Find reliable suppliers</p>
-          <p>Power up you next carear move</p>
-
-          <hr class="my-3" />
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/cannabis-testing-labs">
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+  <section class="fill-height">
+    <section
+      class="
+        deep-purple
+        white--text
+        fill-height
+        d-flex
+        flex-column
+        justify-center
+      "
+    >
+      <v-container class="py-8">
+        <v-row justify="center" class="">
+          <v-col cols="10" offset="" md="8" xl="6">
+            <h1 class="mb-6 display-1">
+              The community for the cannabis testing industry
+            </h1>
+            <p class="font-weight-regular mb-9">
+              Members of the cannabis testing industry are dissatisfied with
+              their current information flow.
+            </p>
+            <p class="font-weight-regular mb-9">
+              Knowledge is power. And the lack of knowledge about cannabis
+              testing is losing labs and the industry itself money.
+            </p>
+            <p class="font-weight-regular mb-9">
+              This a website where you can connect with other professionals
+              anonymously in order to share and improve your methods, find
+              reliable suppliers, pick up tips for your next career move and
+              more – all while ensuring that knowledge flows freely between the
+              lab community!
+            </p>
+          </v-col>
+        </v-row>
+        <v-row justify="center">
+          <v-btn
+            large
+            to="/cannabis-testing-labs"
+            dark
+            class="my-6 flex flex-grow-0"
+            >View Lab Directory</v-btn
+          >
+          <v-btn large to="/jobs" dark class="ml-3 my-6 flex flex-grow-0"
+            >View Job Board</v-btn
+          >
+        </v-row>
+      </v-container>
+    </section>
+  </section>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      title: 'Homepage',
+    }
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'homepage',
+          name: 'description',
+          content: `The community for the cannabis testing industry. Join us, bring your wisdom and share your knowledge to bulk up your lab's methods! Exchange ideas with experienced industry workers, form virtual partnerships or start your next career move with us!`,
+        },
+      ],
+    }
+  },
+}
+</script>

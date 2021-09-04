@@ -1,0 +1,22 @@
+.capitalize {
+  text-transform: capitalize;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.sticky-box {
+  position: sticky !important;
+  top: 80px;
+  z-index: 2;
+}
+
+.blur {
+  filter: blur(4px) grayscale(1);
+}
+
+.v-card__title,
+.v-card__subtitle {
+  word-break: break-word !important;
+}
