@@ -17,7 +17,9 @@
             lg="6"
             xl="4"
           >
-            <v-card-title class="mb-6">Jobs in cannabis testing </v-card-title>
+            <v-card-title class="display-1 mb-6"
+              >Jobs in cannabis testing
+            </v-card-title>
             <v-card-subtitle class="body-1">
               Make your next career move or find your labs next superstar
             </v-card-subtitle>
@@ -30,43 +32,48 @@
     </v-card>
 
     <v-container>
-      <!-- {{ jobs }} -->
-      <v-row class="d-none">
+      <!-- Filters -->
+      <v-row :class="{ 'd-none': isMobileLayout }">
         <v-col>
-          <v-card color="grey lighten-2 ">
-            <v-tabs v-model="tab" background-color="transparent" grow>
-              <v-tab v-for="item in items" :key="item">
-                {{ item }}
-              </v-tab>
-            </v-tabs>
-
-            <v-tabs-items v-model="tab">
-              <v-tab-item v-for="item in items" :key="item">
-                <v-card color="basil" flat>
-                  <v-card-text>
-                    <!-- {{ text }} -->
-
-                    <v-chip-group
-                      v-model="selectedLocation"
-                      active-class="primary--text"
-                      column
-                    >
-                      <v-chip>All</v-chip>
-
-                      <v-chip v-for="tag in items" :key="tag">
-                        {{ tag }}
-                      </v-chip>
-                    </v-chip-group>
-                  </v-card-text>
-                </v-card>
-              </v-tab-item>
-            </v-tabs-items>
-
-            <!-- <v-tabs fixed-tabs >
-              <v-tab>Location</v-tab>
-              <v-tab>Role</v-tab>
-              <v-tab>Type</v-tab>
-            </v-tabs> -->
+          <v-card color="gray lighten-4">
+            <v-card-subtitle class="pb-1">Filters</v-card-subtitle>
+            <v-card-text>
+              <v-row>
+                <v-col cols="12" sm="4">
+                  <v-autocomplete
+                    v-model="selectedLocation"
+                    :items="uniqueLocations"
+                    hide-details
+                    label="Location"
+                    clearable
+                    autocomplete="off"
+                    data-lpignore="true"
+                  ></v-autocomplete>
+                </v-col>
+                <v-col cols="12" sm="4">
+                  <v-autocomplete
+                    v-model="selectedRole"
+                    :items="uniqueRoles"
+                    hide-details
+                    clearable
+                    label="Role"
+                    autocomplete="off"
+                    data-lpignore="true"
+                  ></v-autocomplete>
+                </v-col>
+                <v-col cols="12" sm="4">
+                  <v-autocomplete
+                    v-model="selectedType"
+                    :items="uniqueTypes"
+                    hide-details
+                    label="Type"
+                    clearable
+                    autocomplete="off"
+                    data-lpignore="true"
+                  ></v-autocomplete>
+                </v-col>
+              </v-row>
+            </v-card-text>
           </v-card>
         </v-col>
       </v-row>
@@ -75,10 +82,7 @@
           <!-- <v-btn class="mb-3" min-width="100%" color="primary">Post Job</v-btn> -->
           <v-card>
             <v-list two-line>
-              <v-list-item-group
-                v-model="selectedItem"
-                active-class="deep-purple--text"
-              >
+              <v-list-item-group v-model="selectedItem" color="cyan darken-4">
                 <template v-for="(item, index) in jobs">
                   <v-list-item
                     :key="item.title"
@@ -122,10 +126,12 @@
             </v-list>
           </v-card>
         </v-col>
-        <v-col cols="12" sm="8">
+        <v-col cols="12" sm="8" class="mt-0 pt-sm-3 pt-0">
           <section class="job-details grey lighten-4">
             <div class="d-none" :class="{ 'd-inline': isMobileLayout }">
-              <v-btn to="/jobs" class="mb-3" text>Back</v-btn>
+              <v-btn to="/jobs" class="mb-3 secondary" dark outlined
+                ><v-icon left>mdi-arrow-left</v-icon> Back to jobs</v-btn
+              >
             </div>
 
             <v-card>
@@ -142,17 +148,31 @@
 export default {
   async asyncData({ $content, params }) {
     const jobs = await $content('jobs').fetch()
-    // console.log('jobs', jobs)
+
+    // Get unique locations
+    const uniqueLocations = jobs
+      .map((ele) => ele.location)
+      .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
 
     // Get unique titles
-    // Get unique locations
-    // Get unique types
+    const uniqueRoles = jobs
+      .map((ele) => ele.name)
+      .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
+
+    const uniqueTypes = jobs
+      .map((ele) => ele.type)
+      .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
+    console.log(uniqueTypes)
+
     // Populate Form inputs/chips
     // Write computed function to filter results
 
     return {
       jobs,
       params,
+      uniqueLocations,
+      uniqueRoles,
+      uniqueTypes,
     }
   },
   data: () => ({
@@ -160,6 +180,9 @@ export default {
     selectedLocation: 0,
     selectedType: 0,
     selectedRole: 0,
+    uniqueLocations: [],
+    uniqueTypes: [],
+
     title: 'Cannabis Testing Jobs',
     tab: 0,
     items: ['Location', 'Role', 'Type'],

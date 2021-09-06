@@ -12,7 +12,7 @@
             lg="6"
             xl="4"
           >
-            <v-card-title class="mb-6"
+            <v-card-title class="display-1 mb-6"
               >Cannabis testing laboratory directory
             </v-card-title>
             <v-card-subtitle class="body-1">
@@ -38,7 +38,6 @@
           <v-autocomplete
             class="mt-n13 white"
             outlined
-            color="deep-purple darken-4"
             hide-details
             filled
             label="Search region"
@@ -66,79 +65,85 @@
       </v-row>
       <v-row>
         <v-col cols="12" sm="4" lg="4" offset-lg="0">
-          <v-list dense>
-            <v-subheader>Canada</v-subheader>
-            <v-list-item-group v-model="selectedItem" color="primary">
-              <v-list-item
-                v-for="item in regionsCanada.states"
-                :key="`usa-${item.name}`"
-                :to="{
-                  name: 'cannabis-testing-labs-country-region',
-                  params: {
-                    region: item.name.toLowerCase().replace(/ /gi, '-'),
-                    country: regionsCanada.slug,
-                  },
-                }"
-              >
-                <v-list-item-content>
-                  <v-list-item-title
-                    >{{ item.name }} ({{ item.labs }})</v-list-item-title
-                  >
-                  <!-- <v-list-item-subtitle>{{ item }}</v-list-item-subtitle> -->
-                </v-list-item-content>
-              </v-list-item>
-            </v-list-item-group>
-          </v-list>
+          <v-card>
+            <v-list dense>
+              <v-subheader>Canada</v-subheader>
+              <v-list-item-group v-model="selectedItem" color="primary">
+                <v-list-item
+                  v-for="item in regionsCanada.states"
+                  :key="`usa-${item.name}`"
+                  :to="{
+                    name: 'cannabis-testing-labs-country-region',
+                    params: {
+                      region: item.name.toLowerCase().replace(/ /gi, '-'),
+                      country: regionsCanada.slug,
+                    },
+                  }"
+                >
+                  <v-list-item-content>
+                    <v-list-item-title
+                      >{{ item.name }} ({{ item.labs }})</v-list-item-title
+                    >
+                    <!-- <v-list-item-subtitle>{{ item }}</v-list-item-subtitle> -->
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </v-card>
         </v-col>
         <v-col cols="12" sm="4" lg="4" offset-lg="0">
-          <v-list dense>
-            <v-subheader>Europe</v-subheader>
-            <v-list-item-group v-model="selectedItem" color="primary">
-              <v-list-item
-                v-for="item in regionsEurope.states"
-                :key="`usa-${item.name}`"
-                :to="{
-                  name: 'cannabis-testing-labs-country-region',
-                  params: {
-                    region: item.name.toLowerCase().replace(/ /gi, '-'),
-                    country: regionsEurope.slug,
-                  },
-                }"
-              >
-                <v-list-item-content>
-                  <v-list-item-title
-                    >{{ item.name }} ({{ item.labs }})</v-list-item-title
-                  >
-                  <!-- <v-list-item-subtitle>{{ item }}</v-list-item-subtitle> -->
-                </v-list-item-content>
-              </v-list-item>
-            </v-list-item-group>
-          </v-list>
+          <v-card>
+            <v-list dense>
+              <v-subheader>Europe</v-subheader>
+              <v-list-item-group v-model="selectedItem" color="primary">
+                <v-list-item
+                  v-for="item in regionsEurope.states"
+                  :key="`usa-${item.name}`"
+                  :to="{
+                    name: 'cannabis-testing-labs-country-region',
+                    params: {
+                      region: item.name.toLowerCase().replace(/ /gi, '-'),
+                      country: regionsEurope.slug,
+                    },
+                  }"
+                >
+                  <v-list-item-content>
+                    <v-list-item-title
+                      >{{ item.name }} ({{ item.labs }})</v-list-item-title
+                    >
+                    <!-- <v-list-item-subtitle>{{ item }}</v-list-item-subtitle> -->
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </v-card>
         </v-col>
         <v-col cols="12" sm="4" lg="4" offset-lg="0">
-          <v-list dense>
-            <v-subheader>USA</v-subheader>
-            <v-list-item-group v-model="selectedItem" color="primary">
-              <v-list-item
-                v-for="item in regionsUSA.states"
-                :key="`usa-${item.name}`"
-                :to="{
-                  name: 'cannabis-testing-labs-country-region',
-                  params: {
-                    region: item.name.toLowerCase().replace(/ /gi, '-'),
-                    country: regionsUSA.slug,
-                  },
-                }"
-              >
-                <v-list-item-content>
-                  <v-list-item-title
-                    >{{ item.name }} ({{ item.labs }})</v-list-item-title
-                  >
-                  <!-- <v-list-item-subtitle>{{ item }}</v-list-item-subtitle> -->
-                </v-list-item-content>
-              </v-list-item>
-            </v-list-item-group>
-          </v-list>
+          <v-card>
+            <v-list dense>
+              <v-subheader>USA</v-subheader>
+              <v-list-item-group v-model="selectedItem" color="primary">
+                <v-list-item
+                  v-for="item in regionsUSA.states"
+                  :key="`usa-${item.name}`"
+                  :to="{
+                    name: 'cannabis-testing-labs-country-region',
+                    params: {
+                      region: item.name.toLowerCase().replace(/ /gi, '-'),
+                      country: regionsUSA.slug,
+                    },
+                  }"
+                >
+                  <v-list-item-content>
+                    <v-list-item-title
+                      >{{ item.name }} ({{ item.labs }})</v-list-item-title
+                    >
+                    <!-- <v-list-item-subtitle>{{ item }}</v-list-item-subtitle> -->
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </v-card>
         </v-col>
       </v-row>
     </v-container>

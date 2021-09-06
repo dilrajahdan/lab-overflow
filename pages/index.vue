@@ -13,7 +13,7 @@
       <v-container class="py-8">
         <v-row justify="center" class="">
           <v-col cols="10" offset="" md="8" xl="6">
-            <h1 class="mb-6 display-1">
+            <h1 class="display-1 mb-6 display-1">
               The community for the cannabis testing industry
             </h1>
             <p class="font-weight-regular mb-9">

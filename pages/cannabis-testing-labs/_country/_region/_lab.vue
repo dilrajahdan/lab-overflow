@@ -1,16 +1,16 @@
 <template>
   <v-container>
-    <v-row class="mt-0">
-      <v-col>
+    <v-row class="mt-0 pt-0">
+      <v-col class="mt-0 pt-0">
         <v-btn
           color=""
           outlined
           dark
-          class="mt-0 mb-6 d-blockX secondary"
+          class="mt-0 mb-3 d-blockX secondary"
           :to="`/cannabis-testing-labs/${params.country}/${params.region}`"
         >
           <v-icon left>mdi-arrow-left</v-icon>
-          Back to results</v-btn
+          Back to labs</v-btn
         >
       </v-col></v-row
     >
@@ -378,7 +378,7 @@
 
 <script>
 export default {
-  async asyncData({ $content, params }) {
+  async asyncData({ $content, params, $ga }) {
     // Get lab data
     let lab = await $content('labs').where({ slug: params.lab }).fetch()
     lab = lab[0]
@@ -432,6 +432,7 @@ export default {
       description,
       lab,
       params,
+      $ga,
     }
   },
   data: () => ({
@@ -485,7 +486,7 @@ export default {
         eventValue: this.showDetails ? 'show' : 'hide',
       }
 
-      // console.log(trackingEventData)
+      console.log(trackingEventData)
       this.$ga.event(trackingEventData)
     },
     showCallBack() {
@@ -498,7 +499,7 @@ export default {
         eventValue: this.showRequestCallback ? 'show' : 'hide',
       }
 
-      // console.log(trackingEventData)
+      console.log(trackingEventData)
       this.$ga.event(trackingEventData)
     },
     submitForm() {
