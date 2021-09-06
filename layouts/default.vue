@@ -30,7 +30,7 @@
       />
 
       <v-toolbar-title>
-        ({{ $vuetify.breakpoint.name }})
+        <!-- ({{ $vuetify.breakpoint.name }}) -->
 
         <nuxt-link class="text-decoration-none white--text" to="/">
           {{ title }}

@@ -83,7 +83,7 @@
           <v-card>
             <v-list two-line>
               <v-list-item-group v-model="selectedItem" color="cyan darken-4">
-                <template v-for="(item, index) in jobs">
+                <template v-for="(item, index) in filteredItems">
                   <v-list-item
                     :key="item.title"
                     :to="{
@@ -154,17 +154,17 @@ export default {
       .map((ele) => ele.location)
       .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
 
-    // Get unique titles
+    // Get unique roles (name)
     const uniqueRoles = jobs
       .map((ele) => ele.name)
       .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
 
+    // Get unique titles
     const uniqueTypes = jobs
       .map((ele) => ele.type)
       .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
-    console.log(uniqueTypes)
+    console.log(typeof uniqueTypes, uniqueTypes)
 
-    // Populate Form inputs/chips
     // Write computed function to filter results
 
     return {
@@ -177,16 +177,16 @@ export default {
   },
   data: () => ({
     selectedItem: null,
-    selectedLocation: 0,
-    selectedType: 0,
-    selectedRole: 0,
+
+    selectedLocation: [],
+    selectedType: [],
+    selectedRole: [],
+
     uniqueLocations: [],
     uniqueTypes: [],
+    uniqueRoles: [],
 
     title: 'Cannabis Testing Jobs',
-    tab: 0,
-    items: ['Location', 'Role', 'Type'],
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   }),
   head() {
     return {
@@ -201,6 +201,32 @@ export default {
     }
   },
   computed: {
+    filteredItems() {
+      const filters = {
+        location: this.selectedLocation,
+        name: this.selectedRole,
+        type: this.selectedType,
+      }
+
+      if (
+        (this.selectedLocation && this.selectedLocation.length > 0) ||
+        (this.selectedRole && this.selectedRole.length > 0) ||
+        (this.selectedType && this.selectedType.length > 0)
+      ) {
+        // Go thru each job
+        return this.jobs.filter((item) => {
+          // Loop thru filters amd
+          return Object.keys(filters).some((filter) => {
+            // Return if any selected filters are in the keys array
+            // console.log('item', item.role)
+            // console.log('filters[filter]', filters[filter])
+
+            return item[filter] === filters[filter]
+          })
+        })
+      }
+      return this.jobs
+    },
     isMobileLayout() {
       return this.$vuetify.breakpoint.xsOnly && this.$route.name === 'jobs-slug'
     },
