@@ -32,10 +32,20 @@
     </v-card>
 
     <v-container>
+      <v-row>
+        <!-- pk: {{ pk }}
+        <hr /> -->
+
+        <!-- <button :disabled="loading" @click="buy()">
+          <btn-loader v-if="loading" />
+          <p>Post Job!!!</p>
+        </button> -->
+      </v-row>
+
       <!-- Filters -->
       <v-row :class="{ 'd-none': isMobileLayout }">
         <v-col>
-          <v-card color="gray lighten-4">
+          <v-card color="gray lighten-4" elevation="1">
             <v-card-subtitle class="pb-1">Filters</v-card-subtitle>
             <v-card-text>
               <v-row>
@@ -48,6 +58,7 @@
                     clearable
                     autocomplete="off"
                     data-lpignore="true"
+                    outlined
                   ></v-autocomplete>
                 </v-col>
                 <v-col cols="12" sm="4">
@@ -59,6 +70,7 @@
                     label="Role"
                     autocomplete="off"
                     data-lpignore="true"
+                    outlined
                   ></v-autocomplete>
                 </v-col>
                 <v-col cols="12" sm="4">
@@ -70,6 +82,7 @@
                     clearable
                     autocomplete="off"
                     data-lpignore="true"
+                    outlined
                   ></v-autocomplete>
                 </v-col>
               </v-row>
@@ -175,19 +188,38 @@ export default {
       uniqueTypes,
     }
   },
-  data: () => ({
-    selectedItem: null,
+  data() {
+    // this.pk = process.env.STRIPE_PK
+    return {
+      stripe: null,
+      loading: false,
+      newJob: [
+        {
+          sku: 'prod_KB5wpNTkOUKmD1',
+          quantity: 1,
+          title: 'Chemist',
+          company: null,
+          location: 'Hounslow',
+          benefits: null,
+          type: null,
+          salary: '$100K USD',
+          description: null,
+          sourceUrl: null,
+        },
+      ],
+      // successUrl: 'http://localhost:3000',
+      // cancelUrl: 'http://localhost:3000',
 
-    selectedLocation: [],
-    selectedType: [],
-    selectedRole: [],
-
-    uniqueLocations: [],
-    uniqueTypes: [],
-    uniqueRoles: [],
-
-    title: 'Cannabis Testing Jobs',
-  }),
+      selectedItem: null,
+      selectedLocation: [],
+      selectedType: [],
+      selectedRole: [],
+      uniqueLocations: [],
+      uniqueTypes: [],
+      uniqueRoles: [],
+      title: 'Cannabis Testing Jobs',
+    }
+  },
   head() {
     return {
       title: this.title,
@@ -218,9 +250,6 @@ export default {
           // Loop thru filters amd
           return Object.keys(filters).some((filter) => {
             // Return if any selected filters are in the keys array
-            // console.log('item', item.role)
-            // console.log('filters[filter]', filters[filter])
-
             return item[filter] === filters[filter]
           })
         })
@@ -231,10 +260,39 @@ export default {
       return this.$vuetify.breakpoint.xsOnly && this.$route.name === 'jobs-slug'
     },
   },
+  mounted() {
+    // eslint-disable-next-line no-undef
+    this.stripe = Stripe(process.env.STRIPE_PK)
+  },
 
   methods: {
     slugize(str) {
       return str.toLowerCase().replace(/ /gi, '-')
+    },
+    checkout() {
+      this.$refs.checkoutRef.redirectToCheckout()
+    },
+    async buy() {
+      try {
+        this.loading = true
+        const { data } = await this.$axios.post('/api/checkout', {
+          order: {
+            name: this.newJob.name,
+            description: this.newJob.description,
+            // images: this.newJob.images,
+            location: 'Southall',
+            amount: this.newJob.amount * 100,
+            currency: this.newJob.currency,
+            quantity: 1,
+          },
+          slug: this.$route.params.slug,
+        })
+        this.stripe.redirectToCheckout({ sessionId: data.id })
+      } catch (err) {
+        alert(err)
+      } finally {
+        this.loading = false
+      }
     },
   },
 }

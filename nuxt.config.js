@@ -6,7 +6,9 @@ export default {
       process.env.NODE_ENV === 'production'
         ? 'http://laboverflow.com'
         : 'http://localhost:3000',
+    STRIPE_PK: process.env.STRIPE_PK,
   },
+
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
@@ -25,13 +27,14 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [{ src: 'https://js.stripe.com/v3/' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['@/assets/styles.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [{ src: '~/plugins/vue-stripe.js', ssr: false }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -59,7 +62,19 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: process.env.BASE_URL,
+  },
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: process.env.BROWSER_BASE_URL,
+    },
+  },
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.BASE_URL,
+    },
+  },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
