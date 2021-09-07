@@ -36,10 +36,10 @@
         <!-- pk: {{ pk }}
         <hr /> -->
 
-        <!-- <button :disabled="loading" @click="buy()">
+        <button :disabled="loading" @click="buy()">
           <btn-loader v-if="loading" />
           <p>Post Job!!!</p>
-        </button> -->
+        </button>
       </v-row>
 
       <!-- Filters -->
