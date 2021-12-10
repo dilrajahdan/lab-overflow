@@ -32,16 +32,6 @@
     </v-card>
 
     <v-container>
-      <v-row>
-        <!-- pk: {{ pk }}
-        <hr /> -->
-
-        <button :disabled="loading" @click="buy()">
-          <btn-loader v-if="loading" />
-          <p>Post Job!!!</p>
-        </button>
-      </v-row>
-
       <!-- Filters -->
       <v-row :class="{ 'd-none': isMobileLayout }">
         <v-col>
@@ -262,37 +252,12 @@ export default {
   },
   mounted() {
     // eslint-disable-next-line no-undef
-    this.stripe = Stripe(process.env.STRIPE_PK)
+    this.stripe = Stripe('pk_test_mWF4dQC0ElTGLo2j8wV4beS7')
   },
 
   methods: {
     slugize(str) {
       return str.toLowerCase().replace(/ /gi, '-')
-    },
-    checkout() {
-      this.$refs.checkoutRef.redirectToCheckout()
-    },
-    async buy() {
-      try {
-        this.loading = true
-        const { data } = await this.$axios.post('/api/checkout', {
-          order: {
-            name: this.newJob.name,
-            description: this.newJob.description,
-            // images: this.newJob.images,
-            location: 'Southall',
-            amount: this.newJob.amount * 100,
-            currency: this.newJob.currency,
-            quantity: 1,
-          },
-          slug: this.$route.params.slug,
-        })
-        this.stripe.redirectToCheckout({ sessionId: data.id })
-      } catch (err) {
-        alert(err)
-      } finally {
-        this.loading = false
-      }
     },
   },
 }

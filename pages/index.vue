@@ -54,12 +54,12 @@
 export default {
   data() {
     return {
-      title: 'Homepage',
+      // title: null,
     }
   },
   head() {
     return {
-      title: this.title,
+      // title: this.title,
       meta: [
         {
           hid: 'homepage',
