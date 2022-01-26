@@ -91,8 +91,8 @@
         <v-col cols="12" md="3" order-md="2" class=""
           ><v-card
             class="sticky-box"
-            :href="`mailto:admin@laboverflow.com?subject=Advertize on Lab Overflow, ${regionLabel}, ${countryLabel}`"
-            ><v-card-text>Advertize here</v-card-text>
+            :href="`mailto:admin@laboverflow.com?subject=Advertise on Lab Overflow, ${regionLabel}, ${countryLabel}`"
+            ><v-card-text>Advertise here</v-card-text>
           </v-card>
 
           <!-- <v-card color="pink mb-3" dark

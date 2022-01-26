@@ -57,10 +57,35 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    // https://firebase.nuxtjs.org/guide/getting-started
+    '@nuxtjs/firebase',
     // Always make sitemap last element of the array. https://sitemap.nuxtjs.org/guide/setup
     '@nuxtjs/sitemap',
   ],
 
+  firebase: {
+    // options
+    config: {
+      apiKey: 'AIzaSyC9npU2vot8Ktnu39neq032aN0NnCuab14',
+      authDomain: 'lab-overflow.firebaseapp.com',
+      projectId: 'lab-overflow',
+      storageBucket: 'lab-overflow.appspot.com',
+      messagingSenderId: '209478965474',
+      appId: '1:209478965474:web:6e8b46164035441b2926bb',
+      measurementId: '<measurementId>',
+    },
+    services: {
+      auth: true, // Just as example. Can be any other service.
+      firestore: true,
+      // functions: true,
+      // storage: true,
+      // database: true,
+      // messaging: true,
+      // performance: true,
+      // analytics: true,
+      // remoteConfig: true
+    },
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: process.env.BASE_URL,

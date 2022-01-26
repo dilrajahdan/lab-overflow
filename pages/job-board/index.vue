@@ -24,7 +24,7 @@ export default {
   created() {
     if (this.job.length) {
       if (!this.$vuetify.breakpoint.xsOnly) {
-        this.redirect(`/jobs/${this.job[0].slug}`)
+        this.redirect(`/job-board/${this.job[0].slug}`)
       }
     }
   },

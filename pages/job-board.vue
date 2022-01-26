@@ -90,7 +90,7 @@
                   <v-list-item
                     :key="item.title"
                     :to="{
-                      name: 'jobs-slug',
+                      name: 'job-board-slug',
                       params: {
                         slug: item.slug,
                       },
@@ -132,7 +132,7 @@
         <v-col cols="12" sm="8" class="mt-0 pt-sm-3 pt-0">
           <section class="job-details grey lighten-4">
             <div class="d-none" :class="{ 'd-inline': isMobileLayout }">
-              <v-btn to="/jobs" class="mb-3 secondary" dark outlined
+              <v-btn to="/job-board" class="mb-3 secondary" dark outlined
                 ><v-icon left>mdi-arrow-left</v-icon> Back to jobs</v-btn
               >
             </div>
@@ -207,7 +207,7 @@ export default {
       uniqueLocations: [],
       uniqueTypes: [],
       uniqueRoles: [],
-      title: 'Cannabis Testing Jobs',
+      title: 'Job board for Lab Professionals in the Cannabis industry',
     }
   },
   head() {
@@ -247,7 +247,9 @@ export default {
       return this.jobs
     },
     isMobileLayout() {
-      return this.$vuetify.breakpoint.xsOnly && this.$route.name === 'jobs-slug'
+      return (
+        this.$vuetify.breakpoint.xsOnly && this.$route.name === 'job-board-slug'
+      )
     },
   },
   mounted() {

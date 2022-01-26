@@ -41,7 +41,7 @@
             class="my-6 flex flex-grow-0"
             >View Lab Directory</v-btn
           >
-          <v-btn large to="/jobs" dark class="ml-3 my-6 flex flex-grow-0"
+          <v-btn large to="/job-board" dark class="ml-3 my-6 flex flex-grow-0"
             >View Job Board</v-btn
           >
         </v-row>

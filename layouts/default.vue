@@ -76,7 +76,7 @@
     </v-navigation-drawer>
     <v-footer dark :absolute="!fixed" app>
       <span
-        >&copy; {{ new Date().getFullYear() }} | Contact: admin@laboverflow.com
+        >&copy; {{ new Date().getFullYear() }} | Contact: dilrajahdan@gmail.com
       </span>
       <!-- Advertise | Add Your Lab | Add
         Your Lab Supplier | Add Your Job Post | Privacy | T&C -->
@@ -99,12 +99,12 @@ export default {
         //   title: 'Home',
         //   to: '/',
         // },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Forum',
-          to: '/forum',
-          disabled: true,
-        },
+        // {
+        //   icon: 'mdi-chart-bubble',
+        //   title: 'Forum',
+        //   to: '/forum',
+        //   disabled: true,
+        // },
         {
           icon: 'mdi-chart-bubble',
           title: 'Lab Directory',
@@ -118,8 +118,8 @@ export default {
         // },
         {
           icon: 'mdi-chart-bubble',
-          title: 'Jobs',
-          to: '/jobs',
+          title: 'Job Board',
+          to: '/job-board',
           disabled: false,
         },
       ],
