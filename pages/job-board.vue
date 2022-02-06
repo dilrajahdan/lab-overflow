@@ -16,6 +16,7 @@
             offset-md="0"
             lg="6"
             xl="4"
+            class=""
           >
             <v-card-title class="display-1 mb-6"
               >Jobs in cannabis testing
@@ -23,9 +24,23 @@
             <v-card-subtitle class="body-1">
               Make your next career move or find your labs next superstar
             </v-card-subtitle>
-            <!-- <v-card-actions>
-              <v-btn>Post Job</v-btn>
-            </v-card-actions> -->
+          </v-col>
+          <v-col
+            cols="12"
+            sm="10"
+            offset-sm="1"
+            md="8"
+            offset-md="0"
+            lg="6"
+            xl="4"
+            class="yellow"
+            align-self="center"
+          >
+            <v-card-actions class="justify-end">
+              <v-btn to="/post-job" dark x-large outlined color="white"
+                >Post A Job</v-btn
+              >
+            </v-card-actions>
           </v-col>
         </v-row>
       </v-container>

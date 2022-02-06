@@ -20,7 +20,7 @@
     "cross-env": "^7.0.3",
     "firebase": "^9.6.1",
     "nuxt": "^2.15.7",
-    "stripe": "^8.174.0",
+    "stripe": "^8.202.0",
     "stripe-nuxt": "^1.0.2",
     "vuetify": "^2.5.5"
   },
