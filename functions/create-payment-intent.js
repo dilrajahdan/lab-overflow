@@ -56,8 +56,8 @@ exports.handler = async (event, context) => {
     // and needs to be confirmed on the client to finalize the payment
     const paymentIntent = await stripe.paymentIntents.create({
       currency: 'usd',
-      amount: 19000,
-      description: 'Order from store',
+      amount: 23000,
+      description: 'Job Post - 30 Days',
     })
 
     // Send the client_secret to the client
