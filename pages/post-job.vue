@@ -18,7 +18,7 @@
             xl="4"
             class=""
           >
-            <v-card-title class="display-1">Post a Job</v-card-title>
+            <v-card-title class="display-1">Post a job</v-card-title>
             <!-- clientSecret: {{ clientSecret }} <br />
             loading: {{ loading }} <br /> -->
             <!-- elements: {{ elements }} <br />stripe: {{ stripe }} -->
@@ -29,53 +29,34 @@
 
     <v-container>
       <v-row>
-        <v-col cols="12" sm="3">
-          <v-card>
-            <v-card-title>Why post a job with Lab Overflow?</v-card-title>
-            <v-card-text>
-              <p>
-                We are the only Cannabis focused job board for Laboratory
-                Professionals.
-              </p>
-              <p>
-                We are spending all our energy on marketing and SEO so you dont
-                have to.
-              </p>
-              <p>We email your role to our growing list every week</p>
-              <p>
-                Your role will be posted in the Lab Directory section of the
-                site under your labs region
-              </p>
-            </v-card-text>
-          </v-card>
-        </v-col>
+        <!-- Form -->
         <v-col cols="12" sm="9" md="6">
-          <v-card>
+          <v-card class="">
             <v-card-title>Let's start</v-card-title>
             <v-card-text>
               <v-text-field
                 v-model="job.labName"
-                hint="Name of laboratory"
-                label="Lab name"
+                hint="Name of your laboratory"
+                label="Lab/Business name"
                 required
               ></v-text-field>
 
               <v-text-field
                 v-model="job.position"
-                hint="Job title"
+                hint="The position you are hiring for"
                 label="Position"
                 required
               ></v-text-field>
 
-              <v-select
-                hint=""
-                :v-model="1"
-                label="Job type"
-                :items="['Full-time', 'Part-time', 'Contract/Temp', 'Intern']"
-              ></v-select>
+              <v-text-field
+                v-model="job.location"
+                hint="Example: Remote or San Diago, CA, USA"
+                label="Location"
+                required
+              ></v-text-field>
 
               <v-combobox
-                v-model="selectedSkills"
+                v-model="job.selectedSkills"
                 :items="skillsList"
                 chips
                 clearable
@@ -97,39 +78,42 @@
                   </v-chip>
                 </template> -->
               </v-combobox>
-
-              <v-text-field
-                v-model="job.location"
-                hint="Example: Remote or San Diago, CA, USA"
-                label="Location"
-                required
-              ></v-text-field>
             </v-card-text>
           </v-card>
           <v-card class="mt-4">
             <v-card-title>Job details</v-card-title>
-            <v-card-subtitle class="">Salary range</v-card-subtitle>
+
+            <v-card-text>
+              <v-select
+                :v-model="1"
+                hint=""
+                label="Job type"
+                :items="['Full-time', 'Part-time', 'Contract/Temp', 'Intern']"
+              ></v-select>
+            </v-card-text>
+
+            <!-- <v-card-subtit<v-card-text>le class="">Salary range</v-card-subtitle> -->
             <v-card-text>
               <v-row>
                 <v-col>
-                  <v-text-field
-                    v-model="job.salaryFrom"
-                    v-col
-                    type="number"
-                    hint="Example: $60K USD"
-                    label="Minimum per year"
+                  <v-select
+                    v-model="job.salaryMin"
+                    :items="salaryRange"
+                    item-text="label"
+                    item-value="value"
+                    label="Minimum salary per year"
                     required
-                  />
+                  ></v-select>
                 </v-col>
                 <v-col>
-                  <v-text-field
-                    v-model="job.salaryTo"
-                    v-col
-                    type="number"
-                    hint="Example: $110K USD"
-                    label="Maximum per year"
+                  <v-select
+                    v-model="job.salaryMax"
+                    :items="salaryRange"
+                    item-text="label"
+                    item-value="value"
+                    label="Maximum salary per year"
                     required
-                  />
+                  ></v-select>
                 </v-col>
               </v-row>
             </v-card-text>
@@ -211,132 +195,140 @@
               ></v-textarea>
             </v-card-text>
           </v-card>
+
+          <v-card class="mb-12" color="grey lighten-1">
+            <v-card-title>Pay</v-card-title>
+            <form id="payment-form">
+              <div id="payment-element">
+                <!--Stripe.js injects the Payment Element-->
+              </div>
+            </form>
+
+            <v-btn
+              id="button-text"
+              color="primary"
+              @click.prevent.stop="handleSubmit()"
+            >
+              Pay Now
+            </v-btn>
+            <v-btn text> Cancel </v-btn>
+          </v-card>
+        </v-col>
+
+        <!-- Benefits -->
+        <v-col cols="12" sm="3">
+          <v-card class="stickyX">
+            <v-card-title>Why post a job with Lab Overflow?</v-card-title>
+            <v-card-text>
+              <ul>
+                <li>
+                  We are the only job board for Cannabis Testing Laboratory
+                  Professionals
+                </li>
+                <li>
+                  We are spending all our energy on marketing and SEO so you
+                  dont have to
+                </li>
+                <li>We email your role to our growing list every week</li>
+
+                <!-- <li>
+                  Your role will be posted in the Homepage, and the Lab Directory section of the
+                  site under your labs region - MAKE THIS A PAID FEATURE 
+                </li> -->
+              </ul>
+            </v-card-text>
+          </v-card>
+
+          <!-- <v-card class="mt-4">
+            <v-card-title>Pay with</v-card-title>
+            <v-card-text>
+              <v-card-title>
+                <v-icon>mdi-credit-card</v-icon>
+                Credit Card
+              </v-card-title>
+              
+            </v-card-text>
+          </v-card> -->
         </v-col>
       </v-row>
     </v-container>
 
-    <v-card color="yellow buy-footer">
+    <v-card class="buy-footer">
       <v-container>
-        <v-row align="center">
-          <v-col>
-            <v-card> <v-card-text>LIVE PREVIEW</v-card-text> </v-card>
+        <v-row align="center" justify="center">
+          <v-col class="my-4">
+            <!-- Live Preview -->
+            <v-card color="grey lighten-4">
+              <v-container>
+                <v-row align="center ">
+                  <!-- Role -->
+                  <v-col class="py-0 flex-grow-1">
+                    <v-card-text class="overline pb-0">
+                      {{ job.labName || 'Your Lab Here' }}
+                    </v-card-text>
+                    <v-card-title class="pt-0 mt-n2 mb-2">{{
+                      job.position || 'Superstar you want to hire'
+                    }}</v-card-title>
+                    <v-card-subtitle class="">
+                      <v-chip label small>{{
+                        job.location || 'Location'
+                      }}</v-chip>
+
+                      <v-chip
+                        v-if="job.salaryMin"
+                        label
+                        small
+                        color="green lighten-3"
+                        >USD {{ job.salaryMin }}
+                        <span v-if="job.salaryMin && job.salaryMax">-</span>
+                        {{ job.salaryMax }}
+                      </v-chip>
+                    </v-card-subtitle>
+                  </v-col>
+
+                  <!-- Skills -->
+                  <v-col class="py-0">
+                    <v-chip-group>
+                      <v-chip
+                        v-for="skill in job.selectedSkills"
+                        :key="skill"
+                        outlined
+                        >{{ skill }}</v-chip
+                      >
+                    </v-chip-group>
+                  </v-col>
+
+                  <v-col class="flex-grow-0">
+                    <v-card-actions>
+                      <v-btn outlined>Apply</v-btn>
+                    </v-card-actions>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
           </v-col>
           <v-col class="flex-grow-0"
-            ><v-btn color="red" class="white--text"
+            ><v-btn color="red" class="white--text" x-large
               >Start Hiring – $199</v-btn
-            ></v-col
-          >
+            >
+
+            <v-btn color="primary" @click="loadStripe()"> Continue </v-btn>
+          </v-col>
         </v-row>
       </v-container>
     </v-card>
 
-    <v-card tile class="d-flex align-center flex-column py-3">
+    <v-card tile class="d-flex align-center flex-column py-3 mb-16">
       <v-container>
         <v-row>
           <v-col>
             <v-stepper v-model="formStepper">
-              <v-stepper-header>
-                <v-stepper-step :complete="formStepper > 1" step="1">
-                  Name of step 1
-                </v-stepper-step>
-
-                <v-divider></v-divider>
-
-                <v-stepper-step :complete="formStepper > 2" step="2">
-                  Name of step 2
-                </v-stepper-step>
-
-                <v-divider></v-divider>
-
-                <v-stepper-step step="3"> Name of step 3 </v-stepper-step>
-              </v-stepper-header>
-
               <v-stepper-items>
                 <v-stepper-content step="1">
-                  <v-card class="mb-12" color="grey lighten-4">
-                    <v-card-title>Jobs details</v-card-title>
-                    <v-card-text>
-                      <v-form ref="form" v-model="jobForm" lazy-validation>
-                        <v-text-field
-                          v-model="job.title"
-                          label="Job title"
-                          required
-                        ></v-text-field>
-                        <v-text-field
-                          v-model="job.description"
-                          label="Job description"
-                          required
-                        ></v-text-field>
-                        <v-text-field
-                          v-model="job.location"
-                          label="Job location"
-                          required
-                        ></v-text-field>
-                        <v-text-field
-                          v-model="job.salary"
-                          label="Job salary"
-                          required
-                        ></v-text-field>
-                        <v-text-field
-                          v-model="job.email"
-                          label="Contact email"
-                          required
-                        ></v-text-field>
-                      </v-form>
-                    </v-card-text>
-                  </v-card>
-
-                  <v-btn color="primary" @click="formStepper = 2">
-                    Continue
-                  </v-btn>
-
                   <v-btn text> Cancel </v-btn>
                 </v-stepper-content>
 
-                <v-stepper-content step="2">
-                  <v-card class="mb-12" color="grey lighten-1"
-                    ><v-card-title>Confirm</v-card-title>
-                    <v-card-text>Job: {{ job }}</v-card-text>
-                  </v-card>
-
-                  <v-btn color="primary" @click="loadStripe()">
-                    Continue
-                  </v-btn>
-
-                  <v-btn text> Cancel </v-btn>
-                </v-stepper-content>
-
-                <v-stepper-content step="3">
-                  <v-card class="mb-12" color="grey lighten-1"
-                    ><v-card-title>Pay</v-card-title>
-                    <form id="payment-form">
-                      <!-- <input
-                        id="email"
-                        type="text"
-                        placeholder="Enter email address"
-                      /> -->
-                      <div id="payment-element">
-                        <!--Stripe.js injects the Payment Element-->
-                      </div>
-                      <!-- 
-                      <button id="submit">
-                        <div id="spinner" class="spinner hidden"></div>
-                        <span id="button-text">Pay now</span>
-                      </button>
-
-                      <div id="payment-message" class="hidden"></div> -->
-                    </form>
-                  </v-card>
-
-                  <v-btn
-                    id="button-text"
-                    color="primary"
-                    @click.prevent.stop="handleSubmit()"
-                  >
-                    Pay Now
-                  </v-btn>
-                  <v-btn text> Cancel </v-btn>
-                </v-stepper-content>
+                <v-stepper-content step="2"> </v-stepper-content>
               </v-stepper-items>
             </v-stepper>
           </v-col>
@@ -353,23 +345,215 @@
 export default {
   data() {
     return {
-      skillsList: [
-        'Programming',
-        'Playing video games',
-        'Watching movies',
-        'Sleeping',
+      salaryRange: [
+        {
+          value: '0',
+          label: 'USD 0 per year',
+        },
+        {
+          value: '10k',
+          label: 'USD 10,000 per year',
+        },
+        {
+          value: '20k',
+          label: 'USD 20,000 per year',
+        },
+        {
+          value: '30k',
+          label: 'USD 30,000 per year',
+        },
+        {
+          value: '40k',
+          label: 'USD 40,000 per year',
+        },
+        {
+          value: '50k',
+          label: 'USD 50,000 per year',
+        },
+        {
+          value: '60k',
+          label: 'USD 60,000 per year',
+        },
+        {
+          value: '70k',
+          label: 'USD 70,000 per year',
+        },
+        {
+          value: '80k',
+          label: 'USD 80,000 per year',
+        },
+        {
+          value: '90k',
+          label: 'USD 90,000 per year',
+        },
+        {
+          value: '100k',
+          label: 'USD 100,000 per year',
+        },
+        {
+          value: '110k',
+          label: 'USD 110,000 per year',
+        },
+        {
+          value: '120k',
+          label: 'USD 120,000 per year',
+        },
+        {
+          value: '130k',
+          label: 'USD 130,000 per year',
+        },
+        {
+          value: '140k',
+          label: 'USD 140,000 per year',
+        },
+        {
+          value: '150k',
+          label: 'USD 150,000 per year',
+        },
+        {
+          value: '160k',
+          label: 'USD 160,000 per year',
+        },
+        {
+          value: '170k',
+          label: 'USD 170,000 per year',
+        },
+        {
+          value: '180k',
+          label: 'USD 180,000 per year',
+        },
+        {
+          value: '190k',
+          label: 'USD 190,000 per year',
+        },
+        {
+          value: '200k',
+          label: 'USD 200,000 per year',
+        },
+        {
+          value: '210k',
+          label: 'USD 210,000 per year',
+        },
+        {
+          value: '220k',
+          label: 'USD 220,000 per year',
+        },
+        {
+          value: '230k',
+          label: 'USD 230,000 per year',
+        },
+        {
+          value: '240k',
+          label: 'USD 240,000 per year',
+        },
+        {
+          value: '250k',
+          label: 'USD 250,000 per year',
+        },
+        {
+          value: '260k',
+          label: 'USD 260,000 per year',
+        },
+        {
+          value: '270k',
+          label: 'USD 270,000 per year',
+        },
+        {
+          value: '280k',
+          label: 'USD 280,000 per year',
+        },
+        {
+          value: '290k',
+          label: 'USD 290,000 per year',
+        },
+        {
+          value: '300k',
+          label: 'USD 300,000 per year',
+        },
+        {
+          value: '310k',
+          label: 'USD 310,000 per year',
+        },
+        {
+          value: '320k',
+          label: 'USD 320,000 per year',
+        },
+        {
+          value: '330k',
+          label: 'USD 330,000 per year',
+        },
+        {
+          value: '340k',
+          label: 'USD 340,000 per year',
+        },
+        {
+          value: '350k',
+          label: 'USD 350,000 per year',
+        },
+        {
+          value: '360k',
+          label: 'USD 360,000 per year',
+        },
+        {
+          value: '370k',
+          label: 'USD 370,000 per year',
+        },
+        {
+          value: '380k',
+          label: 'USD 380,000 per year',
+        },
+        {
+          value: '390k',
+          label: 'USD 390,000 per year',
+        },
+        {
+          value: '400k',
+          label: 'USD 400,000 per year',
+        },
+        {
+          value: '410k',
+          label: 'USD 410,000 per year',
+        },
+        {
+          value: '420k',
+          label: 'USD 420,000 per year',
+        },
       ],
-      selectedSkills: ['Streaming', 'Eating'],
+
+      skillsList: [
+        'HPLC',
+        'ICP-MS',
+        'LCMS',
+        'LC-MS/MS',
+        'GCMS',
+        'GC',
+        'MS/MS',
+        'MSMS',
+        'qPCR',
+        'Pesticides',
+        'Cannabinoids',
+        'Terpenes',
+        'Mycotoxins',
+        'Residual Solvents',
+        'Trace Metal Analysis',
+        'Microbiological Analysis',
+      ],
 
       clientSecret: null,
+
       formStepper: 1,
       jobForm: null,
       job: {
+        selectedSkills: [],
+        labName: '',
+        position: '',
         title: '',
         description: '',
         location: '',
         salary: '',
         email: '',
+        minSalary: '',
+        maxSalary: '',
       },
       loading: false,
       elements: null,
@@ -443,8 +627,8 @@ export default {
     },
 
     removeSkill(item) {
-      this.selectedSkills.splice(this.selectedSkills.indexOf(item), 1)
-      this.selectedSkills = [...this.selectedSkills]
+      this.job.selectedSkills.splice(this.job.selectedSkills.indexOf(item), 1)
+      this.job.selectedSkills = [...this.job.selectedSkills]
     },
   },
 }
@@ -456,5 +640,11 @@ export default {
   bottom: 0;
   z-index: 10;
   width: 100%;
+}
+
+.sticky {
+  top: 80px;
+  position: sticky;
+  z-index: 1;
 }
 </style>

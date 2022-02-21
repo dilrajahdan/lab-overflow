@@ -33,7 +33,7 @@
             offset-md="0"
             lg="6"
             xl="4"
-            class="yellow"
+            class=""
             align-self="center"
           >
             <v-card-actions class="justify-end">
