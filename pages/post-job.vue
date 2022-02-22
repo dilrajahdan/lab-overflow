@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section class="post-job">
     <v-card
       color="deep-purple"
       dark
@@ -36,6 +36,7 @@
             <v-card-text>
               <v-text-field
                 v-model="job.labName"
+                filled
                 hint="Name of your laboratory"
                 label="Lab/Business name"
                 required
@@ -46,6 +47,7 @@
                 hint="The position you are hiring for"
                 label="Position"
                 required
+                filled
               ></v-text-field>
 
               <v-text-field
@@ -53,6 +55,7 @@
                 hint="Example: Remote or San Diago, CA, USA"
                 label="Location"
                 required
+                filled
               ></v-text-field>
 
               <v-combobox
@@ -63,6 +66,7 @@
                 label="Primary skills/experience"
                 hint="Example: HPLC, GC (for Instruments) or Pesticide, Potency (Assay)"
                 multiple
+                filled
               >
                 <!-- <template #selection="{ attrs, item, select, selected }">
                   <v-chip
@@ -83,9 +87,10 @@
           <v-card class="mt-4">
             <v-card-title>Job details</v-card-title>
 
-            <v-card-text>
+            <v-card-text class="pb-0">
               <v-select
-                :v-model="1"
+                v-model="job.type"
+                filled
                 hint=""
                 label="Job type"
                 :items="['Full-time', 'Part-time', 'Contract/Temp', 'Intern']"
@@ -93,73 +98,97 @@
             </v-card-text>
 
             <!-- <v-card-subtit<v-card-text>le class="">Salary range</v-card-subtitle> -->
-            <v-card-text>
+            <v-card-text class="pb-0">
               <v-row>
                 <v-col>
                   <v-select
                     v-model="job.salaryMin"
+                    filled
                     :items="salaryRange"
                     item-text="label"
                     item-value="value"
                     label="Minimum salary per year"
+                    hide-details
                     required
                   ></v-select>
                 </v-col>
                 <v-col>
                   <v-select
                     v-model="job.salaryMax"
+                    filled
                     :items="salaryRange"
                     item-text="label"
                     item-value="value"
                     label="Maximum salary per year"
                     required
+                    hide-details
                   ></v-select>
                 </v-col>
               </v-row>
+
+              <small>
+                Please use USD equivalent. We don't have currency built-in yet
+                and we'd like to use this salary data to show salary trends in
+                analytical testing labs.
+              </small>
             </v-card-text>
 
             <v-card-text>
-              <v-textarea
-                v-model="job.description"
-                label="Job description"
-                required
-                auto-grow
-              ></v-textarea>
+              <client-only>
+                <p class="body-1 mb-0">Job description</p>
+                <tiptap-editor v-model="job.description"></tiptap-editor>
+              </client-only>
             </v-card-text>
           </v-card>
+
+          <!-- Feedback -->
           <v-card class="mt-4">
             <v-card-title>How to apply</v-card-title>
 
             <v-card-text>
-              <v-textarea
+              <client-only>
+                <p class="body-1 mb-0">How to apply</p>
+                <tiptap-editor
+                  v-model="job.howToApply"
+                  class="mb-6"
+                ></tiptap-editor>
+              </client-only>
+
+              <!-- <v-textarea
                 v-model="job.howToApply"
                 label="How to apply"
                 required
                 auto-grow
-              ></v-textarea>
+              ></v-textarea> -->
 
               <v-text-field
                 v-model="job.applyURL"
+                filled
                 type="url"
                 hint="Example: http://www.mylab.com/jobs/123"
                 label="Apply URL"
               ></v-text-field>
-              or
+
+              <p><b>OR</b></p>
 
               <v-text-field
                 v-model="job.applyEmail"
+                filled
                 type="email"
                 label="Apply email"
+                persistent-hint
                 hint="This email is public, the Apply button links to it if you do not supply an Apply URL above."
               ></v-text-field>
             </v-card-text>
           </v-card>
+
           <v-card class="mt-4">
             <v-card-title>Company</v-card-title>
 
             <v-card-text>
               <v-text-field
                 v-model="job.companyEmail"
+                filled
                 hint="Appears on invoice"
                 label="Company email (stays private)"
                 required
@@ -168,6 +197,7 @@
 
               <v-text-field
                 v-model="job.invoiceEmail"
+                filled
                 label="Invoice email (stays private)"
                 required
                 auto-grow
@@ -175,7 +205,7 @@
 
               <v-text-field
                 v-model="job.invoiceNotes"
-                v-card-text
+                filled
                 hint="Appears on invoice"
                 label="Invoice notes / PO Number"
                 required
@@ -183,12 +213,14 @@
               ></v-text-field>
             </v-card-text>
           </v-card>
+
           <v-card class="mt-4">
             <v-card-title>Feedback</v-card-title>
 
             <v-card-text>
               <v-textarea
                 v-model="job.feedback"
+                filled
                 hint="This isn't part of the job post."
                 label="How could we make this experience better?"
                 auto-grow
@@ -196,7 +228,7 @@
             </v-card-text>
           </v-card>
 
-          <v-card class="mb-12" color="grey lighten-1">
+          <v-card class="" color="grey lighten-1">
             <v-card-title>Pay</v-card-title>
             <form id="payment-form">
               <div id="payment-element">
@@ -217,7 +249,7 @@
 
         <!-- Benefits -->
         <v-col cols="12" sm="3">
-          <v-card class="stickyX">
+          <v-card class="sticky">
             <v-card-title>Why post a job with Lab Overflow?</v-card-title>
             <v-card-text>
               <ul>
@@ -230,7 +262,7 @@
                   dont have to
                 </li>
                 <li>We email your role to our growing list every week</li>
-
+                <!-- <li>{{ job }}</li> -->
                 <!-- <li>
                   Your role will be posted in the Homepage, and the Lab Directory section of the
                   site under your labs region - MAKE THIS A PAID FEATURE 
@@ -238,17 +270,6 @@
               </ul>
             </v-card-text>
           </v-card>
-
-          <!-- <v-card class="mt-4">
-            <v-card-title>Pay with</v-card-title>
-            <v-card-text>
-              <v-card-title>
-                <v-icon>mdi-credit-card</v-icon>
-                Credit Card
-              </v-card-title>
-              
-            </v-card-text>
-          </v-card> -->
         </v-col>
       </v-row>
     </v-container>
@@ -260,18 +281,18 @@
             <!-- Live Preview -->
             <v-card color="grey lighten-4">
               <v-container>
-                <v-row align="center ">
+                <v-row align="center">
                   <!-- Role -->
                   <v-col class="py-0 flex-grow-1">
                     <v-card-text class="overline pb-0">
-                      {{ job.labName || 'Your Lab Here' }}
+                      {{ job.labName || 'Lab name' }}
                     </v-card-text>
                     <v-card-title class="pt-0 mt-n2 mb-2">{{
-                      job.position || 'Superstar you want to hire'
+                      job.position || 'Position'
                     }}</v-card-title>
                     <v-card-subtitle class="">
                       <v-chip label small>{{
-                        job.location || 'Location'
+                        job.location || 'Location, Country'
                       }}</v-chip>
 
                       <v-chip
@@ -317,24 +338,6 @@
         </v-row>
       </v-container>
     </v-card>
-
-    <v-card tile class="d-flex align-center flex-column py-3 mb-16">
-      <v-container>
-        <v-row>
-          <v-col>
-            <v-stepper v-model="formStepper">
-              <v-stepper-items>
-                <v-stepper-content step="1">
-                  <v-btn text> Cancel </v-btn>
-                </v-stepper-content>
-
-                <v-stepper-content step="2"> </v-stepper-content>
-              </v-stepper-items>
-            </v-stepper>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-card>
   </section>
 </template>
 
@@ -342,9 +345,16 @@
 // import Stripe from 'stripe'
 // const stripe = new Stripe(process.env.STRIPE_PK)
 
+import TiptapEditor from '~/components/TiptapEditor.vue'
+
 export default {
+  components: {
+    // EditorContent,
+    TiptapEditor,
+  },
   data() {
     return {
+      editor: null,
       salaryRange: [
         {
           value: '0',
@@ -550,10 +560,11 @@ export default {
         title: '',
         description: '',
         location: '',
+        type: 'Full-time',
         salary: '',
         email: '',
-        minSalary: '',
-        maxSalary: '',
+        salaryMin: '',
+        salaryMax: '',
       },
       loading: false,
       elements: null,
@@ -561,7 +572,6 @@ export default {
       stripe: null,
     }
   },
-  mounted() {},
   methods: {
     async loadStripe() {
       this.stripe = await Stripe(process.env.STRIPE_PK) // eslint-disable-line no-undef
@@ -635,6 +645,10 @@ export default {
 </script>
 
 <style lang="scss">
+.post-job {
+  padding-bottom: 180px;
+}
+
 .buy-footer {
   position: fixed;
   bottom: 0;
