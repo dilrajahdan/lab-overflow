@@ -4,15 +4,20 @@ import axios from 'axios'
 export const state = () => ({
   // storedata: data,
   clientSecret: '', // Required to initiate the payment from the client
+  jobAd: {},
 })
 
 export const getters = {
   clientSecret: (state) => state.clientSecret,
+  jobAd: (state) => state.jobAd,
 }
 
 export const mutations = {
   setClientSecret: (state, payload) => {
     state.clientSecret = payload
+  },
+  setJobAd: (state, payload) => {
+    state.jobAd = payload
   },
 }
 
@@ -40,5 +45,9 @@ export const actions = {
     } catch (e) {
       console.log('error', e)
     }
+  },
+
+  setJobAd({ commit }, payload) {
+    commit('setJobAd', payload)
   },
 }

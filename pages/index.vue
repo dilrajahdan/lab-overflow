@@ -39,10 +39,13 @@
             to="/cannabis-testing-labs"
             dark
             class="my-6 flex flex-grow-0"
-            >View Lab Directory</v-btn
+            >View lab directory</v-btn
           >
           <v-btn large to="/job-board" dark class="ml-3 my-6 flex flex-grow-0"
-            >View Job Board</v-btn
+            >View job board</v-btn
+          >
+          <v-btn large to="/post-a-job" dark class="ml-3 my-6 flex flex-grow-0"
+            >Post a job</v-btn
           >
         </v-row>
       </v-container>

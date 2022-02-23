@@ -107,7 +107,7 @@ export default {
         // },
         {
           icon: 'mdi-chart-bubble',
-          title: 'Lab Directory',
+          title: 'Lab directory',
           to: '/cannabis-testing-labs',
         },
         // {
@@ -118,8 +118,14 @@ export default {
         // },
         {
           icon: 'mdi-chart-bubble',
-          title: 'Job Board',
+          title: 'Job board',
           to: '/job-board',
+          disabled: false,
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Post a job',
+          to: '/post-a-job',
           disabled: false,
         },
       ],

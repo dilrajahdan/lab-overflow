@@ -18,26 +18,21 @@
             xl="4"
             class=""
           >
-            <v-card-title class="display-1 mb-6"
-              >Jobs in cannabis testing
+            <v-card-title>
+              <h1 class="overline">Job board</h1>
             </v-card-title>
-            <v-card-subtitle class="body-1">
-              Make your next career move or find your labs next superstar
+            <v-card-subtitle class="">
+              <h2 class="display-1">
+                The world's official job board for lab professionals in the
+                Cannabis industry
+              </h2>
             </v-card-subtitle>
-          </v-col>
-          <v-col
-            cols="12"
-            sm="10"
-            offset-sm="1"
-            md="8"
-            offset-md="0"
-            lg="6"
-            xl="4"
-            class=""
-            align-self="center"
-          >
-            <v-card-actions class="justify-end">
-              <v-btn to="/post-job" dark x-large outlined color="white"
+
+            <v-card-text class="body-1">
+              Make your next career move or find your labs next superstar
+            </v-card-text>
+            <v-card-actions>
+              <v-btn to="/post-a-job" dark outlined color="white"
                 >Post A Job</v-btn
               >
             </v-card-actions>
@@ -46,7 +41,7 @@
       </v-container>
     </v-card>
 
-    <v-container>
+    <v-container class="mt-3">
       <!-- Filters -->
       <v-row :class="{ 'd-none': isMobileLayout }">
         <v-col>

@@ -3,27 +3,55 @@
     <v-card color="deep-purple" dark tile class="py-3">
       <v-container>
         <v-row>
-          <v-col
-            cols="12"
-            sm="10"
-            offset-sm="1"
-            md="8"
-            offset-md="0"
-            lg="6"
-            xl="4"
-          >
-            <v-card-title class="display-1 mb-6"
-              >Cannabis testing laboratory directory
+          <v-col cols="12" sm="10" md="8" offset-md="0" lg="6" xl="4">
+            <v-card-title>
+              <h1 class="overline">Cannabis lab directory</h1>
             </v-card-title>
-            <v-card-subtitle class="body-1">
+            <v-card-subtitle class="">
+              <h2 class="display-1">
+                Find the best analytical testing labs in your area
+              </h2>
+            </v-card-subtitle>
+
+            <v-card-text>
+              <v-autocomplete
+                class=""
+                outlined
+                hide-details
+                filled
+                label="Search region"
+                :items="searchList"
+                return-object
+                item-value="region"
+                item-text="region"
+                :menu-props="{
+                  closeOnContentClick: true,
+                  closeOnClick: true,
+                }"
+                autocomplete="off"
+              >
+                <template #item="{ item }">
+                  <v-list-item
+                    link
+                    exact
+                    :to="`/cannabis-testing-labs/${item.countrySlug}/${item.regionSlug}`"
+                  >
+                    {{ item.region }}, {{ item.country }} ({{ item.labs }})
+                  </v-list-item>
+                </template>
+              </v-autocomplete>
+            </v-card-text>
+          </v-col>
+          <v-col cols="12" sm="10" md="8" offset-md="0" lg="6" xl="4">
+            <v-card-subtitle class="body-2">
               Finding a cannabis testing lab can be difficult.
             </v-card-subtitle>
-            <v-card-subtitle class="body-1"
+            <v-card-subtitle class="body-2"
               >Lab Overflow helps you find state-regulated cannabis testing labs
               with ISO 17025 accreditation near you.
             </v-card-subtitle>
 
-            <v-card-subtitle class="body-1 mb-6"
+            <v-card-subtitle class="body-2"
               >Filter by region, assay, pick-up service, or accreditation
               status. Lab Overflow helps you find a trusted laboratory to test
               your product for potency and quality assurance.
@@ -32,37 +60,8 @@
         </v-row>
       </v-container>
     </v-card>
+
     <v-container class="mt-3">
-      <v-row>
-        <v-col cols="12" sm="6" offset-sm="3">
-          <v-autocomplete
-            class="mt-n13 white"
-            outlined
-            hide-details
-            filled
-            label="Search region"
-            :items="searchList"
-            return-object
-            item-value="region"
-            item-text="region"
-            :menu-props="{
-              closeOnContentClick: true,
-              closeOnClick: true,
-            }"
-            autocomplete="off"
-          >
-            <template #item="{ item }">
-              <v-list-item
-                link
-                exact
-                :to="`/cannabis-testing-labs/${item.countrySlug}/${item.regionSlug}`"
-              >
-                {{ item.region }}, {{ item.country }} ({{ item.labs }})
-              </v-list-item>
-            </template>
-          </v-autocomplete>
-        </v-col>
-      </v-row>
       <v-row>
         <v-col cols="12" sm="4" lg="4" offset-lg="0">
           <v-card>
