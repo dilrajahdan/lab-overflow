@@ -56,7 +56,7 @@ exports.handler = async (event, context) => {
     // and needs to be confirmed on the client to finalize the payment
     const paymentIntent = await stripe.paymentIntents.create({
       currency: 'usd',
-      amount: 23000,
+      amount: 19900,
       description: 'Job Post - 30 Days',
     })
 

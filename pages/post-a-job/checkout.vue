@@ -15,9 +15,9 @@
             <v-card-subtitle class="">
               <h2 class="display-1">Checkout</h2>
             </v-card-subtitle>
-            <v-card-text
+            <!-- <v-card-text
               >Enter your payment details to post your job</v-card-text
-            >
+            > -->
           </v-col>
         </v-row>
       </v-container>
@@ -27,9 +27,14 @@
       <v-row>
         <v-col cols="12" sm="6">
           <v-card>
-            <v-card-title> Pay </v-card-title>
+            <v-card-title class="d-flex align-end justify-space-between">
+              30 day job listing
+              <v-chip class="ml-2" label color="grey darken-2 white--text"
+                >USD $199</v-chip
+              >
+            </v-card-title>
 
-            job: {{ job }}
+            <!-- job: {{ job }} -->
             <v-card-text>
               <form id="payment-form">
                 <div id="payment-element">
@@ -42,14 +47,20 @@
               </form>
             </v-card-text>
             <v-card-actions>
-              <v-btn text> Back </v-btn>
+              <v-btn text to="/post-a-job"> Back </v-btn>
               <v-spacer></v-spacer>
 
-              <v-btn color="primary" @click.prevent.stop="handleSubmit()">
+              <v-btn
+                color="red white--text"
+                @click.prevent.stop="handleSubmit()"
+              >
                 Pay Now
               </v-btn>
             </v-card-actions>
           </v-card>
+        </v-col>
+        <v-col cols="12" sm="6">
+          <live-preview :job="job"></live-preview>
         </v-col>
       </v-row>
     </v-container>
@@ -57,7 +68,9 @@
 </template>
 
 <script>
+import LivePreview from '~/components/LivePreview.vue'
 export default {
+  components: { LivePreview },
   asyncData(context) {
     // get jobAd from store
     const jobAd = context.store.state.jobAd

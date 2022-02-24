@@ -7,33 +7,35 @@
       class="d-flex align-center flex-column py-3"
     >
       <v-container>
-        <v-row>
-          <v-col cols="12" md="8" offset-md="0" lg="6" xl="4" class="">
+        <v-row align="center">
+          <v-col cols="12" sm="6" class="">
             <v-card-title>
               <h1 class="overline">Post a job</h1>
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">
-                Find your next laboratory superstar in 30 days
+                Find your next lab superstar in 30 days...
               </h2>
             </v-card-subtitle>
             <v-card-text>
               <p class="body-1">
-                Or we will repost your job for you for FREE until the position
-                is filled - no strings attached!
+                Or we will repost your job for FREE for another 30 days - no
+                strings attached!
               </p>
             </v-card-text>
           </v-col>
+          <v-col sm="6"> </v-col>
         </v-row>
       </v-container>
     </v-card>
 
-    <v-form>
+    <v-form class="mt-3">
       <v-container>
         <v-row>
           <!-- Form -->
           <v-col cols="12" sm="9" md="6">
-            <v-card class="">
+            <!-- Postion Details -->
+            <v-card>
               <v-card-title>Let's start</v-card-title>
               <v-card-text>
                 <v-text-field
@@ -145,7 +147,7 @@
               </v-card-text>
             </v-card>
 
-            <!-- Feedback -->
+            <!-- How to apply -->
             <v-card class="mt-4">
               <v-card-title>How to apply</v-card-title>
 
@@ -186,6 +188,7 @@
               </v-card-text>
             </v-card>
 
+            <!-- Company -->
             <v-card class="mt-4">
               <v-card-title>Company</v-card-title>
 
@@ -211,6 +214,7 @@
               </v-card-text>
             </v-card>
 
+            <!-- Feedback -->
             <v-card class="mt-4">
               <v-card-title>Feedback</v-card-title>
 
@@ -226,10 +230,11 @@
             </v-card>
           </v-col>
 
-          <!-- Benefits -->
-          <v-col cols="12" sm="3">
-            <v-card class="sticky">
-              <v-card-title>Why post a job with Lab Overflow?</v-card-title>
+          <!-- Benefits Live Preview -->
+          <v-col cols="12" sm="6">
+            <!-- Intro -->
+            <v-card color="deep-purple lighten-5">
+              <v-card-title>Why Lab Overflow?</v-card-title>
               <v-card-text>
                 <ul>
                   <li>
@@ -241,14 +246,11 @@
                     dont have to
                   </li>
                   <li>We email your role to our growing list every week</li>
-                  <!-- <li>{{ job }}</li> -->
-                  <!-- <li>
-                  Your role will be posted in the Homepage, and the Lab Directory section of the
-                  site under your labs region - MAKE THIS A PAID FEATURE 
-                </li> -->
                 </ul>
               </v-card-text>
             </v-card>
+
+            <live-preview :job="job" class="mt-4 sticky"></live-preview>
           </v-col>
         </v-row>
       </v-container>
@@ -256,63 +258,12 @@
 
     <v-card class="buy-footer">
       <v-container>
-        <v-row align="center" justify="center">
-          <v-col class="my-4">
-            <!-- Live Preview -->
-            <v-card color="grey lighten-4">
-              <v-container>
-                <v-row align="center">
-                  <!-- Role -->
-                  <v-col class="py-0 flex-grow-1">
-                    <v-card-text class="overline pb-0">
-                      {{ job.labName || 'Lab name' }}
-                    </v-card-text>
-                    <v-card-title class="pt-0 mt-n2 mb-2">{{
-                      job.position || 'Position'
-                    }}</v-card-title>
-                    <v-card-subtitle class="">
-                      <v-chip label small>{{
-                        job.location || 'Location, Country'
-                      }}</v-chip>
-
-                      <v-chip
-                        v-if="job.salaryMin"
-                        label
-                        small
-                        color="green lighten-3"
-                        >USD {{ job.salaryMin }}
-                        <span v-if="job.salaryMin && job.salaryMax">-</span>
-                        {{ job.salaryMax }}
-                      </v-chip>
-                    </v-card-subtitle>
-                  </v-col>
-
-                  <!-- Skills -->
-                  <v-col class="py-0">
-                    <v-chip-group>
-                      <v-chip
-                        v-for="skill in job.selectedSkills"
-                        :key="skill"
-                        outlined
-                        >{{ skill }}</v-chip
-                      >
-                    </v-chip-group>
-                  </v-col>
-
-                  <v-col class="flex-grow-0">
-                    <v-card-actions>
-                      <v-btn outlined>Apply</v-btn>
-                    </v-card-actions>
-                  </v-col>
-                </v-row>
-              </v-container>
-            </v-card>
-          </v-col>
+        <v-row align="center" justify="end">
           <v-col class="flex-grow-0"
             ><v-btn
               color="red"
               class="white--text"
-              x-large
+              large
               :disabled="!job.companyEmail"
               @click.stop="gotoCheckout()"
             >
@@ -326,6 +277,7 @@
 </template>
 
 <script>
+import LivePreview from '~/components/LivePreview.vue'
 // import Stripe from 'stripe'
 // const stripe = new Stripe(process.env.STRIPE_PK)
 
@@ -334,6 +286,7 @@ import TiptapEditor from '~/components/TiptapEditor.vue'
 export default {
   components: {
     TiptapEditor,
+    LivePreview,
   },
   data() {
     return {
@@ -561,10 +514,10 @@ export default {
       console.warn('redirecting')
     },
 
-    removeSkill(item) {
-      this.job.selectedSkills.splice(this.job.selectedSkills.indexOf(item), 1)
-      this.job.selectedSkills = [...this.job.selectedSkills]
-    },
+    // removeSkill(item) {
+    //   this.job.selectedSkills.splice(this.job.selectedSkills.indexOf(item), 1)
+    //   this.job.selectedSkills = [...this.job.selectedSkills]
+    // },
   },
 }
 </script>

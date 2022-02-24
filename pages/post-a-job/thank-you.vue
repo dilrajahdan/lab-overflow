@@ -22,7 +22,7 @@
 
     <v-container>
       <v-row>
-        <v-col cols="12" sm="6">
+        <v-col cols="12" md="6">
           <v-card v-if="status === 'succeeded'">
             <v-card-title>
               <h1 class="headline">Success!</h1>
@@ -33,8 +33,9 @@
               </p>
             </v-card-subtitle>
             <v-card-actions>
-              <v-btn color="primary" href="/">Share job post</v-btn>
+              <v-spacer />
               <v-btn color="secondary" href="/">View job post</v-btn>
+              <v-btn color="primary" href="/">Share job post</v-btn>
             </v-card-actions>
           </v-card>
           <v-card v-else-if="status === 'processing'">

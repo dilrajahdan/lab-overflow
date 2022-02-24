@@ -29,13 +29,16 @@
             </v-card-subtitle>
 
             <v-card-text class="body-1">
-              Make your next career move or find your labs next superstar
+              Make your next career move or
+              <nuxt-link class="white--text" to="/post-a-job"
+                >find your labs next superstar</nuxt-link
+              >
             </v-card-text>
-            <v-card-actions>
+            <!-- <v-card-actions>
               <v-btn to="/post-a-job" dark outlined color="white"
                 >Post A Job</v-btn
               >
-            </v-card-actions>
+            </v-card-actions> -->
           </v-col>
         </v-row>
       </v-container>
