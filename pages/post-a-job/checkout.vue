@@ -93,7 +93,7 @@ export default {
 
   methods: {
     async loadStripe() {
-      this.stripe = await Stripe(process.env.STRIPE_PK) // eslint-disable-line no-undef
+      this.stripe = await Stripe(`${process.env.STRIPE_PK}`) // eslint-disable-line no-undef
       this.initialize()
     },
 
