@@ -26,15 +26,51 @@
     <v-container>
       <v-row>
         <v-col cols="12" sm="6">
+          <!-- <live-preview :job="job"></live-preview> -->
+
           <v-card>
             <v-card-title class="d-flex align-end justify-space-between">
-              30 day job listing
-              <v-chip class="ml-2" label color="grey darken-2 white--text"
-                >USD $199</v-chip
-              >
+              Basket
             </v-card-title>
-
             <!-- job: {{ job }} -->
+
+            <!-- <v-card-text> -->
+            <!-- <v-divider></v-divider> -->
+            <v-list color="" class="mt-0 pt-0">
+              <v-list-item>
+                <!-- <v-list-item-avatar>
+                  <v-icon dark>mdi-check-outline </v-icon>
+                </v-list-item-avatar> -->
+
+                <v-list-item-content>
+                  <v-list-item-title>Job post - 1 month</v-list-item-title>
+
+                  <v-list-item-subtitle
+                    >12 Feb 2022 - 12 March 2022</v-list-item-subtitle
+                  >
+                  <!-- job: {{ job }} -->
+                  <v-list-item-subtitle>
+                    <!-- <v-chip
+                      color="primary"
+                      text-color="white"
+                      class="d-flex align-center justify-center"
+                    > -->
+                    {{ job.position }} @ {{ job.labName }}
+                    <!-- </v-chip> -->
+                  </v-list-item-subtitle>
+                </v-list-item-content>
+
+                <v-list-item-action> USD $199 </v-list-item-action>
+              </v-list-item>
+            </v-list>
+            <!-- </v-card-text> -->
+          </v-card>
+        </v-col>
+        <v-col cols="12" sm="6">
+          <v-card>
+            <v-card-title class=""> Payment details </v-card-title>
+            <!-- <v-divider></v-divider> -->
+
             <v-card-text>
               <form id="payment-form">
                 <div id="payment-element">
@@ -59,18 +95,15 @@
             </v-card-actions>
           </v-card>
         </v-col>
-        <v-col cols="12" sm="6">
-          <live-preview :job="job"></live-preview>
-        </v-col>
       </v-row>
     </v-container>
   </section>
 </template>
 
 <script>
-import LivePreview from '~/components/LivePreview.vue'
+// import LivePreview from '~/components/LivePreview.vue'
 export default {
-  components: { LivePreview },
+  //   components: { LivePreview },
   asyncData(context) {
     // get jobAd from store
     const jobAd = context.store.state.jobAd
@@ -83,7 +116,7 @@ export default {
       loading: false,
       elements: null,
       stripe: null,
-      items: [{ id: 'xl-tshirt' }],
+      items: [{ id: 'job-post-1-month' }],
     }
   },
 
