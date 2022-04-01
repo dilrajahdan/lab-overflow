@@ -148,7 +148,7 @@ export default {
     async handleSubmit(e) {
       this.loading = true
 
-      console.warn('EMAIL', this.job.companyEmail) // eslint-disable-line no-console
+      //   console.warn('EMAIL', this.job.companyEmail) // eslint-disable-line no-console
 
       const { error } = await this.stripe.confirmPayment({
         elements: this.elements,

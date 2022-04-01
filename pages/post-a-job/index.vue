@@ -29,7 +29,7 @@
       </v-container>
     </v-card>
 
-    <v-form class="mt-3">
+    <v-form v-model="formValid" class="mt-3">
       <v-container>
         <v-row>
           <!-- Form -->
@@ -41,16 +41,18 @@
                 <v-text-field
                   v-model="job.labName"
                   filled
-                  hint="Name of your laboratory"
-                  label="Lab/Business name"
+                  :rules="requiredRules"
                   required
+                  hint="Name of your laboratory"
+                  label="Lab or company name"
                 ></v-text-field>
 
                 <v-text-field
                   v-model="job.position"
                   hint="The position you are hiring for"
-                  label="Position"
+                  :rules="requiredRules"
                   required
+                  label="Position"
                   filled
                 ></v-text-field>
 
@@ -58,6 +60,7 @@
                   v-model="job.location"
                   hint="Example: Remote or San Diago, CA, USA"
                   label="Location"
+                  :rules="requiredRules"
                   required
                   filled
                 ></v-text-field>
@@ -72,19 +75,6 @@
                   multiple
                   filled
                 >
-                  <!-- <template #selection="{ attrs, item, select, selected }">
-                  <v-chip
-                    v-bind="attrs"
-                    :input-value="selected"
-                    close
-                    @click="select"
-                    @click:close="removeSkill(item)"
-                  >
-                    <strong>{{ item }}</strong
-                    >&nbsp;
-                    <span>(interest)</span>
-                  </v-chip>
-                </template> -->
                 </v-combobox>
               </v-card-text>
             </v-card>
@@ -93,17 +83,27 @@
             <v-card class="mt-4">
               <v-card-title>Job details</v-card-title>
 
+              <v-card-text>
+                <label class="body-1S mb-0"><b> Job description</b></label>
+                <client-only>
+                  <tiptap-editor
+                    v-model="job.jobDescriptionCopy"
+                  ></tiptap-editor>
+                </client-only>
+              </v-card-text>
+
               <v-card-text class="pb-0">
                 <v-select
                   v-model="job.type"
                   filled
+                  :rules="requiredRules"
+                  required
                   hint=""
                   label="Job type"
                   :items="['Full-time', 'Part-time', 'Contract/Temp', 'Intern']"
                 ></v-select>
               </v-card-text>
 
-              <!-- <v-card-subtit<v-card-text>le class="">Salary range</v-card-subtitle> -->
               <v-card-text class="pb-0">
                 <v-row>
                   <v-col>
@@ -114,8 +114,12 @@
                       item-text="label"
                       item-value="value"
                       label="Minimum salary per year"
-                      hide-details
+                      :rules="requiredRules"
                       required
+                      hint="Please use USD equivalent. We don't have currency built-in
+                    yet and we'd like to use this salary data to show salary
+                    trends in analytical testing labs."
+                      persistent-hint
                     ></v-select>
                   </v-col>
                   <v-col>
@@ -126,24 +130,12 @@
                       item-text="label"
                       item-value="value"
                       label="Maximum salary per year"
+                      :rules="requiredRules"
                       required
                       hide-details
                     ></v-select>
                   </v-col>
                 </v-row>
-
-                <small>
-                  Please use USD equivalent. We don't have currency built-in yet
-                  and we'd like to use this salary data to show salary trends in
-                  analytical testing labs.
-                </small>
-              </v-card-text>
-
-              <v-card-text>
-                <client-only>
-                  <p class="body-1 mb-0">Job description</p>
-                  <tiptap-editor v-model="job.description"></tiptap-editor>
-                </client-only>
               </v-card-text>
             </v-card>
 
@@ -155,7 +147,7 @@
                 <client-only>
                   <p class="body-1 mb-0">How to apply</p>
                   <tiptap-editor
-                    v-model="job.howToApply"
+                    v-model="job.howToApplyCopy"
                     class="mb-6"
                   ></tiptap-editor>
                 </client-only>
@@ -194,21 +186,27 @@
 
               <v-card-text>
                 <v-text-field
+                  v-model="job.companyWebsite"
+                  filled
+                  hint="We will add a link to you website on the job post"
+                  label="Your websites URL"
+                ></v-text-field>
+
+                <v-text-field
                   v-model="job.companyEmail"
                   type="email"
                   filled
-                  hint="Appears on invoice"
-                  label="Your company email (stays private - appears on invoice)"
+                  hint="Stays private - appears on invoice"
+                  label="Your company email (stays private)"
                   required
-                  auto-grow
+                  :rules="requiredRules"
                 ></v-text-field>
 
                 <v-text-field
                   v-model="job.invoiceNotes"
                   filled
-                  hint="Appears on invoice"
-                  label="Invoice notes / PO Number (stays private - appears on invoice))"
-                  required
+                  hint="Stays private - appears on invoice"
+                  label="Invoice notes / PO Number (stays private)"
                   auto-grow
                 ></v-text-field>
               </v-card-text>
@@ -264,7 +262,7 @@
               color="red"
               class="white--text"
               large
-              :disabled="!job.companyEmail"
+              :disabled="!formValid"
               @click.stop="gotoCheckout()"
             >
               Start Hiring – $199</v-btn
@@ -290,6 +288,12 @@ export default {
   },
   data() {
     return {
+      formValid: false,
+      requiredRules: [
+        (v) => !!v || 'Required',
+        // (v) => v.length <= 3 || 'Name must be less than 3 characters',
+      ],
+
       editor: null,
       salaryRange: [
         {
@@ -487,37 +491,31 @@ export default {
 
       clientSecret: null,
       job: {
-        selectedSkills: [],
         labName: '',
         position: '',
-        title: '',
-        description: '',
+        selectedSkills: [],
+        benefits: [],
         location: '',
         type: 'Full-time',
-        salary: '',
         salaryMin: '',
         salaryMax: '',
-        applyUrl: '',
+        jobDescriptionCopy: '',
+        howToApplyCopy: '',
+        applyURL: '',
         applyEmail: '',
+        companyWebsite: '',
         companyEmail: '',
         invoiceNotes: '',
+        feedback: '',
       },
     }
   },
   methods: {
     gotoCheckout() {
-      // save job in store
       this.$store.commit('setJobAd', this.job)
       console.warn('saving', this.job)
-      // redirect to checkout
       this.$router.push('/post-a-job/checkout')
-      console.warn('redirecting')
     },
-
-    // removeSkill(item) {
-    //   this.job.selectedSkills.splice(this.job.selectedSkills.indexOf(item), 1)
-    //   this.job.selectedSkills = [...this.job.selectedSkills]
-    // },
   },
 }
 </script>

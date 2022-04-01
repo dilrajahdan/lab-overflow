@@ -22,9 +22,11 @@
     "cross-env": "^7.0.3",
     "firebase": "^9.6.1",
     "nuxt": "^2.15.7",
+    "portal-vue": "^2.1.7",
     "stripe": "^8.202.0",
     "stripe-nuxt": "^1.0.2",
-    "vuetify": "^2.5.5"
+    "vuetify": "^2.5.5",
+    "vuex-persistedstate": "3.x.x"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",

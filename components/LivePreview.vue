@@ -1,14 +1,19 @@
 <template>
-  <v-card color="white">
+  <v-card tile :color="featured ? 'yellow lighten-4' : 'white'" class="mb-2">
     <v-container>
       <v-row align="center" class="flex-nowrap">
         <!-- Role -->
+        <v-col v-if="featured" class="flex-grow-0">
+          <v-card-text class="py-0">
+            <v-icon>mdi-star</v-icon>
+          </v-card-text>
+        </v-col>
         <v-col class="py-0">
           <v-card-title class="overline">
             {{ job.labName || 'Lab name' }}
           </v-card-title>
-          <v-card-subtitle class="">
-            <h3 class="headline">
+          <v-card-subtitle class="pb-0" @click="jobActive = !jobActive">
+            <h3 class="primary--text position">
               {{ job.position || 'Position' }}
             </h3>
           </v-card-subtitle>
@@ -58,9 +63,12 @@
       <!-- Job details -->
       <!-- <template > -->
       <!-- <v-divider></v-divider> -->
-      <v-row v-if="jobActive">
+      <v-row
+        v-if="jobActive"
+        :class="featured ? 'yellow lighten-5' : 'grey lighten-3'"
+      >
         <v-col>
-          <v-card color="teal lighten-5 float-right ma-4" max-width="250" hover>
+          <v-card color="grey lighten-5 float-right ma-4" max-width="250" hover>
             <v-card-title>
               {{ job.position }}
             </v-card-title>
@@ -86,14 +94,45 @@
             </v-card-text>
 
             <v-card-actions>
-              <v-btn min-width="100%" color="primary"
+              <v-btn
+                v-if="job.applyURL"
+                target="_blank"
+                :href="job.applyURL"
+                min-width="100%"
+                color="primary"
                 >Apply now</v-btn
               ></v-card-actions
             >
           </v-card>
 
-          <v-card-text class="" v-html="job.description" />
-          <v-card-text class="" v-html="job.howToApply" />
+          <v-card-title v-if="job.jobDescriptionCopy"
+            >Job description</v-card-title
+          >
+          <v-card-text
+            v-if="featured"
+            class="body-1"
+            v-html="job.jobDescriptionCopy"
+          >
+          </v-card-text>
+          <v-card-text v-else class="">
+            <div class="body-1" v-html="job.jobDescriptionCopy"></div>
+          </v-card-text>
+
+          <v-card-title v-if="job.howToApplyCopy">How to apply</v-card-title>
+          <v-card-text
+            v-if="job.howToApplyCopy"
+            class="body-1"
+            v-html="job.howToApplyCopy"
+          />
+
+          <v-btn
+            v-if="job.applyURL"
+            target="_blank"
+            :href="job.applyURL"
+            min-width="100%"
+            color="primary"
+            >Apply now</v-btn
+          >
         </v-col>
 
         <!-- <v-col class=""> </v-col> -->
@@ -110,6 +149,10 @@ export default {
       type: Object,
       required: true,
     },
+    featured: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -119,3 +162,9 @@ export default {
   methods: {},
 }
 </script>
+
+<style lang="scss">
+.position {
+  cursor: pointer;
+}
+</style>

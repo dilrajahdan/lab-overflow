@@ -11,6 +11,10 @@
           <v-col cols="12" md="8" offset-md="0" lg="6" xl="4" class="">
             <v-card-title>
               <h1 class="overline">Post a job</h1>
+              - {{ writeSuccessful }}
+
+              <hr />
+              job : {{ job }}
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">Thank you</h2>
@@ -84,14 +88,51 @@
 
 <script>
 export default {
-  data() {
+  async asyncData(context) {
+    // get jobAd from store
+    const jobAd = await context.store.state.jobAd
+    console.log('jobAd', jobAd)
+
     return {
-      status: 'processing',
+      job: jobAd,
     }
   },
+  data() {
+    return {
+      job: {},
+      status: 'processing',
+      writeSuccessful: false,
+    }
+  },
+
   mounted() {
+    this.job = this.$store.state.jobAd
+
     this.status = this.$router.currentRoute.query.redirect_status
+    if (this.status === 'succeeded') {
+      this.writeToFirestore()
+    } else {
+      this.writeSuccessful = false
+    }
+
     // console.table(this.$router.currentRoute.query)
+  },
+
+  methods: {
+    async writeToFirestore() {
+      console.warn('JOB AD !!!!! writeToFirestore')
+      if (process.client) {
+        const ref = this.$fire.firestore.collection('jobs').doc()
+        try {
+          await ref.set(this.job)
+          this.$store.dispatch('setJobAd', {})
+        } catch (e) {
+          // TODO: error handling
+          console.error(e)
+        }
+        this.writeSuccessful = true
+      }
+    },
   },
 }
 // }

@@ -34,7 +34,7 @@ export default {
   css: ['@/assets/styles.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~/plugins/vue-stripe.js', ssr: false }],
+  plugins: [{ src: '~/plugins/persistedState.client.js', mode: 'client' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -47,6 +47,9 @@ export default {
     '@nuxtjs/vuetify',
     // https://google-analytics.nuxtjs.org/setup
     '@nuxtjs/google-analytics',
+
+    // https://github.com/LinusBorg/portal-vue
+    'portal-vue/nuxt',
     // https://timbenniks.dev/writings/easy-dynamic-routes-in-your-nuxt-sitemap
     '@/modules/sitemapRouteGenerator',
   ],
@@ -59,6 +62,7 @@ export default {
     '@nuxt/content',
     // https://firebase.nuxtjs.org/guide/getting-started
     '@nuxtjs/firebase',
+
     // Always make sitemap last element of the array. https://sitemap.nuxtjs.org/guide/setup
     '@nuxtjs/sitemap',
   ],
@@ -72,7 +76,7 @@ export default {
       storageBucket: 'lab-overflow.appspot.com',
       messagingSenderId: '209478965474',
       appId: '1:209478965474:web:6e8b46164035441b2926bb',
-      measurementId: '<measurementId>',
+      measurementId: 'G-6E3MDJBHXE',
     },
     services: {
       auth: true, // Just as example. Can be any other service.
@@ -81,8 +85,8 @@ export default {
       // storage: true,
       // database: true,
       // messaging: true,
-      // performance: true,
-      // analytics: true,
+      performance: true,
+      analytics: true,
       // remoteConfig: true
     },
   },

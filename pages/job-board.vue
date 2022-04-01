@@ -29,129 +29,134 @@
             </v-card-subtitle>
 
             <v-card-text class="body-1">
-              Make your next career move or
-              <nuxt-link class="white--text" to="/post-a-job"
-                >find your labs next superstar</nuxt-link
-              >
+              Make your next career move here
             </v-card-text>
-            <!-- <v-card-actions>
-              <v-btn to="/post-a-job" dark outlined color="white"
-                >Post A Job</v-btn
-              >
-            </v-card-actions> -->
           </v-col>
         </v-row>
       </v-container>
     </v-card>
 
-    <v-container class="mt-3">
+    <v-container class="mt-3 filters">
       <!-- Filters -->
-      <v-row :class="{ 'd-none': isMobileLayout }">
-        <v-col>
+      <!-- <v-row :class="{ 'd-none': isMobileLayout }">
+        <v-col> </v-col>
+      </v-row> -->
+      <v-row class="mt-0">
+        <v-col cols="12" md="3">
+          <v-subheader>Filters</v-subheader>
+
           <v-card color="gray lighten-4" elevation="1">
-            <v-card-subtitle class="pb-1">Filters</v-card-subtitle>
+            <!-- <v-card-title class="">Filters</v-card-title> -->
             <v-card-text>
-              <v-row>
-                <v-col cols="12" sm="4">
-                  <v-autocomplete
-                    v-model="selectedLocation"
-                    :items="uniqueLocations"
-                    hide-details
-                    label="Location"
-                    clearable
-                    autocomplete="off"
-                    data-lpignore="true"
-                    outlined
-                  ></v-autocomplete>
-                </v-col>
-                <v-col cols="12" sm="4">
-                  <v-autocomplete
-                    v-model="selectedRole"
-                    :items="uniqueRoles"
-                    hide-details
-                    clearable
-                    label="Role"
-                    autocomplete="off"
-                    data-lpignore="true"
-                    outlined
-                  ></v-autocomplete>
-                </v-col>
-                <v-col cols="12" sm="4">
-                  <v-autocomplete
-                    v-model="selectedType"
-                    :items="uniqueTypes"
-                    hide-details
-                    label="Type"
-                    clearable
-                    autocomplete="off"
-                    data-lpignore="true"
-                    outlined
-                  ></v-autocomplete>
-                </v-col>
-              </v-row>
+              <!-- <v-row>
+                <v-col cols="12"> -->
+              <v-autocomplete
+                v-model="selectedLocation"
+                :items="uniqueLocations"
+                hide-details
+                class="mb-4"
+                label="Location"
+                clearable
+                autocomplete="off"
+                data-lpignore="true"
+                outlined
+              ></v-autocomplete>
+              <!-- </v-col>
+                <v-col> -->
+              <v-autocomplete
+                v-model="selectedRole"
+                :items="uniqueRoles"
+                hide-details
+                class="mb-4"
+                clearable
+                label="Role"
+                autocomplete="off"
+                data-lpignore="true"
+                outlined
+              ></v-autocomplete>
+              <!-- </v-col>
+                <v-col> -->
+              <v-autocomplete
+                v-model="selectedType"
+                :items="uniqueTypes"
+                hide-details
+                label="Type"
+                clearable
+                autocomplete="off"
+                data-lpignore="true"
+                outlined
+              ></v-autocomplete>
+              <!-- </v-col>
+              </v-row> -->
             </v-card-text>
           </v-card>
         </v-col>
-      </v-row>
-      <v-row class="mt-0">
-        <v-col cols="12" sm="4" :class="{ 'd-none': isMobileLayout }">
-          <!-- <v-btn class="mb-3" min-width="100%" color="primary">Post Job</v-btn> -->
-          <v-card>
-            <v-list two-line>
-              <v-list-item-group v-model="selectedItem" color="cyan darken-4">
-                <template v-for="(item, index) in filteredItems">
-                  <v-list-item
-                    :key="item.title"
-                    :to="{
-                      name: 'job-board-slug',
-                      params: {
-                        slug: item.slug,
-                      },
-                    }"
-                  >
-                    <template #default="{}">
-                      <v-list-item-content>
-                        <v-list-item-title
-                          v-text="item.name"
-                        ></v-list-item-title>
 
-                        <v-list-item-subtitle
-                          class="text--primary"
-                          v-text="item.location"
-                        ></v-list-item-subtitle>
-
-                        <v-list-item-subtitle
-                          v-text="item.salary"
-                        ></v-list-item-subtitle>
-                      </v-list-item-content>
-
-                      <v-list-item-action>
-                        <v-list-item-action-text
-                          v-text="item.type"
-                        ></v-list-item-action-text>
-                      </v-list-item-action>
-                    </template>
-                  </v-list-item>
-
-                  <v-divider
-                    v-if="index < jobs.length - 1"
-                    :key="index"
-                  ></v-divider>
-                </template>
-              </v-list-item-group>
-            </v-list>
-          </v-card>
-        </v-col>
-        <v-col cols="12" sm="8" class="mt-0 pt-sm-3 pt-0">
+        <!-- Content -->
+        <v-col cols="12" md="9" class="mt-0 pt-sm-3 pt-0">
           <section class="job-details grey lighten-4">
-            <div class="d-none" :class="{ 'd-inline': isMobileLayout }">
+            <!-- <div class="d-none" :class="{ 'd-inline': isMobileLayout }">
               <v-btn to="/job-board" class="mb-3 secondary" dark outlined
                 ><v-icon left>mdi-arrow-left</v-icon> Back to jobs</v-btn
               >
-            </div>
+            </div> -->
 
+            <!-- Paid jobs  -->
+            <v-subheader>Featured jobs</v-subheader>
+            <template v-for="item in paidJobs">
+              <live-preview :key="item.id" :featured="true" :job="item">
+              </live-preview>
+            </template>
+
+            <v-subheader>Aggregate jobs</v-subheader>
+            <!-- Scraped jobs  -->
+            <template v-for="item in filteredItems">
+              <live-preview :key="item.id" :job="item"> </live-preview>
+            </template>
+
+            <!-- <v-expansion-panels v-model="selectedItem">
+              <v-expansion-panel
+                v-for="item in filteredItems"
+                :key="item.slug"
+                active-class="job--active"
+              >
+                <v-expansion-panel-header class="flex-column">
+                  <p>
+                    <nuxt-link
+                      :to="{
+                        name: 'job-board-slug',
+                        params: {
+                          slug: item.slug,
+                        },
+                      }"
+                    >
+                      {{ item.name }}</nuxt-link
+                    >
+                  </p>
+                  <p>
+                    <v-chip>
+                      {{ item.location }}
+                    </v-chip>
+                  </p>
+
+                  <v-chip>
+                    {{ item.type }}
+                  </v-chip>
+                  <v-chip>
+                    {{ item.salary }}
+                  </v-chip>
+                </v-expansion-panel-header>
+                <v-expansion-panel-content>
+                  <portal-target name="destination"> </portal-target>
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels> -->
+
+            <hr />
             <v-card>
-              <NuxtChild />
+              <portal target-class="job--active job__content" to="destination">
+                <NuxtChild
+              /></portal>
             </v-card>
           </section>
         </v-col>
@@ -161,58 +166,56 @@
 </template>
 
 <script>
+import LivePreview from '~/components/LivePreview.vue'
 export default {
-  async asyncData({ $content, params }) {
+  components: { LivePreview },
+  async asyncData({ $content, params, $fire }) {
     const jobs = await $content('jobs').fetch()
 
+    // TODO: Move these into the store as getters
     // Get unique locations
     const uniqueLocations = jobs
       .map((ele) => ele.location)
       .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
 
-    // Get unique roles (name)
+    // Get unique roles (position)
     const uniqueRoles = jobs
-      .map((ele) => ele.name)
+      .map((ele) => ele.position)
       .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
 
     // Get unique titles
     const uniqueTypes = jobs
       .map((ele) => ele.type)
       .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
-    console.log(typeof uniqueTypes, uniqueTypes)
+    // console.log(typeof uniqueTypes, uniqueTypes)
 
-    // Write computed function to filter results
+    // get firbase collection into array
+    const paidJobs = await $fire.firestore
+      .collection('jobs')
+      .get()
+      .then((querySnapshot) => {
+        const jobs = []
+        querySnapshot.forEach((doc) => {
+          // jobs.push({ id: doc.id, ...doc.data() })
+          jobs.push({ id: doc.id, ...doc.data() })
+        })
+        return jobs
+      })
 
+    // paidJobs = { ...paidJobs }
+    // console.log('paidJobs', typeof paidJobs, paidJobs)
     return {
       jobs,
       params,
       uniqueLocations,
       uniqueRoles,
       uniqueTypes,
+      paidJobs,
     }
   },
   data() {
-    // this.pk = process.env.STRIPE_PK
     return {
-      stripe: null,
       loading: false,
-      newJob: [
-        {
-          sku: 'prod_KB5wpNTkOUKmD1',
-          quantity: 1,
-          title: 'Chemist',
-          company: null,
-          location: 'Hounslow',
-          benefits: null,
-          type: null,
-          salary: '$100K USD',
-          description: null,
-          sourceUrl: null,
-        },
-      ],
-      // successUrl: 'http://localhost:3000',
-      // cancelUrl: 'http://localhost:3000',
-
       selectedItem: null,
       selectedLocation: [],
       selectedType: [],
@@ -228,9 +231,9 @@ export default {
       title: this.title,
       meta: [
         {
-          hid: 'Lab Jobs',
-          name: 'description',
-          content: `!!!!!!!!! FILL IN `,
+          hid: 'Lab jobs',
+          name: 'Lab jobs',
+          content: `Job board for Lab Professionals in the Cannabis industry`,
         },
       ],
     }
@@ -239,7 +242,7 @@ export default {
     filteredItems() {
       const filters = {
         location: this.selectedLocation,
-        name: this.selectedRole,
+        position: this.selectedRole,
         type: this.selectedType,
       }
 
@@ -267,7 +270,7 @@ export default {
   },
   mounted() {
     // eslint-disable-next-line no-undef
-    this.stripe = Stripe('pk_test_mWF4dQC0ElTGLo2j8wV4beS7')
+    // console.warn('Job Board >>> Mounted', { ...this.paidJobs })
   },
 
   methods: {

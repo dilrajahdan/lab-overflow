@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
   }
 
   const data = JSON.parse(event.body)
-  console.log('data', data) // eslint-disable-line no-console
+  console.log('data backend', data) // eslint-disable-line no-console
 
   if (!data.items) {
     console.error('List of items to purchase is missing.')
@@ -57,7 +57,7 @@ exports.handler = async (event, context) => {
     const paymentIntent = await stripe.paymentIntents.create({
       currency: 'usd',
       amount: 19900,
-      description: 'Job Post - 30 Days',
+      description: 'Job post - 30 days',
     })
 
     // Send the client_secret to the client
@@ -68,6 +68,7 @@ exports.handler = async (event, context) => {
       headers,
       body: JSON.stringify({
         clientSecret: paymentIntent.client_secret,
+        jobAd: data.jobAd,
       }),
     }
   } catch (err) {

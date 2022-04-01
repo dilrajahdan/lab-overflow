@@ -47,12 +47,17 @@ export default {
   },
   methods: {
     async writeToFirestore() {
-      const ref = this.$fire.firestore.collection('test').doc('test')
+      // const ref = this.$fire.firestore.collection('test').doc('test')
+      let date = new Date()
+      date = date.toString()
+      console.warn(date)
+      const ref = this.$fire.firestore.collection('test')
       const document = {
         text: 'This is a test message.',
+        dil: 'Is awesome',
       }
       try {
-        await ref.set(document)
+        await ref.doc(date).set(document)
       } catch (e) {
         // TODO: error handling
         console.error(e)
