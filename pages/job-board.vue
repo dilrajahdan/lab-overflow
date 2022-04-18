@@ -23,8 +23,8 @@
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">
-                The world's official job board for lab professionals in the
-                Cannabis industry
+                The official job board for lab professionals in the Cannabis
+                industry
               </h2>
             </v-card-subtitle>
 
@@ -37,19 +37,12 @@
     </v-card>
 
     <v-container class="mt-3 filters">
-      <!-- Filters -->
-      <!-- <v-row :class="{ 'd-none': isMobileLayout }">
-        <v-col> </v-col>
-      </v-row> -->
       <v-row class="mt-0">
-        <v-col cols="12" md="3">
+        <v-col cols="12" sm="3">
           <v-subheader>Filters</v-subheader>
 
-          <v-card color="gray lighten-4" elevation="1">
-            <!-- <v-card-title class="">Filters</v-card-title> -->
+          <v-card color="gray lighten-4" elevation="1" class="sticky-sm">
             <v-card-text>
-              <!-- <v-row>
-                <v-col cols="12"> -->
               <v-autocomplete
                 v-model="selectedLocation"
                 :items="uniqueLocations"
@@ -60,9 +53,10 @@
                 autocomplete="off"
                 data-lpignore="true"
                 outlined
+                dense
+                filled
               ></v-autocomplete>
-              <!-- </v-col>
-                <v-col> -->
+
               <v-autocomplete
                 v-model="selectedRole"
                 :items="uniqueRoles"
@@ -73,9 +67,10 @@
                 autocomplete="off"
                 data-lpignore="true"
                 outlined
+                dense
+                filled
               ></v-autocomplete>
-              <!-- </v-col>
-                <v-col> -->
+
               <v-autocomplete
                 v-model="selectedType"
                 :items="uniqueTypes"
@@ -85,83 +80,59 @@
                 autocomplete="off"
                 data-lpignore="true"
                 outlined
+                dense
+                filled
               ></v-autocomplete>
-              <!-- </v-col>
-              </v-row> -->
+
+              jobActive:{{ jobActive }}
             </v-card-text>
           </v-card>
         </v-col>
 
         <!-- Content -->
-        <v-col cols="12" md="9" class="mt-0 pt-sm-3 pt-0">
+        <v-col cols="12" sm="9" class="mt-0 pt-sm-3 pt-0">
           <section class="job-details grey lighten-4">
-            <!-- <div class="d-none" :class="{ 'd-inline': isMobileLayout }">
-              <v-btn to="/job-board" class="mb-3 secondary" dark outlined
-                ><v-icon left>mdi-arrow-left</v-icon> Back to jobs</v-btn
-              >
-            </div> -->
-
             <!-- Paid jobs  -->
-            <v-subheader>Featured jobs</v-subheader>
+            <v-subheader>Sponsored cannabis lab jobs</v-subheader>
             <template v-for="item in paidJobs">
-              <live-preview :key="item.id" :featured="true" :job="item">
+              <live-preview
+                :key="`job-${item.id}`"
+                :featured="true"
+                :to="`/job-board/${item.slug}`"
+                :job="item"
+                @click.native="openJob(item)"
+              >
               </live-preview>
             </template>
 
-            <v-subheader>Aggregate jobs</v-subheader>
             <!-- Scraped jobs  -->
+            <v-subheader>Cannabis lab jobs</v-subheader>
+
             <template v-for="item in filteredItems">
-              <live-preview :key="item.id" :job="item"> </live-preview>
-            </template>
-
-            <!-- <v-expansion-panels v-model="selectedItem">
-              <v-expansion-panel
-                v-for="item in filteredItems"
-                :key="item.slug"
-                active-class="job--active"
+              <live-preview
+                :key="item.id"
+                :to="`/job-board/${item.slug}`"
+                :job="item"
+                @click.native="openJob(item)"
               >
-                <v-expansion-panel-header class="flex-column">
-                  <p>
-                    <nuxt-link
-                      :to="{
-                        name: 'job-board-slug',
-                        params: {
-                          slug: item.slug,
-                        },
-                      }"
-                    >
-                      {{ item.name }}</nuxt-link
-                    >
-                  </p>
-                  <p>
-                    <v-chip>
-                      {{ item.location }}
-                    </v-chip>
-                  </p>
-
-                  <v-chip>
-                    {{ item.type }}
-                  </v-chip>
-                  <v-chip>
-                    {{ item.salary }}
-                  </v-chip>
-                </v-expansion-panel-header>
-                <v-expansion-panel-content>
-                  <portal-target name="destination"> </portal-target>
-                </v-expansion-panel-content>
-              </v-expansion-panel>
-            </v-expansion-panels> -->
-
-            <hr />
-            <v-card>
-              <portal target-class="job--active job__content" to="destination">
-                <NuxtChild
-              /></portal>
-            </v-card>
+              </live-preview>
+            </template>
           </section>
         </v-col>
       </v-row>
     </v-container>
+
+    <v-dialog
+      v-model="jobActive"
+      transition="dialog-bottom-transition"
+      class=""
+      :fullscreen="$vuetify.breakpoint.smAndDown"
+      @click:outside="closeJob()"
+    >
+      <v-card>
+        <NuxtChild @closeDialog="closeJob()" />
+      </v-card>
+    </v-dialog>
   </section>
 </template>
 
@@ -196,14 +167,11 @@ export default {
       .then((querySnapshot) => {
         const jobs = []
         querySnapshot.forEach((doc) => {
-          // jobs.push({ id: doc.id, ...doc.data() })
           jobs.push({ id: doc.id, ...doc.data() })
         })
         return jobs
       })
 
-    // paidJobs = { ...paidJobs }
-    // console.log('paidJobs', typeof paidJobs, paidJobs)
     return {
       jobs,
       params,
@@ -215,6 +183,8 @@ export default {
   },
   data() {
     return {
+      job: {},
+      jobActive: false,
       loading: false,
       selectedItem: null,
       selectedLocation: [],
@@ -274,8 +244,39 @@ export default {
   },
 
   methods: {
-    slugize(str) {
-      return str.toLowerCase().replace(/ /gi, '-')
+    // slugize(str) {
+    //   return str.toLowerCase().replace(/ /gi, '-')
+    // },
+    closeJob() {
+      console.log('Close Job Parent')
+
+      this.jobActive = false
+      this.$router.push({
+        name: 'job-board',
+      })
+    },
+    openJob(currentJob) {
+      console.log('openJob', currentJob)
+      // let job
+      // try {
+      //   job = await this.$content('jobs', currentJob.slug).fetch()
+      // } catch (e) {
+      //   console.warn('Cant find job', e)
+
+      //   // get job item from $fire.firestore where slug = params.slug
+      //   job = await this.$fire.firestore
+      //     .collection('jobs')
+      //     .where('slug', '==', currentJob.slug)
+      //     .get()
+      //     .then((snapshot) => {
+      //       if (snapshot.empty) {
+      //         return null
+      //       }
+      //       return snapshot.docs[0].data()
+      //     })
+      // }
+      // this.job = job
+      this.jobActive = true
     },
   },
 }
@@ -283,5 +284,10 @@ export default {
 
 <style lang="scss">
 .job-details {
+}
+
+.v-dialog {
+  margin-bottom: 0 !important;
+  bottom: 0 !important;
 }
 </style>

@@ -154,7 +154,7 @@ export default {
         elements: this.elements,
         confirmParams: {
           // Make sure to change this to your payment completion page
-          return_url: 'http://localhost:8888/post-a-job/thank-you',
+          return_url: `${process.env.baseURL}/post-a-job/thank-you`,
           receipt_email: this.job.companyEmail,
         },
       })

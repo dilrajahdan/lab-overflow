@@ -1,3 +1,5 @@
+@import '~vuetify/src/styles/settings/_variables';
+
 .capitalize {
   text-transform: capitalize;
 }
@@ -10,6 +12,22 @@
   position: sticky !important;
   top: 80px;
   z-index: 2;
+}
+
+.sticky-sm {
+  @media #{map-get($display-breakpoints, 'sm-and-up')} {
+    position: sticky !important;
+    top: 80px;
+    z-index: 2;
+  }
+}
+
+.sticky-md {
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    position: sticky !important;
+    top: 80px;
+    z-index: 2;
+  }
 }
 
 .blur {

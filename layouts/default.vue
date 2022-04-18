@@ -51,10 +51,6 @@
             :to="item.to"
             >{{ item.title }}</v-tab
           >
-          <!-- <v-tab disabled>Forum</v-tab>
-          <v-tab to="/cannabis-testing-labs">Lab Directory</v-tab>
-          <v-tab disabled>Suppiers</v-tab>
-          <v-tab disabled>Jobs</v-tab> -->
         </v-tabs>
       </div>
       <!-- <v-btn icon class="pink" @click.stop="rightDrawer = !rightDrawer">
@@ -94,28 +90,12 @@ export default {
       fixed: false,
 
       items: [
-        // {
-        //   icon: 'mdi-apps',
-        //   title: 'Home',
-        //   to: '/',
-        // },
-        // {
-        //   icon: 'mdi-chart-bubble',
-        //   title: 'Forum',
-        //   to: '/forum',
-        //   disabled: true,
-        // },
         {
           icon: 'mdi-chart-bubble',
           title: 'Lab directory',
           to: '/cannabis-testing-labs',
         },
-        // {
-        //   icon: 'mdi-chart-bubble',
-        //   title: ' Lab Suppliers',
-        //   to: '/lab-suppliers',
-        //   disabled: true,
-        // },
+
         {
           icon: 'mdi-chart-bubble',
           title: 'Job board',
@@ -127,6 +107,7 @@ export default {
           title: 'Post a job',
           to: '/post-a-job',
           disabled: false,
+          outlined: true,
         },
       ],
       miniVariant: false,

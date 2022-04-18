@@ -24,7 +24,6 @@
               </p>
             </v-card-text>
           </v-col>
-          <!-- <v-col sm="6"> </v-col> -->
         </v-row>
       </v-container>
     </v-card>
@@ -189,7 +188,7 @@
                   v-model="job.companyWebsite"
                   filled
                   hint="We will add a link to you website on the job post"
-                  label="Your websites URL"
+                  label="Your website URL"
                 ></v-text-field>
 
                 <v-text-field
@@ -248,7 +247,11 @@
               </v-card-text>
             </v-card>
 
-            <live-preview :job="job" class="mt-4 sticky"></live-preview>
+            <live-preview
+              :featured="true"
+              :job="job"
+              class="mt-4 sticky"
+            ></live-preview>
           </v-col>
         </v-row>
       </v-container>
@@ -512,6 +515,8 @@ export default {
   },
   methods: {
     gotoCheckout() {
+      // add slug to job
+      this.job.slug = this.job.position.toLowerCase().replace(/\s/g, '-')
       this.$store.commit('setJobAd', this.job)
       console.warn('saving', this.job)
       this.$router.push('/post-a-job/checkout')

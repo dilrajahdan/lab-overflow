@@ -12,9 +12,6 @@
             <v-card-title>
               <h1 class="overline">Post a job</h1>
               - {{ writeSuccessful }}
-
-              <hr />
-              job : {{ job }}
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">Thank you</h2>
@@ -38,7 +35,8 @@
             </v-card-subtitle>
             <v-card-actions>
               <v-spacer />
-              <v-btn color="secondary" href="/">View job post</v-btn>
+              {{ job }}
+              <v-btn color="secondary" :to="job.slug">View job post</v-btn>
               <v-btn color="primary" href="/">Share job post</v-btn>
             </v-card-actions>
           </v-card>
@@ -125,7 +123,7 @@ export default {
         const ref = this.$fire.firestore.collection('jobs').doc()
         try {
           await ref.set(this.job)
-          this.$store.dispatch('setJobAd', {})
+          // this.$store.dispatch('setJobAd', {})
         } catch (e) {
           // TODO: error handling
           console.error(e)
