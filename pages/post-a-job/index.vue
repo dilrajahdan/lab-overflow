@@ -14,12 +14,12 @@
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">
-                Find your next lab superstar in 1 month...
+                Find your next lab superstar in the next 30 days...
               </h2>
             </v-card-subtitle>
             <v-card-text>
               <p class="body-1">
-                Or we will repost your job for another month for FREE - no
+                or we will repost your job for another 30 days for FREE - no
                 strings attached!
               </p>
             </v-card-text>

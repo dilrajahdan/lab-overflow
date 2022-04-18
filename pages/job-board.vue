@@ -238,15 +238,8 @@ export default {
       )
     },
   },
-  mounted() {
-    // eslint-disable-next-line no-undef
-    // console.warn('Job Board >>> Mounted', { ...this.paidJobs })
-  },
 
   methods: {
-    // slugize(str) {
-    //   return str.toLowerCase().replace(/ /gi, '-')
-    // },
     closeJob() {
       console.log('Close Job Parent')
 
@@ -265,6 +258,9 @@ export default {
 
 <style lang="scss">
 .job-details {
+}
+.v-dialog__content {
+  align-items: flex-end !important;
 }
 
 .v-dialog {
