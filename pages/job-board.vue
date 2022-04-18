@@ -36,6 +36,44 @@
       </v-container>
     </v-card>
 
+    <v-container v-if="!subscribed">
+      <form
+        name="subscribeToJobs"
+        method="POST"
+        data-netlify="true"
+        @click="subscribed = true"
+      >
+        <v-banner
+          app
+          :single-line="$vuetify.breakpoint.smAndUp"
+          rounded
+          sticky
+          color="deep-orange darken-1"
+          class="white--text"
+        >
+          <p class="body-1 pb-0 mb-0 flex-grow-0">
+            Get new cannabis lab jobs send to
+          </p>
+          <template #icon>
+            <v-icon class="" color="white" dark>mdi-email-plus</v-icon>
+          </template>
+          <template #actions class="">
+            <v-text-field
+              required
+              class=""
+              placeholder="Your email"
+              dark
+              name="email"
+              type="email"
+            ></v-text-field>
+            <v-btn type="submit" dark color="deep-purple accent-4">
+              Subscribe
+            </v-btn>
+          </template>
+        </v-banner>
+      </form>
+    </v-container>
+
     <v-container class="mt-3 filters">
       <v-row class="mt-0">
         <v-col cols="12" sm="3">
@@ -183,6 +221,7 @@ export default {
   },
   data() {
     return {
+      subscribed: false,
       job: {},
       jobActive: false,
       loading: false,

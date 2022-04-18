@@ -35,7 +35,7 @@
             </v-card-subtitle>
             <v-card-actions>
               <v-spacer />
-              {{ job }}
+              <!-- {{ job }} -->
               <v-btn color="secondary" :to="`/job-board/${job.slug}`"
                 >View job post</v-btn
               >
