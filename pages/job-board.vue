@@ -37,12 +37,7 @@
     </v-card>
 
     <v-container v-if="!subscribed">
-      <form
-        name="subscribeToJobs"
-        method="POST"
-        data-netlify="true"
-        @click="subscribed = true"
-      >
+      <form name="subscribeToJobs" method="POST" data-netlify="true">
         <v-banner
           app
           :single-line="$vuetify.breakpoint.smAndUp"
@@ -59,6 +54,7 @@
           </template>
           <template #actions class="">
             <v-text-field
+              v-model="subscribeToJobsEmail"
               required
               class=""
               placeholder="Your email"
@@ -66,7 +62,13 @@
               name="email"
               type="email"
             ></v-text-field>
-            <v-btn type="submit" dark color="deep-purple accent-4">
+            <v-btn
+              type="submit"
+              dark
+              color="deep-purple accent-4"
+              :disabled="subscribeToJobsEmail === ''"
+              @click="subscribed = true"
+            >
               Subscribe
             </v-btn>
           </template>
@@ -121,8 +123,6 @@
                 dense
                 filled
               ></v-autocomplete>
-
-              jobActive:{{ jobActive }}
             </v-card-text>
           </v-card>
         </v-col>
@@ -221,6 +221,7 @@ export default {
   },
   data() {
     return {
+      subscribeToJobsEmail: '',
       subscribed: false,
       job: {},
       jobActive: false,
