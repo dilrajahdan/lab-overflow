@@ -36,7 +36,9 @@
             <v-card-actions>
               <v-spacer />
               {{ job }}
-              <v-btn color="secondary" :to="job.slug">View job post</v-btn>
+              <v-btn color="secondary" :to="`/job-board/${job.slug}`"
+                >View job post</v-btn
+              >
               <v-btn color="primary" href="/">Share job post</v-btn>
             </v-card-actions>
           </v-card>

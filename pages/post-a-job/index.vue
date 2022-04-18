@@ -248,6 +248,7 @@
             </v-card>
 
             <live-preview
+              to="#"
               :featured="true"
               :job="job"
               class="mt-4 sticky"
@@ -510,13 +511,39 @@ export default {
         companyEmail: '',
         invoiceNotes: '',
         feedback: '',
+        slug: '',
       },
     }
   },
   methods: {
+    generateGUID() {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
+        /[xy]/g,
+        function (c) {
+          const r = (Math.random() * 16) | 0
+          const v = c === 'x' ? r : (r & 0x3) | 0x8
+          return v.toString(16)
+        }
+      )
+    },
+
+    sanitizeSlug(str) {
+      // return string with only valid url characters (no spaces, etc)
+      str = str
+        .toLowerCase()
+        .trim()
+        .replace(/[^A-Za-z0-9 ]/g, '')
+        .replace(/\s{2,}/g, ' ')
+        .replace(/\s/g, '-')
+
+      str = `${str}-${this.generateGUID()}`
+
+      return str
+    },
+
     gotoCheckout() {
       // add slug to job
-      this.job.slug = this.job.position.toLowerCase().replace(/\s/g, '-')
+      this.job.slug = this.sanitizeSlug(this.job.position)
       this.$store.commit('setJobAd', this.job)
       console.warn('saving', this.job)
       this.$router.push('/post-a-job/checkout')

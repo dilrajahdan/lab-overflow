@@ -144,21 +144,21 @@ export default {
     const jobs = await $content('jobs').fetch()
 
     // TODO: Move these into the store as getters
-    // Get unique locations
+
+    // const uniqueLocations = []
+    // const uniqueRoles = []
+    // const uniqueTypes = []
+
     const uniqueLocations = jobs
-      .map((ele) => ele.location)
+      .map((ele) => ele.location || '')
       .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
-
-    // Get unique roles (position)
     const uniqueRoles = jobs
-      .map((ele) => ele.position)
+      .map((ele) => ele.position || '')
       .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
-
-    // Get unique titles
     const uniqueTypes = jobs
-      .map((ele) => ele.type)
+      .map((ele) => ele.type || '')
       .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
-    // console.log(typeof uniqueTypes, uniqueTypes)
+    console.log(typeof uniqueTypes, uniqueTypes)
 
     // get firbase collection into array
     const paidJobs = await $fire.firestore
@@ -257,25 +257,6 @@ export default {
     },
     openJob(currentJob) {
       console.log('openJob', currentJob)
-      // let job
-      // try {
-      //   job = await this.$content('jobs', currentJob.slug).fetch()
-      // } catch (e) {
-      //   console.warn('Cant find job', e)
-
-      //   // get job item from $fire.firestore where slug = params.slug
-      //   job = await this.$fire.firestore
-      //     .collection('jobs')
-      //     .where('slug', '==', currentJob.slug)
-      //     .get()
-      //     .then((snapshot) => {
-      //       if (snapshot.empty) {
-      //         return null
-      //       }
-      //       return snapshot.docs[0].data()
-      //     })
-      // }
-      // this.job = job
       this.jobActive = true
     },
   },
