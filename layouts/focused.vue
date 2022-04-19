@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <app-header></app-header>
+    <app-header no-links></app-header>
 
     <v-main class="grey lighten-4">
       <Nuxt />

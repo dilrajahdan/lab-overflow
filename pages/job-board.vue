@@ -25,7 +25,6 @@
               <h2 class="display-1">
                 The job board for lab professionals in the cannabis industry
               </h2>
-              route{{ $route.params }}
             </v-card-subtitle>
 
             <!-- <v-card-text class="body-1">
@@ -35,49 +34,6 @@
         </v-row>
       </v-container>
     </v-card>
-
-    <v-container v-if="!subscribed" class="mt-3">
-      <form name="subscribeToJobs" method="POST" data-netlify="true">
-        <v-banner
-          app
-          :single-line="$vuetify.breakpoint.smAndUp"
-          rounded
-          sticky
-          color="deep-orange darken-1"
-          class="white--text"
-        >
-          <p class="body-1 pb-0 mb-0 flex-grow-0">
-            Get cannabis lab jobs to your inbox
-          </p>
-          <template #icon>
-            <v-icon class="" color="white" dark>mdi-email-plus</v-icon>
-          </template>
-          <template #actions class="">
-            <v-text-field
-              v-model="subscribeToJobsEmail"
-              filled
-              rounded
-              required
-              class="pa-0 ma-0 white"
-              placeholder="Your email"
-              hide-details
-              name="email"
-              type="email"
-              dense
-            ></v-text-field>
-            <v-btn
-              type="submit"
-              dark
-              color="deep-purple accent-4"
-              :disabled="subscribeToJobsEmail === ''"
-              @click="subscribed = true"
-            >
-              Subscribe
-            </v-btn>
-          </template>
-        </v-banner>
-      </form>
-    </v-container>
 
     <v-container>
       <v-row class="mt-0">
@@ -146,6 +102,54 @@
               </live-preview>
             </template>
 
+            <!-- <v-container  class="mt-3"> -->
+            <form
+              v-if="!subscribed"
+              name="subscribeToJobs"
+              method="POST"
+              data-netlify="true"
+              class="sticky-sm"
+            >
+              <v-banner
+                app
+                :single-line="$vuetify.breakpoint.smAndUp"
+                rounded
+                sticky
+                color="deep-orange darken-1"
+                class="white--text"
+              >
+                <p class="body-1 pb-0 mb-0 flex-grow-0">
+                  Get cannabis lab jobs to your inbox
+                </p>
+                <template #icon>
+                  <v-icon class="" color="white" dark>mdi-email-plus</v-icon>
+                </template>
+                <template #actions class="">
+                  <v-text-field
+                    v-model="subscribeToJobsEmail"
+                    filled
+                    rounded
+                    required
+                    class="pa-0 ma-0 white"
+                    placeholder="Your email"
+                    hide-details
+                    name="email"
+                    type="email"
+                    dense
+                  ></v-text-field>
+                  <v-btn
+                    type="submit"
+                    dark
+                    color="deep-purple accent-4"
+                    :disabled="subscribeToJobsEmail === ''"
+                    @click="subscribed = true"
+                  >
+                    Subscribe
+                  </v-btn>
+                </template>
+              </v-banner>
+            </form>
+
             <!-- Scraped jobs  -->
             <v-subheader>Cannabis lab jobs</v-subheader>
 
@@ -166,7 +170,8 @@
     <v-dialog
       v-model="jobActive"
       transition="dialog-bottom-transition"
-      class=""
+      class="rounded-lg"
+      max-width="850px"
       :fullscreen="$vuetify.breakpoint.smAndDown"
       @click:outside="closeJob()"
     >

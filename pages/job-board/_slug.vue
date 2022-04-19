@@ -10,8 +10,8 @@
         </v-card-text>
       </v-col>
     </v-row>
-    <v-row align="center" justify="center">
-      <v-col v-if="job" cols="12" sm="10" md="8">
+    <v-row align="center" justify="center" class="pa-10">
+      <v-col v-if="job" cols="12" class="">
         <v-card color="grey lighten-5 float-right ma-4 " max-width="250" hover>
           <v-card-title v-if="job.position">
             {{ job.position }}

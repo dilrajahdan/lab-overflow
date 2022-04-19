@@ -84,6 +84,7 @@
 <script>
 // import LivePreview from '~/components/LivePreview.vue'
 export default {
+  layout: 'focused',
   //   components: { LivePreview },
   asyncData(context) {
     // get jobAd from store
