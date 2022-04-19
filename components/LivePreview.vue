@@ -13,33 +13,33 @@
           <v-col
             v-if="featured"
             v-show="$vuetify.breakpoint.mdAndUp"
-            class="flex-grow-0 pr-0"
+            class="flex-grow-0 px-0"
           >
             <v-card-text class="py-0 pr-0">
               <v-icon>mdi-star</v-icon>
             </v-card-text>
           </v-col>
 
-          <v-col class="py-0">
-            <v-card-title v-if="featured" class="overline">
+          <v-col class="pa-0">
+            <v-card-title v-if="featured" class="pt-2 overline">
               {{ job.labName || 'Lab name' }}
             </v-card-title>
-            <v-card-subtitle class="pb-0">
+            <v-card-subtitle class="py-0" :class="featured ? '' : 'pt-2'">
               <h3 class="primary--text position">
                 {{ job.position || 'Position' }}
               </h3>
             </v-card-subtitle>
 
-            <v-card-text class="">
+            <v-card-text class="pb-2">
               <v-chip-group>
-                <v-chip class="mt-1" label x-small>{{
+                <v-chip class="mt-1" label small>{{
                   job.location || 'Location, Country'
                 }}</v-chip>
 
                 <v-chip
                   v-if="job.salaryMin"
                   label
-                  x-small
+                  small
                   color="green lighten-4 mt-1"
                   >💰 USD {{ job.salaryMin }}
                   <span v-if="job.salaryMin && job.salaryMax">-</span>

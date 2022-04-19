@@ -1,18 +1,32 @@
 <template>
-  <section v-if="job">
+  <v-card v-if="job">
     <!-- <v-container v-if="job"> -->
-    <v-row align="end" justify="end">
-      <v-col class="flex-grow-0 sticky-box">
-        <v-card-text>
-          <v-btn large icon @click.native="closeDialog()"
-            ><v-icon>mdi-close</v-icon></v-btn
-          >
-        </v-card-text>
-      </v-col>
+    <div class="sticky grey lighten-3">
+      <v-row align="center" justify="center" class="justify-space-between">
+        <v-col class="">
+          <v-card-title v-if="job.position" class="">{{
+            job.position
+          }}</v-card-title>
+        </v-col>
+        <v-col class="flex-grow-0">
+          <v-card-text>
+            <v-btn color="" tile icon @click.native="closeDialog()"
+              ><v-icon>mdi-close</v-icon></v-btn
+            >
+          </v-card-text>
+        </v-col>
+      </v-row>
+    </div>
+    <v-row class="my-0">
+      <v-divider></v-divider>
     </v-row>
-    <v-row align="center" justify="center" class="pa-10">
-      <v-col v-if="job" cols="12" class="">
-        <v-card color="grey lighten-5 float-right ma-4 " max-width="250" hover>
+    <v-row align="center" justify="center" class="px-10">
+      <v-col cols="12" class="">
+        <v-card
+          color="grey lighten-5 float-md-right ma-4 "
+          :max-width="$vuetify.breakpoint.mdAndUp ? '350' : ''"
+          hover
+        >
           <v-card-title v-if="job.position">
             {{ job.position }}
           </v-card-title>
@@ -45,55 +59,74 @@
               min-width="100%"
               color="primary"
               >Apply now</v-btn
-            ></v-card-actions
-          >
+            >
+            <v-btn
+              v-if="job.applyEmail"
+              :href="`mailto:${job.applyEmail}`"
+              min-width="100%"
+              color="primary"
+              >Email now</v-btn
+            >
+          </v-card-actions>
         </v-card>
 
         <v-card-title v-if="job.jobDescriptionCopy"
           >Job description</v-card-title
         >
+
+        <!-- eslint-disable vue/no-v-html -->
         <v-card-text
           class="body-1"
           v-html="formatNewLines(job.jobDescriptionCopy)"
         >
         </v-card-text>
+        <!--eslint-enable-->
 
         <v-card-title v-if="job.howToApplyCopy">How to apply</v-card-title>
+        <!-- eslint-disable vue/no-v-html -->
         <v-card-text
           v-if="job.howToApplyCopy"
           class="body-1"
           v-html="job.howToApplyCopy"
         />
-
-        <v-btn
-          v-if="job.applyURL"
-          target="_blank"
-          :href="job.applyURL"
-          min-width="100%"
-          color="primary"
-          >Apply now</v-btn
-        >
+        <!--eslint-enable-->
       </v-col>
 
-      <v-col v-else cols="12" sm="10" md="8">
-        <v-card-title>Can't find job :(</v-card-title>
-
-        <v-card-text>
-          <v-btn to="/job=board">Back</v-btn>
-        </v-card-text>
+      <v-col cols="12">
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn @click.native="closeDialog()">Close</v-btn>
+          <v-btn
+            v-if="job.applyURL"
+            target="_blank"
+            :href="job.applyURL"
+            color="primary"
+            >Apply now</v-btn
+          >
+          <v-btn
+            v-if="job.applyEmail"
+            target="_blank"
+            :href="`mailto:${job.applyEmail}`"
+            color="primary"
+            >Email now</v-btn
+          >
+        </v-card-actions>
       </v-col>
     </v-row>
     <!-- </v-container> -->
-  </section>
+  </v-card>
 </template>
 <script>
 export default {
+  // scrollToTop: false,
   async asyncData({ $content, params, redirect, $fire, $ga }) {
+    // console.warn('asyncData', params.slug)
+
     let job
     try {
       job = await $content('jobs', params.slug).fetch()
     } catch (e) {
-      console.warn('Cant find job', e)
+      console.warn('Cant find job', e) // eslint-disable-line
 
       // get job item from $fire.firestore where slug = params.slug
       job = await $fire.firestore
@@ -116,12 +149,12 @@ export default {
   },
   async mounted() {
     // this.$ga.pageview(this.params.slug)
-    console.warn('mounted')
+    // console.warn('mounted')
     let job
     try {
       job = await this.$content('jobs', this.params.slug).fetch()
     } catch (e) {
-      console.warn('Cant find job', e)
+      console.warn('Cant find job', e) // eslint-disable-line
 
       // get job item from $fire.firestore where slug = params.slug
       job = await this.$fire.firestore
@@ -146,7 +179,7 @@ export default {
   },
   methods: {
     closeDialog() {
-      console.log('close dialog')
+      // console.log('close dialog')
       this.$emit('closeDialog')
       // this.route.push('/job=board')
     },
@@ -155,19 +188,6 @@ export default {
         return ''
       }
       return text.replace(/\n/g, '<br />')
-    },
-    gotoSourceUrl(url) {
-      const trackingEventData = {
-        eventCategory: `${this.params.country}/${this.params.region}/${this.params.lab}`,
-        eventAction: 'click',
-        eventLabel: 'contact details clicked',
-        eventValue: this.showDetails ? 'show' : 'hide',
-      }
-
-      console.log(trackingEventData)
-      this.$ga.event(trackingEventData)
-
-      window.open(url, '_blank')
     },
   },
 }

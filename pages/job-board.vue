@@ -119,7 +119,7 @@
                 class="white--text"
               >
                 <p class="body-1 pb-0 mb-0 flex-grow-0">
-                  Get cannabis lab jobs to your inbox
+                  Send me awesome cannabis lab jobs here
                 </p>
                 <template #icon>
                   <v-icon class="" color="white" dark>mdi-email-plus</v-icon>
@@ -171,13 +171,11 @@
       v-model="jobActive"
       transition="dialog-bottom-transition"
       class="rounded-lg"
-      max-width="850px"
-      :fullscreen="$vuetify.breakpoint.smAndDown"
+      max-width="750px"
       @click:outside="closeJob()"
     >
-      <v-card>
-        <NuxtChild @closeDialog="closeJob()" />
-      </v-card>
+      <!-- :fullscreen="$vuetify.breakpoint.smAndDown" -->
+      <NuxtChild @closeDialog="closeJob()" />
     </v-dialog>
   </section>
 </template>
@@ -186,15 +184,11 @@
 import LivePreview from '~/components/LivePreview.vue'
 export default {
   components: { LivePreview },
+  scrollToTop: false,
   async asyncData({ $content, params, $fire }) {
     const jobs = await $content('jobs').fetch()
 
     // TODO: Move these into the store as getters
-
-    // const uniqueLocations = []
-    // const uniqueRoles = []
-    // const uniqueTypes = []
-
     const uniqueLocations = jobs
       .map((ele) => ele.location || '')
       .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
@@ -204,7 +198,7 @@ export default {
     const uniqueTypes = jobs
       .map((ele) => ele.type || '')
       .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
-    console.log(typeof uniqueTypes, uniqueTypes)
+    // console.log(typeof uniqueTypes, uniqueTypes)
 
     // get firbase collection into array
     const paidJobs = await $fire.firestore
@@ -294,7 +288,7 @@ export default {
 
   methods: {
     closeJob() {
-      console.log('Close Job Parent')
+      // console.log('Close Job Parent')
 
       this.jobActive = false
       this.$router.push({
@@ -302,7 +296,7 @@ export default {
       })
     },
     openJob(currentJob) {
-      console.log('openJob', currentJob)
+      // console.log('openJob', currentJob)
       this.jobActive = true
     },
   },

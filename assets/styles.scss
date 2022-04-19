@@ -8,6 +8,13 @@
   width: 100%;
 }
 
+
+.sticky {
+  position: sticky !important;
+  top: 0  !important;
+  z-index: 2;
+}
+
 .sticky-box {
   position: sticky !important;
   top: 80px;
