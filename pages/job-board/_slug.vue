@@ -1,5 +1,5 @@
 <template>
-  <v-card v-if="job">
+  <v-card loading="job">
     <!-- <v-container v-if="job"> -->
     <div class="sticky grey lighten-3">
       <v-row align="center" justify="center" class="justify-space-between">
@@ -120,11 +120,12 @@
 export default {
   // scrollToTop: false,
   async asyncData({ $content, params, redirect, $fire, $ga }) {
-    // console.warn('asyncData', params.slug)
+    console.warn('asyncData', params.slug)
 
     let job
     try {
       job = await $content('jobs', params.slug).fetch()
+      console.warn('job content', job)
     } catch (e) {
       console.warn('Cant find job', e) // eslint-disable-line
 
@@ -139,6 +140,7 @@ export default {
           }
           return snapshot.docs[0].data()
         })
+      console.warn('job fire', job)
 
       if (!job) {
         redirect('/job=board')
@@ -149,10 +151,11 @@ export default {
   },
   async mounted() {
     // this.$ga.pageview(this.params.slug)
-    // console.warn('mounted')
+    console.warn('mounted')
     let job
     try {
       job = await this.$content('jobs', this.params.slug).fetch()
+      console.warn('mounted content', job)
     } catch (e) {
       console.warn('Cant find job', e) // eslint-disable-line
 
@@ -167,6 +170,7 @@ export default {
           }
           return snapshot.docs[0].data()
         })
+      console.warn('mounted fire', job)
 
       if (!job) {
         this.$router.push({
