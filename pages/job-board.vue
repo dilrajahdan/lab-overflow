@@ -11,7 +11,7 @@
           <v-col
             cols="12"
             sm="10"
-            offset-sm="1"
+            offset-sm="0"
             md="8"
             offset-md="0"
             lg="6"
@@ -23,20 +23,20 @@
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">
-                The official job board for lab professionals in the Cannabis
-                industry
+                The job board for lab professionals in the cannabis industry
               </h2>
+              route{{ $route.params }}
             </v-card-subtitle>
 
-            <v-card-text class="body-1">
+            <!-- <v-card-text class="body-1">
               Make your next career move here
-            </v-card-text>
+            </v-card-text> -->
           </v-col>
         </v-row>
       </v-container>
     </v-card>
 
-    <v-container v-if="!subscribed">
+    <v-container v-if="!subscribed" class="mt-3">
       <form name="subscribeToJobs" method="POST" data-netlify="true">
         <v-banner
           app
@@ -47,7 +47,7 @@
           class="white--text"
         >
           <p class="body-1 pb-0 mb-0 flex-grow-0">
-            Get new cannabis lab jobs send to
+            Get new cannabis lab jobs sent to
           </p>
           <template #icon>
             <v-icon class="" color="white" dark>mdi-email-plus</v-icon>
@@ -56,9 +56,10 @@
             <v-text-field
               v-model="subscribeToJobsEmail"
               required
-              class=""
+              class="pa-0 ma-0"
               placeholder="Your email"
               dark
+              hide-details
               name="email"
               type="email"
             ></v-text-field>
@@ -76,7 +77,7 @@
       </form>
     </v-container>
 
-    <v-container class="mt-3 filters">
+    <v-container>
       <v-row class="mt-0">
         <v-col cols="12" sm="3">
           <v-subheader>Filters</v-subheader>
@@ -210,6 +211,11 @@ export default {
         return jobs
       })
 
+    let jobActive = false
+    if (params.slug !== undefined) {
+      jobActive = true
+    }
+
     return {
       jobs,
       params,
@@ -217,6 +223,7 @@ export default {
       uniqueRoles,
       uniqueTypes,
       paidJobs,
+      jobActive,
     }
   },
   data() {
@@ -224,7 +231,6 @@ export default {
       subscribeToJobsEmail: '',
       subscribed: false,
       job: {},
-      jobActive: false,
       loading: false,
       selectedItem: null,
       selectedLocation: [],

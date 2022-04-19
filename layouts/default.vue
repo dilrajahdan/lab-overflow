@@ -24,38 +24,41 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar dark :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon
-        v-show="$vuetify.breakpoint.xs"
-        @click.stop="drawer = !drawer"
-      />
+      <v-container>
+        <v-row>
+          <v-app-bar-nav-icon
+            v-show="$vuetify.breakpoint.xs"
+            @click.stop="drawer = !drawer"
+          />
 
-      <v-toolbar-title>
-        ({{ $vuetify.breakpoint.name }})
-
-        <nuxt-link class="text-decoration-none white--text" to="/">
-          {{ title }}
-          <b>{{ title2 }}</b>
-        </nuxt-link>
-      </v-toolbar-title>
-      <v-spacer />
-      <div>
-        <v-tabs
-          v-show="$vuetify.breakpoint.smAndUp"
-          class="mr-3"
-          background-color="transparent"
-        >
-          <v-tab
-            v-for="item in items"
-            :key="item.title"
-            :disabled="item.disabled"
-            :to="item.to"
-            >{{ item.title }}</v-tab
-          >
-        </v-tabs>
-      </div>
-      <!-- <v-btn icon class="pink" @click.stop="rightDrawer = !rightDrawer">
+          <v-toolbar-title class="d-flex align-center">
+            <!-- ({{ $vuetify.breakpoint.name }}) -->
+            <nuxt-link class="text-decoration-none white--text" to="/">
+              {{ title }}
+              <b>{{ title2 }}</b>
+            </nuxt-link>
+          </v-toolbar-title>
+          <v-spacer />
+          <div>
+            <v-tabs
+              v-show="$vuetify.breakpoint.smAndUp"
+              class="mr-3"
+              background-color="transparent"
+            >
+              <v-tab
+                v-for="item in items"
+                :key="item.title"
+                :disabled="item.disabled"
+                :to="item.to"
+                >{{ item.title }}</v-tab
+              >
+            </v-tabs>
+          </div>
+          <!-- <v-btn icon class="pink" @click.stop="rightDrawer = !rightDrawer">
         <v-icon>mdi-star</v-icon>
       </v-btn> -->
+        </v-row></v-container
+      >
     </v-app-bar>
     <v-main class="grey lighten-4">
       <Nuxt />

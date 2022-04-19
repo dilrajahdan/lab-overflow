@@ -8,21 +8,30 @@
     >
       <v-container>
         <v-row align="center">
-          <v-col cols="12" sm="6" class="">
+          <v-col
+            cols="12"
+            sm="10"
+            offset-sm="0"
+            md="8"
+            offset-md="0"
+            lg="6"
+            xl="4"
+            class=""
+          >
             <v-card-title>
               <h1 class="overline">Post a job</h1>
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">
-                Find your next lab superstar in the next 30 days...
+                Find your next lab superstar in the next 30 days
               </h2>
             </v-card-subtitle>
-            <v-card-text>
+            <!-- <v-card-text>
               <p class="body-1">
                 or we will repost your job for another 30 days for FREE - no
                 strings attached!
               </p>
-            </v-card-text>
+            </v-card-text> -->
           </v-col>
         </v-row>
       </v-container>
@@ -269,7 +278,7 @@
               :disabled="!formValid"
               @click.stop="gotoCheckout()"
             >
-              Start Hiring – $199</v-btn
+              Start Hiring – USD $199</v-btn
             >
           </v-col>
         </v-row>
