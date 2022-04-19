@@ -47,7 +47,7 @@
           class="white--text"
         >
           <p class="body-1 pb-0 mb-0 flex-grow-0">
-            Get new cannabis lab jobs sent to
+            Get cannabis lab jobs to your inbox
           </p>
           <template #icon>
             <v-icon class="" color="white" dark>mdi-email-plus</v-icon>
@@ -55,13 +55,15 @@
           <template #actions class="">
             <v-text-field
               v-model="subscribeToJobsEmail"
+              filled
+              rounded
               required
-              class="pa-0 ma-0"
+              class="pa-0 ma-0 white"
               placeholder="Your email"
-              dark
               hide-details
               name="email"
               type="email"
+              dense
             ></v-text-field>
             <v-btn
               type="submit"
