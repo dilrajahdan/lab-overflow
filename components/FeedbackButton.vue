@@ -19,9 +19,9 @@
       </template>
       <span>I'd ❤️ your feedback</span>
     </v-tooltip>
-    <v-dialog v-model="dialog" max-width="500px">
-      <v-card>
-        <form method="POST" data-netlify="true" name="feedback">
+    <form method="POST" data-netlify="true" name="feedback">
+      <v-dialog v-model="dialog" max-width="500px">
+        <v-card>
           <input type="hidden" name="feedback" value="feedback" />
           <v-card-title>
             <span class="headline">What should I build or improve next?</span>
@@ -69,9 +69,9 @@
               Send
             </v-btn>
           </v-card-actions>
-        </form>
-      </v-card>
-    </v-dialog>
+        </v-card>
+      </v-dialog>
+    </form>
     <v-snackbar v-model="snackbar" :timeout="2000">
       Thank you for your feedback!
 
