@@ -50,6 +50,7 @@
                 :key="item.title"
                 :disabled="item.disabled"
                 :to="item.to"
+                :class="item.outlined ? 'd-flex' : 'd-none d-sm-flex'"
                 >{{ item.title }}</v-tab
               >
             </v-tabs>
@@ -73,31 +74,22 @@ export default {
     return {
       clipped: false,
       drawer: false,
-
       items: [
         {
-          icon: 'mdi-chart-bubble',
           title: 'Lab directory',
           to: '/cannabis-testing-labs',
         },
 
         {
-          icon: 'mdi-chart-bubble',
           title: 'Job board',
           to: '/job-board',
-          disabled: false,
         },
         {
-          icon: 'mdi-chart-bubble',
           title: 'Post a job',
           to: '/post-a-job',
-          disabled: false,
           outlined: true,
         },
       ],
-      //   miniVariant: false,
-      //   right: true,
-      //   rightDrawer: false,
       title: 'Lab',
       title2: 'Overflow',
     }

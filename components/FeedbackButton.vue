@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-tooltip left>
+    <v-tooltip top left>
       <!--  on, attrs  -->
       <template #activator="{ on, attrs }">
         <v-btn
-          color="pink"
+          color="deep-purple accent-3"
           fab
           dark
           fixed
@@ -29,7 +29,7 @@
           name="feedbackForm"
         >
           <v-card-title>
-            <span class="headline">How can Lab Overflow be improved?</span>
+            <span class="headline">What should I build or improve next?</span>
           </v-card-title>
           <v-card-subtitle>
             <span class="body-1">Be nice :)</span>
