@@ -42,7 +42,11 @@
 
           <v-toolbar-title class="d-flex align-center">
             <!-- ({{ $vuetify.breakpoint.name }}) -->
-            <nuxt-link class="text-decoration-none white--text" to="/">
+            <nuxt-link
+              v-show="$vuetify.breakpoint.smAndUp"
+              class="text-decoration-none white--text"
+              to="/"
+            >
               {{ title }}
               <b>{{ title2 }}</b>
             </nuxt-link>
@@ -61,6 +65,7 @@
             :key="item.title"
             :to="item.to"
             class="ml-2"
+            :small="$vuetify.breakpoint.xs"
             :color="item.outlined ? 'red' : ''"
             :class="item.outlined ? 'd-flex' : 'd-none d-md-flex'"
             >{{ item.title }}</v-btn
