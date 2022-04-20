@@ -19,12 +19,20 @@
       </template>
       <span>I'd ❤️ your feedback</span>
     </v-tooltip>
-    <form method="POST" name="feedback" netlify netlify-honeypot="bot-field">
+    <form
+      method="POST"
+      action="/"
+      name="feedback"
+      netlify
+      netlify-honeypot="bot-field"
+    >
       <input type="hidden" name="form-name" value="feedback" />
       <v-dialog v-model="dialog" max-width="500px">
         <v-card>
           <v-card-title>
-            <span class="headline">What should I build or improve next?</span>
+            <span class="headline mb-6"
+              >What should I build or improve next?</span
+            >
           </v-card-title>
           <v-card-subtitle>
             <span class="body-1">Be nice :)</span>
