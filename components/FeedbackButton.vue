@@ -19,7 +19,19 @@
       </template>
       <span>I'd ❤️ your feedback</span>
     </v-tooltip>
-    <form method="POST" data-netlify="true" name="feedback">
+    <form
+      method="POST"
+      name="feedback"
+      data-netlify="true"
+      data-netlify-recaptcha="true"
+      netlify-honeypot="bot-field"
+    >
+      <p class="hidden">
+        <label>
+          Don’t fill this out if you’re human: <input name="bot-field" />
+        </label>
+      </p>
+
       <v-dialog v-model="dialog" max-width="500px">
         <v-card>
           <input type="hidden" name="feedback" value="feedback" />
@@ -53,6 +65,7 @@
               color="primary"
             ></v-textarea>
           </v-card-text>
+          <div data-netlify-recaptcha="true"></div>
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="" text @click="dialog = false"> Cancel </v-btn>
