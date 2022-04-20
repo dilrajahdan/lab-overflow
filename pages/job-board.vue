@@ -105,11 +105,14 @@
             <!-- <v-container  class="mt-3"> -->
             <form
               v-if="!subscribed"
-              name="subscribeToJobs"
               method="POST"
-              data-netlify="true"
+              name="subscribeToJobs"
+              netlify
+              netlify-honeypot="bot-field"
               class="sticky-sm"
             >
+              <input type="hidden" name="form-name" value="subscribeToJobs" />
+
               <v-banner
                 app
                 :single-line="$vuetify.breakpoint.smAndUp"
