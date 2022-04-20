@@ -4,6 +4,8 @@
 
     <v-main class="grey lighten-4">
       <Nuxt />
+
+      <feedback-button></feedback-button>
     </v-main>
 
     <app-footer></app-footer>
@@ -13,8 +15,5 @@
 <script>
 export default {
   transition: 'fade',
-  data() {
-    return {}
-  },
 }
 </script>
