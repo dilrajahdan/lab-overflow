@@ -22,6 +22,7 @@
     <v-dialog v-model="dialog" max-width="500px">
       <v-card>
         <form method="POST" data-netlify="true" name="feedback">
+          <input type="hidden" name="feedback" value="feedback" />
           <v-card-title>
             <span class="headline">What should I build or improve next?</span>
           </v-card-title>
