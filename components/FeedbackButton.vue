@@ -21,13 +21,7 @@
     </v-tooltip>
     <v-dialog v-model="dialog" max-width="500px">
       <v-card>
-        <form
-          ref="feedbackForm"
-          method="POST"
-          action="#"
-          netlify
-          name="feedbackForm"
-        >
+        <form method="POST" data-netlify="true" name="feedbackForm">
           <v-card-title>
             <span class="headline">What should I build or improve next?</span>
           </v-card-title>
