@@ -19,14 +19,14 @@
       </template>
       <span>I'd ❤️ your feedback</span>
     </v-tooltip>
-    <form
-      method="POST"
-      name="feedback"
-      data-netlify
-      data-netlify-honeypot="bot-field"
-    >
-      <input type="hidden" name="form-name" value="feedback" />
-      <v-dialog v-model="dialog" max-width="500px">
+    <v-dialog v-model="dialog" max-width="500px">
+      <form
+        method="POST"
+        name="feedback"
+        data-netlify
+        data-netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="feedback" />
         <v-card>
           <v-card-title>
             <span class="headline mb-6"
@@ -78,8 +78,8 @@
             </v-btn>
           </v-card-actions>
         </v-card>
-      </v-dialog>
-    </form>
+      </form>
+    </v-dialog>
     <v-snackbar v-model="snackbar" :timeout="2000">
       Thank you for your feedback!
 
