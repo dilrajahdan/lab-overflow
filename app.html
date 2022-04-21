@@ -4,17 +4,16 @@
     {{ HEAD }}
   </head>
   <body {{ BODY_ATTRS }}>
+    <form name="feedback" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="feedback" name="feedback" />
+      <textarea name="message"></textarea>
+    </form>
+
+    <form name="subscribeToJobs" netlify netlify-honeypot="bot-field" hidden>
+      <input type="email" name="email" />
+    </form>
     {{ APP }}
   </body>
-
-  <form name="feedback" netlify netlify-honeypot="bot-field" hidden>
-    <input type="text" name="name" />
-    <input type="email" name="email" />
-    <input type="feedback" name="feedback" />
-    <textarea name="message"></textarea>
-  </form>
-
-  <form name="subscribeToJobs" netlify netlify-honeypot="bot-field" hidden>
-    <input type="email" name="email" />
-  </form>
 </html>
