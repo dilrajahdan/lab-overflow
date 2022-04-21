@@ -21,6 +21,7 @@
     </v-tooltip>
     <v-dialog v-model="dialog" max-width="500px">
       <form
+        ref="feedback"
         method="POST"
         name="feedback"
         data-netlify
@@ -66,8 +67,8 @@
             <v-btn color="" text @click="dialog = false"> Cancel </v-btn>
 
             <v-btn
-              color="primary"
               type="submit"
+              color="primary"
               text
               :disabled="
                 feedbackForm.email === '' && feedbackForm.feedback === ''
@@ -112,8 +113,6 @@ export default {
   },
   methods: {
     submitFeedback() {
-      //   const form = this.$refs.feedbackForm
-      //   form.submit()
       this.feedbackForm = {
         name: '',
         email: '',
@@ -121,6 +120,9 @@ export default {
       }
       this.dialog = false
       this.snackbar = true
+
+      const form = this.$refs.feedback
+      form.submit()
     },
   },
 }
