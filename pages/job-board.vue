@@ -104,12 +104,13 @@
 
             <!-- <v-container  class="mt-3"> -->
             <form
-              v-if="!subscribed"
+              v-show="!subscribed"
               method="POST"
               name="subscribeToJobs"
               netlify
               netlify-honeypot="bot-field"
               class="sticky-sm"
+              action="/"
             >
               <input type="hidden" name="form-name" value="subscribeToJobs" />
 

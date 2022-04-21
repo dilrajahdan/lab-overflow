@@ -21,10 +21,10 @@
     </v-tooltip>
     <form
       method="POST"
-      action="/"
       name="feedback"
       netlify
       netlify-honeypot="bot-field"
+      action="/"
     >
       <input type="hidden" name="form-name" value="feedback" />
       <v-dialog v-model="dialog" max-width="500px">
