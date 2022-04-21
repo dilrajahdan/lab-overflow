@@ -22,9 +22,8 @@
     <form
       method="POST"
       name="feedback"
-      netlify
-      netlify-honeypot="bot-field"
-      action="/"
+      data-netlify
+      data-netlify-honeypot="bot-field"
     >
       <input type="hidden" name="form-name" value="feedback" />
       <v-dialog v-model="dialog" max-width="500px">
@@ -43,7 +42,7 @@
               label="Name"
               name="name"
               color="primary"
-            ></v-text-field>
+            />
             <v-text-field
               v-model="feedbackForm.email"
               label="Email"
@@ -51,7 +50,7 @@
               type="email"
               required
               color="primary"
-            ></v-text-field>
+            />
             <v-textarea
               v-model="feedbackForm.feedback"
               name="feedback"
@@ -59,7 +58,7 @@
               label="Feeback"
               required
               color="primary"
-            ></v-textarea>
+            />
           </v-card-text>
 
           <v-card-actions>

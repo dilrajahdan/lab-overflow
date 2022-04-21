@@ -106,13 +106,12 @@
             <form
               v-show="!subscribed"
               method="POST"
-              name="subscribeToJobs"
-              netlify
-              netlify-honeypot="bot-field"
+              name="subscribe"
+              data-netlify
+              data-netlify-honeypot="bot-field"
               class="sticky-sm"
-              action="/"
             >
-              <input type="hidden" name="form-name" value="subscribeToJobs" />
+              <input type="hidden" name="form-name" value="subscribe" />
 
               <v-banner
                 app
@@ -140,7 +139,7 @@
                     name="email"
                     type="email"
                     dense
-                  ></v-text-field>
+                  />
                   <v-btn
                     type="submit"
                     dark
