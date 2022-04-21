@@ -177,6 +177,7 @@
       max-width="750px"
       @click:outside="closeJob()"
     >
+      job:{{ job }}
       <!-- :fullscreen="$vuetify.breakpoint.smAndDown" -->
       <NuxtChild @closeDialog="closeJob()" />
     </v-dialog>
