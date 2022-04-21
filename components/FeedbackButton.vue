@@ -26,6 +26,7 @@
         name="feedback"
         data-netlify
         data-netlify-honeypot="bot-field"
+        action="/thanks"
       >
         <input type="hidden" name="form-name" value="feedback" />
         <v-card>
