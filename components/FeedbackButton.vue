@@ -137,7 +137,7 @@ export default {
 
       // post form via axios
       this.$axios
-        .post(`${process.env.baseURL}/thanks`, {this.feedbackForm})
+        .post(`${process.env.baseURL}/thanks`, this.feedbackForm)
         .then((response) => {
           console.log(response)
         })
