@@ -325,17 +325,27 @@ export default {
           console.error('Error adding document: ', error)
         })
 
-      this.$axios
-        .post(`${process.env.baseURL}/thanks`, {
-          email: this.subscribeToJobsEmail,
-          url: this.$route.path,
-        })
-        .then((response) => {
-          console.log(response)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+      // this.$axios
+      //   .post(`${process.env.baseURL}`, {
+      //     email: this.subscribeToJobsEmail,
+      //     url: this.$route.path,
+      //   })
+      //   .then((response) => {
+      //     console.log(response)
+      //   })
+      //   .catch((error) => {
+      //     console.log(error)
+      //   })
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: this.encode({
+          'form-name': event.target.getAttribute('name'),
+          ...name,
+        }),
+      })
+        .then(() => this.$router.push('/thanks/'))
+        .catch((error) => alert(error))
     },
   },
 }

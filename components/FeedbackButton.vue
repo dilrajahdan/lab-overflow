@@ -106,6 +106,14 @@ export default {
     }
   },
   methods: {
+    encode(data) {
+      return Object.keys(data)
+        .map(
+          (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+        )
+        .join('&')
+    },
+
     submitFeedback() {
       // add data to firebase
       this.$fire.firestore
@@ -136,14 +144,25 @@ export default {
       // this.snackbar = true
 
       // post form via axios
-      this.$axios
-        .post(`${process.env.baseURL}`, this.feedbackForm)
-        .then((response) => {
-          console.log(response)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+      // this.$axios
+      //   .post(`${process.env.baseURL}`, this.feedbackForm)
+      //   .then((response) => {
+      //     console.log(response)
+      //   })
+      //   .catch((error) => {
+      //     console.log(error)
+      //   })
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: this.encode({
+          'form-name': event.target.getAttribute('name'),
+          ...name,
+        }),
+      })
+        .then(() => this.$router.push('/thanks/'))
+        .catch((error) => alert(error))
 
       // const form = this.$refs.feedback
       // form.submit()
