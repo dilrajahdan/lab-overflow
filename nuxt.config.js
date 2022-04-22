@@ -1,6 +1,12 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  vue: {
+    config: {
+      productionTip: false,
+      devtools: true,
+    },
+  },
   env: {
     baseURL:
       process.env.NODE_ENV === 'production'

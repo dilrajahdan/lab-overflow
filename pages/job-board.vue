@@ -7,6 +7,11 @@
       class="d-flex align-center flex-column py-3"
     >
       <v-container>
+        <!-- <v-row>
+          <v-col cols="6">{{ jobs }}</v-col>
+          <v-col cols="6">{{ paidJobs }}</v-col>
+        </v-row> -->
+
         <v-row>
           <v-col
             cols="12"
@@ -191,7 +196,10 @@ import LivePreview from '~/components/LivePreview.vue'
 export default {
   components: { LivePreview },
   scrollToTop: false,
-  async asyncData({ $content, params, $fire }) {
+  async asyncData({ $content, params, $fire, store }) {
+    // get jobs from getter
+    // await store.dispatch('/jobs/nuxtServerInit')
+
     const jobs = await $content('jobs').fetch()
 
     // TODO: Move these into the store as getters
@@ -301,8 +309,6 @@ export default {
         .join('&')
     },
     closeJob() {
-      // console.log('Close Job Parent')
-
       this.jobActive = false
       this.$router.push({
         name: 'job-board',

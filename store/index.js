@@ -54,7 +54,32 @@ export const actions = {
     commit('setJobAd', payload)
   },
 
-  // async nuxtServerInit({ commit }, payload) {
-  //   await commit('setJobAd', payload)
-  // },
+  // Get jobs
+  async nuxtServerInit({ commit }, payload) {
+    // console.log(payload)
+    let scrapedJobs = await this.$content('jobs').fetch()
+    scrapedJobs = scrapedJobs.map((v) => ({ ...v, jobType: 'free' }))
+
+    let paidJobs = await this.$fire.firestore
+      .collection('jobs')
+      .get()
+      .then((querySnapshot) => {
+        const jobs = []
+        querySnapshot.forEach((doc) => {
+          jobs.push({ id: doc.id, ...doc.data() })
+        })
+        return jobs
+      })
+    paidJobs = paidJobs.map((v) => ({ ...v, jobType: 'paid' }))
+
+    console.log('scrapedJobs', scrapedJobs)
+    console.log('paidJobs', paidJobs)
+
+    // Combine paid and free jobs
+    await commit('jobs/setJobs', [...scrapedJobs, ...paidJobs])
+    // Set get unique values for filters
+    await commit('jobs/setUniqueLocations', [...scrapedJobs, ...paidJobs])
+    await commit('jobs/setUniqueRoles', [...scrapedJobs, ...paidJobs])
+    await commit('jobs/setUniqueJobTypes', [...scrapedJobs, ...paidJobs])
+  },
 }

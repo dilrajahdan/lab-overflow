@@ -120,12 +120,40 @@
 export default {
   // scrollToTop: false,
   async asyncData({ $content, params, redirect, $fire, $ga }) {
-    console.warn('asyncData', params.slug)
+    // console.warn('_slug asyncData', params)
 
     let job
+
+    // if (params.slug) {
+    //   try {
+    //     job = await $content('jobs', params.slug).fetch()
+    //   } catch (e) {
+    //     console.error('_slug asyncData error', e)
+    //     job = null
+    //   }
+
+    //   // console.log('job', job)
+    //   // not scraped job, check firebase
+    //   if (!job) {
+    //     job = await $fire.firestore
+    //       .collection('jobs')
+    //       .where('slug', '==', params.slug)
+    //       .get()
+    //       .then((snapshot) => {
+    //         if (snapshot.empty) {
+    //           return null
+    //         }
+    //         return snapshot.docs[0].data()
+    //       })
+    //   }
+    // }
+    // else {
+    // }
+
     try {
       job = await $content('jobs', params.slug).fetch()
-      console.warn('job content', job)
+      // console.warn('async job content', job)
+      // console.warn('async param', params.slug)
     } catch (e) {
       console.warn('Cant find job', e) // eslint-disable-line
 
@@ -140,7 +168,7 @@ export default {
           }
           return snapshot.docs[0].data()
         })
-      console.warn('job fire', job)
+      // console.warn('job fire', job)
 
       if (!job) {
         redirect('/job=board')
@@ -151,11 +179,11 @@ export default {
   },
   async mounted() {
     // this.$ga.pageview(this.params.slug)
-    console.warn('mounted')
+    console.warn('_slug mounted')
     let job
     try {
       job = await this.$content('jobs', this.params.slug).fetch()
-      console.warn('mounted content', job)
+      console.warn('_slug mounted content', job)
     } catch (e) {
       console.warn('Cant find job', e) // eslint-disable-line
 
@@ -170,7 +198,7 @@ export default {
           }
           return snapshot.docs[0].data()
         })
-      console.warn('mounted fire', job)
+      // console.warn('mounted fire', job)
 
       if (!job) {
         this.$router.push({
