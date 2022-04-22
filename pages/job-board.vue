@@ -326,7 +326,7 @@ export default {
         })
 
       this.$axios
-        .post('/thanks', {
+        .post(`${process.env.baseURL}/thanks`, {
           email: this.subscribeToJobsEmail,
           url: this.$route.path,
         })
