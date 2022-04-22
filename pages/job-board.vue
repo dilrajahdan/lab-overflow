@@ -147,7 +147,7 @@
                     dark
                     color="deep-purple accent-4"
                     :disabled="subscribeToJobsEmail === ''"
-                    @click.prevent="submitSubscribe()"
+                    @click.prevent="submitSubscribe($event)"
                   >
                     Subscribe
                   </v-btn>
