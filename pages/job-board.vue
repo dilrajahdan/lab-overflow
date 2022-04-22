@@ -147,7 +147,7 @@
                     dark
                     color="deep-purple accent-4"
                     :disabled="subscribeToJobsEmail === ''"
-                    @click.stop.prevent="submitSubscribe()"
+                    @click.stop.prevent="submitSubscribe($event)"
                   >
                     Subscribe
                   </v-btn>
@@ -293,6 +293,13 @@ export default {
   },
 
   methods: {
+    encode(data) {
+      return Object.keys(data)
+        .map(
+          (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+        )
+        .join('&')
+    },
     closeJob() {
       // console.log('Close Job Parent')
 
@@ -306,7 +313,7 @@ export default {
       this.jobActive = true
     },
 
-    submitSubscribe() {
+    submitSubscribe(event) {
       // console.log('submitSubscribe', this.subscribeToJobsEmail)
       this.loading = true
       this.$fire.firestore
@@ -314,6 +321,7 @@ export default {
         .add({
           email: this.subscribeToJobsEmail,
           url: this.$route.path,
+          created: this.$fireModule.firestore.FieldValue.serverTimestamp(),
         })
         .then(() => {
           this.loading = false
@@ -344,7 +352,7 @@ export default {
           ...name,
         }),
       })
-        .then(() => this.$router.push('/thanks/'))
+        .then(() => this.$router.push('/thanks'))
         .catch((error) => alert(error))
     },
   },

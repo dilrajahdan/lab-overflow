@@ -116,6 +116,8 @@ export default {
 
     submitFeedback() {
       // add data to firebase
+      debugger
+
       this.$fire.firestore
         .collection('feedback')
         .add({
@@ -123,6 +125,7 @@ export default {
           email: this.feedbackForm.name,
           feedback: this.feedbackForm.name,
           url: this.$route.path,
+          created: this.$fireModule.firestore.FieldValue.serverTimestamp(),
         })
         .then(() => {
           this.loading = false
