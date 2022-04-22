@@ -180,12 +180,11 @@
     <v-dialog
       v-model="jobActive"
       transition="dialog-bottom-transition"
-      class="rounded-lg"
       max-width="750px"
+      scrollable
+      :fullscreen="$vuetify.breakpoint.smAndDown"
       @click:outside="closeJob()"
     >
-      job:{{ job }}
-      <!-- :fullscreen="$vuetify.breakpoint.smAndDown" -->
       <NuxtChild @closeDialog="closeJob()" />
     </v-dialog>
   </section>
@@ -362,15 +361,18 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.v-dialog {
+  margin-bottom: 0 !important;
+  bottom: 0 !important;
+  background: white !important;
+}
+</style>
+
 <style lang="scss" scoped>
 .job-details {
 }
 .v-dialog__content {
   align-items: flex-end !important;
-}
-
-.v-dialog {
-  margin-bottom: 0 !important;
-  bottom: 0 !important;
 }
 </style>
