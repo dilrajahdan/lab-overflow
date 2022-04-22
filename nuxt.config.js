@@ -4,7 +4,7 @@ export default {
   env: {
     baseURL:
       process.env.NODE_ENV === 'production'
-        ? 'http://laboverflow.com'
+        ? 'https://laboverflow.com'
         : 'http://localhost:8888',
     STRIPE_PK: process.env.STRIPE_PK,
   },
