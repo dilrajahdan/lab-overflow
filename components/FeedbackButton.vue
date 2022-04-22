@@ -125,7 +125,6 @@ export default {
             name: '',
             email: '',
             feedback: '',
-            // url: this.$route.
           }
         })
         .catch((error) => {
@@ -137,16 +136,14 @@ export default {
       // this.snackbar = true
 
       // post form via axios
-      // this.$axios.baseURL(process.env.baseURL)
-
-      // this.$axios
-      //   .post('/thanks', this.feedbackForm)
-      //   .then((response) => {
-      //     console.log(response)
-      //   })
-      //   .catch((error) => {
-      //     console.log(error)
-      //   })
+      this.$axios
+        .post(`${process.env.baseURL}/thanks`, {this.feedbackForm})
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
 
       // const form = this.$refs.feedback
       // form.submit()
