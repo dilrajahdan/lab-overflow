@@ -370,6 +370,9 @@ export default {
       // })
       //   .then(() => this.$router.push('/thanks'))
       //   .catch((error) => alert(error))
+
+      const form = this.$refs.subscribe
+      form.submit()
     },
   },
 }
