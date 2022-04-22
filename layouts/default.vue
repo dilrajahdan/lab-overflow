@@ -14,6 +14,7 @@
 
 <script>
 export default {
+  name: 'DefaultLayout',
   transition: 'fade',
 }
 </script>

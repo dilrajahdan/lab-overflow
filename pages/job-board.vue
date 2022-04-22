@@ -196,38 +196,22 @@ import LivePreview from '~/components/LivePreview.vue'
 export default {
   components: { LivePreview },
   scrollToTop: false,
-  async asyncData({ $content, params, $fire, store }) {
-    // get jobs from getter
-    // await store.dispatch('/jobs/nuxtServerInit')
 
+  async asyncData({ $content, params, $fire, store }) {
     const jobs = await $content('jobs').fetch()
 
-    // TODO: Move these into the store as getters
-    const uniqueLocations = jobs
-      .map((ele) => ele.location || '')
-      .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
-    const uniqueRoles = jobs
-      .map((ele) => ele.position || '')
-      .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
-    const uniqueTypes = jobs
-      .map((ele) => ele.type || '')
-      .filter((ele, i, arr) => arr.indexOf(ele) === i && ele !== '')
-    // console.log(typeof uniqueTypes, uniqueTypes)
+    const uniqueLocations = store.getters['jobs/getUniqueLocations']
+    const uniqueRoles = store.getters['jobs/getUniqueRoles']
+    const uniqueTypes = store.getters['jobs/getUniqueTypes']
 
     // get firbase collection into array
-    const paidJobs = await $fire.firestore
-      .collection('jobs')
-      .get()
-      .then((querySnapshot) => {
-        const jobs = []
-        querySnapshot.forEach((doc) => {
-          jobs.push({ id: doc.id, ...doc.data() })
-        })
-        return jobs
-      })
+    const paidJobs = store.getters['jobs/getPaidJobs']
 
     let jobActive = false
-    if (params.slug !== undefined) {
+    if (params.slug) {
+      const job = await store.getters['jobs/getJobBySlug'](params.slug)
+      store.dispatch('jobs/setActiveJob', job)
+      console.log('current job', job)
       jobActive = true
     }
 
@@ -269,6 +253,7 @@ export default {
       ],
     }
   },
+
   computed: {
     filteredItems() {
       const filters = {
@@ -310,12 +295,16 @@ export default {
     },
     closeJob() {
       this.jobActive = false
+      this.$store.dispatch('jobs/setActiveJob', {})
+
       this.$router.push({
         name: 'job-board',
       })
     },
-    openJob(currentJob) {
+    openJob(job) {
       // console.log('openJob', currentJob)
+      this.$store.dispatch('jobs/setActiveJob', job)
+
       this.jobActive = true
     },
 

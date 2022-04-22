@@ -1,7 +1,7 @@
 // state
 export const state = () => ({
   jobs: [],
-  currentJob: {},
+  activeJob: {},
   uniqueLocations: [],
   uniqueRoles: [],
   uniqueJobTypes: [],
@@ -21,18 +21,24 @@ export const getters = {
   getJobBySlug: (state) => (slug) => {
     return state.jobs.find((job) => job.slug === slug)
   },
+  getUniqueLocations: (state) => {
+    return state.uniqueLocations
+  },
+  getUniqueRoles: (state) => {
+    return state.uniqueRoles
+  },
+  getUniqueTypes: (state) => {
+    return state.uniqueJobTypes
+  },
 }
 
 export const mutations = {
   setJobs: (state, payload) => {
     state.jobs = payload
   },
-  //   setCurrentJob: (state, payload) => {
-  //     // get the job by slug
-  //     const job = state.jobs.find((job) => job.slug === payload)
-  //     state.currentJob = job
-  //   },
-
+  setActiveJob: (state, payload) => {
+    state.activeJob = payload
+  },
   setUniqueLocations: (state, payload) => {
     state.uniqueLocations = payload
       .map((ele) => ele.location || '')
@@ -52,7 +58,26 @@ export const mutations = {
 
 export const actions = {
   // set current by slug
-  //   setCurrentJob({ commit }, payload) {
-  //     commit('setCurrentJob', payload)
-  //   },
+  setActiveJob({ commit }, payload) {
+    commit('setActiveJob', payload)
+  },
+
+  // Add job to jobs
+  async addJob({ commit }, payload) {
+    // console.log('addJob', payload)
+    const job = {
+      ...payload,
+      jobType: 'paid',
+    }
+    await this.$fire.firestore
+      .collection('jobs')
+      .add(job)
+      .then((docRef) => {
+        // console.log('Document written with ID: ', docRef.id)
+        commit('setJobs', [...state.jobs, { ...job, id: docRef.id }])
+      })
+      .catch((error) => {
+        console.error('Error adding document: ', error)
+      })
+  },
 }

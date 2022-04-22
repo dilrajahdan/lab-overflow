@@ -58,7 +58,6 @@ export const actions = {
   async nuxtServerInit({ commit }, payload) {
     // console.log(payload)
     let scrapedJobs = await this.$content('jobs').fetch()
-    scrapedJobs = scrapedJobs.map((v) => ({ ...v, jobType: 'free' }))
 
     let paidJobs = await this.$fire.firestore
       .collection('jobs')
@@ -70,10 +69,17 @@ export const actions = {
         })
         return jobs
       })
-    paidJobs = paidJobs.map((v) => ({ ...v, jobType: 'paid' }))
 
-    console.log('scrapedJobs', scrapedJobs)
-    console.log('paidJobs', paidJobs)
+    // console.log({ scrapedJobs })
+    // console.log({ paidJobs })
+    // console.log([...scrapedJobs, ...paidJobs])
+    // Add jobType to jobs
+    scrapedJobs = scrapedJobs.map((job) => ({
+      ...job,
+      jobType: 'free',
+      jobSource: 'simply',
+    }))
+    paidJobs = paidJobs.map((job) => ({ ...job, jobType: 'paid' }))
 
     // Combine paid and free jobs
     await commit('jobs/setJobs', [...scrapedJobs, ...paidJobs])
