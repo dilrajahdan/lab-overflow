@@ -105,6 +105,7 @@
             <!-- <v-container  class="mt-3"> -->
             <form
               v-show="!subscribed"
+              ref="subscribe"
               method="POST"
               name="subscribe"
               data-netlify
@@ -146,7 +147,7 @@
                     dark
                     color="deep-purple accent-4"
                     :disabled="subscribeToJobsEmail === ''"
-                    @click="subscribed = true"
+                    @click.stop.prevent="submitSubscribe()"
                   >
                     Subscribe
                   </v-btn>
@@ -303,6 +304,25 @@ export default {
     openJob(currentJob) {
       // console.log('openJob', currentJob)
       this.jobActive = true
+    },
+
+    submitSubscribe() {
+      // console.log('submitSubscribe', this.subscribeToJobsEmail)
+      this.loading = true
+      this.$fire.firestore
+        .collection('subscribers')
+        .add({
+          email: this.subscribeToJobsEmail,
+        })
+        .then(() => {
+          this.loading = false
+          this.subscribed = true
+          this.subscribeToJobsEmail = ''
+        })
+        .catch((error) => {
+          this.loading = false
+          console.error('Error adding document: ', error)
+        })
     },
   },
 }

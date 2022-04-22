@@ -74,7 +74,7 @@
               :disabled="
                 feedbackForm.email === '' && feedbackForm.feedback === ''
               "
-              @click="submitFeedback()"
+              @click.stop.prevent="submitFeedback()"
             >
               Send
             </v-btn>
@@ -84,17 +84,6 @@
     </v-dialog>
     <v-snackbar v-model="snackbar" :timeout="2000">
       Thank you for your feedback!
-
-      <!-- <template v-slot:action="{ attrs }">
-        <v-btn
-          color="blue"
-          text
-          v-bind="attrs"
-          @click="snackbar = false"
-        >
-          Close
-        </v-btn>
-      </template> -->
     </v-snackbar>
   </div>
 </template>
@@ -103,6 +92,7 @@
 export default {
   data() {
     return {
+      loading: false,
       snackbar: false,
       dialog: false,
       feedbackForm: {
@@ -114,16 +104,48 @@ export default {
   },
   methods: {
     submitFeedback() {
-      this.feedbackForm = {
-        name: '',
-        email: '',
-        feedback: '',
-      }
-      this.dialog = false
-      this.snackbar = true
+      // add data to firebase
+      this.$fire.firestore
+        .collection('feedback')
+        .add({
+          name: this.feedbackForm.name,
+          email: this.feedbackForm.name,
+          feedback: this.feedbackForm.name,
+        })
+        .then(() => {
+          this.loading = false
+          this.dialog = false
+          this.snackbar = true
 
-      const form = this.$refs.feedback
-      form.submit()
+          this.feedbackForm = {
+            name: '',
+            email: '',
+            feedback: '',
+            // url: this.$route.
+          }
+        })
+        .catch((error) => {
+          this.loading = false
+          console.error('Error adding document: ', error)
+        })
+
+      // this.dialog = false
+      // this.snackbar = true
+
+      // post form via axios
+      // this.$axios.baseURL(process.env.baseURL)
+
+      // this.$axios
+      //   .post('/thanks', this.feedbackForm)
+      //   .then((response) => {
+      //     console.log(response)
+      //   })
+      //   .catch((error) => {
+      //     console.log(error)
+      //   })
+
+      // const form = this.$refs.feedback
+      // form.submit()
     },
   },
 }
