@@ -26,7 +26,7 @@
         name="feedback"
         data-netlify
         data-netlify-honeypot="bot-field"
-        action="/thanks"
+        action="/thank-you"
       >
         <input type="hidden" name="form-name" value="feedback" />
         <input type="hidden" name="url" :value="$route.path" />
@@ -77,7 +77,7 @@
               :disabled="
                 feedbackForm.email === '' && feedbackForm.feedback === ''
               "
-              @click.stop.prevent="submitFeedback()"
+              @click.prevent="submitFeedback()"
             >
               Send
             </v-btn>
@@ -116,7 +116,7 @@ export default {
 
     submitFeedback() {
       // add data to firebase
-      debugger
+      // debugger
 
       this.$fire.firestore
         .collection('feedback')
@@ -156,16 +156,16 @@ export default {
       //     console.log(error)
       //   })
 
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: this.encode({
-          'form-name': event.target.getAttribute('name'),
-          ...name,
-        }),
-      })
-        .then(() => this.$router.push('/thanks'))
-        .catch((error) => alert(error))
+      // fetch('/', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      //   body: this.encode({
+      //     'form-name': event.target.getAttribute('name'),
+      //     ...name,
+      //   }),
+      // })
+      //   .then(() => this.$router.push('/thanks'))
+      //   .catch((error) => alert(error))
 
       // const form = this.$refs.feedback
       // form.submit()

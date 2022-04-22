@@ -111,7 +111,7 @@
               data-netlify
               data-netlify-honeypot="bot-field"
               class="sticky-sm"
-              action="/thanks"
+              action="/thank-you"
             >
               <input type="hidden" name="form-name" value="subscribe" />
 
@@ -147,7 +147,7 @@
                     dark
                     color="deep-purple accent-4"
                     :disabled="subscribeToJobsEmail === ''"
-                    @click.stop.prevent="submitSubscribe($event)"
+                    @click.prevent="submitSubscribe($event)"
                   >
                     Subscribe
                   </v-btn>
@@ -333,27 +333,43 @@ export default {
           console.error('Error adding document: ', error)
         })
 
+      // submit form
+      // event.preventDefault()
+
+      // const axiosConfig = {
+      //   headers: {
+      //     'Content-Type': 'application/x-www-form-urlencoded',
+      //   },
+      //   baseURL: 'http://localhost:8888/',
+      // }
       // this.$axios
-      //   .post(`${process.env.baseURL}`, {
-      //     email: this.subscribeToJobsEmail,
-      //     url: this.$route.path,
-      //   })
+      //   .post(
+      //     `/`,
+      //     {
+      //       email: this.subscribeToJobsEmail,
+      //       url: this.$route.path,
+      //     },
+      //     axiosConfig
+      //   )
       //   .then((response) => {
       //     console.log(response)
+      //     this.router.push('thanks')
       //   })
       //   .catch((error) => {
       //     console.log(error)
+      //     this.router.push('error')
       //   })
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: this.encode({
-          'form-name': event.target.getAttribute('name'),
-          ...name,
-        }),
-      })
-        .then(() => this.$router.push('/thanks'))
-        .catch((error) => alert(error))
+
+      // fetch('/', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      //   body: this.encode({
+      //     'form-name': event.target.getAttribute('name'),
+      //     ...name,
+      //   }),
+      // })
+      //   .then(() => this.$router.push('/thanks'))
+      //   .catch((error) => alert(error))
     },
   },
 }
