@@ -29,6 +29,7 @@
         action="/thanks"
       >
         <input type="hidden" name="form-name" value="feedback" />
+        <input type="hidden" name="url" :value="$route.path" />
         <v-card>
           <v-card-title>
             <span class="headline mb-6"
@@ -38,6 +39,8 @@
           <v-card-subtitle>
             <span class="body-1">Be nice :)</span>
           </v-card-subtitle>
+          <!-- {{ params }} -->
+
           <v-card-text>
             <v-text-field
               v-model="feedbackForm.name"
@@ -111,6 +114,7 @@ export default {
           name: this.feedbackForm.name,
           email: this.feedbackForm.name,
           feedback: this.feedbackForm.name,
+          url: this.$route.path,
         })
         .then(() => {
           this.loading = false

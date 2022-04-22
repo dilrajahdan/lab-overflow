@@ -313,6 +313,7 @@ export default {
         .collection('subscribers')
         .add({
           email: this.subscribeToJobsEmail,
+          url: this.$route.path,
         })
         .then(() => {
           this.loading = false
@@ -322,6 +323,18 @@ export default {
         .catch((error) => {
           this.loading = false
           console.error('Error adding document: ', error)
+        })
+
+      this.$axios
+        .post('/thanks', {
+          email: this.subscribeToJobsEmail,
+          url: this.$route.path,
+        })
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((error) => {
+          console.log(error)
         })
     },
   },
