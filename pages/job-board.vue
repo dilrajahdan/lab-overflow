@@ -147,7 +147,7 @@
                     dark
                     color="deep-purple accent-4"
                     :disabled="subscribeToJobsEmail === ''"
-                    @click.prevent="submitSubscribe($event)"
+                    @click.prevent="submitSubscribe()"
                   >
                     Subscribe
                   </v-btn>
@@ -359,17 +359,6 @@ export default {
       //     console.log(error)
       //     this.router.push('error')
       //   })
-
-      // fetch('/', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      //   body: this.encode({
-      //     'form-name': event.target.getAttribute('name'),
-      //     ...name,
-      //   }),
-      // })
-      //   .then(() => this.$router.push('/thanks'))
-      //   .catch((error) => alert(error))
 
       const form = this.$refs.subscribe
       form.submit()

@@ -29,7 +29,7 @@
         action="/thank-you"
       >
         <input type="hidden" name="form-name" value="feedback" />
-        <input type="hidden" name="url" :value="$route.path" />
+
         <v-card>
           <v-card-title>
             <span class="headline mb-6"
@@ -77,7 +77,7 @@
               :disabled="
                 feedbackForm.email === '' && feedbackForm.feedback === ''
               "
-              @click.prevent="submitFeedback()"
+              @click.prevent="submitFeedback($event)"
             >
               Send
             </v-btn>
@@ -142,30 +142,6 @@ export default {
           this.loading = false
           console.error('Error adding document: ', error)
         })
-
-      // this.dialog = false
-      // this.snackbar = true
-
-      // post form via axios
-      // this.$axios
-      //   .post(`${process.env.baseURL}`, this.feedbackForm)
-      //   .then((response) => {
-      //     console.log(response)
-      //   })
-      //   .catch((error) => {
-      //     console.log(error)
-      //   })
-
-      // fetch('/', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      //   body: this.encode({
-      //     'form-name': event.target.getAttribute('name'),
-      //     ...name,
-      //   }),
-      // })
-      //   .then(() => this.$router.push('/thanks'))
-      //   .catch((error) => alert(error))
 
       const form = this.$refs.feedback
       form.submit()
