@@ -1,21 +1,22 @@
 <template>
-  <section class="fill-height">
-    <section
-      class="
-        deep-purple
-        white--text
-        fill-height
-        d-flex
-        flex-column
-        justify-center
-      "
+  <div class="">
+    <v-sheet
+      class="deep-purple white--text d-flex flex-column justify-center py-3"
     >
-      <v-container class="py-8">
-        <v-row justify="center" class="">
-          <v-col cols="10" offset="" md="8" xl="6">
-            <h1 class="display-1 mb-6 display-1">
-              The community for the cannabis testing industry
-            </h1>
+      <v-container class="">
+        <v-row justify="" class="">
+          <v-col cols="12" sm="6" md="6">
+            <v-card-title>
+              <h1 class="overline">Welcome to Lab Overflow</h1>
+            </v-card-title>
+            <v-card-subtitle class="">
+              <h2 class="display-1">
+                The hub for cannabis testing professionals
+              </h2>
+            </v-card-subtitle>
+
+            <h1 class="display-1 mb-6 display-1"></h1>
+            <!--             
             <p class="font-weight-regular mb-9">
               Members of the cannabis testing industry are dissatisfied with
               their current information flow.
@@ -30,38 +31,91 @@
               reliable suppliers, pick up tips for your next career move and
               more – all while ensuring that knowledge flows freely between the
               lab community!
-            </p>
+            </p> -->
           </v-col>
         </v-row>
-        <v-row justify="center">
-          <v-btn
-            large
-            to="/cannabis-testing-labs"
-            dark
-            class="my-6 flex flex-grow-0"
-            >View lab directory</v-btn
-          >
-          <v-btn large to="/job-board" dark class="ml-3 my-6 flex flex-grow-0"
-            >View job board</v-btn
-          >
-          <v-btn large to="/post-a-job" dark class="ml-3 my-6 flex flex-grow-0"
-            >Post a job</v-btn
-          >
-        </v-row>
       </v-container>
+    </v-sheet>
 
-      <!-- <v-container>
-        <v-row>
-          <v-col>Featured lab</v-col>
-          <v-col>Latest jobs</v-col>
-        </v-row>
-      </v-container> -->
-    </section>
-  </section>
+    <v-container>
+      <v-row>
+        <v-col cols="12" sm="6" class="fill-height">
+          <v-card
+            class="fill-height"
+            to="/cannabis-testing-labs/canada/ontario/sigma-analytical-services"
+          >
+            <v-card-title>
+              <h2 class="text-h6">
+                <!-- <v-icon>mdi-account-circle</v-icon> -->
+                Featured lab
+              </h2>
+            </v-card-title>
+            <v-card-text>
+              <v-img height="258" class="teal darken-4 white--text">
+                <v-row align="end" justify="end" class="fill-height">
+                  <v-col class="">
+                    <v-card-subtitle class="overline pb-0"
+                      >Toronto, Canada</v-card-subtitle
+                    >
+                    <v-card-title class="text-h3 py-0"
+                      >Sigma Analytical Services</v-card-title
+                    >
+                  </v-col>
+                </v-row>
+              </v-img>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="primary" to="/cannabis-testing-labs"
+                >View all labs</v-btn
+              >
+
+              <!-- <v-btn color="">
+                <v-icon>mdi-account-circle</v-icon>
+                <span>Join</span>
+              </v-btn> -->
+            </v-card-actions>
+          </v-card>
+        </v-col>
+        <v-col cols="12" sm="6" class="fill-height">
+          <v-card class="fill-height">
+            <v-card-title>
+              <h2 class="text-h6">
+                <!-- <v-icon>mdi-account-circle</v-icon> -->
+                Latest jobs
+              </h2>
+            </v-card-title>
+            <v-card-text>
+              <template v-for="item in paidJobs">
+                <live-preview
+                  :key="`job-${item.id}`"
+                  :featured="true"
+                  :to="`/job-board/${item.slug}`"
+                  :job="item"
+                  @click.native="openJob(item)"
+                >
+                </live-preview>
+              </template>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+
+              <v-btn color="primary" to="/job-board">View all jobs</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
 export default {
+  async asyncData({ store }) {
+    // const paidJobs = await store.getters['jobs/getPaidJobs']
+    //
+    // return { paidJobs }
+  },
   data() {
     return {
       // title: null,
@@ -78,6 +132,11 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    paidJobs() {
+      return this.$store.getters['jobs/getPaidJobs'].slice(0, 2)
+    },
   },
 }
 </script>

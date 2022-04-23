@@ -95,7 +95,7 @@
         <v-col cols="12" sm="9" class="mt-0 pt-sm-3 pt-0">
           <section class="job-details grey lighten-4">
             <!-- Paid jobs  -->
-            <v-subheader>Sponsored cannabis lab jobs</v-subheader>
+            <v-subheader>Featured cannabis lab jobs</v-subheader>
             <template v-for="item in paidJobs">
               <live-preview
                 :key="`job-${item.id}`"
