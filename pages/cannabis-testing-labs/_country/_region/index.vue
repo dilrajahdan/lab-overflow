@@ -255,7 +255,7 @@ export default {
     const selectedRegion = selectedCountry[0].states.filter((region) => {
       return params.region === region.name.toLowerCase().replace(/ /gi, '-')
     })
-    console.log('selectedRegion', selectedRegion)
+    // console.log('selectedRegion', selectedRegion)
 
     // Get regionObjectiuon
     const selectedRegionItem = searchList.filter(
