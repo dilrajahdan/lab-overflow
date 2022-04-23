@@ -49,6 +49,13 @@
           >
         </v-row>
       </v-container>
+
+      <!-- <v-container>
+        <v-row>
+          <v-col>Featured lab</v-col>
+          <v-col>Latest jobs</v-col>
+        </v-row>
+      </v-container> -->
     </section>
   </section>
 </template>

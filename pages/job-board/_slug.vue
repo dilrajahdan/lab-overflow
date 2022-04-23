@@ -29,7 +29,7 @@
       <v-row class="my-0">
         <v-divider></v-divider>
       </v-row>
-      <v-row align="center" justify="center" class="px-10">
+      <v-row align="center" justify="center" class="">
         <v-col cols="12" class="">
           <v-card
             color="grey lighten-5 float-md-right ma-4 "
@@ -103,6 +103,45 @@
 
         <v-col cols="12">
           <v-card-actions>
+            <!-- {{ $route.path }} -->
+            <ShareNetwork
+              network="facebook"
+              url="http://google.com"
+              title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
+              description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
+              quote="The hot reload is so fast it\'s near instant. - Evan You"
+              hashtags="vuejs,vite"
+              class="mr-4"
+            >
+              <v-icon>mdi-facebook</v-icon>
+              <span>Share on Facebook</span>
+            </ShareNetwork>
+
+            <ShareNetwork
+              network="linkedin"
+              url="http://google.com"
+              title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
+              description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
+              quote="The hot reload is so fast it\'s near instant. - Evan You"
+              hashtags="vuejs,vite"
+              class="m4-2"
+            >
+              <v-icon>mdi-linkedin</v-icon>
+              <span>Share on Linked In</span>
+            </ShareNetwork>
+
+            <ShareNetwork
+              network="twitter"
+              url="http://google.com"
+              title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
+              description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
+              quote="The hot reload is so fast it\'s near instant. - Evan You"
+              hashtags="vuejs,vite"
+              class="ml-4"
+            >
+              <v-icon>mdi-twitter</v-icon>
+              <span>Share on Twitter</span>
+            </ShareNetwork>
             <v-spacer></v-spacer>
             <v-btn @click.native="closeDialog()">Close</v-btn>
             <v-btn
@@ -128,8 +167,9 @@
 <script>
 export default {
   // scrollToTop: false,
-  async asyncData({ $content, params, store, redirect, $fire, $ga }) {
-    // console.warn('_slug asyncData', params)
+  async asyncData({ params, store, redirect, $fire, route, $ga }) {
+    console.warn('_slug asyncData', params, route)
+
     let job
     if (!params.slug) {
       job = {}
@@ -142,9 +182,13 @@ export default {
       }
     }
 
+    // const url = router
+
     return { job, params, $ga }
   },
-
+  data() {
+    return {}
+  },
   methods: {
     closeDialog() {
       this.$emit('closeDialog')

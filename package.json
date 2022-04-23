@@ -25,6 +25,7 @@
     "portal-vue": "^2.1.7",
     "stripe": "^8.202.0",
     "stripe-nuxt": "^1.0.2",
+    "vue-social-sharing": "^3.0.9",
     "vuetify": "^2.5.5",
     "vuex-persistedstate": "3.x.x"
   },

@@ -69,7 +69,8 @@ export default {
     '@nuxt/content',
     // https://firebase.nuxtjs.org/guide/getting-started
     '@nuxtjs/firebase',
-
+    // https://github.com/nicolasbeauvais/vue-social-sharing
+    'vue-social-sharing/nuxt',
     // Always make sitemap last element of the array. https://sitemap.nuxtjs.org/guide/setup
     '@nuxtjs/sitemap',
   ],

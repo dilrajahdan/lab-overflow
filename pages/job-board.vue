@@ -210,7 +210,7 @@ export default {
     if (params.slug) {
       const job = await store.getters['jobs/getJobBySlug'](params.slug)
       store.dispatch('jobs/setActiveJob', job)
-      console.log('current job', job)
+      // console.log('current job', job)
       jobActive = true
     }
 

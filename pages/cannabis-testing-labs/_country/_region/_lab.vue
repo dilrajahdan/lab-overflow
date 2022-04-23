@@ -491,7 +491,7 @@ export default {
         eventValue: this.showDetails ? 'show' : 'hide',
       }
 
-      console.log(trackingEventData)
+      // console.log(trackingEventData)
       this.$ga.event(trackingEventData)
     },
     showCallBack() {
@@ -504,7 +504,7 @@ export default {
         eventValue: this.showRequestCallback ? 'show' : 'hide',
       }
 
-      console.log(trackingEventData)
+      // console.log(trackingEventData)
       this.$ga.event(trackingEventData)
     },
     submitForm() {
