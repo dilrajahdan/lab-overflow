@@ -51,7 +51,7 @@
 
           <!-- Skills -->
           <v-col
-            v-show="$vuetify.breakpoint.mdAndUp"
+            v-show="$vuetify.breakpoint.mdAndUp && !dense"
             class="py-0 flex-shrink-1 flex-grow-1"
           >
             <v-chip-group column>
@@ -85,6 +85,10 @@ export default {
     to: {
       type: String,
       required: true,
+    },
+    dense: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {

@@ -108,7 +108,8 @@
             </template>
 
             <!-- <v-container  class="mt-3"> -->
-            <form
+            <subscribe-to-jobs></subscribe-to-jobs>
+            <!-- <form
               v-show="!subscribed"
               ref="subscribe"
               method="POST"
@@ -158,7 +159,7 @@
                   </v-btn>
                 </template>
               </v-banner>
-            </form>
+            </form> -->
 
             <!-- Scraped jobs  -->
             <v-subheader>Cannabis lab jobs</v-subheader>
@@ -192,8 +193,9 @@
 
 <script>
 import LivePreview from '~/components/LivePreview.vue'
+import SubscribeToJobs from '~/components/SubscribeToJobs.vue'
 export default {
-  components: { LivePreview },
+  components: { LivePreview, SubscribeToJobs },
   scrollToTop: false,
 
   async asyncData({ $content, params, $fire, store }) {
@@ -226,8 +228,8 @@ export default {
   },
   data() {
     return {
-      subscribeToJobsEmail: '',
-      subscribed: false,
+      // subscribeToJobsEmail: '',
+      // subscribed: false,
       job: {},
       loading: false,
       selectedItem: null,
@@ -307,56 +309,28 @@ export default {
       this.jobActive = true
     },
 
-    submitSubscribe(event) {
-      // console.log('submitSubscribe', this.subscribeToJobsEmail)
-      this.loading = true
-      this.$fire.firestore
-        .collection('subscribers')
-        .add({
-          email: this.subscribeToJobsEmail,
-          url: this.$route.path,
-          created: this.$fireModule.firestore.FieldValue.serverTimestamp(),
-        })
-        .then(() => {
-          this.loading = false
-          this.subscribed = true
-          this.subscribeToJobsEmail = ''
-        })
-        .catch((error) => {
-          this.loading = false
-          console.error('Error adding document: ', error)
-        })
-
-      // submit form
-      // event.preventDefault()
-
-      // const axiosConfig = {
-      //   headers: {
-      //     'Content-Type': 'application/x-www-form-urlencoded',
-      //   },
-      //   baseURL: 'http://localhost:8888/',
-      // }
-      // this.$axios
-      //   .post(
-      //     `/`,
-      //     {
-      //       email: this.subscribeToJobsEmail,
-      //       url: this.$route.path,
-      //     },
-      //     axiosConfig
-      //   )
-      //   .then((response) => {
-      //     console.log(response)
-      //     this.router.push('thanks')
-      //   })
-      //   .catch((error) => {
-      //     console.log(error)
-      //     this.router.push('error')
-      //   })
-
-      const form = this.$refs.subscribe
-      form.submit()
-    },
+    // submitSubscribe(event) {
+    //   // console.log('submitSubscribe', this.subscribeToJobsEmail)
+    //   this.loading = true
+    //   this.$fire.firestore
+    //     .collection('subscribers')
+    //     .add({
+    //       email: this.subscribeToJobsEmail,
+    //       url: this.$route.path,
+    //       created: this.$fireModule.firestore.FieldValue.serverTimestamp(),
+    //     })
+    //     .then(() => {
+    //       this.loading = false
+    //       this.subscribed = true
+    //       this.subscribeToJobsEmail = ''
+    //     })
+    //     .catch((error) => {
+    //       this.loading = false
+    //       console.error('Error adding document: ', error)
+    //     })
+    //   const form = this.$refs.subscribe
+    //   form.submit()
+    // },
   },
 }
 </script>

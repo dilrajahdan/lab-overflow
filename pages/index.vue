@@ -37,11 +37,14 @@
       </v-container>
     </v-sheet>
 
+    <v-container class="mt-2">
+      <subscribe-to-jobs></subscribe-to-jobs>
+    </v-container>
     <v-container>
       <v-row>
-        <v-col cols="12" sm="6" class="fill-height">
+        <v-col cols="12" sm="6" class="fill-heightX">
           <v-card
-            class="fill-height"
+            class="fill-heightX"
             to="/cannabis-testing-labs/canada/ontario/sigma-analytical-services"
           >
             <v-card-title>
@@ -51,7 +54,7 @@
               </h2>
             </v-card-title>
             <v-card-text>
-              <v-img height="258" class="teal darken-4 white--text">
+              <v-img height="229" class="teal darken-4 white--text">
                 <v-row align="end" justify="end" class="fill-height">
                   <v-col class="">
                     <v-card-subtitle class="overline pb-0"
@@ -69,26 +72,19 @@
               <v-btn color="primary" to="/cannabis-testing-labs"
                 >View all labs</v-btn
               >
-
-              <!-- <v-btn color="">
-                <v-icon>mdi-account-circle</v-icon>
-                <span>Join</span>
-              </v-btn> -->
             </v-card-actions>
           </v-card>
         </v-col>
-        <v-col cols="12" sm="6" class="fill-height">
-          <v-card class="fill-height">
+        <v-col cols="12" sm="6" class="fill-heightX">
+          <v-card class="fill-heightX">
             <v-card-title>
-              <h2 class="text-h6">
-                <!-- <v-icon>mdi-account-circle</v-icon> -->
-                Latest jobs
-              </h2>
+              <h2 class="text-h6">Latest jobs</h2>
             </v-card-title>
             <v-card-text>
               <template v-for="item in paidJobs">
                 <live-preview
                   :key="`job-${item.id}`"
+                  dense
                   :featured="true"
                   :to="`/job-board/${item.slug}`"
                   :job="item"
@@ -99,7 +95,6 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-
               <v-btn color="primary" to="/job-board">View all jobs</v-btn>
             </v-card-actions>
           </v-card>
