@@ -41,7 +41,7 @@
       <v-container>
         <v-row>
           <!-- Form -->
-          <v-col cols="12" sm="9" md="6">
+          <v-col cols="12" md="6" order="2" order-md="1">
             <!-- Postion Details -->
             <v-card>
               <v-card-title>Let's start</v-card-title>
@@ -237,7 +237,7 @@
           </v-col>
 
           <!-- Benefits Live Preview -->
-          <v-col cols="12" sm="6">
+          <v-col cols="12" md="6" order="1" order-md="2">
             <!-- Intro -->
             <v-card color="deep-purple lighten-5">
               <v-card-title>Why Lab Overflow?</v-card-title>

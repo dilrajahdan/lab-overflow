@@ -104,60 +104,68 @@
         <v-col cols="12">
           <v-card-actions>
             <!-- {{ $route.path }} -->
-            <ShareNetwork
-              network="facebook"
-              url="http://google.com"
-              title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
-              description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
-              quote="The hot reload is so fast it\'s near instant. - Evan You"
-              hashtags="vuejs,vite"
-              class="mr-4"
-            >
-              <v-icon>mdi-facebook</v-icon>
-              <span>Share on Facebook</span>
-            </ShareNetwork>
 
-            <ShareNetwork
-              network="linkedin"
-              url="http://google.com"
-              title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
-              description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
-              quote="The hot reload is so fast it\'s near instant. - Evan You"
-              hashtags="vuejs,vite"
-              class="m4-2"
-            >
-              <v-icon>mdi-linkedin</v-icon>
-              <span>Share on Linked In</span>
-            </ShareNetwork>
+            <v-row justify="space-between">
+              <v-col cols="12" lg="6">
+                <ShareNetwork
+                  network="facebook"
+                  url="http://google.com"
+                  title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
+                  description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
+                  quote="The hot reload is so fast it\'s near instant. - Evan You"
+                  hashtags="vuejs,vite"
+                  class="mr-4"
+                >
+                  <v-icon>mdi-facebook</v-icon>
+                  <span>Share on Facebook</span>
+                </ShareNetwork>
 
-            <ShareNetwork
-              network="twitter"
-              url="http://google.com"
-              title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
-              description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
-              quote="The hot reload is so fast it\'s near instant. - Evan You"
-              hashtags="vuejs,vite"
-              class="ml-4"
-            >
-              <v-icon>mdi-twitter</v-icon>
-              <span>Share on Twitter</span>
-            </ShareNetwork>
-            <v-spacer></v-spacer>
-            <v-btn @click.native="closeDialog()">Close</v-btn>
-            <v-btn
-              v-if="job.applyURL"
-              target="_blank"
-              :href="job.applyURL"
-              color="primary"
-              >Apply now</v-btn
-            >
-            <v-btn
-              v-if="job.applyEmail"
-              target="_blank"
-              :href="`mailto:${job.applyEmail}`"
-              color="primary"
-              >Email now</v-btn
-            >
+                <ShareNetwork
+                  network="linkedin"
+                  url="http://google.com"
+                  title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
+                  description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
+                  quote="The hot reload is so fast it\'s near instant. - Evan You"
+                  hashtags="vuejs,vite"
+                  class="m4-2"
+                >
+                  <v-icon>mdi-linkedin</v-icon>
+                  <span>Share on Linked In</span>
+                </ShareNetwork>
+
+                <ShareNetwork
+                  network="twitter"
+                  url="http://google.com"
+                  title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
+                  description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
+                  quote="The hot reload is so fast it\'s near instant. - Evan You"
+                  hashtags="vuejs,vite"
+                  class="ml-4"
+                >
+                  <v-icon>mdi-twitter</v-icon>
+                  <span>Share on Twitter</span>
+                </ShareNetwork>
+              </v-col>
+              <v-col class="text-right">
+                <v-spacer></v-spacer>
+                <v-btn @click.native="closeDialog()">Close</v-btn>
+                <v-btn
+                  v-if="job.applyURL"
+                  target="_blank"
+                  :href="job.applyURL"
+                  color="primary"
+                  class="ml-2"
+                  >Apply now</v-btn
+                >
+                <v-btn
+                  v-if="job.applyEmail"
+                  target="_blank"
+                  :href="`mailto:${job.applyEmail}`"
+                  color="primary"
+                  >Email now</v-btn
+                >
+              </v-col>
+            </v-row>
           </v-card-actions>
         </v-col>
       </v-row>

@@ -41,7 +41,7 @@
           />
 
           <v-toolbar-title class="d-flex align-center">
-            <!-- ({{ $vuetify.breakpoint.name }}) -->
+            ({{ $vuetify.breakpoint.name }})
             <nuxt-link
               v-show="$vuetify.breakpoint.smAndUp"
               class="text-decoration-none white--text"
