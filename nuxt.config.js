@@ -22,7 +22,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate:
-      '%s - Lab Overflow - The community for the cannabis testing industry.',
+      '%s - Empowering cannabis testing labs to develop technology through collective knowledge',
     title: 'Lab Overflow',
     htmlAttrs: {
       lang: 'en',
@@ -54,7 +54,6 @@ export default {
     '@nuxtjs/vuetify',
     // https://google-analytics.nuxtjs.org/setup
     '@nuxtjs/google-analytics',
-
     // https://github.com/LinusBorg/portal-vue
     'portal-vue/nuxt',
     // https://timbenniks.dev/writings/easy-dynamic-routes-in-your-nuxt-sitemap

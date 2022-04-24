@@ -103,50 +103,18 @@
 
         <v-col cols="12">
           <v-card-actions>
-            <!-- {{ $route.path }} -->
-
-            <v-row justify="space-between">
-              <v-col cols="12" lg="6">
-                <ShareNetwork
-                  network="facebook"
-                  url="http://google.com"
-                  title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
-                  description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
-                  quote="The hot reload is so fast it\'s near instant. - Evan You"
-                  hashtags="vuejs,vite"
-                  class="mr-4"
-                >
-                  <v-icon>mdi-facebook</v-icon>
-                  <span>Share on Facebook</span>
-                </ShareNetwork>
-
-                <ShareNetwork
-                  network="linkedin"
-                  url="http://google.com"
-                  title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
-                  description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
-                  quote="The hot reload is so fast it\'s near instant. - Evan You"
-                  hashtags="vuejs,vite"
-                  class="m4-2"
-                >
-                  <v-icon>mdi-linkedin</v-icon>
-                  <span>Share on Linked In</span>
-                </ShareNetwork>
-
-                <ShareNetwork
-                  network="twitter"
-                  url="http://google.com"
-                  title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
-                  description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
-                  quote="The hot reload is so fast it\'s near instant. - Evan You"
-                  hashtags="vuejs,vite"
-                  class="ml-4"
-                >
-                  <v-icon>mdi-twitter</v-icon>
-                  <span>Share on Twitter</span>
-                </ShareNetwork>
+            <v-row justify="end" align="end">
+              <v-col cols="12" md="6" class="">
+                <share-buttons
+                  :url="`https://www.laboverflow.com/job-board/${job.slug}`"
+                  :name="pageName"
+                  :title="`Looking for a ${pageTitle} in ${job.location}`"
+                  :description="pageDescription"
+                  :quote="`Looking for a ${pageTitle} in ${job.location}`"
+                  hashtags=""
+                ></share-buttons>
               </v-col>
-              <v-col class="text-right">
+              <v-col cols="12" md="6" class="text-right">
                 <v-spacer></v-spacer>
                 <v-btn @click.native="closeDialog()">Close</v-btn>
                 <v-btn
@@ -173,11 +141,11 @@
   </v-sheet>
 </template>
 <script>
+import ShareButtons from '~/components/ShareButtons.vue'
 export default {
+  components: { ShareButtons },
   // scrollToTop: false,
   async asyncData({ params, store, redirect, $fire, route, $ga }) {
-    console.warn('_slug asyncData', params, route)
-
     let job
     if (!params.slug) {
       job = {}
@@ -185,17 +153,65 @@ export default {
       try {
         job = await store.getters['jobs/getJobBySlug'](params.slug)
       } catch (e) {
-        console.error('cant find job slug', e)
+        console.error('cant find job slug', e) // eslint-disable-line no-console
         redirect('/job-board')
       }
     }
 
-    // const url = router
+    // Meta
+    const pageName = 'job'
+    const pageTitle = job.position || 'Job position'
+    const pageDescription = job.jobDescriptionCopy
+      ? job.jobDescriptionCopy.slice(0, 30)
+      : 'Job description'
 
-    return { job, params, $ga }
+    return { job, params, $ga, pageName, pageTitle, pageDescription }
   },
   data() {
-    return {}
+    return {
+      pageName: '',
+      pageTitle: '',
+      pageDescription: ' ',
+    }
+  },
+  head() {
+    return {
+      title: this.pageTitle,
+      meta: [
+        {
+          hid: this.pageName,
+          name: this.pageTitle,
+          content: this.pageDescription,
+        },
+        {
+          hid: 'description',
+          property: 'description',
+          content: this.pageDescription,
+        },
+        { hid: 'og-type', property: 'og:type', content: 'website' },
+        { hid: 'og-title', property: 'og:title', content: this.pageTitle },
+        {
+          hid: 'og-desc',
+          property: 'og:description',
+          content: this.pageDescription,
+        },
+        {
+          hid: 'og-image',
+          property: 'og:image',
+          content: `${process.env.baseURL}/woman-coat.jpg`,
+        },
+        {
+          hid: 't-type',
+          name: 'twitter:card',
+          content: `${process.env.baseURL}/woman-coat.jpg`,
+        },
+        {
+          hid: 'og-url',
+          property: 'og:url',
+          content: `${process.env.baseURL}${this.$route.path}`,
+        },
+      ],
+    }
   },
   methods: {
     closeDialog() {

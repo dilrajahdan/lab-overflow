@@ -4,34 +4,19 @@
       class="deep-purple white--text d-flex flex-column justify-center py-3"
     >
       <v-container class="">
-        <v-row justify="" class="">
-          <v-col cols="12" sm="6" md="6">
+        <v-row class="">
+          <v-col cols="12" sm="6" md="8">
             <v-card-title>
-              <h1 class="overline">Welcome to Lab Overflow</h1>
+              <h1 class="overline">Lab Overflow</h1>
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">
-                The hub for cannabis testing professionals
+                Empowering cannabis testing labs to develop technology through
+                collective knowledge
               </h2>
             </v-card-subtitle>
 
             <h1 class="display-1 mb-6 display-1"></h1>
-            <!--             
-            <p class="font-weight-regular mb-9">
-              Members of the cannabis testing industry are dissatisfied with
-              their current information flow.
-            </p>
-            <p class="font-weight-regular mb-9">
-              Knowledge is power. And the lack of knowledge about cannabis
-              testing is losing labs and the industry itself money.
-            </p>
-            <p class="font-weight-regular mb-9">
-              This a website where you can connect with other professionals
-              anonymously in order to share and improve your methods, find
-              reliable suppliers, pick up tips for your next career move and
-              more – all while ensuring that knowledge flows freely between the
-              lab community!
-            </p> -->
           </v-col>
         </v-row>
       </v-container>
@@ -48,10 +33,7 @@
             to="/cannabis-testing-labs/canada/ontario/sigma-analytical-services"
           >
             <v-card-title>
-              <h2 class="text-h6">
-                <!-- <v-icon>mdi-account-circle</v-icon> -->
-                Featured lab
-              </h2>
+              <h2 class="text-h6">Featured lab</h2>
             </v-card-title>
             <v-card-text>
               <v-img height="229" class="teal darken-4 white--text">
@@ -75,8 +57,8 @@
             </v-card-actions>
           </v-card>
         </v-col>
-        <v-col cols="12" sm="6" class="fill-heightX">
-          <v-card class="fill-heightX">
+        <v-col cols="12" sm="6" class="">
+          <v-card class="">
             <v-card-title>
               <h2 class="text-h6">Latest jobs</h2>
             </v-card-title>
@@ -106,24 +88,52 @@
 
 <script>
 export default {
-  async asyncData({ store }) {
+  asyncData({ store, route }) {
     // const paidJobs = await store.getters['jobs/getPaidJobs']
     //
-    // return { paidJobs }
+
+    console.log(route)
+    return {}
   },
   data() {
     return {
       // title: null,
+      pageName: 'home',
+      pageTitle: 'Lab Overflow',
+      pageDescription:
+        'Empowering cannabis testing labs to develop technology through collective knowledge',
     }
   },
   head() {
     return {
-      // title: this.title,
+      title: this.pageTitle,
       meta: [
         {
-          hid: 'homepage',
-          name: 'description',
-          content: `The community for the cannabis testing industry. Join us, bring your wisdom and share your knowledge to bulk up your lab's methods! Exchange ideas with experienced industry workers, form virtual partnerships or start your next career move with us!`,
+          hid: this.pageName,
+          name: this.pageTitle,
+          content: this.pageDescription,
+        },
+        { hid: 'og-type', property: 'og:type', content: 'website' },
+        { hid: 'og-title', property: 'og:title', content: this.pageTitle },
+        {
+          hid: 'og-desc',
+          property: 'og:description',
+          content: this.pageDescription,
+        },
+        {
+          hid: 'og-image',
+          property: 'og:image',
+          content: `${process.env.baseURL}/woman-coat.jpg`,
+        },
+        {
+          hid: 't-type',
+          name: 'twitter:card',
+          content: `${process.env.baseURL}/woman-coat.jpg`,
+        },
+        {
+          hid: 'og-url',
+          property: 'og:url',
+          content: `${process.env.baseURL}${this.$route.path}`,
         },
       ],
     }

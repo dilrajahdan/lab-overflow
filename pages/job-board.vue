@@ -239,17 +239,17 @@ export default {
       uniqueLocations: [],
       uniqueTypes: [],
       uniqueRoles: [],
-      title: 'Job board for Lab Professionals in the Cannabis industry',
+      title: 'Job board',
     }
   },
   head() {
     return {
-      title: this.title,
+      title: 'Job board',
       meta: [
         {
           hid: 'Lab jobs',
-          name: 'Lab jobs',
-          content: `Job board for Lab Professionals in the Cannabis industry`,
+          name: 'Job board',
+          content: `The job board for lab professionals in the cannabis industry`,
         },
       ],
     }
