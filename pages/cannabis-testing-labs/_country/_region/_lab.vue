@@ -20,7 +20,9 @@
         <v-row>
           <v-col cols="12" sm="3" class="flex-grow-0">
             <v-img
-              src="/testalize-me-0jE8ynV4mis-unsplash.jpg"
+              :src="
+                require('~/assets/img/testalize-me-0jE8ynV4mis-unsplash.jpg')
+              "
               height="150px"
               max-width="100%"
               class="mx-3"
@@ -126,17 +128,17 @@
         </v-expand-transition>
 
         <!-- Request callback dialog -->
-        <v-dialog v-model="showRequestCallback" max-width="600px">
-          <v-card>
-            <form
-              ref="labCallback"
-              method="POST"
-              name="labcallback"
-              data-netlify
-              data-netlify-honeypot="bot-field"
-              accept-charset="UTF-8"
-              @submit.prevent="submitForm()"
-            >
+        <form
+          ref="labCallback"
+          method="POST"
+          name="labcallback"
+          data-netlify
+          data-netlify-honeypot="bot-field"
+          accept-charset="UTF-8"
+          @submit.prevent="submitForm()"
+        >
+          <v-dialog v-model="showRequestCallback" max-width="600px">
+            <v-card>
               <input type="hidden" name="form-name" value="labcallback" />
 
               <v-card-title>
@@ -255,9 +257,9 @@
                   Request callback
                 </v-btn>
               </v-card-actions>
-            </form>
-          </v-card>
-        </v-dialog>
+            </v-card>
+          </v-dialog>
+        </form>
       </v-card>
 
       <!-- Snackbar  -->
