@@ -20,9 +20,7 @@
         <v-row>
           <v-col cols="12" sm="3" class="flex-grow-0">
             <v-img
-              :src="
-                require('~/assets/img/testalize-me-0jE8ynV4mis-unsplash.jpg')
-              "
+              :src="require('~/assets/img/vials.jpg')"
               height="150px"
               max-width="100%"
               class="mx-3"
