@@ -5,11 +5,11 @@
         <v-row>
           <v-col cols="12" sm="10" md="8" offset-md="0" lg="6" xl="4">
             <v-card-title>
-              <h1 class="overline">Cannabis lab directory</h1>
+              <h1 class="overline">Lab directory</h1>
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">
-                Find the best analytical testing labs in your area
+                Find a cannabis testing labs in your area
               </h2>
             </v-card-subtitle>
 

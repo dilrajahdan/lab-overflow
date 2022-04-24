@@ -26,31 +26,47 @@
       <subscribe-to-jobs></subscribe-to-jobs>
     </v-container>
     <v-container>
-      <v-row>
-        <v-col cols="12" sm="6" class="fill-heightX">
-          <v-card
-            class="fill-heightX"
-            to="/cannabis-testing-labs/canada/ontario/sigma-analytical-services"
-          >
+      <v-row class="">
+        <v-col cols="12" sm="6" class="">
+          <v-card class="fill-height d-flex flex-column">
             <v-card-title>
               <h2 class="text-h6">Featured lab</h2>
             </v-card-title>
-            <v-card-text>
-              <v-img height="229" class="teal darken-4 white--text">
-                <v-row align="end" justify="end" class="fill-height">
-                  <v-col class="">
-                    <v-card-subtitle class="overline pb-0"
-                      >Toronto, Canada</v-card-subtitle
-                    >
-                    <v-card-title class="text-h3 py-0"
-                      >Sigma Analytical Services</v-card-title
-                    >
-                  </v-col>
-                </v-row>
-              </v-img>
+            <v-card-text class="fill-height">
+              <v-card
+                dark
+                color=""
+                class="fill-height"
+                to="/cannabis-testing-labs/canada/ontario/sigma-analytical-services"
+              >
+                <!-- 282 -->
+                <v-img
+                  position="0 0%"
+                  :src="require('~/assets/img/toronto2.jpg')"
+                  height=""
+                  class="teal accent-3 fill-height"
+                >
+                  <v-row
+                    align="end"
+                    justify="end"
+                    class="fill-height text--white"
+                  >
+                    <v-col class="">
+                      <v-card-subtitle class="overline pb-0"
+                        >Toronto, Canada</v-card-subtitle
+                      >
+                      <v-card-title class="text-h2 font-weight-medium pt-0"
+                        >Sigma Analytical Services</v-card-title
+                      >
+                    </v-col>
+                  </v-row>
+                </v-img>
+              </v-card>
             </v-card-text>
+            <v-spacer></v-spacer>
             <v-card-actions>
               <v-spacer></v-spacer>
+
               <v-btn color="primary" to="/cannabis-testing-labs"
                 >View all labs</v-btn
               >
@@ -140,7 +156,7 @@ export default {
   },
   computed: {
     paidJobs() {
-      return this.$store.getters['jobs/getPaidJobs'].slice(0, 2)
+      return this.$store.getters['jobs/getPaidJobs'].slice(0, 3)
     },
   },
 }

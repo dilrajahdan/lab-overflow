@@ -12,7 +12,7 @@
           <!-- Featured -->
           <v-col
             v-if="featured"
-            v-show="$vuetify.breakpoint.mdAndUp"
+            v-show="$vuetify.breakpoint.mdAndUp && !dense"
             class="flex-grow-0 px-0"
           >
             <v-card-text class="py-0 pr-0">
@@ -21,18 +21,18 @@
           </v-col>
 
           <v-col class="pa-0">
-            <v-card-title v-if="featured" class="pt-2 overline">
+            <v-card-title v-if="featured" class="pt-1 pb-2 overline">
               {{ job.labName || 'Lab name' }}
             </v-card-title>
-            <v-card-subtitle class="py-0" :class="featured ? '' : 'pt-2'">
+            <v-card-subtitle class="pb-0 pt-1">
               <h3 class="primary--text position">
                 {{ job.position || 'Position' }}
               </h3>
             </v-card-subtitle>
 
-            <v-card-text class="pb-2">
+            <v-card-text class="pb-0">
               <v-chip-group>
-                <v-chip class="mt-1" label small>{{
+                <v-chip class="mt-0" label small>{{
                   job.location || 'Location, Country'
                 }}</v-chip>
 
@@ -40,7 +40,7 @@
                   v-if="job.salaryMin"
                   label
                   small
-                  color="green lighten-4 mt-1"
+                  color="green lighten-4 mt-0"
                   >💰 USD {{ job.salaryMin }}
                   <span v-if="job.salaryMin && job.salaryMax">-</span>
                   {{ job.salaryMax }}

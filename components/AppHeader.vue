@@ -53,26 +53,18 @@
             </nuxt-link>
           </v-toolbar-title>
           <v-spacer />
-          <!-- <div > -->
-          <!-- <v-tabs
-              v-show="$vuetify.breakpoint.smAndUp"
-              class="mr-3"
-              background-color="transparent"
-            > -->
-          <!-- {{ $vuetify.breakpoint.name }} -->
+
           <v-btn
             v-for="item in items"
             v-show="!noLinks || $vuetify.breakpoint.mdAndUp"
             :key="item.title"
             :to="item.to"
             class="ml-2"
-            :small="$vuetify.breakpoint.xs"
+            small
             :color="item.outlined ? 'red' : ''"
-            :class="item.outlined ? 'd-flex' : 'd-none d-md-flex'"
+            :class="item.outlined ? 'd-flex' : 'd-none d-sm-flex'"
             >{{ item.title }}</v-btn
           >
-          <!-- </v-tabs> -->
-          <!-- </div> -->
         </v-row></v-container
       >
     </v-app-bar>

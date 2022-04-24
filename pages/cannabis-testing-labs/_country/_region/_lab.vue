@@ -131,13 +131,13 @@
             <form
               ref="labCallback"
               method="POST"
-              name="lab-callback"
+              name="labcallback"
               data-netlify
               data-netlify-honeypot="bot-field"
               accept-charset="UTF-8"
               @submit.prevent="submitForm()"
             >
-              <input type="hidden" name="form-name" value="lab-callback" />
+              <input type="hidden" name="form-name" value="labcallback" />
 
               <v-card-title>
                 <!-- {{ $route.params }} -->
@@ -273,7 +273,7 @@
 
       <!-- Assays -->
       <v-card class="Xmx-auto my-6">
-        <v-card-title class="mb-3">Assays (Tests) performed</v-card-title>
+        <v-card-title class="mb-3">Tests</v-card-title>
         <v-card-subtitle>Safety</v-card-subtitle>
 
         <v-card-text>
@@ -511,33 +511,36 @@ export default {
 
         this.requestForm.path = this.$route.path
 
-        this.$axios
-          .post('https://formcarry.com/s/rM8akNWCcUw', this.requestForm)
-          .then((res) => {
-            // Perform Success Action
+        // this.$axios
+        //   .post('https://formcarry.com/s/rM8akNWCcUw', this.requestForm)
+        //   .then((res) => {
+        //     // Perform Success Action
 
-            console.info(this.$refs.requestForm)
-            // Close dialog
-            this.showRequestCallback = !this.showRequestCallback
-            // Send tracking info
-            const trackingEventData = {
-              eventCategory: `${this.params.country}/${this.params.region}/${this.params.lab}`,
-              eventAction: 'click',
-              eventLabel: 'request callback sent',
-              eventValue: this.showDetails ? 'show' : 'hide',
-            }
-            this.$ga.event(trackingEventData)
-            // Notify user
-            this.snackbar = true
-          })
+        //     console.info(this.$refs.requestForm)
+        //     // Close dialog
+        //     this.showRequestCallback = !this.showRequestCallback
+        //     // Send tracking info
+        //     const trackingEventData = {
+        //       eventCategory: `${this.params.country}/${this.params.region}/${this.params.lab}`,
+        //       eventAction: 'click',
+        //       eventLabel: 'request callback sent',
+        //       eventValue: this.showDetails ? 'show' : 'hide',
+        //     }
+        //     this.$ga.event(trackingEventData)
+        //     // Notify user
+        //     this.snackbar = true
+        //   })
         // .catch((error) => {
         //   // error.response.status Check status code
+        //   console.log(error)
         // })
         // .finally(() => {
         //   // Perform action in always
         // })
 
         // this.$refs.requestForm.$el.submit()
+        const form = this.$refs.labCallback
+        form.submit()
       }
     },
   },
