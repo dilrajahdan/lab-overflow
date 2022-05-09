@@ -9,6 +9,7 @@
       :hashtags="hashtags"
       class="
         mr-4
+        mb-3
         v-btn v-btn--rounded
         rounded-sm
         v-size--x-small
@@ -31,6 +32,7 @@
       :hashtags="hashtags"
       class="
         mr-4
+        mb-2
         v-btn v-btn--rounded
         rounded-sm
         v-size--x-small
@@ -40,7 +42,7 @@
         white--text
       "
     >
-      <v-icon dark>mdi-linkedin</v-icon>
+      <v-icon left dark>mdi-linkedin</v-icon>
       <span>Share on Linked In</span>
     </ShareNetwork>
     <br />
@@ -62,7 +64,7 @@
         white--text
       "
     >
-      <v-icon dark>mdi-twitter</v-icon>
+      <v-icon left dark>mdi-twitter</v-icon>
       <span>Share on Twitter</span>
     </ShareNetwork>
   </div>
