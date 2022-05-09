@@ -91,6 +91,10 @@ export default {
         },
 
         {
+          title: 'Forum',
+          to: '/forum',
+        },
+        {
           title: 'Lab directory',
           to: '/cannabis-testing-labs',
         },

@@ -99,6 +99,8 @@
         </v-col>
       </v-row>
     </v-container>
+
+    <!-- <div id="discourse-comments"></div> -->
   </div>
 </template>
 
@@ -158,6 +160,22 @@ export default {
     paidJobs() {
       return this.$store.getters['jobs/getPaidJobs'].slice(0, 3)
     },
+  },
+  mounted() {
+    // const DiscourseEmbed = {
+    //   discourseUrl: 'https://forum.laboverflow.com/categories',
+    //   discourseEmbedUrl: 'https://forum.laboverflow.com',
+    // }
+    // ;(function () {
+    //   const d = document.createElement('script')
+    //   d.type = 'text/javascript'
+    //   d.async = true
+    //   d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js'
+    //   ;(
+    //     document.getElementsByTagName('head')[0] ||
+    //     document.getElementsByTagName('body')[0]
+    //   ).appendChild(d)
+    // })()
   },
 }
 </script>
