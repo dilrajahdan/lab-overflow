@@ -1,23 +1,24 @@
 <template>
-  <div>
-    <v-tooltip top left>
+  <div class="feedback">
+    <v-tooltip left>
       <!--  on, attrs  -->
       <template #activator="{ on, attrs }">
         <v-btn
+          tile
+          class="feedback__button"
           color="deep-purple accent-3"
-          fab
+          right
+          bottom
           dark
           fixed
-          bottom
-          right
           v-bind="attrs"
           v-on="on"
           @click="dialog = true"
         >
-          <v-icon>mdi-comment-quote</v-icon>
+          <v-icon left>mdi-comment-quote</v-icon> Feedback
         </v-btn>
       </template>
-      <span>I'd ❤️ your feedback</span>
+      <span>We'd ❤️ your feedback</span>
     </v-tooltip>
     <v-dialog v-model="dialog" max-width="500px">
       <form
@@ -33,7 +34,7 @@
         <v-card>
           <v-card-title>
             <span class="headline mb-6"
-              >What should I build or improve next?</span
+              >What should we build or improve next?</span
             >
           </v-card-title>
           <v-card-subtitle>
@@ -149,3 +150,12 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.feedback__button {
+  right: 0;
+  top: 50%;
+  transform: rotate(90deg) translateY(-50%) translateX(50%);
+  transform-origin: top right;
+}
+</style>

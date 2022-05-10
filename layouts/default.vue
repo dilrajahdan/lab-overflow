@@ -1,13 +1,11 @@
 <template>
   <v-app dark>
     <app-header></app-header>
-
     <v-main class="grey lighten-4">
       <Nuxt />
-
-      <feedback-button></feedback-button>
     </v-main>
 
+    <feedback-button></feedback-button>
     <app-footer></app-footer>
   </v-app>
 </template>

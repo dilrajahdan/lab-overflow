@@ -1,6 +1,6 @@
 <template>
   <v-footer dark absolute app>
-    <v-container class="py-10">
+    <v-container class="py-10C">
       <v-row>
         <v-col cols="12" sm="6">
           <div class="footer-links">
