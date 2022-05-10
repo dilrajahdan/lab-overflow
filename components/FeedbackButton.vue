@@ -157,5 +157,6 @@ export default {
   top: 50%;
   transform: rotate(90deg) translateY(-50%) translateX(50%);
   transform-origin: top right;
+  z-index: 9;
 }
 </style>
