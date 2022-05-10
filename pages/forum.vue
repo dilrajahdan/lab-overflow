@@ -45,7 +45,7 @@
           </p>
 
           <v-btn color="primary" href="https://forum.laboverflow.com"
-            >Let talks shop! Take me to the forum</v-btn
+            >Let talks! Take me to the forum</v-btn
           >
         </v-col>
       </v-row>
