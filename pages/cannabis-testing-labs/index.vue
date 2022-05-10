@@ -42,7 +42,7 @@
               </v-autocomplete>
             </v-card-text>
           </v-col>
-          <v-col cols="12" sm="10" md="8" offset-md="0" lg="6" xl="4">
+          <!-- <v-col cols="12" sm="10" md="8" offset-md="0" lg="6" xl="4">
             <v-card-subtitle class="body-2">
               Finding a cannabis testing lab can be difficult.
             </v-card-subtitle>
@@ -56,7 +56,7 @@
               status. Lab Overflow helps you find a trusted laboratory to test
               your product for potency and quality assurance.
             </v-card-subtitle>
-          </v-col>
+          </v-col> -->
         </v-row>
       </v-container>
     </v-card>
