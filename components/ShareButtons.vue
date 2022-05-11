@@ -91,6 +91,7 @@ export default {
     quote: {
       type: String,
       required: false,
+      default: '',
     },
     hashtags: {
       type: String,
@@ -98,5 +99,9 @@ export default {
       default: '',
     },
   },
+  // asyncData({ $axios, $route }) {
+  //   console.log('route', $route)
+  //   return $route
+  // },
 }
 </script>

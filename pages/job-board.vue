@@ -239,17 +239,48 @@ export default {
       uniqueLocations: [],
       uniqueTypes: [],
       uniqueRoles: [],
-      title: 'Job board',
+      // title: '',
+      pageName: 'Job board',
+      pageTitle: 'Job board',
+      pageDescription:
+        'The job board for lab professionals in the cannabis industry',
     }
   },
   head() {
     return {
-      title: 'Job board',
+      title: this.pageTitle,
       meta: [
         {
-          hid: 'Lab jobs',
-          name: 'Job board',
-          content: `The job board for lab professionals in the cannabis industry`,
+          hid: this.pageName,
+          name: this.pageTitle,
+          content: this.pageDescription,
+        },
+        {
+          hid: 'description',
+          property: 'description',
+          content: this.pageDescription,
+        },
+        { hid: 'og-type', property: 'og:type', content: 'website' },
+        { hid: 'og-title', property: 'og:title', content: this.pageTitle },
+        {
+          hid: 'og-desc',
+          property: 'og:description',
+          content: this.pageDescription,
+        },
+        {
+          hid: 'og-image',
+          property: 'og:image',
+          content: `${process.env.baseURL}/woman-coat.jpg`,
+        },
+        {
+          hid: 't-type',
+          name: 'twitter:card',
+          content: `${process.env.baseURL}/woman-coat.jpg`,
+        },
+        {
+          hid: 'og-url',
+          property: 'og:url',
+          content: `${process.env.baseURL}${this.$route.path}`,
         },
       ],
     }
