@@ -154,12 +154,12 @@ export default {
         {
           hid: 'og-image',
           property: 'og:image',
-          content: `${process.env.baseURL}/img/laboverflow.png`,
+          content: `${process.env.baseURL}/assets/img/laboverflow.png`,
         },
         {
           hid: 't-type',
           name: 'twitter:card',
-          content: `${process.env.baseURL}/img/laboverflow.png`,
+          content: `${process.env.baseURL}/assets/img/laboverflow.png`,
         },
         {
           hid: 'og-url',
