@@ -5,7 +5,7 @@
     >
       <v-container class="">
         <v-row class="">
-          <v-col cols="12" sm="6" md="8">
+          <v-col cols="12" md="8">
             <v-card-title>
               <h1 class="overline">Forum</h1>
             </v-card-title>

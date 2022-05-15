@@ -8,16 +8,7 @@
     >
       <v-container>
         <v-row align="center">
-          <v-col
-            cols="12"
-            sm="10"
-            offset-sm="0"
-            md="8"
-            offset-md="0"
-            lg="6"
-            xl="4"
-            class=""
-          >
+          <v-col cols="12" md="8" offset-md="0" lg="6" xl="4" class="">
             <v-card-title>
               <h1 class="overline">Post a job</h1>
             </v-card-title>

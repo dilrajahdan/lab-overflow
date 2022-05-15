@@ -7,22 +7,8 @@
       class="d-flex align-center flex-column py-3"
     >
       <v-container>
-        <!-- <v-row>
-          <v-col cols="6">{{ jobs }}</v-col>
-          <v-col cols="6">{{ paidJobs }}</v-col>
-        </v-row> -->
-
         <v-row>
-          <v-col
-            cols="12"
-            sm="10"
-            offset-sm="0"
-            md="8"
-            offset-md="0"
-            lg="6"
-            xl="4"
-            class=""
-          >
+          <v-col cols="12" md="8" offset-md="0" lg="6" xl="4" class="">
             <v-card-title>
               <h1 class="overline">Job board</h1>
             </v-card-title>
