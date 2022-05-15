@@ -119,6 +119,7 @@
 </template>
 
 <script>
+import ogImage from '@/assets/img/laboverflow.png'
 export default {
   asyncData({ store, route }) {
     // const paidJobs = await store.getters['jobs/getPaidJobs']
@@ -154,12 +155,12 @@ export default {
         {
           hid: 'og-image',
           property: 'og:image',
-          content: `${process.env.baseURL}/assets/img/laboverflow.png`,
+          content: `${process.env.baseURL}${ogImage}`,
         },
         {
           hid: 't-type',
           name: 'twitter:card',
-          content: `${process.env.baseURL}/assets/img/laboverflow.png`,
+          content: `${process.env.baseURL}${ogImage}`,
         },
         {
           hid: 'og-url',
