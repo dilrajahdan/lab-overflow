@@ -1,4 +1,199 @@
+// ------------------------
+// Vuetify variables used to overwrite default Vuetify theme
+// Note: Do not import and add styles here
+
 // Ref: https://github.com/nuxt-community/vuetify-module#customvariables
-//
-// The variables you want to modify
-// $font-size-root: 20px;
+// ------------------------
+
+// ------------------------
+// Globals
+// ------------------------
+// $body-font-family: 'Metropolis', sans-serif;
+// $heading-font-family: $body-font-family;
+// $border-radius-root: 6px;
+// $font-size-root: 14px;
+
+
+
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 880px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+// $container-max-widths: (
+//   xs: 540px,
+//   sm: 720px,
+//   md: 960px,
+//   lg: 1140px,
+//   xl: 1320px,
+// );
+// ------------------------
+// Fonts
+// ------------------------
+$headings: (
+//   'h1': (
+//     'size': 47px,
+//     'weight': 800,
+//     'line-height': 1em,
+//     'letter-spacing': -0.04125em,
+//     'font-family': $heading-font-family,
+//     'text-transform': false,
+//   ),
+//   'h2': (
+//     'size': 30px,
+//     'line-height': 1em,
+//     'letter-spacing': -0.04125em,
+//     'weight': bolder,
+//     'font-family': $heading-font-family,
+//   ),
+//   'h3': (
+//     'size': 25px,
+//     'line-height': 1em,
+//     'letter-spacing': -0.04125em,
+//     'weight': bolder,
+//     'font-family': $heading-font-family,
+//   ),
+//   'h4': (
+//     'size': 20px,
+//     'line-height': 1em,
+//     'letter-spacing': -0.04125em,
+//     'weight': bolder,
+//     'font-family': $heading-font-family,
+//   ),
+  // 'h5': (
+  //   'size': 1.5rem,
+  //   'weight': 400,
+  //   'line-height': 2rem,
+  //   'letter-spacing': normal,
+  //   'font-family': $heading-font-family,
+  //   'text-transform': false,
+  // ),
+  // 'h6': (
+  //   'size': 1.25rem,
+  //   'weight': 500,
+  //   'line-height': 2rem,
+  //   'letter-spacing': 0.0125em,
+  //   'font-family': $heading-font-family,
+  //   'text-transform': false,
+  // ),
+  // 'subtitle-1': (
+  //   'size': 1rem,
+  //   'weight': normal,
+  //   'line-height': 1.75rem,
+  //   'letter-spacing': 0.009375em,
+  //   'font-family': $body-font-family,
+  //   'text-transform': false,
+  // ),
+  // 'subtitle-2': (
+  //   'size': 0.875rem,
+  //   'weight': 500,
+  //   'line-height': 1.375rem,
+  //   'letter-spacing': 0.0071428571em,
+  //   'font-family': $body-font-family,
+  //   'text-transform': false,
+  // ),
+//   'body-1': (
+//     'size': 20px,
+//     'weight': 700,
+//     'line-height': 1.15,
+//     'letter-spacing': -0.04125em,
+//     'font-family': $body-font-family,
+//     'text-transform': false,
+//   ),
+//   'body-2': (
+//     'size': 16px,
+//     'weight': 600,
+//     'line-height': 1.25rem,
+//     'letter-spacing': -0.04125em,
+//     'font-family': $body-font-family,
+//     'text-transform': false,
+//   ),
+//   'button': (
+//     // 'size': 0.875rem,
+//     'weight': 600,
+//     // 'line-height': 2.25rem,
+//     'letter-spacing': -0.04125em,
+//     'font-family': $body-font-family,
+//     'text-transform': none,
+//     // 'padding': 30px 10px,
+//   ),
+  // 'caption': (
+  //   'size': 0.75rem,
+  //   'weight': 400,
+  //   'line-height': 1.25rem,
+  //   'letter-spacing': 0.0333333333em,
+  //   'font-family': $body-font-family,
+  //   'text-transform': false,
+  // ),
+  // 'overline': (
+  //   'size': 0.75rem,
+  //   'weight': 500,
+  //   'line-height': 2rem,
+  //   'letter-spacing': 0.1666666667em,
+  //   'font-family': $body-font-family,
+  //   'text-transform': uppercase,
+  // ),,,,,
+);
+
+// @debug map-deep-merge($headings, 'h1');
+
+$font-weights: (
+  // 'thin': 100,
+  // 'light': 300,
+  // 'regular': 400,
+//   'medium': 500,
+//   'semibold': 600,
+//   'bold': 700,
+//   'bolder': 800,
+  // 'black': 900
+);
+
+// ------------------------
+// Colors
+// ------------------------
+// $teal: (
+//   'accent-3': #08DABE,
+// );
+
+$deep-purple: (
+//   'base': #6200ea,
+//   'lighten-5': #e1bee7,
+//   'lighten-4': #ce93d8,
+//   'lighten-3': #ba68c8,
+//   'lighten-2': #ab47bc,
+//   'lighten-1': #9c27b0,
+//   'darken-1': #8e24aa,
+//   'darken-2': #7b1fa2,
+//   'darken-3': #6a1b9a,
+//   'darken-4': #4a148c,
+//   'accent-3': #7500EB,
+);
+
+// ------------------------
+// Buttons
+// ------------------------
+// $btn-sizes: (
+//   'default': 41,
+//   'large': 54
+// );
+// $btn-border-radius: 0px;
+// $btn-font-weight: 600;
+// $btn-outline-border-width: 3px;
+// $btn-text-transform: none;
+// $btn-icon-font-size: 1.5rem;
+
+
+// ------------------------
+// Forms
+// ------------------------
+// $text-field-padding:	4px 0 4px;
+
+
+// ------------------------
+// Now import Vuetify theme using the above variables
+// ------------------------
+@import '~vuetify/src/styles/styles.sass';

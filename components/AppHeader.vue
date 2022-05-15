@@ -3,6 +3,7 @@
     <v-navigation-drawer
       v-show="!noLinks"
       v-model="drawer"
+      color="grey lighten-3"
       :clipped="clipped"
       fixed
       app
@@ -12,8 +13,13 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>
-              {{ title }}
-              <b>{{ title2 }}</b>
+              <v-img
+                contain
+                height="40"
+                position="0 50%"
+                alt="Lab Overflow"
+                :src="require('~/assets/img/laboverflow.png')"
+              ></v-img>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -25,33 +31,39 @@
           :disabled="item.disabled"
           router
           exact
+          :class="item.outlined ? 'red darken-3 white--text' : ''"
         >
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title class="text-h6" v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar dark clipped-left fixed app>
+    <v-app-bar clipped-left fixed app color="">
       <v-container>
-        <v-row align="center" justify="center">
+        <v-row no-gutters align="center" justify="center">
           <v-app-bar-nav-icon
-            v-show="$vuetify.breakpoint.xs && !noLinks"
+            v-show="$vuetify.breakpoint.smAndDown && !noLinks"
             @click.stop="drawer = !drawer"
           />
 
-          <v-toolbar-title class="d-flex align-center">
-            <!-- ({{ $vuetify.breakpoint.name }}) -->
-
-            <nuxt-link
-              v-show="$vuetify.breakpoint.smAndUp"
-              class="text-decoration-none white--text"
-              to="/"
-            >
-              {{ title }}
-              <b>{{ title2 }}</b>
-            </nuxt-link>
-          </v-toolbar-title>
+          <!-- <v-toolbar-title class="d-flex align-center"> -->
+          <nuxt-link
+            v-show="$vuetify.breakpoint.smAndUp"
+            class="text-decoration-none ml-2"
+            to="/"
+          >
+            <v-img
+              contain
+              height="50"
+              width="142"
+              position="0% 50%"
+              class=""
+              alt="Lab Overflow"
+              :src="require('~/assets/img/laboverflow.png')"
+            ></v-img>
+          </nuxt-link>
+          <!-- </v-toolbar-title> -->
           <v-spacer />
 
           <v-btn
@@ -59,10 +71,11 @@
             v-show="!noLinks || $vuetify.breakpoint.mdAndUp"
             :key="item.title"
             :to="item.to"
-            class="ml-2"
-            small
-            :color="item.outlined ? 'red' : ''"
-            :class="item.outlined ? 'd-flex' : 'd-none d-sm-flex'"
+            class="ml-2 elevation-0"
+            :color="
+              item.outlined ? 'red darken-3 white--text' : 'teal accent-4'
+            "
+            :class="item.outlined ? 'd-flex' : 'd-none d-md-flex'"
             >{{ item.title }}</v-btn
           >
         </v-row></v-container

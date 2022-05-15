@@ -20,7 +20,11 @@
       </template>
       <span>We'd ❤️ your feedback</span>
     </v-tooltip>
-    <v-dialog v-model="dialog" max-width="500px">
+    <v-dialog
+      v-model="dialog"
+      transition="slide-x-reverse-transition"
+      max-width="500px"
+    >
       <form
         ref="feedback"
         method="POST"

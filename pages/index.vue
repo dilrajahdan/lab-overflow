@@ -7,7 +7,10 @@
         <v-row class="">
           <v-col cols="12" sm="6" md="8">
             <v-card-title>
-              <h1 class="overline">Lab Overflow</h1>
+              <h1 class="overline">
+                Lab Overflow
+                <!-- ({{ $vuetify.breakpoint.name }}) -->
+              </h1>
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">

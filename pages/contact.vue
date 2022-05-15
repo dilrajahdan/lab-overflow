@@ -27,14 +27,14 @@
           <p class="body-1 mt-4 text-h5">
             <a
               href="mailto:eric.burton.martin@gmail.com?subject=Laboverflow science"
-              >Contact Eric for the Science
+              >Contact Eric for the science
             </a>
           </p>
 
           <p class="body-1 mt-4 text-h5">
             <a
               href="mailto:dilrajahdan@gmail.com?subject=Laboverflow advertizing"
-              >Contact Dil for Advertizing</a
+              >Contact Dil for advertising</a
             >
           </p>
         </v-col>
