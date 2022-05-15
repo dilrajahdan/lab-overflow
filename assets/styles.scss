@@ -1,5 +1,10 @@
 @import '~vuetify/src/styles/settings/_variables';
 
+body {
+  background-color: #673ab7 !important;
+}
+
+
 .capitalize {
   text-transform: capitalize;
 }
