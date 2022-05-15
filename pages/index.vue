@@ -102,7 +102,7 @@
         </v-col>
       </v-row>
     </v-container>
-
+    <!-- {{ $route }} -->
     <share-buttons
       :url="`https://www.laboverflow.com/`"
       :name="pageName"
@@ -119,14 +119,14 @@
 </template>
 
 <script>
-import ogImage from '@/assets/img/laboverflow.png'
+import ogImage from '@/assets/img/share-img.jpg'
 export default {
   asyncData({ store, route }) {
     // const paidJobs = await store.getters['jobs/getPaidJobs']
-    //
-
-    console.log(route, `${process.env.baseURL}/img/laboverflow.png`)
-    return {}
+    console.log('DIKL', `${process.env.baseURL}/img/laboverflow.png`)
+    return {
+      baseURL: process.env.baseURL,
+    }
   },
   data() {
     return {
