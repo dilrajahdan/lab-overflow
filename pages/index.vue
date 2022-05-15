@@ -113,8 +113,6 @@
     ></share-buttons>
 
     <!-- <img class="fill-height" src="~/assets/img/laboverflow.png" /> -->
-
-    <!-- <div></div> -->
   </div>
 </template>
 
@@ -123,9 +121,9 @@ import ogImage from '@/assets/img/share-img.jpg'
 export default {
   asyncData({ store, route }) {
     // const paidJobs = await store.getters['jobs/getPaidJobs']
-    console.log('DIKL', `${process.env.baseURL}/img/laboverflow.png`)
+    // console.log('DIKL', `${process.env.baseURL}/img/laboverflow.png`)
     return {
-      baseURL: process.env.baseURL,
+      // baseURL: process.env.baseURL,
     }
   },
   data() {
