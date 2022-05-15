@@ -34,12 +34,15 @@
           :class="item.outlined ? 'red darken-3 white--text' : ''"
         >
           <v-list-item-content>
-            <v-list-item-title class="text-h6" v-text="item.title" />
+            <v-list-item-title
+              class="text-h6 text-uppercase"
+              v-text="item.title"
+            />
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar clipped-left fixed app color="">
+    <v-app-bar clipped-left fixed app color="white">
       <v-container>
         <v-row no-gutters align="center" justify="center">
           <v-app-bar-nav-icon
@@ -47,7 +50,6 @@
             @click.stop="drawer = !drawer"
           />
 
-          <!-- <v-toolbar-title class="d-flex align-center"> -->
           <nuxt-link
             v-show="$vuetify.breakpoint.smAndUp"
             class="text-decoration-none ml-2"
@@ -63,7 +65,9 @@
               :src="require('~/assets/img/laboverflow.png')"
             ></v-img>
           </nuxt-link>
-          <!-- </v-toolbar-title> -->
+          <!-- <v-toolbar-title class="d-flex align-center"
+            >{{ pageTitle }}
+          </v-toolbar-title> -->
           <v-spacer />
 
           <v-btn
@@ -72,9 +76,8 @@
             :key="item.title"
             :to="item.to"
             class="ml-2 elevation-0"
-            :color="
-              item.outlined ? 'red darken-3 white--text' : 'teal accent-4'
-            "
+            :outlined="item.outlined ? false : true"
+            :color="item.outlined ? 'red darken-3 white--text' : 'teal'"
             :class="item.outlined ? 'd-flex' : 'd-none d-md-flex'"
             >{{ item.title }}</v-btn
           >
@@ -122,8 +125,7 @@ export default {
           outlined: true,
         },
       ],
-      title: 'Lab',
-      title2: 'Overflow',
+      title: 'Lab Overflow',
     }
   },
 }

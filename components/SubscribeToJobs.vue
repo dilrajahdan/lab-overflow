@@ -19,15 +19,14 @@
       color="deep-orange darken-1"
       class="white--text"
     >
-      <p class="body-1 pb-0 mb-0 flex-grow-0">
-        Send me awesome cannabis lab jobs here
-      </p>
-      <template #icon>
+      <p class="body-1 pb-0 mb-0">Send me awesome cannabis lab jobs</p>
+      <!-- <template #icon>
         <v-icon class="" color="white" dark>mdi-email-plus</v-icon>
-      </template>
+      </template> -->
       <template #actions class="">
         <v-text-field
           v-model="subscribeToJobsEmail"
+          prepend-inner-icon="mdi-email"
           filled
           rounded
           required

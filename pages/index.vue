@@ -47,9 +47,11 @@
                   position="0 0%"
                   :src="require('~/assets/img/toronto2.jpg')"
                   height=""
-                  class="teal accent-3 fill-height"
+                  gradient="to top , rgba(0,0,0,.77) 10%, rgba(0,96,100,.3) 40%"
+                  class="fill-height"
                 >
                   <v-row
+                    no-gutters
                     align="end"
                     justify="end"
                     class="fill-height text--white"
@@ -167,7 +169,8 @@ export default {
   mounted() {
     // const DiscourseEmbed = {
     //   discourseUrl: 'https://forum.laboverflow.com/categories',
-    //   discourseEmbedUrl: 'https://forum.laboverflow.com',
+    //   // discourseEmbedUrl: 'https://laboverflow.com',
+    //   // discourseEmbedUrl: 'http://locallhost:3000',
     // }
     // ;(function () {
     //   const d = document.createElement('script')
