@@ -18,8 +18,6 @@
                 collective knowledge
               </h2>
             </v-card-subtitle>
-
-            <h1 class="display-1 mb-6 display-1"></h1>
           </v-col>
         </v-row>
       </v-container>
@@ -105,7 +103,18 @@
       </v-row>
     </v-container>
 
-    <!-- <div id="discourse-comments"></div> -->
+    <share-buttons
+      :url="`https://www.laboverflow.com/`"
+      :name="pageName"
+      :title="pageDescription"
+      :description="pageDescription"
+      :quote="pageDescription"
+      hashtags=""
+    ></share-buttons>
+
+    <!-- <img class="fill-height" src="~/assets/img/laboverflow.png" /> -->
+
+    <!-- <div></div> -->
   </div>
 </template>
 
@@ -115,12 +124,11 @@ export default {
     // const paidJobs = await store.getters['jobs/getPaidJobs']
     //
 
-    console.log(route)
+    console.log(route, `${process.env.baseURL}/img/laboverflow.png`)
     return {}
   },
   data() {
     return {
-      // title: null,
       pageName: 'home',
       pageTitle: 'Lab Overflow',
       pageDescription:
@@ -146,12 +154,12 @@ export default {
         {
           hid: 'og-image',
           property: 'og:image',
-          content: `${process.env.baseURL}/woman-coat.jpg`,
+          content: `${process.env.baseURL}/img/laboverflow.png`,
         },
         {
           hid: 't-type',
           name: 'twitter:card',
-          content: `${process.env.baseURL}/woman-coat.jpg`,
+          content: `${process.env.baseURL}/img/laboverflow.png`,
         },
         {
           hid: 'og-url',
