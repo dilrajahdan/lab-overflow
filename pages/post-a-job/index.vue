@@ -239,7 +239,7 @@
           <!-- Benefits Live Preview -->
           <v-col cols="12" md="6" order="1" order-md="2">
             <!-- Intro -->
-            <v-card color="deep-purple lighten-5">
+            <v-card color="deep-purple darken-2 " dark>
               <v-card-title>Why Lab Overflow?</v-card-title>
               <v-card-text>
                 <ul>
@@ -260,21 +260,21 @@
               to="#"
               :featured="true"
               :job="job"
-              class="mt-4 sticky"
+              class="mt-4 sticky-box"
             ></live-preview>
           </v-col>
         </v-row>
       </v-container>
     </v-form>
 
-    <v-card class="buy-footer">
+    <v-card class="buy-footer" color="teal">
       <v-container>
         <v-row align="center" justify="end">
           <v-col class="flex-grow-0"
             ><v-btn
               color="red"
               class="white--text"
-              large
+              x-large
               :disabled="!formValid"
               @click.stop="gotoCheckout()"
             >
