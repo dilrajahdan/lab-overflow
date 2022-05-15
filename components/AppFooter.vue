@@ -3,7 +3,7 @@
     <v-container class="py-10C">
       <v-row>
         <v-col cols="12" sm="6">
-          <div class="footer-links">
+          <div class="footer-links text-center text-sm-left">
             <nuxt-link
               v-for="item in items"
               :key="item.title"
@@ -13,13 +13,13 @@
             >
           </div>
         </v-col>
-        <v-col cols="12" sm="6">
+        <v-col cols="12" sm="6" class="d-flex justify-center justify-sm-end">
           <share-buttons></share-buttons>
         </v-col>
       </v-row>
       <v-row class="mt-0">
         <v-col cols="12">
-          <small class="">
+          <small class="d-block text-center text-sm-left">
             &copy; {{ new Date().getFullYear() }}
             <nuxt-link class="white--text" to="/">Lab Overflow</nuxt-link>
           </small>
