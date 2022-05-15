@@ -11,8 +11,8 @@
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">
-                Cannabis testing labs are essential for ensuring the safety and
-                quality of cannabis products.
+                Finally, a place for cannabis scientists to engage in open
+                discussion.
               </h2>
             </v-card-subtitle>
 
@@ -27,9 +27,9 @@
       <v-row align="center">
         <v-col cols="12" sm="8">
           <p class="body-1 mt-4 text-h5">
-            However, there is currently no standardization in the industry,
+            Currently, there exists no unified standardization in the industry
             which can lead to inconsistent results, questionable practices, and
-            confusion for clients.
+            confusion for labs and clients alike.
           </p>
 
           <p>
@@ -45,7 +45,7 @@
           </p>
 
           <v-btn color="primary" href="https://forum.laboverflow.com"
-            >Let talks! Take me to the forum</v-btn
+            >Take me to the forum</v-btn
           >
         </v-col>
       </v-row>
