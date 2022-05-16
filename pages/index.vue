@@ -103,14 +103,14 @@
       </v-row>
     </v-container>
     <!-- {{ $route }} -->
-    <share-buttons
+    <!-- <share-buttons
       :url="`https://www.laboverflow.com/`"
       :name="pageName"
       :title="pageDescription"
       :description="pageDescription"
       :quote="pageDescription"
       hashtags=""
-    ></share-buttons>
+    ></share-buttons> -->
 
     <!-- <img class="fill-height" src="~/assets/img/laboverflow.png" /> -->
   </div>
