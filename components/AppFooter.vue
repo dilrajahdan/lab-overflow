@@ -13,9 +13,9 @@
             >
           </div>
         </v-col>
-        <v-col cols="12" sm="6" class="d-flex justify-center justify-sm-end">
+        <!-- <v-col cols="12" sm="6" class="d-flex justify-center justify-sm-end">
           <share-buttons></share-buttons>
-        </v-col>
+        </v-col> -->
       </v-row>
       <v-row class="mt-0">
         <v-col cols="12">

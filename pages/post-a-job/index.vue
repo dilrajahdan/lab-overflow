@@ -279,6 +279,8 @@
 </template>
 
 <script>
+import ogImage from '@/assets/img/share-img.jpg'
+
 import LivePreview from '~/components/LivePreview.vue'
 // import Stripe from 'stripe'
 // const stripe = new Stripe(process.env.STRIPE_PK)
@@ -513,6 +515,44 @@ export default {
         feedback: '',
         slug: '',
       },
+    }
+  },
+  head() {
+    return {
+      pageName: 'post-a-job',
+      pageTitle: 'Post a job',
+      pageDescription: 'Find your next lab superstar in the next 30 days',
+
+      title: this.pageTitle,
+      meta: [
+        {
+          hid: this.pageName,
+          name: this.pageTitle,
+          content: this.pageDescription,
+        },
+        { hid: 'og-type', property: 'og:type', content: 'website' },
+        { hid: 'og-title', property: 'og:title', content: this.pageTitle },
+        {
+          hid: 'og-desc',
+          property: 'og:description',
+          content: this.pageDescription,
+        },
+        {
+          hid: 'og-image',
+          property: 'og:image',
+          content: `${process.env.baseURL}${ogImage}`,
+        },
+        {
+          hid: 't-type',
+          name: 'twitter:card',
+          content: `${process.env.baseURL}${ogImage}`,
+        },
+        {
+          hid: 'og-url',
+          property: 'og:url',
+          content: `${process.env.baseURL}${this.$route.path}`,
+        },
+      ],
     }
   },
   methods: {

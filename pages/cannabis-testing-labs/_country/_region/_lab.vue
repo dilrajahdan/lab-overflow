@@ -379,6 +379,8 @@
 </template>
 
 <script>
+import ogImage from '@/assets/img/share-img.jpg'
+
 export default {
   async asyncData({ $content, params, $ga }) {
     // Get lab data
@@ -426,12 +428,12 @@ export default {
     const country = selectedCountry[0].name
     const region = selectedRegion[0].name
 
-    const title = `${lab.Lab} - ${region}, ${country}.`
-    const description = `${lab.Lab} is a cannabis testing lab located in ${region}, ${country}.`
-
+    const pageTitle = `${lab.Lab} - ${region}, ${country}.`
+    const pageDescription = `${lab.Lab} is a cannabis testing lab located in ${region}, ${country}.`
+    console.log('pageDescription', pageDescription)
     return {
-      title,
-      description,
+      pageTitle,
+      pageDescription,
       lab,
       params,
       $ga,
@@ -467,7 +469,29 @@ export default {
         {
           hid: 'Lab Directory',
           name: 'description',
-          content: this.description,
+          content: this.pageDescription,
+        },
+        { hid: 'og-type', property: 'og:type', content: 'website' },
+        { hid: 'og-title', property: 'og:title', content: this.pageTitle },
+        {
+          hid: 'og-desc',
+          property: 'og:description',
+          content: this.pageDescription,
+        },
+        {
+          hid: 'og-image',
+          property: 'og:image',
+          content: `${process.env.baseURL}${ogImage}`,
+        },
+        {
+          hid: 't-type',
+          name: 'twitter:card',
+          content: `${process.env.baseURL}${ogImage}`,
+        },
+        {
+          hid: 'og-url',
+          property: 'og:url',
+          content: `${process.env.baseURL}${this.$route.path}`,
         },
       ],
     }

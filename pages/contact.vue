@@ -11,8 +11,7 @@
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">
-                It's just the two of us. We love to talk with cannabis
-                businesses.
+                We love to talk with cannabis businesses.
               </h2>
             </v-card-subtitle>
           </v-col>
@@ -42,3 +41,50 @@
     </v-container>
   </article>
 </template>
+
+<script>
+import ogImage from '@/assets/img/share-img.jpg'
+export default {
+  data() {
+    return {
+      pageName: 'contact',
+      pageTitle: 'Contact',
+      pageDescription: 'We love to talk with cannabis businesses.',
+    }
+  },
+  head() {
+    return {
+      title: this.pageTitle,
+      meta: [
+        {
+          hid: this.pageName,
+          name: this.pageTitle,
+          content: this.pageDescription,
+        },
+        { hid: 'og-type', property: 'og:type', content: 'website' },
+        { hid: 'og-title', property: 'og:title', content: this.pageTitle },
+        {
+          hid: 'og-desc',
+          property: 'og:description',
+          content: this.pageDescription,
+        },
+        {
+          hid: 'og-image',
+          property: 'og:image',
+          content: `${process.env.baseURL}${ogImage}`,
+        },
+        {
+          hid: 't-type',
+          name: 'twitter:card',
+          content: `${process.env.baseURL}${ogImage}`,
+        },
+        {
+          hid: 'og-url',
+          property: 'og:url',
+          content: `${process.env.baseURL}${this.$route.path}`,
+        },
+      ],
+    }
+  },
+}
+</script>

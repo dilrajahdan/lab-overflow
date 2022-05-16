@@ -150,6 +150,8 @@
 </template>
 
 <script>
+import ogImage from '@/assets/img/share-img.jpg'
+
 export default {
   async asyncData({ $content, params }) {
     const allRegions = await $content('regions').fetch()
@@ -195,16 +197,38 @@ export default {
   },
   data: () => ({
     selectedItem: null,
-    title: 'Cannabis Testing Lab Directory',
+    pageTitle: 'Cannabis testing lab directory',
   }),
   head() {
     return {
-      title: this.title,
+      title: this.pageTitle,
       meta: [
         {
           hid: 'Lab Directory',
           name: 'description',
           content: `Lab Overflow's Lab Directory is the world’s leading platform for searching, comparing and selecting cannabis testing labs.`,
+        },
+        { hid: 'og-type', property: 'og:type', content: 'website' },
+        { hid: 'og-title', property: 'og:title', content: this.pageTitle },
+        {
+          hid: 'og-desc',
+          property: 'og:description',
+          content: this.pageDescription,
+        },
+        {
+          hid: 'og-image',
+          property: 'og:image',
+          content: `${process.env.baseURL}${ogImage}`,
+        },
+        {
+          hid: 't-type',
+          name: 'twitter:card',
+          content: `${process.env.baseURL}${ogImage}`,
+        },
+        {
+          hid: 'og-url',
+          property: 'og:url',
+          content: `${process.env.baseURL}${this.$route.path}`,
         },
       ],
     }

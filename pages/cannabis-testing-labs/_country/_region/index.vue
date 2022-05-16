@@ -212,6 +212,8 @@
   </section>
 </template>
 <script>
+import ogImage from '@/assets/img/share-img.jpg'
+
 export default {
   async asyncData({ $content, params }) {
     // Get regions data for filters
@@ -317,6 +319,28 @@ export default {
           hid: 'Lab Directory',
           name: 'description',
           content: this.description,
+        },
+        { hid: 'og-type', property: 'og:type', content: 'website' },
+        { hid: 'og-title', property: 'og:title', content: this.title },
+        {
+          hid: 'og-desc',
+          property: 'og:description',
+          content: this.description,
+        },
+        {
+          hid: 'og-image',
+          property: 'og:image',
+          content: `${process.env.baseURL}${ogImage}`,
+        },
+        {
+          hid: 't-type',
+          name: 'twitter:card',
+          content: `${process.env.baseURL}${ogImage}`,
+        },
+        {
+          hid: 'og-url',
+          property: 'og:url',
+          content: `${process.env.baseURL}${this.$route.path}`,
         },
       ],
     }
