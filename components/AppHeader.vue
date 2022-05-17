@@ -75,6 +75,7 @@
             v-show="!noLinks || $vuetify.breakpoint.mdAndUp"
             :key="item.title"
             :to="item.to"
+            small
             class="ml-2 elevation-0"
             :outlined="item.outlined ? false : true"
             :color="item.outlined ? 'red darken-3 white--text' : 'teal'"
@@ -124,6 +125,10 @@ export default {
           to: '/post-a-job',
           outlined: true,
         },
+        // {
+        //   title: 'Articles',
+        //   to: '/articles',
+        // },
       ],
       title: 'Lab Overflow',
     }

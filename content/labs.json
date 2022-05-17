@@ -1492,8 +1492,8 @@
     "Country": "USA",
     "Phone": "720.460.3489",
     "URL": "agricorlabs.com",
-    "Licence": "405R-00009",
-    "Licence Type": "REC",
+    "Licence": "405-00004, 405R-00009",
+    "Licence Type": "MED, REC",
     "Terpenes": "y",
     "Cannabinoid": "y",
     "Pesticides": "y",
@@ -1505,7 +1505,7 @@
     "Stability": "y",
     "Sample Types": "Cannabis",
     "Accredited": "ISO",
-    "Pickup Service": "",
+    "Pickup Service": "y",
     "slug": "agricor-laboratories"
   },
   {
@@ -1638,7 +1638,7 @@
     "Phone": "(888) 800-8223",
     "URL": "botanacor.com",
     "Licence": "",
-    "Licence Type": "",
+    "Licence Type": "CDPHE",
     "Terpenes": "y",
     "Cannabinoid": "y",
     "Pesticides": "y",
@@ -1648,9 +1648,9 @@
     "Residual Solvents": "y",
     "Moisture Activity": "y",
     "Stability": "",
-    "Sample Types": "Cannabis",
-    "Accredited": "ISO",
-    "Pickup Service": "",
+    "Sample Types": "Cannabis, Hemp",
+    "Accredited": "ISO, GLP",
+    "Pickup Service": "y",
     "slug": "botanacor-laboratories"
   },
   {

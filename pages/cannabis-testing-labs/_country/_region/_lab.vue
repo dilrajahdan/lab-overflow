@@ -1,12 +1,12 @@
 <template>
   <v-container>
-    <v-row class="mt-0 pt-0">
-      <v-col class="mt-0 pt-0">
+    <v-row class="mt-0">
+      <v-col class="">
         <v-btn
           color=""
           outlined
-          dark
-          class="mt-0 mb-3 d-blockX secondary"
+          small
+          class="mt-0 mb-4"
           :to="`/cannabis-testing-labs/${params.country}/${params.region}`"
         >
           <v-icon left>mdi-arrow-left</v-icon>
