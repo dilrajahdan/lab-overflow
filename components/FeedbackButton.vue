@@ -38,11 +38,13 @@
         <v-card>
           <v-card-title>
             <span class="headline mb-6"
-              >What should we build or improve next?</span
+              >See a bug? or have an idea of what we should build next?</span
             >
           </v-card-title>
           <v-card-subtitle>
-            <span class="body-1">Be nice :)</span>
+            <span class="body-1"
+              >We are 2 humans so be nice and we will sort it ;)</span
+            >
           </v-card-subtitle>
           <!-- {{ params }} -->
 
