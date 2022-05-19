@@ -7,12 +7,12 @@
       class="d-flex align-center flex-column py-3"
     >
       <v-container>
-        <v-row align="center">
-          <v-col cols="12" md="8" offset-md="0" lg="6" xl="4" class="">
+        <v-row>
+          <v-col cols="12" md="8">
             <v-card-title>
               <h1 class="overline">Post a job</h1>
             </v-card-title>
-            <v-card-subtitle class="">
+            <v-card-subtitle>
               <h2 class="display-1">
                 Find your next lab superstar in the next 30 days
               </h2>

@@ -19,6 +19,12 @@
       color="deep-orange darken-1"
       class="white--text"
     >
+      <!-- <p class="body-1 pb-0 mb-0 d-flex align-center justify-center">
+        Get a <v-select in label="daily"></v-select> email of the best cannabis
+        lab jobs in
+        <v-autocomplete color="white" label="Location"></v-autocomplete>
+        <v-text-field label="Email"></v-text-field>
+      </p> -->
       <p class="body-1 pb-0 mb-0">Send me awesome cannabis lab jobs</p>
       <!-- <template #icon>
         <v-icon class="" color="white" dark>mdi-email-plus</v-icon>
