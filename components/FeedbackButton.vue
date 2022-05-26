@@ -18,7 +18,7 @@
           <v-icon left>mdi-comment-quote</v-icon> Feedback
         </v-btn>
       </template>
-      <span>We'd ❤️ your feedback</span>
+      <span>We ❤️ your feedback</span>
     </v-tooltip>
     <v-dialog
       v-model="dialog"

@@ -128,12 +128,10 @@
         <!-- Request callback dialog -->
         <form
           ref="labCallback"
-          method="POST"
           name="labcallback"
           data-netlify
           data-netlify-honeypot="bot-field"
           accept-charset="UTF-8"
-          @submit.prevent="submitForm()"
         >
           <v-dialog v-model="showRequestCallback" max-width="600px">
             <v-card>

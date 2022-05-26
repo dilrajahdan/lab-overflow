@@ -26,27 +26,31 @@
       <subscribe-to-jobs></subscribe-to-jobs>
       <v-row align="center">
         <v-col cols="12" sm="8">
-          <p class="body-1 mt-4 text-h5">
-            Currently, there exists no unified standardization in the industry
-            which can lead to inconsistent results, questionable practices, and
-            confusion for labs and clients alike.
-          </p>
+          <v-card class="mt-4">
+            <v-card-text>
+              <p class="body-1 mt-4 text-h5">
+                Currently, there exists no unified standardization in the
+                industry which can lead to inconsistent results, questionable
+                practices, and confusion for labs and clients alike.
+              </p>
 
-          <p>
-            Our forum advocates for open anonymous communication between
-            cannabis testing labs in order to improve transparency, testing
-            methodologies, and quality control within the industry.
-          </p>
+              <p>
+                Our forum advocates for open anonymous communication between
+                cannabis testing labs in order to improve transparency, testing
+                methodologies, and quality control within the industry.
+              </p>
 
-          <p>
-            We at Lab Overflow believe that by sharing information and
-            collaborating, we can help to create a stronger, more reliable
-            cannabis testing ecosystem for everyone involved.
-          </p>
+              <p>
+                We at Lab Overflow believe that by sharing information and
+                collaborating, we can help to create a stronger, more reliable
+                cannabis testing ecosystem for everyone involved.
+              </p>
 
-          <v-btn color="primary" href="https://forum.laboverflow.com"
-            >Take me to the forum</v-btn
-          >
+              <v-btn color="primary" href="https://forum.laboverflow.com"
+                >Take me to the forum</v-btn
+              >
+            </v-card-text>
+          </v-card>
         </v-col>
       </v-row>
     </v-container>

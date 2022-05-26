@@ -9,6 +9,12 @@
     >
       <v-container>
         <v-row align="center" class="flex-nowrap">
+          <v-card-title class="pt-1 pb-2 overline">
+            {{ job.labName || 'Lab name' }}
+          </v-card-title>
+        </v-row>
+
+        <v-row align="center" class="flex-nowrap pt-0 mt-0">
           <!-- Featured -->
           <v-col
             v-if="featured"
@@ -21,10 +27,7 @@
           </v-col>
 
           <v-col class="pa-0">
-            <v-card-title v-if="featured" class="pt-1 pb-2 overline">
-              {{ job.labName || 'Lab name' }}
-            </v-card-title>
-            <v-card-subtitle class="pb-0 pt-1">
+            <v-card-subtitle class="py-0">
               <h3 class="primary--text position">
                 {{ job.position || 'Position' }}
               </h3>
@@ -32,7 +35,7 @@
 
             <v-card-text class="pb-0">
               <v-chip-group>
-                <v-chip class="mt-0" label small>{{
+                <v-chip class="mt-1" label small>{{
                   job.location || 'Location, Country'
                 }}</v-chip>
 

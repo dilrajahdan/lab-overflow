@@ -3,7 +3,7 @@
     <v-card color="deep-purple" dark tile class="py-3">
       <v-container>
         <v-row>
-          <v-col cols="12" md="8" offset-md="0" lg="6" xl="4">
+          <v-col cols="12" md="8">
             <v-card-title>
               <h1 class="overline">Lab directory</h1>
             </v-card-title>
