@@ -177,7 +177,7 @@ export default {
     },
   },
   async mounted() {
-    console.log('MOUINTH', await this.$store.getters['jobs/getPaidJobs'])
+    // console.log('mounted', await this.$store.getters['jobs/getPaidJobs'])
     // const DiscourseEmbed = {
     //   discourseUrl: 'https://forum.laboverflow.com/categories',
     //   // discourseEmbedUrl: 'https://laboverflow.com',

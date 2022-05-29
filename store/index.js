@@ -79,9 +79,7 @@ export const actions = {
     }))
     paidJobs = paidJobs.map((job) => ({ ...job, jobType: 'paid' }))
 
-    // console.log({ scrapedJobs })
-    // console.log({ paidJobs })
-    console.log('Scapred Jobs', scrapedJobs.length, scrapedJobs)
+    console.log('Free Jobs', scrapedJobs.length, scrapedJobs)
     console.log('Paid Jobs', paidJobs.length, paidJobs)
 
     // Combine paid and free jobs

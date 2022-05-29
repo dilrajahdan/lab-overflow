@@ -180,7 +180,7 @@
             </v-card>
 
             <!-- Company -->
-            <v-card class="mt-4">
+            <!-- <v-card class="mt-4">
               <v-card-title>Company</v-card-title>
 
               <v-card-text>
@@ -209,7 +209,7 @@
                   auto-grow
                 ></v-text-field>
               </v-card-text>
-            </v-card>
+            </v-card> -->
 
             <!-- Feedback -->
             <v-card class="mt-4">
@@ -509,9 +509,9 @@ export default {
         howToApplyCopy: '',
         applyURL: '',
         applyEmail: '',
-        companyWebsite: '',
-        companyEmail: '',
-        invoiceNotes: '',
+        // companyWebsite: '',
+        // companyEmail: '',
+        // invoiceNotes: '',
         feedback: '',
         slug: '',
       },
