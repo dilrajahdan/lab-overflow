@@ -341,7 +341,11 @@
               <v-btn color="grey " text @click="labDialog = false">
                 Cancel
               </v-btn>
-              <v-btn type="submit" color="primary" @click="sumitAddLabForm()">
+              <v-btn
+                type="submit"
+                color="primary"
+                @click="sumitAddLabForm($event)"
+              >
                 Submit
               </v-btn>
             </v-card-actions>
@@ -573,6 +577,8 @@ export default {
       })
     },
     sumitAddLabForm() {
+      const form = this.$refs.addlab
+      form.submit()
       this.labDialog = false
       this.snackbar = true
     },
