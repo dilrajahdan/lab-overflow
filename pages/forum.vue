@@ -62,7 +62,7 @@
                 :url="`https://laboverflow.com${$route.path}`"
                 :title="pageTitle"
                 :description="pageDescription"
-                :hashtags="[forum, cannabis, testing, lab, laboverflow]"
+                hashtags="forum, cannabis, testing, lab, laboverflow"
               ></share-buttons>
             </v-card-text>
           </v-card>
