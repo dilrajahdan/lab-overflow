@@ -10,9 +10,7 @@
               <h1 class="overline">Contact</h1>
             </v-card-title>
             <v-card-subtitle class="">
-              <h2 class="display-1">
-                We love to talk with cannabis businesses.
-              </h2>
+              <h2 class="display-1">We love to talk with cannabis labs</h2>
             </v-card-subtitle>
           </v-col>
         </v-row>
@@ -21,21 +19,24 @@
 
     <v-container class="mt-2">
       <subscribe-to-jobs></subscribe-to-jobs>
-      <v-row align="center">
+      <v-row align="center" class="mt-2">
         <v-col cols="12" sm="8">
-          <p class="body-1 mt-4 text-h5">
-            <a
-              href="mailto:eric.burton.martin@gmail.com?subject=Laboverflow science"
-              >Contact Eric for the science
-            </a>
-          </p>
-
-          <p class="body-1 mt-4 text-h5">
-            <a
-              href="mailto:dilrajahdan@gmail.com?subject=Laboverflow advertizing"
-              >Contact Dil for advertising</a
+          <v-card>
+            <v-card-title
+              ><a
+                href="mailto:eric.burton.martin@gmail.com?subject=Laboverflow science"
+              >
+                Contact Eric for the science
+              </a></v-card-title
             >
-          </p>
+            <v-card-title>
+              <a
+                href="mailto:dilrajahdan@gmail.com?subject=Laboverflow advertizing"
+              >
+                Contact Dil for advertising
+              </a></v-card-title
+            >
+          </v-card>
         </v-col>
       </v-row>
     </v-container>
@@ -50,7 +51,7 @@ export default {
     return {
       pageName: 'contact',
       pageTitle: 'Contact',
-      pageDescription: 'We love to talk with cannabis businesses.',
+      pageDescription: 'We love to talk with cannabis labs.',
     }
   },
   head() {
