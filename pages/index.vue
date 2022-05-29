@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import ogImage from '@/assets/img/share-img.jpg'
+import ogImage from '@/assets/img/laboverflow-bg.png'
 export default {
   asyncData({ store, route }) {
     // const paidJobs = await store.getters['jobs/getPaidJobs']

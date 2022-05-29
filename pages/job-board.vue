@@ -129,7 +129,8 @@
 </template>
 
 <script>
-import ogImage from '@/assets/img/share-img.jpg'
+import ogImage from '@/assets/img/laboverflow-bg.png'
+
 import LivePreview from '~/components/LivePreview.vue'
 import SubscribeToJobs from '~/components/SubscribeToJobs.vue'
 export default {

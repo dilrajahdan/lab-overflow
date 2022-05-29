@@ -143,13 +143,13 @@
               <v-card-title>How to apply</v-card-title>
 
               <v-card-text>
-                <client-only>
+                <!-- <client-only>
                   <p class="body-1 mb-0">How to apply</p>
                   <tiptap-editor
                     v-model="job.howToApplyCopy"
                     class="mb-6"
                   ></tiptap-editor>
-                </client-only>
+                </client-only> -->
 
                 <!-- <v-textarea
                 v-model="job.howToApply"
@@ -279,7 +279,7 @@
 </template>
 
 <script>
-import ogImage from '@/assets/img/share-img.jpg'
+import ogImage from '@/assets/img/laboverflow-bg.png'
 
 import LivePreview from '~/components/LivePreview.vue'
 // import Stripe from 'stripe'

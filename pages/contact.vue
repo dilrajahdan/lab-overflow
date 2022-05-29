@@ -43,7 +43,8 @@
 </template>
 
 <script>
-import ogImage from '@/assets/img/share-img.jpg'
+import ogImage from '@/assets/img/laboverflow-bg.png'
+
 export default {
   data() {
     return {

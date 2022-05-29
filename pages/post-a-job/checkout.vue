@@ -130,14 +130,14 @@ export default {
     async handleSubmit(e) {
       this.loading = true
 
-      //   console.warn('EMAIL', this.job.companyEmail) // eslint-disable-line no-console
+      //   console.warn('EMAIL', this.job.applyEmail) // eslint-disable-line no-console
 
       const { error } = await this.stripe.confirmPayment({
         elements: this.elements,
         confirmParams: {
           // Make sure to change this to your payment completion page
           return_url: `${process.env.baseURL}/post-a-job/thank-you`,
-          receipt_email: this.job.companyEmail,
+          receipt_email: this.job.applyEmail,
         },
       })
 
