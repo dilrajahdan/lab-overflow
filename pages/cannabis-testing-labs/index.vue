@@ -61,7 +61,11 @@
       </v-container>
     </v-card>
 
-    <v-container class="mt-3">
+    <v-container class="mt-2 sticky-md">
+      <subscribe-to-jobs class=""></subscribe-to-jobs>
+    </v-container>
+
+    <v-container>
       <v-row>
         <v-col cols="12" sm="4" lg="4" offset-lg="0">
           <v-card>

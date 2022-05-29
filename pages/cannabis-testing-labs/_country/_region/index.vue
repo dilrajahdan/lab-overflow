@@ -89,22 +89,29 @@
         </v-col>
 
         <v-col cols="12" md="3" order-md="2" class="">
-          <share-the-love-card
-            :url="`https://laboverflow.com${$route.path}`"
-            :title="pageTitle"
-            :description="pageDescription"
-            hashtags="lab directory, members directory, cannabis, testing, lab, laboverflow"
-          ></share-the-love-card>
+          <div class="sticky-sm">
+            <v-card>
+              <v-card-subtitle>Submit your Lab</v-card-subtitle>
+              <v-card-text>
+                <v-btn color="teal" block outlined
+                  >Submit your Lab</v-btn
+                ></v-card-text
+              >
+            </v-card>
 
+            <share-the-love-card
+              class="mt-4"
+              :url="`https://laboverflow.com${$route.path}`"
+              :title="pageTitle"
+              :description="pageDescription"
+              hashtags="lab directory, members directory, cannabis, testing, lab, laboverflow"
+            ></share-the-love-card>
+          </div>
           <!-- <v-card
             class="sticky-box"
             :href="`mailto:admin@laboverflow.com?subject=Advertise on Lab Overflow, ${regionLabel}, ${countryLabel}`"
             ><v-card-text>Advertise here</v-card-text>
           </v-card> -->
-
-          <!-- <v-card color="pink mb-3" dark
-                ><v-card-text>Submit you Lab</v-card-text>
-              </v-card> -->
         </v-col>
 
         <v-col cols="12" md="6" order-md="1" class="greenC">
@@ -116,6 +123,7 @@
                   {{ regionLabel }},
                   {{ countryLabel }}
                 </v-card-title>
+
                 <v-list v-if="labs.length" three-line>
                   <v-list-item-group>
                     <template v-for="(item, index) in labs">
@@ -124,12 +132,12 @@
                         :to="{ path: `${params.region}/${item.slug}` }"
                       >
                         <template #default="{}">
-                          <v-img
+                          <!-- <v-img
                             src="/logo.png"
                             class="mr-4 grey lighten-2"
                             max-width="64"
                             min-width="64"
-                          ></v-img>
+                          ></v-img> -->
                           <v-list-item-content>
                             <v-list-item-title
                               v-text="item['Lab']"
@@ -203,10 +211,7 @@
                     </v-list-item-content>
 
                     <v-list-item-action>
-                      <v-btn
-                        href="mailto:admin@laboverflow.com?subject=Submit my Lab"
-                        >Submit your Lab</v-btn
-                      >
+                      <v-btn outlined color="teal">Submit your lab</v-btn>
                     </v-list-item-action>
                   </v-list-item>
                 </v-list>
