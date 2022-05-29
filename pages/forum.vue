@@ -24,9 +24,11 @@
 
     <v-container class="mt-2">
       <subscribe-to-jobs></subscribe-to-jobs>
-      <v-row align="center">
+    </v-container>
+    <v-container class="">
+      <v-row>
         <v-col cols="12" sm="8">
-          <v-card class="mt-4">
+          <v-card>
             <v-card-text>
               <p class="body-1 mt-4 text-h5">
                 Currently, there exists no unified standardization in the
@@ -52,6 +54,19 @@
             </v-card-text>
           </v-card>
         </v-col>
+        <v-col cols="12" sm="4">
+          <v-card>
+            <v-card-title>Share the love</v-card-title>
+            <v-card-text>
+              <share-buttons
+                :url="`https://laboverflow.com${$route.path}`"
+                :title="pageTitle"
+                :description="pageDescription"
+                :hashtags="[forum, cannabis, testing, lab, laboverflow]"
+              ></share-buttons>
+            </v-card-text>
+          </v-card>
+        </v-col>
       </v-row>
     </v-container>
   </article>
@@ -59,8 +74,10 @@
 
 <script>
 import ogImage from '@/assets/img/laboverflow-bg.png'
+import ShareButtons from '~/components/ShareButtons.vue'
 
 export default {
+  components: { ShareButtons },
   data() {
     return {
       pageName: 'forum',
@@ -102,6 +119,10 @@ export default {
         },
       ],
     }
+  },
+  mounted() {
+    // console.log('asyncData', window.location)
+    // return store.dispatch('fetchJob', route.params.slug)
   },
 }
 </script>

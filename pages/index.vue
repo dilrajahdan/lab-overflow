@@ -70,7 +70,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
 
-              <v-btn color="primary" to="/cannabis-testing-labs"
+              <v-btn block color="primary" to="/cannabis-testing-labs"
                 >View all labs</v-btn
               >
             </v-card-actions>
@@ -98,7 +98,7 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="primary" to="/job-board">View all jobs</v-btn>
+              <v-btn block color="primary" to="/job-board">View all jobs</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
