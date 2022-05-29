@@ -223,12 +223,14 @@
     </v-container>
 
     <form
-      name="add-lab"
+      ref="addlab"
+      name="addlab"
+      method="POST"
       data-netlify
       data-netlify-honeypot="bot-field"
       action="/thank-you"
     >
-      <input type="hidden" name="form-name" value="add-lab" />
+      <input type="hidden" name="form-name" value="addlab" />
       <v-form
         ref="labForm"
         v-model="labForm.valid"
