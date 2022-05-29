@@ -134,6 +134,7 @@
 
             <!-- Request callback dialog -->
             <form
+              method="POST"
               name="labcallback"
               data-netlify
               data-netlify-honeypot="bot-field"
