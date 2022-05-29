@@ -62,9 +62,9 @@ export const actions = {
     commit('setActiveJob', payload)
   },
 
-  // Add job to jobs
+  // Add paid job to jobs
   async addJob({ commit }, payload) {
-    // console.log('addJob', payload)
+    console.log('addJob', payload)
     const job = {
       ...payload,
       jobType: 'paid',

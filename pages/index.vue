@@ -82,8 +82,10 @@
               <h2 class="text-h6">Latest jobs</h2>
             </v-card-title>
             <v-card-text>
-              <template v-for="item in paidJobs">
+              <!-- {{ paidJobs }} -->
+              <client-only>
                 <live-preview
+                  v-for="item in paidJobs"
                   :key="`job-${item.id}`"
                   dense
                   :featured="true"
@@ -92,7 +94,7 @@
                   @click.native="openJob(item)"
                 >
                 </live-preview>
-              </template>
+              </client-only>
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -170,10 +172,12 @@ export default {
   },
   computed: {
     paidJobs() {
-      return this.$store.getters['jobs/getPaidJobs'].slice(0, 3)
+      return this.$store.getters['jobs/getPaidJobs']
+      // return this.$store.getters['jobs/getPaidJobs'].slice(0, 3)
     },
   },
-  mounted() {
+  async mounted() {
+    console.log('MOUINTH', await this.$store.getters['jobs/getPaidJobs'])
     // const DiscourseEmbed = {
     //   discourseUrl: 'https://forum.laboverflow.com/categories',
     //   // discourseEmbedUrl: 'https://laboverflow.com',

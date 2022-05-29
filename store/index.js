@@ -50,6 +50,7 @@ export const actions = {
     }
   },
 
+  // Add new job?
   setJobAd({ commit }, payload) {
     commit('setJobAd', payload)
   },
@@ -70,9 +71,6 @@ export const actions = {
         return jobs
       })
 
-    // console.log({ scrapedJobs })
-    // console.log({ paidJobs })
-    // console.log([...scrapedJobs, ...paidJobs])
     // Add jobType to jobs
     scrapedJobs = scrapedJobs.map((job) => ({
       ...job,
@@ -80,6 +78,11 @@ export const actions = {
       jobSource: 'simply',
     }))
     paidJobs = paidJobs.map((job) => ({ ...job, jobType: 'paid' }))
+
+    // console.log({ scrapedJobs })
+    // console.log({ paidJobs })
+    console.log('Scapred Jobs', scrapedJobs.length, scrapedJobs)
+    console.log('Paid Jobs', paidJobs.length, paidJobs)
 
     // Combine paid and free jobs
     await commit('jobs/setJobs', [...scrapedJobs, ...paidJobs])
