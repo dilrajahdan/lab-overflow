@@ -281,7 +281,7 @@ export default {
     // console.log('regionLabel', regionLabel)
 
     const title = `Cannabis testing labs in ${region}, ${selectedCountry[0].name}`
-    const description = `Local cannabis testing labs in ${region}, ${selectedCountry[0].name}. Filter by TATs, accreditation, pick-up services and test type (potency, cannabinoid profile, terpene profile).`
+    const description = `Local cannabis testing labs in ${region}, ${selectedCountry[0].name}. Filter by accreditation, pick-up services, assays and more.`
 
     return {
       title,
@@ -299,18 +299,7 @@ export default {
       selectedRegionItem,
     }
   },
-  data: () => ({
-    // selectedRegionItem: null,
-    // selectedRegionItem: {
-    //   countrySlug: 'usa',
-    //   country: 'United States',
-    //   regionSlug: 'kentucky',
-    //   region: 'Kentucky',
-    //   code: 'KY',
-    //   labs: 1,
-    // },
-    // value: null,
-  }),
+  data: () => ({}),
   head() {
     return {
       title: this.title,

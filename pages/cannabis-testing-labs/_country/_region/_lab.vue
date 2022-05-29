@@ -427,8 +427,8 @@ export default {
     const region = selectedRegion[0].name
 
     const pageTitle = `${lab.Lab} - ${region}, ${country}.`
-    const pageDescription = `${lab.Lab} is a cannabis testing lab located in ${region}, ${country}.`
-    console.log('pageDescription', pageDescription)
+    const pageDescription = `${lab.Lab} is a cannabis testing lab located in ${region}, ${country}. Request a callback or contact them directly.`
+    // console.log('pageDescription', pageDescription)
     return {
       pageTitle,
       pageDescription,
