@@ -140,6 +140,7 @@
               data-netlify-honeypot="bot-field"
               accept-charset="UTF-8"
             >
+              <input type="hidden" name="lab-name" :value="lab.Lab" />
               <v-dialog v-model="showRequestCallback" max-width="600px">
                 <v-card>
                   <input type="hidden" name="form-name" value="labcallback" />
