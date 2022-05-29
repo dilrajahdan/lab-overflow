@@ -83,18 +83,18 @@
             <!-- Paid jobs  -->
             <v-subheader>Featured cannabis lab jobs</v-subheader>
 
-            <client-only>
-              <template v-for="item in paidJobs">
-                <live-preview
-                  :key="`job-${item.id}`"
-                  :featured="true"
-                  :to="`/job-board/${item.slug}`"
-                  :job="item"
-                  @click.native="openJob(item)"
-                >
-                </live-preview>
-              </template>
-            </client-only>
+            <!-- <client-only> -->
+            <template v-for="item in paidJobs">
+              <live-preview
+                :key="`job-${item.id}`"
+                :featured="true"
+                :to="`/job-board/${item.slug}`"
+                :job="item"
+                @click.native="openJob(item)"
+              >
+              </live-preview>
+            </template>
+            <!-- </client-only> -->
 
             <subscribe-to-jobs></subscribe-to-jobs>
 
