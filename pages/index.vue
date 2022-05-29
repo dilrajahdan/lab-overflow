@@ -172,8 +172,8 @@ export default {
   },
   computed: {
     paidJobs() {
-      return this.$store.getters['jobs/getPaidJobs']
-      // return this.$store.getters['jobs/getPaidJobs'].slice(0, 3)
+      // return this.$store.getters['jobs/getPaidJobs']
+      return this.$store.getters['jobs/getPaidJobs'].slice(0, 3)
     },
   },
   async mounted() {
