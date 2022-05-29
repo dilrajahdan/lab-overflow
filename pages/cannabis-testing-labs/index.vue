@@ -19,7 +19,7 @@
                 outlined
                 hide-details
                 filled
-                label="Search region"
+                label="Search your location"
                 :items="searchList"
                 return-object
                 item-value="region"
