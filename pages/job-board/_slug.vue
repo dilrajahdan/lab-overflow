@@ -141,6 +141,8 @@
   </v-sheet>
 </template>
 <script>
+import ogImage from '@/assets/img/laboverflow-bg.png'
+
 import ShareButtons from '~/components/ShareButtons.vue'
 export default {
   components: { ShareButtons },
@@ -198,7 +200,7 @@ export default {
         {
           hid: 'og-image',
           property: 'og:image',
-          content: `${process.env.baseURL}/woman-coat.jpg`,
+          content: `${process.env.baseURL}${ogImage}`,
         },
         {
           hid: 't-type',
