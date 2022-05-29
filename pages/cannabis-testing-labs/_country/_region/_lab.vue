@@ -134,17 +134,17 @@
 
             <!-- Request callback dialog -->
             <form
+              ref="labcallback"
               method="POST"
               name="labcallback"
               data-netlify
               data-netlify-honeypot="bot-field"
               accept-charset="UTF-8"
             >
+              <input type="hidden" name="form-name" value="labcallback" />
               <input type="hidden" name="lab-name" :value="lab.Lab" />
               <v-dialog v-model="showRequestCallback" max-width="600px">
                 <v-card>
-                  <input type="hidden" name="form-name" value="labcallback" />
-
                   <v-card-title>
                     <!-- {{ $route.params }} -->
                     <span class="text-h5"
@@ -259,7 +259,7 @@
                       color="primary"
                       :disabled="!validRequestForm"
                       type="submit"
-                      @click="showRequestCallback = false"
+                      @click.prevent="sumitCallbackForm($event)"
                     >
                       Request callback
                     </v-btn>
@@ -549,6 +549,12 @@ export default {
 
       // console.log(trackingEventData)
       this.$ga.event(trackingEventData)
+    },
+    sumitCallbackForm() {
+      const form = this.$refs.labcallback
+      form.submit()
+      this.showRequestCallback = false
+      this.snackbar = true
     },
   },
 }

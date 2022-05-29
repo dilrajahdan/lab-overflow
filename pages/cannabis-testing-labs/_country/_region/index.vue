@@ -221,7 +221,7 @@
         </v-col>
       </v-row>
     </v-container>
-
+    <!-- Add lab form -->
     <form
       ref="addlab"
       name="addlab"
@@ -344,7 +344,7 @@
               <v-btn
                 type="submit"
                 color="primary"
-                @click="sumitAddLabForm($event)"
+                @click.prevent="sumitAddLabForm($event)"
               >
                 Submit
               </v-btn>
