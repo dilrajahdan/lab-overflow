@@ -14,8 +14,8 @@
         rounded-sm
         v-size--x-small
         pa-2
-        grey
-        darken-2
+        blue
+        lighten-1
         white--text
         share-button
       "
@@ -38,8 +38,8 @@
         rounded-sm
         v-size--x-small
         pa-2
-        grey
-        darken-1
+        blue
+        lighten-1
         white--text
         share-button
       "
@@ -62,7 +62,8 @@
         rounded-sm
         v-size--x-small
         pa-2
-        grey
+        blue
+        lighten-1
         white--text
         share-button
       "
@@ -102,15 +103,12 @@ export default {
       default: '',
     },
   },
-  // asyncData({ $axios, $route }) {
-  //   console.log('route', $route)
-  //   return $route
-  // },
 }
 </script>
 
 <style>
 .share-button {
   width: 160px;
+  max-width: 100%;
 }
 </style>

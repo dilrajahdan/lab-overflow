@@ -4,7 +4,7 @@
       :to="to"
       hover
       tile
-      :color="featured ? 'yellow lighten-4' : 'white'"
+      :color="featured ? 'yellow lighten-4' : 'grey lighten-4'"
       class="job mb-2"
     >
       <v-container>

@@ -29,87 +29,98 @@
     <v-container>
       <v-row class="mt-0">
         <v-col cols="12" sm="3">
-          <v-subheader>Filters</v-subheader>
+          <div class="sticky-sm">
+            <v-card color="gray lighten-4" elevation="1">
+              <v-card-subtitle>Filters</v-card-subtitle>
+              <v-card-text>
+                <v-autocomplete
+                  v-model="selectedLocation"
+                  :items="uniqueLocations"
+                  hide-details
+                  class="mb-4"
+                  label="Location"
+                  clearable
+                  autocomplete="off"
+                  data-lpignore="true"
+                  outlined
+                  dense
+                  filled
+                ></v-autocomplete>
 
-          <v-card color="gray lighten-4" elevation="1" class="sticky-sm">
-            <v-card-text>
-              <v-autocomplete
-                v-model="selectedLocation"
-                :items="uniqueLocations"
-                hide-details
-                class="mb-4"
-                label="Location"
-                clearable
-                autocomplete="off"
-                data-lpignore="true"
-                outlined
-                dense
-                filled
-              ></v-autocomplete>
+                <v-autocomplete
+                  v-model="selectedRole"
+                  :items="uniqueRoles"
+                  hide-details
+                  class="mb-4"
+                  clearable
+                  label="Role"
+                  autocomplete="off"
+                  data-lpignore="true"
+                  outlined
+                  dense
+                  filled
+                ></v-autocomplete>
 
-              <v-autocomplete
-                v-model="selectedRole"
-                :items="uniqueRoles"
-                hide-details
-                class="mb-4"
-                clearable
-                label="Role"
-                autocomplete="off"
-                data-lpignore="true"
-                outlined
-                dense
-                filled
-              ></v-autocomplete>
+                <v-autocomplete
+                  v-model="selectedType"
+                  :items="uniqueTypes"
+                  hide-details
+                  label="Type"
+                  clearable
+                  autocomplete="off"
+                  data-lpignore="true"
+                  outlined
+                  dense
+                  filled
+                ></v-autocomplete>
+              </v-card-text>
+            </v-card>
 
-              <v-autocomplete
-                v-model="selectedType"
-                :items="uniqueTypes"
-                hide-details
-                label="Type"
-                clearable
-                autocomplete="off"
-                data-lpignore="true"
-                outlined
-                dense
-                filled
-              ></v-autocomplete>
-            </v-card-text>
-          </v-card>
+            <share-the-love-card
+              class="mt-4"
+              :url="`https://laboverflow.com${$route.path}`"
+              :title="pageTitle"
+              :description="pageDescription"
+              hashtags="job board, cannabis, testing, lab, laboverflow"
+            ></share-the-love-card>
+          </div>
         </v-col>
 
         <!-- Content -->
         <v-col cols="12" sm="9" class="mt-0 pt-sm-3 pt-0">
           <section class="job-details grey lighten-4">
             <!-- Paid jobs  -->
-            <v-subheader>Featured cannabis lab jobs</v-subheader>
-
-            <!-- <client-only> -->
-            <template v-for="item in paidJobs">
-              <live-preview
-                :key="`job-${item.id}`"
-                :featured="true"
-                :to="`/job-board/${item.slug}`"
-                :job="item"
-                @click.native="openJob(item)"
-              >
-              </live-preview>
-            </template>
-            <!-- </client-only> -->
-
-            <subscribe-to-jobs></subscribe-to-jobs>
+            <v-card>
+              <v-card-title>Featured cannabis lab jobs</v-card-title>
+              <v-card-text>
+                <live-preview
+                  v-for="item in paidJobs"
+                  :key="`job-${item.id}`"
+                  :featured="true"
+                  :to="`/job-board/${item.slug}`"
+                  :job="item"
+                  @click.native="openJob(item)"
+                >
+                </live-preview>
+              </v-card-text>
+            </v-card>
+            <subscribe-to-jobs class="mt-4"></subscribe-to-jobs>
 
             <!-- Scraped jobs  -->
-            <v-subheader>Cannabis lab jobs</v-subheader>
+            <v-card class="mt-4">
+              <v-card-title>Cannabis lab jobs</v-card-title>
 
-            <template v-for="item in filteredItems">
-              <live-preview
-                :key="item.id"
-                :to="`/job-board/${item.slug}`"
-                :job="item"
-                @click.native="openJob(item)"
-              >
-              </live-preview>
-            </template>
+              <v-card-text>
+                <live-preview
+                  v-for="item in filteredItems"
+                  :key="item.id"
+                  :to="`/job-board/${item.slug}`"
+                  :job="item"
+                  @click.native="openJob(item)"
+                >
+                </live-preview>
+              </v-card-text>
+            </v-card>
           </section>
         </v-col>
       </v-row>
@@ -165,6 +176,7 @@ export default {
       jobActive,
     }
   },
+
   data() {
     return {
       // subscribeToJobsEmail: '',
@@ -250,6 +262,10 @@ export default {
       )
     },
   },
+  // mounted() {
+  //   this.paidJobs = this.$store.getters['jobs/getPaidJobs']
+  //   console.log('mounted', this.paidJobs)
+  // },
 
   methods: {
     encode(data) {

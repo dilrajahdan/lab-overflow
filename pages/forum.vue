@@ -55,17 +55,12 @@
           </v-card>
         </v-col>
         <v-col cols="12" sm="4">
-          <v-card>
-            <v-card-title>Share the love</v-card-title>
-            <v-card-text>
-              <share-buttons
-                :url="`https://laboverflow.com${$route.path}`"
-                :title="pageTitle"
-                :description="pageDescription"
-                hashtags="forum, cannabis, testing, lab, laboverflow"
-              ></share-buttons>
-            </v-card-text>
-          </v-card>
+          <share-the-love-card
+            :url="`https://laboverflow.com${$route.path}`"
+            :title="pageTitle"
+            :description="pageDescription"
+            hashtags="forum, cannabis, testing, lab, laboverflow"
+          ></share-the-love-card>
         </v-col>
       </v-row>
     </v-container>
@@ -74,10 +69,10 @@
 
 <script>
 import ogImage from '@/assets/img/laboverflow-bg.png'
-import ShareButtons from '~/components/ShareButtons.vue'
+// import ShareButtons from '~/components/ShareButtons.vue'
 
 export default {
-  components: { ShareButtons },
+  components: {},
   data() {
     return {
       pageName: 'forum',

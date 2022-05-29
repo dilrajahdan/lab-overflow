@@ -88,12 +88,19 @@
           </v-card>
         </v-col>
 
-        <v-col cols="12" md="3" order-md="2" class=""
-          ><v-card
+        <v-col cols="12" md="3" order-md="2" class="">
+          <share-the-love-card
+            :url="`https://laboverflow.com${$route.path}`"
+            :title="pageTitle"
+            :description="pageDescription"
+            hashtags="forum, cannabis, testing, lab, laboverflow"
+          ></share-the-love-card>
+
+          <!-- <v-card
             class="sticky-box"
             :href="`mailto:admin@laboverflow.com?subject=Advertise on Lab Overflow, ${regionLabel}, ${countryLabel}`"
             ><v-card-text>Advertise here</v-card-text>
-          </v-card>
+          </v-card> -->
 
           <!-- <v-card color="pink mb-3" dark
                 ><v-card-text>Submit you Lab</v-card-text>
