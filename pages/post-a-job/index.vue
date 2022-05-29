@@ -294,6 +294,10 @@ export default {
   },
   data() {
     return {
+      pageName: 'post-a-job',
+      pageTitle: 'Post a job',
+      pageDescription: 'Find your next lab superstar in the next 30 days',
+
       formValid: false,
       requiredRules: [
         (v) => !!v || 'Required',
@@ -519,15 +523,11 @@ export default {
   },
   head() {
     return {
-      pageName: 'post-a-job',
-      pageTitle: 'Post a job',
-      pageDescription: 'Find your next lab superstar in the next 30 days',
-
       title: this.pageTitle,
       meta: [
         {
-          hid: this.pageName,
-          name: this.pageTitle,
+          hid: 'post-a-job',
+          name: 'description',
           content: this.pageDescription,
         },
         { hid: 'og-type', property: 'og:type', content: 'website' },
