@@ -275,6 +275,7 @@
                 :rules="labForm.rules.website"
                 label="Lab Website"
                 required
+                type="url"
               ></v-text-field>
             </v-card-text>
 
@@ -292,6 +293,7 @@
                 v-model="labForm.data.contact_phone"
                 :rules="labForm.rules.contact_phone"
                 label="Contact Phone"
+                type="tel"
                 required
               ></v-text-field>
 
@@ -300,6 +302,7 @@
                 :rules="labForm.rules.contact_email"
                 label="Contact Email"
                 required
+                type="email"
               ></v-text-field>
 
               <v-text-field
