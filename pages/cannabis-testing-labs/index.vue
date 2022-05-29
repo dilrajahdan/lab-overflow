@@ -198,6 +198,7 @@ export default {
   data: () => ({
     selectedItem: null,
     pageTitle: 'Cannabis testing lab directory',
+    pageDescription: `Lab Overflow's Lab Directory is the world’s leading platform for searching, comparing and selecting cannabis testing labs.`,
   }),
   head() {
     return {
@@ -206,7 +207,7 @@ export default {
         {
           hid: 'Lab Directory',
           name: 'description',
-          content: `Lab Overflow's Lab Directory is the world’s leading platform for searching, comparing and selecting cannabis testing labs.`,
+          content: this.pageDescription,
         },
         { hid: 'og-type', property: 'og:type', content: 'website' },
         { hid: 'og-title', property: 'og:title', content: this.pageTitle },
