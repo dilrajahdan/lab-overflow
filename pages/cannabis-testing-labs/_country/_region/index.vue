@@ -93,7 +93,7 @@
             <v-card>
               <v-card-subtitle>Submit your Lab</v-card-subtitle>
               <v-card-text>
-                <v-btn color="teal" block outlined
+                <v-btn color="teal" block outlined @click="labDialog = true"
                   >Submit your Lab</v-btn
                 ></v-card-text
               >
@@ -102,8 +102,8 @@
             <share-the-love-card
               class="mt-4"
               :url="`https://laboverflow.com${$route.path}`"
-              :title="pageTitle"
-              :description="pageDescription"
+              :title="title"
+              :description="description"
               hashtags="lab directory, members directory, cannabis, testing, lab, laboverflow"
             ></share-the-love-card>
           </div>
@@ -221,6 +221,139 @@
         </v-col>
       </v-row>
     </v-container>
+
+    <form
+      name="add-lab"
+      data-netlify
+      data-netlify-honeypot="bot-field"
+      action="/thank-you"
+    >
+      <input type="hidden" name="form-name" value="add-lab" />
+      <v-form
+        ref="labForm"
+        v-model="labForm.valid"
+        lazy-validation
+        :rules="labForm.rules"
+      >
+        <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
+          <v-card>
+            <v-card-title class="display-1">Submit your lab</v-card-title>
+            <v-card-title>Lab Details</v-card-title>
+
+            <v-card-text>
+              <!-- add form fields for lab -->
+              <v-text-field
+                v-model="labForm.data.name"
+                :rules="labForm.rules.name"
+                label="Lab Name"
+                required
+              ></v-text-field>
+
+              <v-text-field
+                v-model="labForm.data.address"
+                :rules="labForm.rules.address"
+                label="Lab Address"
+                required
+              ></v-text-field>
+
+              <!-- <v-text-field
+                v-model="labForm.data.phone"
+                :rules="labForm.rules.phone"
+                label="Lab Phone"
+                required
+              ></v-text-field> -->
+
+              <!-- <v-text-field
+                v-model="labForm.data.email"
+                :rules="labForm.rules.email"
+                label="Lab Email"
+                required
+              ></v-text-field> -->
+
+              <v-text-field
+                v-model="labForm.data.website"
+                :rules="labForm.rules.website"
+                label="Lab Website"
+                required
+              ></v-text-field>
+            </v-card-text>
+
+            <!-- Contact details -->
+            <v-card-title>Contact Details</v-card-title>
+            <v-card-text>
+              <v-text-field
+                v-model="labForm.data.contact_name"
+                :rules="labForm.rules.contact_name"
+                label="Contact Name"
+                required
+              ></v-text-field>
+
+              <v-text-field
+                v-model="labForm.data.contact_phone"
+                :rules="labForm.rules.contact_phone"
+                label="Contact Phone"
+                required
+              ></v-text-field>
+
+              <v-text-field
+                v-model="labForm.data.contact_email"
+                :rules="labForm.rules.contact_email"
+                label="Contact Email"
+                required
+              ></v-text-field>
+
+              <v-text-field
+                v-model="labForm.data.role"
+                :rules="labForm.rules.role"
+                label="Role (e.g Lab Director)"
+                required
+              ></v-text-field>
+
+              <!-- <v-text-field
+                v-model="labForm.data.facebook"
+                :rules="labForm.rules.facebook"
+                label="Lab Facebook"
+                required
+              ></v-text-field>
+
+              <v-text-field
+                v-model="labForm.data.instagram"
+                :rules="labForm.rules.instagram"
+                label="Lab Instagram"
+                required
+              ></v-text-field>
+
+              <v-text-field
+                v-model="labForm.data.twitter"
+                :rules="labForm.rules.twitter"
+                label="Lab Twitter"
+                required
+              ></v-text-field> -->
+            </v-card-text>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="grey " text @click="labDialog = false">
+                Cancel
+              </v-btn>
+              <v-btn type="submit" color="primary" @click="sumitAddLabForm()">
+                Submit
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-form>
+    </form>
+
+    <v-snackbar v-model="snackbar" :timeout="timeout">
+      Lab submitted successfully! I'll get back to you soon. Thanks Dil
+
+      <template #action="{ attrs }">
+        <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </section>
 </template>
 <script>
@@ -311,7 +444,65 @@ export default {
       selectedRegionItem,
     }
   },
-  data: () => ({}),
+  data: () => ({
+    timeout: 2000,
+    snackbar: false,
+    labDialog: false,
+    labForm: {
+      data: {
+        name: '',
+        address: '',
+        phone: '',
+        email: '',
+        website: '',
+        facebook: '',
+        instagram: '',
+        twitter: '',
+      },
+      rules: {
+        name: [
+          (v) => !!v || 'Lab name is required',
+          (v) => v.length <= 50 || 'Lab name must be less than 50 characters',
+        ],
+        address: [
+          (v) => !!v || 'Lab address is required',
+          (v) =>
+            v.length <= 50 || 'Lab address must be less than 50 characters',
+        ],
+        phone: [
+          (v) => !!v || 'Lab phone is required',
+          (v) => v.length <= 20 || 'Lab phone must be less than 20 characters',
+        ],
+        email: [
+          (v) => !!v || 'Lab email is required',
+          (v) =>
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || // eslint-disable-line
+            'Please enter a valid email address',
+        ],
+        website: [
+          (v) => !!v || 'Lab website is required',
+          (v) =>
+            v.length <= 50 || 'Lab website must be less than 50 characters',
+        ],
+        facebook: [
+          (v) => !!v || 'Lab facebook is required',
+          (v) =>
+            v.length <= 50 || 'Lab facebook must be less than 50 characters',
+        ],
+        instagram: [
+          (v) => !!v || 'Lab instagram is required',
+          (v) =>
+            v.length <= 50 || 'Lab instagram must be less than 50 characters',
+        ],
+        twitter: [
+          (v) => !!v || 'Lab twitter is required',
+          (v) =>
+            v.length <= 50 || 'Lab twitter must be less than 50 characters',
+        ],
+      },
+      valid: false,
+    },
+  }),
   head() {
     return {
       title: this.title,
@@ -375,6 +566,10 @@ export default {
         name: 'cannabis-testing-labs-country-region',
         params: { country, region: defaultRegion },
       })
+    },
+    sumitAddLabForm() {
+      this.labDialog = false
+      this.snackbar = true
     },
   },
 }

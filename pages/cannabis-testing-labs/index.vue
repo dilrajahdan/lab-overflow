@@ -202,7 +202,7 @@ export default {
   data: () => ({
     selectedItem: null,
     pageTitle: 'Cannabis testing lab directory',
-    pageDescription: `Lab Overflow's Lab Directory is the world’s leading platform for searching, comparing and selecting cannabis testing labs.`,
+    pageDescription: `Lab Overflows lab directory is the world’s leading platform for searching, comparing and selecting cannabis testing labs.`,
   }),
   head() {
     return {
