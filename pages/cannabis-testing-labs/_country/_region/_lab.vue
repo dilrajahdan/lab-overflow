@@ -259,6 +259,7 @@
                       color="primary"
                       :disabled="!validRequestForm"
                       type="submit"
+                      @click="showRequestCallback = false"
                     >
                       Request callback
                     </v-btn>
