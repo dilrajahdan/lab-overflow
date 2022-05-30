@@ -196,8 +196,9 @@
     <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
       <!-- Add lab form -->
       <form
+        id="addlab"
         ref="addlab"
-        method="POST"
+        method="post"
         name="addlab"
         data-netlify
         data-netlify-honeypot="bot-field"
@@ -220,6 +221,7 @@
           <v-card-title>Lab Details</v-card-title>
 
           <v-card-text>
+            <pre>{{ labForm.data }}</pre>
             <!-- add form fields for lab -->
             <v-text-field
               v-model="labForm.data.name"
