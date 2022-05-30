@@ -284,7 +284,7 @@
                 required
               ></v-text-field>
             </v-card-text>
-
+            <!-- valid: {{ labForm.valid }} -->
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="grey " text @click="labDialog = false">
@@ -410,12 +410,11 @@ export default {
       data: {
         name: '',
         address: '',
-        phone: '',
-        email: '',
         website: '',
-        facebook: '',
-        instagram: '',
-        twitter: '',
+        contact_name: '',
+        contact_phone: '',
+        contact_email: '',
+        role: '',
       },
       rules: {
         name: [
@@ -442,20 +441,27 @@ export default {
           (v) =>
             v.length <= 50 || 'Lab website must be less than 50 characters',
         ],
-        facebook: [
-          (v) => !!v || 'Lab facebook is required',
+        contact_name: [
+          (v) => !!v || 'Lab contact name is required',
           (v) =>
-            v.length <= 50 || 'Lab facebook must be less than 50 characters',
+            v.length <= 50 ||
+            'Lab contact name must be less than 50 characters',
         ],
-        instagram: [
-          (v) => !!v || 'Lab instagram is required',
+        contact_phone: [
+          (v) => !!v || 'Lab contact phone is required',
           (v) =>
-            v.length <= 50 || 'Lab instagram must be less than 50 characters',
+            v.length <= 20 ||
+            'Lab contact phone must be less than 20 characters',
         ],
-        twitter: [
-          (v) => !!v || 'Lab twitter is required',
+        contact_email: [
+          (v) => !!v || 'Lab contact email is required',
           (v) =>
-            v.length <= 50 || 'Lab twitter must be less than 50 characters',
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || // eslint-disable-line
+            'Please enter a valid email address',
+        ],
+        role: [
+          (v) => !!v || 'Lab role is required',
+          (v) => v.length <= 50 || 'Lab role must be less than 50 characters',
         ],
       },
       valid: false,
