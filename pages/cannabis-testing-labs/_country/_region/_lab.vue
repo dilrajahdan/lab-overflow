@@ -388,7 +388,7 @@
             :url="`https://laboverflow.com${$route.path}`"
             :title="pageTitle"
             :description="pageDescription"
-            hashtags="lab directory, members directory, cannabis, testing, lab, laboverflow"
+            hashtags="lab-directory,members-directory,cannabis,testing,lab,laboverflow"
           ></share-the-love-card>
         </v-col>
       </v-row>

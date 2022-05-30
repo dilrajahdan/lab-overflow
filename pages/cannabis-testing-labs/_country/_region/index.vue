@@ -104,7 +104,7 @@
               :url="`https://laboverflow.com${$route.path}`"
               :title="title"
               :description="description"
-              hashtags="lab directory, members directory, cannabis, testing, lab, laboverflow"
+              hashtags="lab-directory,members-directory,cannabis,testing,lab,laboverflow"
             ></share-the-love-card>
           </div>
           <!-- <v-card
