@@ -193,22 +193,19 @@
         </v-col>
       </v-row>
     </v-container>
-    <form
-      id="addlab"
-      ref="addlab"
-      method="post"
-      name="addlab"
-      data-netlify
-      data-netlify-honeypot="bot-field"
-      action="/thank-you"
-    >
-      <input type="hidden" name="form-name" value="addlab" />
 
-      <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
-        <!-- Add lab form -->
+    <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
+      <!-- Add lab form -->
 
-        <input name="url" :value="$route.path" />
-        <input name="test" value="addlab" />
+      <form
+        id="addlab"
+        ref="addlab"
+        method="POST"
+        name="addlab"
+        data-netlify
+        data-netlify-honeypot="bot-field"
+        action="/thank-you"
+      >
         <p class="hidden">
           <label>
             Don’t fill this out if you’re human:
@@ -217,6 +214,10 @@
         </p>
         <!-- <v-form v-model="addlab.valid" lazy-validation :rules="addlab.rules"> -->
         <v-card>
+          <input type="hidden" name="form-name" value="addlab" />
+          <input name="url" :value="$route.path" />
+          <input name="test" value="" />
+
           <v-card-title class="display-1">Submit your lab</v-card-title>
           <v-card-title>Lab Details</v-card-title>
 
@@ -296,8 +297,8 @@
           <pre>{{ addlab }}</pre>
         </v-card>
         <!-- </v-form> -->
-      </v-dialog>
-    </form>
+      </form>
+    </v-dialog>
 
     <v-snackbar v-model="snackbar" :timeout="timeout">
       Lab submitted successfully! I'll get back to you soon. Thanks Dil
