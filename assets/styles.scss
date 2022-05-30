@@ -15,6 +15,13 @@ body {
   width: 100%;
 }
 
+.hidden {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  margin: 0;
+  padding: 0;
+}
 
 .sticky {
   position: sticky !important;
