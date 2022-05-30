@@ -76,6 +76,7 @@ export default {
   data() {
     return {
       subscribeToJobsEmail: '',
+      subscribeToJobsLocation: '',
       subscribed: false,
     }
   },
@@ -88,6 +89,7 @@ export default {
         .collection('subscribers')
         .add({
           email: this.subscribeToJobsEmail,
+          location: this.subscribeToJobsLocation,
           url: this.$route.path,
           created: this.$fireModule.firestore.FieldValue.serverTimestamp(),
         })
@@ -95,10 +97,11 @@ export default {
           this.loading = false
           this.subscribed = true
           this.subscribeToJobsEmail = ''
+          this.subscribeToJobsLocation = ''
         })
         .catch((error) => {
           this.loading = false
-          console.error('Error adding document: ', error)
+          console.error('Error adding document: ', error) // eslint-disable-line no-console
         })
 
       const form = this.$refs.subscribe

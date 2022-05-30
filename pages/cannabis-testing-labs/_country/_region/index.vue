@@ -1,36 +1,9 @@
 <template>
   <section>
-    <!-- <v-card
-      color="deep-purple"
-      dark
-      tile
-      class="d-flexC align-center flex-column py-9"
-    >
-      <v-container>
-        <v-row>
-          <v-col cols="6">
-            <v-card-subtitle class="overline py-0">Sponsor</v-card-subtitle>
-            <v-card-title>Your Lab here</v-card-title>
-            <v-card-subtitle
-              >Thousands of eyeballs every months</v-card-subtitle
-            >
-          </v-col>
-          <v-col cols="6">
-            <v-img
-              src="/logo.png"
-              height="150"
-              class="deep-purple darken-2 mr-3"
-            ></v-img>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-card> -->
-
     <v-container fluid class="mt-3">
       <v-row>
         <v-col class="" cols="12" md="3">
           <v-card color="">
-            <!-- <v-subheader>Filters</v-subheader> -->
             <v-card-subtitle>Filter</v-card-subtitle>
             <v-card-text v-if="!$vuetify.breakpoint.mdAndUp">
               <v-autocomplete
@@ -53,7 +26,6 @@
                 </template>
                 <template #selection="{ item }">
                   {{ item.region }}, {{ item.country }}
-                  <!-- </v-list-item> -->
                 </template>
               </v-autocomplete>
             </v-card-text>
@@ -236,120 +208,99 @@
           <input name="bot-field" />
         </label>
       </p>
-      <!-- <v-form
+      <v-form
         ref="labForm"
         v-model="labForm.valid"
         lazy-validation
         :rules="labForm.rules"
-      > -->
-      <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
-        <v-card>
-          <v-card-title class="display-1">Submit your lab</v-card-title>
-          <v-card-title>Lab Details</v-card-title>
+      >
+        <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
+          <v-card>
+            <v-card-title class="display-1">Submit your lab</v-card-title>
+            <v-card-title>Lab Details</v-card-title>
 
-          <v-card-text>
-            <!-- add form fields for lab -->
-            <v-text-field
-              v-model="labForm.data.name"
-              name="lab"
-              :rules="labForm.rules.name"
-              label="Lab Name"
-              required
-            ></v-text-field>
-
-            <v-text-field
-              v-model="labForm.data.address"
-              name="labAddress"
-              :rules="labForm.rules.address"
-              label="Lab Address"
-              required
-            ></v-text-field>
-
-            <v-text-field
-              v-model="labForm.data.website"
-              name="labWebsite"
-              :rules="labForm.rules.website"
-              label="Lab Website"
-              required
-              type="url"
-            ></v-text-field>
-          </v-card-text>
-
-          <!-- Contact details -->
-          <v-card-title>Contact Details</v-card-title>
-          <v-card-text>
-            <v-text-field
-              v-model="labForm.data.contact_name"
-              name="labContactName"
-              :rules="labForm.rules.contact_name"
-              label="Contact Name"
-              required
-            ></v-text-field>
-
-            <v-text-field
-              v-model="labForm.data.contact_phone"
-              name="labContactPhone"
-              :rules="labForm.rules.contact_phone"
-              label="Contact Phone"
-              type="tel"
-              required
-            ></v-text-field>
-
-            <v-text-field
-              v-model="labForm.data.contact_email"
-              name="labContactEmail"
-              :rules="labForm.rules.contact_email"
-              label="Contact Email"
-              required
-              type="email"
-            ></v-text-field>
-
-            <v-text-field
-              v-model="labForm.data.role"
-              name="labContactRole"
-              :rules="labForm.rules.role"
-              label="Role (e.g Lab Director)"
-              required
-            ></v-text-field>
-
-            <!-- <v-text-field
-                v-model="labForm.data.facebook"
-                :rules="labForm.rules.facebook"
-                label="Lab Facebook"
+            <v-card-text>
+              <!-- add form fields for lab -->
+              <v-text-field
+                v-model="labForm.data.name"
+                name="lab"
+                :rules="labForm.rules.name"
+                label="Lab Name"
                 required
               ></v-text-field>
 
               <v-text-field
-                v-model="labForm.data.instagram"
-                :rules="labForm.rules.instagram"
-                label="Lab Instagram"
+                v-model="labForm.data.address"
+                name="labAddress"
+                :rules="labForm.rules.address"
+                label="Lab Address"
                 required
               ></v-text-field>
 
               <v-text-field
-                v-model="labForm.data.twitter"
-                :rules="labForm.rules.twitter"
-                label="Lab Twitter"
+                v-model="labForm.data.website"
+                name="labWebsite"
+                :rules="labForm.rules.website"
+                label="Lab Website"
                 required
-              ></v-text-field> -->
-          </v-card-text>
+                type="url"
+              ></v-text-field>
+            </v-card-text>
 
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="grey " text @click="labDialog = false">
-              Cancel
-            </v-btn>
-            <v-btn
-              type="submit"
-              color="primary"
-              @click.prevent="sumitAddLabForm($event)"
-            >
-              Submit
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-      <!-- </v-form> -->
+            <!-- Contact details -->
+            <v-card-title>Contact Details</v-card-title>
+            <v-card-text>
+              <v-text-field
+                v-model="labForm.data.contact_name"
+                name="labContactName"
+                :rules="labForm.rules.contact_name"
+                label="Contact Name"
+                required
+              ></v-text-field>
+
+              <v-text-field
+                v-model="labForm.data.contact_phone"
+                name="labContactPhone"
+                :rules="labForm.rules.contact_phone"
+                label="Contact Phone"
+                type="tel"
+                required
+              ></v-text-field>
+
+              <v-text-field
+                v-model="labForm.data.contact_email"
+                name="labContactEmail"
+                :rules="labForm.rules.contact_email"
+                label="Contact Email"
+                required
+                type="email"
+              ></v-text-field>
+
+              <v-text-field
+                v-model="labForm.data.role"
+                name="labContactRole"
+                :rules="labForm.rules.role"
+                label="Role (e.g Lab Director)"
+                required
+              ></v-text-field>
+            </v-card-text>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="grey " text @click="labDialog = false">
+                Cancel
+              </v-btn>
+              <v-btn
+                type="submit"
+                color="primary"
+                @click.prevent="sumitAddLabForm($event)"
+              >
+                Submit
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-form>
     </form>
 
     <v-snackbar v-model="snackbar" :timeout="timeout">
@@ -549,9 +500,6 @@ export default {
       return str.toLowerCase().replace(/ /gi, '-')
     },
     changeRegion(item) {
-      console.log('DIL changeRegion', item)
-      // this.selectedRegionItem = item
-
       this.$router.push({
         name: 'cannabis-testing-labs-country-region',
         params: { country: item.countrySlug, region: item.regionSlug },
