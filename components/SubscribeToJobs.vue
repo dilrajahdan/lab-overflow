@@ -38,7 +38,7 @@
           rounded
           required
           class="pa-0 ma-0 white"
-          placeholder="Your email"
+          placeholder="Email"
           hide-details
           name="email"
           type="email"
@@ -51,7 +51,7 @@
           rounded
           required
           class="pa-0 my-0 mx-2 white"
-          placeholder="Your location"
+          placeholder="Location"
           hide-details
           name="location"
           dense
