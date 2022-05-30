@@ -228,7 +228,6 @@
       method="POST"
       data-netlify
       data-netlify-honeypot="bot-field"
-      action="/thank-you"
     >
       <input type="hidden" name="form-name" value="addlab" />
       <p class="hidden">
