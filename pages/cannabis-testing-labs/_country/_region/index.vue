@@ -210,18 +210,12 @@
             <input name="bot-field" />
           </label>
         </p>
-        <!-- <v-form
-        ref="labForm"
-        v-model="labForm.valid"
-        lazy-validation
-        :rules="labForm.rules"
-      > -->
+        <!-- <v-form v-model="labForm.valid" lazy-validation :rules="labForm.rules"> -->
         <v-card>
           <v-card-title class="display-1">Submit your lab</v-card-title>
           <v-card-title>Lab Details</v-card-title>
 
           <v-card-text>
-            <pre>{{ labForm.data }}</pre>
             <!-- add form fields for lab -->
             <v-text-field
               v-model="labForm.data.name"
@@ -300,6 +294,8 @@
               Submit
             </v-btn>
           </v-card-actions>
+          <pre>{{ labForm.valid }}</pre>
+          <pre>{{ labForm.data }}</pre>
         </v-card>
         <!-- </v-form> -->
       </form>
