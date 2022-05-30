@@ -203,6 +203,7 @@
       action="/thank-you"
     >
       <input type="hidden" name="form-name" value="addlab" />
+      <input name="test" value="addlab" />
 
       <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
         <!-- Add lab form -->
