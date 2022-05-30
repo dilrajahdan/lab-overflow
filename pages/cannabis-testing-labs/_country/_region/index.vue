@@ -208,99 +208,99 @@
           <input name="bot-field" />
         </label>
       </p>
-      <v-form
+      <!-- <v-form
         ref="labForm"
         v-model="labForm.valid"
         lazy-validation
         :rules="labForm.rules"
-      >
-        <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
-          <v-card>
-            <v-card-title class="display-1">Submit your lab</v-card-title>
-            <v-card-title>Lab Details</v-card-title>
+      > -->
+      <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
+        <v-card>
+          <v-card-title class="display-1">Submit your lab</v-card-title>
+          <v-card-title>Lab Details</v-card-title>
 
-            <v-card-text>
-              <!-- add form fields for lab -->
-              <v-text-field
-                v-model="labForm.data.name"
-                name="lab"
-                :rules="labForm.rules.name"
-                label="Lab Name"
-                required
-              ></v-text-field>
+          <v-card-text>
+            <!-- add form fields for lab -->
+            <v-text-field
+              v-model="labForm.data.name"
+              name="lab"
+              label="Lab Name"
+              required
+            ></v-text-field>
+            <!-- :rules="labForm.rules.name" -->
 
-              <v-text-field
-                v-model="labForm.data.address"
-                name="labAddress"
-                :rules="labForm.rules.address"
-                label="Lab Address"
-                required
-              ></v-text-field>
+            <v-text-field
+              v-model="labForm.data.address"
+              name="labAddress"
+              label="Lab Address"
+              required
+            ></v-text-field>
+            <!-- :rules="labForm.rules.address" -->
 
-              <v-text-field
-                v-model="labForm.data.website"
-                name="labWebsite"
-                :rules="labForm.rules.website"
-                label="Lab Website"
-                required
-                type="url"
-              ></v-text-field>
-            </v-card-text>
+            <v-text-field
+              v-model="labForm.data.website"
+              name="labWebsite"
+              label="Lab Website"
+              required
+              type="url"
+            ></v-text-field>
+            <!-- :rules="labForm.rules.website" -->
+          </v-card-text>
 
-            <!-- Contact details -->
-            <v-card-title>Contact Details</v-card-title>
-            <v-card-text>
-              <v-text-field
-                v-model="labForm.data.contact_name"
-                name="labContactName"
-                :rules="labForm.rules.contact_name"
-                label="Contact Name"
-                required
-              ></v-text-field>
+          <!-- Contact details -->
+          <v-card-title>Contact Details</v-card-title>
+          <v-card-text>
+            <v-text-field
+              v-model="labForm.data.contact_name"
+              name="labContactName"
+              label="Contact Name"
+              required
+            ></v-text-field>
+            <!-- :rules="labForm.rules.contact_name" -->
 
-              <v-text-field
-                v-model="labForm.data.contact_phone"
-                name="labContactPhone"
-                :rules="labForm.rules.contact_phone"
-                label="Contact Phone"
-                type="tel"
-                required
-              ></v-text-field>
+            <v-text-field
+              v-model="labForm.data.contact_phone"
+              name="labContactPhone"
+              label="Contact Phone"
+              type="tel"
+              required
+            ></v-text-field>
+            <!-- :rules="labForm.rules.contact_phone" -->
 
-              <v-text-field
-                v-model="labForm.data.contact_email"
-                name="labContactEmail"
-                :rules="labForm.rules.contact_email"
-                label="Contact Email"
-                required
-                type="email"
-              ></v-text-field>
+            <v-text-field
+              v-model="labForm.data.contact_email"
+              name="labContactEmail"
+              label="Contact Email"
+              required
+              type="email"
+            ></v-text-field>
+            <!-- :rules="labForm.rules.contact_email" -->
 
-              <v-text-field
-                v-model="labForm.data.role"
-                name="labContactRole"
-                :rules="labForm.rules.role"
-                label="Role (e.g Lab Director)"
-                required
-              ></v-text-field>
-            </v-card-text>
-            <!-- valid: {{ labForm.valid }} -->
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="grey " text @click="labDialog = false">
-                Cancel
-              </v-btn>
-              <v-btn
-                type="submit"
-                color="primary"
-                @click.prevent="sumitAddLabForm($event)"
-              >
-                Submit
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
-      </v-form>
+            <v-text-field
+              v-model="labForm.data.role"
+              name="labContactRole"
+              label="Role (e.g Lab Director)"
+              required
+            ></v-text-field>
+            <!-- :rules="labForm.rules.role" -->
+          </v-card-text>
+          <!-- valid: {{ labForm.valid }} -->
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="grey " text @click="labDialog = false">
+              Cancel
+            </v-btn>
+            <v-btn
+              type="submit"
+              color="primary"
+              @click.prevent="submitAddLabForm($event)"
+            >
+              Submit
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+      <!-- </v-form> -->
     </form>
 
     <v-snackbar v-model="snackbar" :timeout="timeout">
@@ -528,7 +528,7 @@ export default {
         params: { country, region: defaultRegion },
       })
     },
-    sumitAddLabForm() {
+    submitAddLabForm() {
       const form = this.$refs.addlab
       form.submit()
       this.labDialog = false
