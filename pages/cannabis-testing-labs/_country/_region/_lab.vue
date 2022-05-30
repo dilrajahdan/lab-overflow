@@ -133,17 +133,17 @@
             </v-expand-transition>
 
             <!-- Request callback dialog -->
-            <form
-              ref="labcallback"
-              method="POST"
-              name="labcallback"
-              data-netlify
-              data-netlify-honeypot="bot-field"
-              accept-charset="UTF-8"
-            >
-              <input type="hidden" name="form-name" value="labcallback" />
-              <input type="hidden" name="lab-name" :value="lab.Lab" />
-              <v-dialog v-model="showRequestCallback" max-width="600px">
+            <v-dialog v-model="showRequestCallback" max-width="600px">
+              <form
+                ref="labcallback"
+                method="POST"
+                name="labcallback"
+                data-netlify
+                data-netlify-honeypot="bot-field"
+                accept-charset="UTF-8"
+              >
+                <input type="hidden" name="form-name" value="labcallback" />
+                <input type="hidden" name="lab-name" :value="lab.Lab" />
                 <v-card>
                   <v-card-title>
                     <!-- {{ $route.params }} -->
@@ -271,8 +271,8 @@
                     </v-btn>
                   </v-card-actions>
                 </v-card>
-              </v-dialog>
-            </form>
+              </form>
+            </v-dialog>
           </v-card>
 
           <!-- Assays -->
