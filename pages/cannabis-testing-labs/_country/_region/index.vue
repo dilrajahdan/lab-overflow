@@ -224,10 +224,11 @@
     <!-- Add lab form -->
     <form
       ref="addlab"
-      name="addlab"
       method="POST"
+      name="addlab"
       data-netlify
       data-netlify-honeypot="bot-field"
+      action="/thank-you/"
     >
       <input type="hidden" name="form-name" value="addlab" />
       <p class="hidden">
@@ -236,90 +237,90 @@
           <input name="bot-field" />
         </label>
       </p>
-      <v-form
+      <!-- <v-form
         ref="labForm"
         v-model="labForm.valid"
         lazy-validation
         :rules="labForm.rules"
-      >
-        <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
-          <v-card>
-            <v-card-title class="display-1">Submit your lab</v-card-title>
-            <v-card-title>Lab Details</v-card-title>
+      > -->
+      <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
+        <v-card>
+          <v-card-title class="display-1">Submit your lab</v-card-title>
+          <v-card-title>Lab Details</v-card-title>
 
-            <v-card-text>
-              <!-- add form fields for lab -->
-              <v-text-field
-                v-model="labForm.data.name"
-                :rules="labForm.rules.name"
-                label="Lab Name"
-                required
-              ></v-text-field>
+          <v-card-text>
+            <!-- add form fields for lab -->
+            <v-text-field
+              v-model="labForm.data.name"
+              :rules="labForm.rules.name"
+              label="Lab Name"
+              required
+            ></v-text-field>
 
-              <v-text-field
-                v-model="labForm.data.address"
-                :rules="labForm.rules.address"
-                label="Lab Address"
-                required
-              ></v-text-field>
+            <v-text-field
+              v-model="labForm.data.address"
+              :rules="labForm.rules.address"
+              label="Lab Address"
+              required
+            ></v-text-field>
 
-              <!-- <v-text-field
+            <!-- <v-text-field
                 v-model="labForm.data.phone"
                 :rules="labForm.rules.phone"
                 label="Lab Phone"
                 required
               ></v-text-field> -->
 
-              <!-- <v-text-field
+            <!-- <v-text-field
                 v-model="labForm.data.email"
                 :rules="labForm.rules.email"
                 label="Lab Email"
                 required
               ></v-text-field> -->
 
-              <v-text-field
-                v-model="labForm.data.website"
-                :rules="labForm.rules.website"
-                label="Lab Website"
-                required
-                type="url"
-              ></v-text-field>
-            </v-card-text>
+            <v-text-field
+              v-model="labForm.data.website"
+              :rules="labForm.rules.website"
+              label="Lab Website"
+              required
+              type="url"
+            ></v-text-field>
+          </v-card-text>
 
-            <!-- Contact details -->
-            <v-card-title>Contact Details</v-card-title>
-            <v-card-text>
-              <v-text-field
-                v-model="labForm.data.contact_name"
-                :rules="labForm.rules.contact_name"
-                label="Contact Name"
-                required
-              ></v-text-field>
+          <!-- Contact details -->
+          <v-card-title>Contact Details</v-card-title>
+          <v-card-text>
+            <v-text-field
+              v-model="labForm.data.contact_name"
+              :rules="labForm.rules.contact_name"
+              label="Contact Name"
+              required
+            ></v-text-field>
 
-              <v-text-field
-                v-model="labForm.data.contact_phone"
-                :rules="labForm.rules.contact_phone"
-                label="Contact Phone"
-                type="tel"
-                required
-              ></v-text-field>
+            <v-text-field
+              v-model="labForm.data.contact_phone"
+              :rules="labForm.rules.contact_phone"
+              label="Contact Phone"
+              type="tel"
+              required
+            ></v-text-field>
 
-              <v-text-field
-                v-model="labForm.data.contact_email"
-                :rules="labForm.rules.contact_email"
-                label="Contact Email"
-                required
-                type="email"
-              ></v-text-field>
+            <v-text-field
+              v-model="labForm.data.contact_email"
+              :rules="labForm.rules.contact_email"
+              label="Contact Email"
+              required
+              type="email"
+            ></v-text-field>
 
-              <v-text-field
-                v-model="labForm.data.role"
-                :rules="labForm.rules.role"
-                label="Role (e.g Lab Director)"
-                required
-              ></v-text-field>
+            <v-text-field
+              v-model="labForm.data.role"
+              :rules="labForm.rules.role"
+              label="Role (e.g Lab Director)"
+              required
+            ></v-text-field>
 
-              <!-- <v-text-field
+            <!-- <v-text-field
                 v-model="labForm.data.facebook"
                 :rules="labForm.rules.facebook"
                 label="Lab Facebook"
@@ -339,24 +340,24 @@
                 label="Lab Twitter"
                 required
               ></v-text-field> -->
-            </v-card-text>
+          </v-card-text>
 
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="grey " text @click="labDialog = false">
-                Cancel
-              </v-btn>
-              <v-btn
-                type="submit"
-                color="primary"
-                @click.prevent="sumitAddLabForm($event)"
-              >
-                Submit
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
-      </v-form>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="grey " text @click="labDialog = false">
+              Cancel
+            </v-btn>
+            <v-btn
+              type="submit"
+              color="primary"
+              @click.prevent="sumitAddLabForm($event)"
+            >
+              Submit
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+      <!-- </v-form> -->
     </form>
 
     <v-snackbar v-model="snackbar" :timeout="timeout">
