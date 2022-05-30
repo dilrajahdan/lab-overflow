@@ -210,7 +210,7 @@
             <input name="bot-field" />
           </label>
         </p>
-        <!-- <v-form v-model="labForm.valid" lazy-validation :rules="labForm.rules"> -->
+        <!-- <v-form v-model="addlab.valid" lazy-validation :rules="addlab.rules"> -->
         <v-card>
           <v-card-title class="display-1">Submit your lab</v-card-title>
           <v-card-title>Lab Details</v-card-title>
@@ -218,69 +218,62 @@
           <v-card-text>
             <!-- add form fields for lab -->
             <v-text-field
-              v-model="labForm.data.name"
+              v-model="addlab.name"
               name="lab"
               label="Lab Name"
-              required
             ></v-text-field>
-            <!-- :rules="labForm.rules.name" -->
+            <!-- :rules="addlab.rules.name" -->
 
             <v-text-field
-              v-model="labForm.data.address"
+              v-model="addlab.address"
               name="labAddress"
               label="Lab Address"
-              required
             ></v-text-field>
-            <!-- :rules="labForm.rules.address" -->
+            <!-- :rules="addlab.rules.address" -->
 
             <v-text-field
-              v-model="labForm.data.website"
+              v-model="addlab.website"
               name="labWebsite"
               label="Lab Website"
-              required
               type="url"
             ></v-text-field>
-            <!-- :rules="labForm.rules.website" -->
+            <!-- :rules="addlab.rules.website" -->
           </v-card-text>
 
           <!-- Contact details -->
           <v-card-title>Contact Details</v-card-title>
           <v-card-text>
             <v-text-field
-              v-model="labForm.data.contact_name"
+              v-model="addlab.contact_name"
               name="labContactName"
               label="Contact Name"
-              required
             ></v-text-field>
-            <!-- :rules="labForm.rules.contact_name" -->
+            <!-- :rules="addlab.rules.contact_name" -->
 
             <v-text-field
-              v-model="labForm.data.contact_phone"
+              v-model="addlab.contact_phone"
               name="labContactPhone"
               label="Contact Phone"
               type="tel"
-              required
             ></v-text-field>
-            <!-- :rules="labForm.rules.contact_phone" -->
+            <!-- :rules="addlab.rules.contact_phone" -->
 
             <v-text-field
-              v-model="labForm.data.contact_email"
+              v-model="addlab.contact_email"
               name="labContactEmail"
               label="Contact Email"
-              required
               type="email"
             ></v-text-field>
-            <!-- :rules="labForm.rules.contact_email" -->
+            <!-- :rules="addlab.rules.contact_email" -->
 
             <v-text-field
-              v-model="labForm.data.role"
+              v-model="addlab.role"
               name="labContactRole"
               label="Role (e.g Lab Director)"
-              required
             ></v-text-field>
-            <!-- :rules="labForm.rules.role" -->
+            <!-- :rules="addlab.rules.role" -->
           </v-card-text>
-          <!-- valid: {{ labForm.valid }} -->
+          <!-- valid: {{ addlab.valid }} -->
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="grey " text @click="labDialog = false">
@@ -294,8 +287,8 @@
               Submit
             </v-btn>
           </v-card-actions>
-          <pre>{{ labForm.valid }}</pre>
-          <pre>{{ labForm.data }}</pre>
+          <pre>{{ addlab.valid }}</pre>
+          <pre>{{ addlab }}</pre>
         </v-card>
         <!-- </v-form> -->
       </form>
@@ -404,66 +397,61 @@ export default {
     timeout: 2000,
     snackbar: false,
     labDialog: false,
-    labForm: {
-      data: {
-        name: '',
-        address: '',
-        website: '',
-        contact_name: '',
-        contact_phone: '',
-        contact_email: '',
-        role: '',
-      },
-      rules: {
-        name: [
-          (v) => !!v || 'Lab name is required',
-          (v) => v.length <= 50 || 'Lab name must be less than 50 characters',
-        ],
-        address: [
-          (v) => !!v || 'Lab address is required',
-          (v) =>
-            v.length <= 50 || 'Lab address must be less than 50 characters',
-        ],
-        phone: [
-          (v) => !!v || 'Lab phone is required',
-          (v) => v.length <= 20 || 'Lab phone must be less than 20 characters',
-        ],
-        email: [
-          (v) => !!v || 'Lab email is required',
-          (v) =>
-            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || // eslint-disable-line
-            'Please enter a valid email address',
-        ],
-        website: [
-          (v) => !!v || 'Lab website is required',
-          (v) =>
-            v.length <= 50 || 'Lab website must be less than 50 characters',
-        ],
-        contact_name: [
-          (v) => !!v || 'Lab contact name is required',
-          (v) =>
-            v.length <= 50 ||
-            'Lab contact name must be less than 50 characters',
-        ],
-        contact_phone: [
-          (v) => !!v || 'Lab contact phone is required',
-          (v) =>
-            v.length <= 20 ||
-            'Lab contact phone must be less than 20 characters',
-        ],
-        contact_email: [
-          (v) => !!v || 'Lab contact email is required',
-          (v) =>
-            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || // eslint-disable-line
-            'Please enter a valid email address',
-        ],
-        role: [
-          (v) => !!v || 'Lab role is required',
-          (v) => v.length <= 50 || 'Lab role must be less than 50 characters',
-        ],
-      },
-      valid: false,
+    addlab: {
+      name: '',
+      address: '',
+      website: '',
+      contact_name: '',
+      contact_phone: '',
+      contact_email: '',
+      role: '',
     },
+
+    rules: {
+      name: [
+        (v) => !!v || 'Lab name is required',
+        (v) => v.length <= 50 || 'Lab name must be less than 50 characters',
+      ],
+      address: [
+        (v) => !!v || 'Lab address is required',
+        (v) => v.length <= 50 || 'Lab address must be less than 50 characters',
+      ],
+      phone: [
+        (v) => !!v || 'Lab phone is required',
+        (v) => v.length <= 20 || 'Lab phone must be less than 20 characters',
+      ],
+      email: [
+        (v) => !!v || 'Lab email is required',
+        (v) =>
+          /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || // eslint-disable-line
+          'Please enter a valid email address',
+      ],
+      website: [
+        (v) => !!v || 'Lab website is required',
+        (v) => v.length <= 50 || 'Lab website must be less than 50 characters',
+      ],
+      contact_name: [
+        (v) => !!v || 'Lab contact name is required',
+        (v) =>
+          v.length <= 50 || 'Lab contact name must be less than 50 characters',
+      ],
+      contact_phone: [
+        (v) => !!v || 'Lab contact phone is required',
+        (v) =>
+          v.length <= 20 || 'Lab contact phone must be less than 20 characters',
+      ],
+      contact_email: [
+        (v) => !!v || 'Lab contact email is required',
+        (v) =>
+          /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || // eslint-disable-line
+          'Please enter a valid email address',
+      ],
+      role: [
+        (v) => !!v || 'Lab role is required',
+        (v) => v.length <= 50 || 'Lab role must be less than 50 characters',
+      ],
+    },
+    valid: false,
   }),
   head() {
     return {
@@ -528,6 +516,7 @@ export default {
     },
     submitAddLabForm() {
       const form = this.$refs.addlab
+      console.log('form', form)
       form.submit()
       this.labDialog = false
       this.snackbar = true
