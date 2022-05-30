@@ -7,7 +7,6 @@
     data-netlify
     data-netlify-honeypot="bot-field"
     class="sticky-sm"
-    action="/thank-you"
   >
     <input type="hidden" name="form-name" value="subscribe" />
 
