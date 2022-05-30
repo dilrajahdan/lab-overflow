@@ -19,6 +19,10 @@ export default {
   target: 'static',
   ssr: true,
 
+  // router: {
+  //   trailingSlash: false,
+  // },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate:
