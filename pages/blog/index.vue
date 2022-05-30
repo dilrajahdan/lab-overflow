@@ -4,11 +4,11 @@
     <ul>
       <li v-for="article in articles" :key="article.slug" cl>
         <h4>
-          <nuxt-link :to="`/articles/${article.slug}`">{{
+          <nuxt-link :to="`/blog/${article.slug}`">{{
             article.slug
           }}</nuxt-link>
         </h4>
-        {{ article }}
+        {{ article.title }}
       </li>
     </ul>
   </article>
@@ -18,7 +18,7 @@
 export default {
   async asyncData({ $axios, $route, $content }) {
     // implicit (assumes $eq operator)
-    const articles = await $content('articles').fetch()
+    const articles = await $content('blog').fetch()
 
     // // explicit $eq
     // const articles = await this.$content('articles').where({ title: { $eq: 'Home' } }).fetch()
