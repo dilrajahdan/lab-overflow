@@ -228,7 +228,6 @@
       name="addlab"
       data-netlify
       data-netlify-honeypot="bot-field"
-      action="/thank-you/"
     >
       <input type="hidden" name="form-name" value="addlab" />
       <p class="hidden">
@@ -252,6 +251,7 @@
             <!-- add form fields for lab -->
             <v-text-field
               v-model="labForm.data.name"
+              name="lab"
               :rules="labForm.rules.name"
               label="Lab Name"
               required
@@ -259,27 +259,15 @@
 
             <v-text-field
               v-model="labForm.data.address"
+              name="labAddress"
               :rules="labForm.rules.address"
               label="Lab Address"
               required
             ></v-text-field>
 
-            <!-- <v-text-field
-                v-model="labForm.data.phone"
-                :rules="labForm.rules.phone"
-                label="Lab Phone"
-                required
-              ></v-text-field> -->
-
-            <!-- <v-text-field
-                v-model="labForm.data.email"
-                :rules="labForm.rules.email"
-                label="Lab Email"
-                required
-              ></v-text-field> -->
-
             <v-text-field
               v-model="labForm.data.website"
+              name="labWebsite"
               :rules="labForm.rules.website"
               label="Lab Website"
               required
@@ -292,6 +280,7 @@
           <v-card-text>
             <v-text-field
               v-model="labForm.data.contact_name"
+              name="labContactName"
               :rules="labForm.rules.contact_name"
               label="Contact Name"
               required
@@ -299,6 +288,7 @@
 
             <v-text-field
               v-model="labForm.data.contact_phone"
+              name="labContactPhone"
               :rules="labForm.rules.contact_phone"
               label="Contact Phone"
               type="tel"
@@ -307,6 +297,7 @@
 
             <v-text-field
               v-model="labForm.data.contact_email"
+              name="labContactEmail"
               :rules="labForm.rules.contact_email"
               label="Contact Email"
               required
@@ -315,6 +306,7 @@
 
             <v-text-field
               v-model="labForm.data.role"
+              name="labContactRole"
               :rules="labForm.rules.role"
               label="Role (e.g Lab Director)"
               required
