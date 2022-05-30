@@ -203,11 +203,12 @@
       action="/thank-you"
     >
       <input type="hidden" name="form-name" value="addlab" />
-      <input name="test" value="addlab" />
 
       <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
         <!-- Add lab form -->
 
+        <input name="url" :value="route.fullPath" />
+        <input name="test" value="addlab" />
         <p class="hidden">
           <label>
             Don’t fill this out if you’re human:
