@@ -24,7 +24,9 @@
         <v-autocomplete color="white" label="Location"></v-autocomplete>
         <v-text-field label="Email"></v-text-field>
       </p> -->
-      <p class="body-1 pb-0 mb-0">Send me awesome cannabis lab jobs</p>
+      <p class="body-1 pb-0 mb-0">
+        Send me the latest cannabis lab jobs, news and discussions
+      </p>
       <!-- <template #icon>
         <v-icon class="" color="white" dark>mdi-email-plus</v-icon>
       </template> -->
@@ -40,6 +42,18 @@
           hide-details
           name="email"
           type="email"
+          dense
+        />
+        <v-text-field
+          v-model="subscribeToJobsLocation"
+          prepend-inner-icon="mdi-pin"
+          filled
+          rounded
+          required
+          class="pa-0 my-0 mx-2 white"
+          placeholder="Your location"
+          hide-details
+          name="location"
           dense
         />
 
