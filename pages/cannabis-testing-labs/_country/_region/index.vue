@@ -207,7 +207,7 @@
       <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
         <!-- Add lab form -->
 
-        <input name="url" :value="route.fullPath" />
+        <input name="url" :value="$route.path" />
         <input name="test" value="addlab" />
         <p class="hidden">
           <label>
