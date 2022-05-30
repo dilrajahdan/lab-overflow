@@ -215,27 +215,27 @@
         <!-- <v-form v-model="addlab.valid" lazy-validation :rules="addlab.rules"> -->
         <v-card>
           <input type="hidden" name="form-name" value="addlab" />
-          <input name="url" :value="$route.path" />
-          <input name="test" value="" />
+          <input type="hidden" name="url" :value="$route.path" />
 
           <v-card-title class="display-1">Submit your lab</v-card-title>
+          <v-card-text>
+            <p>Email dilrajahdan@gmail.com with you lab details</p>
+          </v-card-text>
+          <!-- 
           <v-card-title>Lab Details</v-card-title>
 
           <v-card-text>
-            <!-- add form fields for lab -->
             <v-text-field
               v-model="addlab.name"
               name="lab"
               label="Lab Name"
             ></v-text-field>
-            <!-- :rules="addlab.rules.name" -->
 
             <v-text-field
               v-model="addlab.address"
               name="labAddress"
               label="Lab Address"
             ></v-text-field>
-            <!-- :rules="addlab.rules.address" -->
 
             <v-text-field
               v-model="addlab.website"
@@ -243,10 +243,9 @@
               label="Lab Website"
               type="url"
             ></v-text-field>
-            <!-- :rules="addlab.rules.website" -->
           </v-card-text>
 
-          <!-- Contact details -->
+       
           <v-card-title>Contact Details</v-card-title>
           <v-card-text>
             <v-text-field
@@ -254,7 +253,6 @@
               name="labContactName"
               label="Contact Name"
             ></v-text-field>
-            <!-- :rules="addlab.rules.contact_name" -->
 
             <v-text-field
               v-model="addlab.contact_phone"
@@ -262,7 +260,6 @@
               label="Contact Phone"
               type="tel"
             ></v-text-field>
-            <!-- :rules="addlab.rules.contact_phone" -->
 
             <v-text-field
               v-model="addlab.contact_email"
@@ -270,16 +267,16 @@
               label="Contact Email"
               type="email"
             ></v-text-field>
-            <!-- :rules="addlab.rules.contact_email" -->
+          
 
             <v-text-field
               v-model="addlab.role"
               name="labContactRole"
               label="Role (e.g Lab Director)"
             ></v-text-field>
-            <!-- :rules="addlab.rules.role" -->
+          
           </v-card-text>
-          <!-- valid: {{ addlab.valid }} -->
+        
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="grey " text @click="labDialog = false">
@@ -293,8 +290,9 @@
               Submit
             </v-btn>
           </v-card-actions>
-          <pre>{{ addlab.valid }}</pre>
-          <pre>{{ addlab }}</pre>
+           -->
+          <!-- <pre>{{ addlab.valid }}</pre>
+          <pre>{{ addlab }}</pre> -->
         </v-card>
         <!-- </v-form> -->
       </form>
