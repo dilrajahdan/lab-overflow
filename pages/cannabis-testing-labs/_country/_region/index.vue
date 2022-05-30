@@ -193,18 +193,20 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
-      <!-- Add lab form -->
-      <form
-        id="addlab"
-        ref="addlab"
-        method="post"
-        name="addlab"
-        data-netlify
-        data-netlify-honeypot="bot-field"
-        action="/thank-you"
-      >
-        <input type="hidden" name="form-name" value="addlab" />
+    <form
+      id="addlab"
+      ref="addlab"
+      method="post"
+      name="addlab"
+      data-netlify
+      data-netlify-honeypot="bot-field"
+      action="/thank-you"
+    >
+      <input type="hidden" name="form-name" value="addlab" />
+
+      <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
+        <!-- Add lab form -->
+
         <p class="hidden">
           <label>
             Don’t fill this out if you’re human:
@@ -292,8 +294,8 @@
           <pre>{{ addlab }}</pre>
         </v-card>
         <!-- </v-form> -->
-      </form>
-    </v-dialog>
+      </v-dialog>
+    </form>
 
     <v-snackbar v-model="snackbar" :timeout="timeout">
       Lab submitted successfully! I'll get back to you soon. Thanks Dil
