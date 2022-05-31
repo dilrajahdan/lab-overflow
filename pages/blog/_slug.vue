@@ -57,12 +57,12 @@ export default {
     // implicit (assumes $eq operator)
     const article = await $content('blog', params.slug).fetch()
     const pageTitle = article.title
-    const pageDescription = article.excert
+    const pageDescription = article.description
     const ogImage = article.image
     const tags = article.tags
     // convert tags array to string
     const tagsString = tags.join(',')
-
+    console.log(article.description)
     return { article, pageTitle, pageDescription, ogImage, tags, tagsString }
   },
   data() {
