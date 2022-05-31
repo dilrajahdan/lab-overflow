@@ -1,7 +1,14 @@
 ---
 title: Cannabis Lab 101&#58; Cannabinoid Separation Methods in the Public Domain -Everything you need to know
 author: Eric Burtin Martin
-description: Learn how to use @nuxt/content.
+excert: The world of cannabis science is often shrouded in mystery and unlike other scientific industries where knowledge is shared — **_knowledge in the cannabis testing industry is protected — not shared_**. Well, I am here to help inform aspiring scientists around the world of this one fact — **_everything you need to know to set up and run a cannabinoids separation method for potency determination is within the public domain!_** P.S. links to methods at the bottom)
+img: /blog-content/Cannabis-flower-next-to-an-Erlenmeyer-flask.jpeg
+date: 2020-07-29
+tags:
+  - potency
+  - cannabinoid-separation
+  - separation-methods
+  - public-domain
 ---
 
 The world of cannabis science is often shrouded in mystery and unlike other scientific industries where knowledge is shared — **_knowledge in the cannabis testing industry is protected — not shared_**. Well, I am here to help inform aspiring scientists around the world of this one fact — **_everything you need to know to set up and run a cannabinoids separation method for potency determination is within the public domain!_** P.S. links to methods at the bottom)

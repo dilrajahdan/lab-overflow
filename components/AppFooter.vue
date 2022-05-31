@@ -71,9 +71,12 @@ export default {
           to: '/contact',
           outlined: true,
         },
+        {
+          title: 'Blog',
+          to: '/blog',
+        },
       ],
-      title: 'Lab',
-      title2: 'Overflow',
+      title: 'Lab Overflow',
     }
   },
 }

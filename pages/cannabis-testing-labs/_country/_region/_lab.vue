@@ -4,10 +4,9 @@
       <v-row class="mt-0 pb-0">
         <v-col cols="12" sm="8">
           <v-btn
-            color=""
             outlined
             small
-            class="mt-0 mb-4"
+            class="mt-0 mb-4 teal--text"
             :to="`/cannabis-testing-labs/${params.country}/${params.region}`"
           >
             <v-icon left>mdi-arrow-left</v-icon>

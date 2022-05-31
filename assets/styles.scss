@@ -1,10 +1,17 @@
 @import '~vuetify/src/styles/settings/_variables';
 
+html{
+  // @media #{map-get($display-breakpoints, 'lg-and-up')} {
+  //   font-size: 22px !important;
+  // }
+}
+
 body {
   // background-color: #673ab7 !important;
   background-color: #f5f5f5 !important;
   
 }
+
 
 
 .capitalize {

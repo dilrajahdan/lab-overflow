@@ -125,10 +125,10 @@ export default {
           to: '/post-a-job',
           outlined: true,
         },
-        // {
-        //   title: 'Articles',
-        //   to: '/articles',
-        // },
+        {
+          title: 'Blog',
+          to: '/blog',
+        },
       ],
       title: 'Lab Overflow',
     }
