@@ -32,19 +32,37 @@
           <v-card
             to="/blog/cannabinoid-separation-methods-in-the-public-domain-everything-you-need-to-know"
           >
-            <v-img
+            <v-parallax
+              dark
+              height="200"
+              src="/blog-content/Cannabis-flower-next-to-an-Erlenmeyer-flask.jpeg"
+            >
+              <v-row align="end" justify="center">
+                <v-col cols="12">
+                  <v-card-subtitle class="text-overline py-0 my-0"
+                    >Last article</v-card-subtitle
+                  >
+                  <v-card-title class="pt-0"
+                    >Cannabis Lab 101: Cannabinoid Separation Methods in the
+                    Public Domain -Everything you need to know</v-card-title
+                  >
+                </v-col>
+              </v-row>
+            </v-parallax>
+
+            <!-- <v-img
               class="white--text align-end"
               height="200px"
               src="/blog-content/Cannabis-flower-next-to-an-Erlenmeyer-flask.jpeg"
             >
-              <v-card-subtitle class="text-overline pb-0"
+              <v-card-subtitle class="text-overline py-0 my-0"
                 >Last article</v-card-subtitle
               >
-              <v-card-title
+              <v-card-title class="pt-0"
                 >Cannabis Lab 101: Cannabinoid Separation Methods in the Public
                 Domain -Everything you need to know</v-card-title
               >
-            </v-img>
+            </v-img> -->
           </v-card>
         </v-col>
       </v-row>

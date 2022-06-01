@@ -65,7 +65,11 @@
             <v-card>
               <v-card-subtitle>Submit your Lab</v-card-subtitle>
               <v-card-text>
-                <v-btn color="teal" block outlined @click="labDialog = true"
+                <v-btn
+                  color="teal"
+                  block
+                  outlined
+                  to="/cannabis-testing-labs/add"
                   >Submit your Lab</v-btn
                 ></v-card-text
               >
@@ -183,7 +187,12 @@
                     </v-list-item-content>
 
                     <v-list-item-action>
-                      <v-btn outlined color="teal">Submit your lab</v-btn>
+                      <v-btn
+                        to="/cannabis-testing-labs/add"
+                        outlined
+                        color="teal"
+                        >Submit your lab</v-btn
+                      >
                     </v-list-item-action>
                   </v-list-item>
                 </v-list>
@@ -193,120 +202,6 @@
         </v-col>
       </v-row>
     </v-container>
-
-    <v-dialog v-model="labDialog" transition="dialog-bottom-transition">
-      <!-- Add lab form -->
-
-      <form
-        id="addlab"
-        ref="addlab"
-        method="POST"
-        name="addlab"
-        data-netlify
-        data-netlify-honeypot="bot-field"
-        action="/thank-you"
-      >
-        <p class="hidden">
-          <label>
-            Don’t fill this out if you’re human:
-            <input name="bot-field" />
-          </label>
-        </p>
-        <!-- <v-form v-model="addlab.valid" lazy-validation :rules="addlab.rules"> -->
-        <v-card>
-          <input type="hidden" name="form-name" value="addlab" />
-          <input type="hidden" name="url" :value="$route.path" />
-
-          <v-card-title class="display-1">Submit your lab</v-card-title>
-          <v-card-text>
-            <p>Email dilrajahdan@gmail.com with you lab details</p>
-          </v-card-text>
-          <!-- 
-          <v-card-title>Lab Details</v-card-title>
-
-          <v-card-text>
-            <v-text-field
-              v-model="addlab.name"
-              name="lab"
-              label="Lab Name"
-            ></v-text-field>
-
-            <v-text-field
-              v-model="addlab.address"
-              name="labAddress"
-              label="Lab Address"
-            ></v-text-field>
-
-            <v-text-field
-              v-model="addlab.website"
-              name="labWebsite"
-              label="Lab Website"
-              type="url"
-            ></v-text-field>
-          </v-card-text>
-
-       
-          <v-card-title>Contact Details</v-card-title>
-          <v-card-text>
-            <v-text-field
-              v-model="addlab.contact_name"
-              name="labContactName"
-              label="Contact Name"
-            ></v-text-field>
-
-            <v-text-field
-              v-model="addlab.contact_phone"
-              name="labContactPhone"
-              label="Contact Phone"
-              type="tel"
-            ></v-text-field>
-
-            <v-text-field
-              v-model="addlab.contact_email"
-              name="labContactEmail"
-              label="Contact Email"
-              type="email"
-            ></v-text-field>
-          
-
-            <v-text-field
-              v-model="addlab.role"
-              name="labContactRole"
-              label="Role (e.g Lab Director)"
-            ></v-text-field>
-          
-          </v-card-text>
-        
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="grey " text @click="labDialog = false">
-              Cancel
-            </v-btn>
-            <v-btn
-              type="submit"
-              color="primary"
-              @click.prevent="submitAddLabForm($event)"
-            >
-              Submit
-            </v-btn>
-          </v-card-actions>
-           -->
-          <!-- <pre>{{ addlab.valid }}</pre>
-          <pre>{{ addlab }}</pre> -->
-        </v-card>
-        <!-- </v-form> -->
-      </form>
-    </v-dialog>
-
-    <v-snackbar v-model="snackbar" :timeout="timeout">
-      Lab submitted successfully! I'll get back to you soon. Thanks Dil
-
-      <template #action="{ attrs }">
-        <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
   </section>
 </template>
 <script>
@@ -397,66 +292,7 @@ export default {
       selectedRegionItem,
     }
   },
-  data: () => ({
-    timeout: 2000,
-    snackbar: false,
-    labDialog: false,
-    addlab: {
-      name: '',
-      address: '',
-      website: '',
-      contact_name: '',
-      contact_phone: '',
-      contact_email: '',
-      role: '',
-    },
-
-    rules: {
-      name: [
-        (v) => !!v || 'Lab name is required',
-        (v) => v.length <= 50 || 'Lab name must be less than 50 characters',
-      ],
-      address: [
-        (v) => !!v || 'Lab address is required',
-        (v) => v.length <= 50 || 'Lab address must be less than 50 characters',
-      ],
-      phone: [
-        (v) => !!v || 'Lab phone is required',
-        (v) => v.length <= 20 || 'Lab phone must be less than 20 characters',
-      ],
-      email: [
-        (v) => !!v || 'Lab email is required',
-        (v) =>
-          /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || // eslint-disable-line
-          'Please enter a valid email address',
-      ],
-      website: [
-        (v) => !!v || 'Lab website is required',
-        (v) => v.length <= 50 || 'Lab website must be less than 50 characters',
-      ],
-      contact_name: [
-        (v) => !!v || 'Lab contact name is required',
-        (v) =>
-          v.length <= 50 || 'Lab contact name must be less than 50 characters',
-      ],
-      contact_phone: [
-        (v) => !!v || 'Lab contact phone is required',
-        (v) =>
-          v.length <= 20 || 'Lab contact phone must be less than 20 characters',
-      ],
-      contact_email: [
-        (v) => !!v || 'Lab contact email is required',
-        (v) =>
-          /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || // eslint-disable-line
-          'Please enter a valid email address',
-      ],
-      role: [
-        (v) => !!v || 'Lab role is required',
-        (v) => v.length <= 50 || 'Lab role must be less than 50 characters',
-      ],
-    },
-    valid: false,
-  }),
+  data: () => ({}),
   head() {
     return {
       title: this.title,
