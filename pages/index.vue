@@ -28,6 +28,28 @@
     </v-container>
     <v-container>
       <v-row class="">
+        <v-col cols="12" class="">
+          <v-card
+            to="/blog/cannabinoid-separation-methods-in-the-public-domain-everything-you-need-to-know"
+          >
+            <v-img
+              class="white--text align-end"
+              height="200px"
+              src="/blog-content/Cannabis-flower-next-to-an-Erlenmeyer-flask.jpeg"
+            >
+              <v-card-subtitle class="text-overline pb-0"
+                >Last article</v-card-subtitle
+              >
+              <v-card-title
+                >Cannabis Lab 101: Cannabinoid Separation Methods in the Public
+                Domain -Everything you need to know</v-card-title
+              >
+            </v-img>
+          </v-card>
+        </v-col>
+      </v-row>
+
+      <v-row class="">
         <v-col cols="12" sm="6" class="">
           <v-card class="fill-height d-flex flex-column">
             <v-card-title>
