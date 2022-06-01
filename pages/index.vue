@@ -46,6 +46,9 @@
                     >Cannabis Lab 101: Cannabinoid Separation Methods in the
                     Public Domain -Everything you need to know</v-card-title
                   >
+                  <v-card-subtitle class="pt-2"
+                    >By Eric Burtin Martin</v-card-subtitle
+                  >
                 </v-col>
               </v-row>
             </v-parallax>
