@@ -39,97 +39,84 @@
                 <input name="bot-field" />
               </label>
             </p>
-            <v-form
+            <!-- <v-form
               v-model="addlab.valid"
               lazy-validation
               :rules="addlab.rules"
-            >
-              <v-card>
-                <input type="hidden" name="form-name" value="addlab" />
-                <input type="hidden" name="url" :value="$route.path" />
+            > -->
+            <v-card>
+              <input type="hidden" name="form-name" value="addlab" />
+              <input type="hidden" name="url" :value="$route.path" />
 
-                <v-card-title class="display-1">Submit your lab</v-card-title>
-                <!-- <v-card-text>
+              <v-card-title class="display-1">Submit your lab</v-card-title>
+              <!-- <v-card-text>
         <p>Email dilrajahdan@gmail.com with you lab details</p>
       </v-card-text> -->
 
-                <!-- <v-card-title>Lab Details</v-card-title> -->
+              <!-- <v-card-title>Lab Details</v-card-title> -->
 
-                <v-card-text>
-                  <v-text-field
-                    v-model="addlab.data.name"
-                    name="lab"
-                    label="Lab Name"
-                    :rules="addlab.rules.lab"
-                  ></v-text-field>
+              <v-card-text>
+                <v-text-field
+                  v-model="addlab.data.name"
+                  name="lab"
+                  label="Lab Name"
+                ></v-text-field>
 
-                  <v-text-field
-                    v-model="addlab.data.address"
-                    name="labAddress"
-                    label="Lab Address"
-                    :rules="addlab.rules.labAddress"
-                  ></v-text-field>
+                <v-text-field
+                  v-model="addlab.data.address"
+                  name="labAddress"
+                  label="Lab Address"
+                ></v-text-field>
 
-                  <v-text-field
-                    v-model="addlab.data.website"
-                    name="labWebsite"
-                    label="Lab Website"
-                    type="url"
-                    :rules="addlab.rules.labWebsite"
-                  ></v-text-field>
-                </v-card-text>
+                <v-text-field
+                  v-model="addlab.data.website"
+                  name="labWebsite"
+                  label="Lab Website"
+                  type="url"
+                ></v-text-field>
+              </v-card-text>
 
-                <v-card-title>Contact Details</v-card-title>
-                <v-card-text>
-                  <v-text-field
-                    v-model="addlab.data.contact_name"
-                    name="labContactName"
-                    label="Contact Name"
-                    :rules="addlab.rules.contact_name"
-                  ></v-text-field>
+              <v-card-title>Contact Details</v-card-title>
+              <v-card-text>
+                <v-text-field
+                  v-model="addlab.data.contact_name"
+                  name="labContactName"
+                  label="Contact Name"
+                ></v-text-field>
 
-                  <v-text-field
-                    v-model="addlab.data.contact_phone"
-                    name="labContactPhone"
-                    label="Contact Phone"
-                    type="tel"
-                    :rules="addlab.rules.contact_phone"
-                  ></v-text-field>
+                <v-text-field
+                  v-model="addlab.data.contact_phone"
+                  name="labContactPhone"
+                  label="Contact Phone"
+                  type="tel"
+                ></v-text-field>
 
-                  <v-text-field
-                    v-model="addlab.data.contact_email"
-                    name="labContactEmail"
-                    label="Contact Email"
-                    type="email"
-                    :rules="addlab.rules.contact_email"
-                  ></v-text-field>
+                <v-text-field
+                  v-model="addlab.data.contact_email"
+                  name="labContactEmail"
+                  label="Contact Email"
+                  type="email"
+                ></v-text-field>
 
-                  <v-text-field
-                    v-model="addlab.data.role"
-                    name="labContactRole"
-                    label="Role (e.g Lab Director)"
-                    :rules="addlab.rules.role"
-                  ></v-text-field>
-                </v-card-text>
+                <v-text-field
+                  v-model="addlab.data.role"
+                  name="labContactRole"
+                  label="Role (e.g Lab Director)"
+                ></v-text-field>
+              </v-card-text>
 
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn color="grey " text @click="labDialog = false">
-                    Cancel
-                  </v-btn>
-                  <v-btn
-                    type="submit"
-                    color="primary"
-                    :disabled="!addlab.valid"
-                  >
-                    Submit
-                  </v-btn>
-                </v-card-actions>
-                <!-- 
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="grey " text @click="labDialog = false">
+                  Cancel
+                </v-btn>
+                <v-btn type="submit" color="primary"> Submit </v-btn>
+              </v-card-actions>
+              <!-- 
                 <pre>{{ addlab.valid }}</pre>
                 <pre>{{ addlab }}</pre> -->
-              </v-card>
-            </v-form>
+            </v-card>
+            <!-- </v-form> -->
           </form>
         </v-col>
       </v-row>
