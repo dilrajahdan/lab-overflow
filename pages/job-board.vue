@@ -27,7 +27,12 @@
     </v-card>
 
     <v-container>
-      <v-row class="mt-0">
+      <v-row class="mt-0 sticky-sm" style="z-index: 10">
+        <v-col>
+          <subscribe-to-jobs class=""></subscribe-to-jobs>
+        </v-col>
+      </v-row>
+      <v-row>
         <v-col cols="12" sm="3">
           <div class="sticky-sm">
             <v-card color="gray lighten-4" elevation="1">
@@ -104,7 +109,6 @@
                 </live-preview>
               </v-card-text>
             </v-card>
-            <subscribe-to-jobs class="mt-4"></subscribe-to-jobs>
 
             <!-- Scraped jobs  -->
             <v-card class="mt-4">

@@ -20,6 +20,11 @@
     </v-sheet>
 
     <v-container>
+      <v-row class="mt-0 sticky-sm" style="z-index: 10">
+        <v-col>
+          <subscribe-to-jobs class=""></subscribe-to-jobs>
+        </v-col>
+      </v-row>
       <v-row class="mt-4">
         <v-col class="redX" cols="12">
           <v-card class="pa-6">
