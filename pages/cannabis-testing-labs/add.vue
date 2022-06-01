@@ -31,6 +31,7 @@
             name="addlab"
             data-netlify
             data-netlify-honeypot="bot-field"
+            action="/thank-you"
           >
             <p class="hidden">
               <label>
