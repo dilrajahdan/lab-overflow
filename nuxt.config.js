@@ -49,7 +49,10 @@ export default {
   css: ['@/assets/styles.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~/plugins/persistedState.client.js', mode: 'client' }],
+  plugins: [
+    { src: '~/plugins/persistedState.client.js', mode: 'client' },
+    { src: '~/plugins/hotjar.client.js', mode: 'client' },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
