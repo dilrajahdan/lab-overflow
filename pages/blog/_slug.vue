@@ -37,13 +37,28 @@
           </v-card>
         </v-col>
         <v-col class="pt-0 redX" cols="12" sm="4">
-          <share-the-love-card
-            :url="`https://laboverflow.com${$route.path}`"
-            :title="pageTitle"
-            :description="pageDescription"
-            :hashtags="tagsString"
-            class="sticky-sm"
-          ></share-the-love-card>
+          <div class="sticky-sm">
+            <v-card
+              v-if="article.forumLink && article.forumLinkText"
+              color="teal"
+              dark
+            >
+              <v-card-title
+                ><a
+                  class="white--text text-decoration-none"
+                  :href="`${article.forumLink}?utm_source=blog&utm_medium=link&utm_campaign=${article.slug}`"
+                  >{{ article.forumLinkText }}</a
+                ></v-card-title
+              >
+            </v-card>
+            <share-the-love-card
+              :url="`https://laboverflow.com${$route.path}`"
+              :title="pageTitle"
+              :description="pageDescription"
+              :hashtags="tagsString"
+              class="mt-4"
+            ></share-the-love-card>
+          </div>
         </v-col>
       </v-row>
     </v-container>
