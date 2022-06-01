@@ -15,7 +15,7 @@ export default {
   name: 'DefaultLayout',
   transition: 'fade',
   mounted() {
-    console.log('LAYOUT: mounted')
+    // console.log('LAYOUT: mounted')
     // Hotjar Tracking Code for https://laboverflow.com/
     //   ;(function (h, o, t, j, a, r) {
     //     h.hj =
