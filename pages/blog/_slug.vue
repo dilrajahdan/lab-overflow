@@ -34,6 +34,15 @@
             <!-- <v-card-text> -->
             <nuxt-content :document="{ body: article.body }" />
             <!-- </v-card-text> -->
+
+            <h2>Leave a comment</h2>
+            <a
+              v-if="article.forumLink && article.forumLinkText"
+              outlined
+              :href="`${article.forumLink}?utm_source=blog&utm_medium=link&utm_campaign=${article.slug}`"
+            >
+              Continue the discussion on the forum
+            </a>
           </v-card>
         </v-col>
         <v-col class="pt-0 redX" cols="12" sm="4">
@@ -42,14 +51,11 @@
               v-if="article.forumLink && article.forumLinkText"
               color="teal"
               dark
+              :href="`${article.forumLink}?utm_source=blog&utm_medium=link&utm_campaign=${article.slug}`"
             >
-              <v-card-title
-                ><a
-                  class="white--text text-decoration-none"
-                  :href="`${article.forumLink}?utm_source=blog&utm_medium=link&utm_campaign=${article.slug}`"
-                  >{{ article.forumLinkText }}</a
-                ></v-card-title
-              >
+              <v-card-title class="white--text text-decoration-none">{{
+                article.forumLinkText
+              }}</v-card-title>
             </v-card>
             <share-the-love-card
               :url="`https://laboverflow.com${$route.path}`"
@@ -143,6 +149,19 @@ export default {
   img {
     max-width: 100%;
   }
+}
+
+.aspect-ratio {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+.aspect-ratio iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .v-chip {
