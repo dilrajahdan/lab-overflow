@@ -27,7 +27,7 @@
       </v-row>
       <v-row class="mt-4">
         <v-col class="redX" cols="12">
-          <v-card class="pa-6">
+          <v-card class="pa-6 blog-list">
             <v-card-title>
               <h3 class="text-h6">Blog articles for cannabis testing labs</h3>
             </v-card-title>
@@ -38,8 +38,7 @@
               :key="article.slug"
               color="grey lighten-4"
               :to="`/blog/${article.slug}`"
-              class="d-flex mb-4"
-              :class="{ active: $route.path === `/blog/${article.slug}` }"
+              class="blog-list__item"
             >
               <v-avatar class="ma-3" size="125" tile>
                 <v-img :src="article.image"></v-img>
@@ -159,3 +158,18 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+@import '~vuetify/src/styles/settings/_variables';
+
+// @media #{map-get($display-breakpoints, 'sm-and-up')} {
+
+.blog-list__item {
+  display: flex;
+  margin-bottom: map-get($spacers, 4);
+
+  &:last-child {
+    margin-bottom: 0rem;
+  }
+}
+</style>
