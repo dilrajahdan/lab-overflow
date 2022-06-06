@@ -27,31 +27,34 @@
       <subscribe-to-jobs></subscribe-to-jobs>
     </v-container>
     <v-container>
-      <v-row class="">
+      <v-row>
         <v-col cols="12" class="">
-          <v-card
-            to="/blog/cannabinoid-separation-methods-in-the-public-domain-everything-you-need-to-know"
-          >
-            <v-parallax
+          <v-card to="/blog/technical-overview-of-potency-determinization">
+            <v-img
               dark
-              height="200"
-              src="/blog-content/Cannabis-flower-next-to-an-Erlenmeyer-flask.jpeg"
+              height="250"
+              src="/blog-content/shimadzu-HPLC.jpeg"
+              class="align-end"
+              position="0% 50%"
+              gradient="to top, rgba(0,0,0,.77) , rgba(25,32,72,.0)"
             >
-              <v-row align="end" justify="center">
-                <v-col cols="12">
-                  <v-card-subtitle class="text-overline py-0 my-0"
-                    >Last article</v-card-subtitle
-                  >
-                  <v-card-title class="pt-0"
-                    >Cannabis Lab 101: Cannabinoid Separation Methods in the
-                    Public Domain -Everything you need to know</v-card-title
-                  >
-                  <v-card-subtitle class="pt-2"
-                    >By Eric Burtin Martin</v-card-subtitle
-                  >
-                </v-col>
-              </v-row>
-            </v-parallax>
+              <v-container>
+                <v-row align="end" justify="center" class="">
+                  <v-col cols="12">
+                    <v-card-subtitle class="text-overline py-0 my-0"
+                      >Last article</v-card-subtitle
+                    >
+                    <v-card-title class="text-h4 pt-0"
+                      >Cannabis Lab 101: Technical Overview of Potency
+                      Determinization</v-card-title
+                    >
+                    <v-card-subtitle class="pt-2"
+                      >By Eric Burtin Martin</v-card-subtitle
+                    >
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-img>
 
             <!-- <v-img
               class="white--text align-end"

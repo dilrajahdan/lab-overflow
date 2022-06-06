@@ -57,6 +57,7 @@
                 article.forumLinkText
               }}</v-card-title>
             </v-card>
+
             <share-the-love-card
               :url="`https://laboverflow.com${$route.path}`"
               :title="pageTitle"
@@ -83,6 +84,7 @@ export default {
     const tags = article.tags
     // convert tags array to string
     const tagsString = tags.join(',')
+
     console.log(article.description)
     return { article, pageTitle, pageDescription, ogImage, tags, tagsString }
   },
