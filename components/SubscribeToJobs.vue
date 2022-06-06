@@ -12,7 +12,6 @@
 
     <v-banner
       app
-      :single-line="$vuetify.breakpoint.smAndUp"
       rounded
       sticky
       color="deep-orange darken-1"
@@ -25,7 +24,7 @@
         <v-text-field label="Email"></v-text-field>
       </p> -->
       <p class="body-1 pb-0 mb-0">
-        Send me the latest cannabis lab jobs, news and discussions
+        Get the latest jobs, articles and discussions straight to your inbox
       </p>
       <!-- <template #icon>
         <v-icon class="" color="white" dark>mdi-email-plus</v-icon>
