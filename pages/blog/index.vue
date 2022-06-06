@@ -32,14 +32,46 @@
               <h3 class="text-h6">Blog articles for cannabis testing labs</h3>
             </v-card-title>
             <!-- list of articles -->
-            <v-list three-line color="grey lighten-4">
+
+            <v-card
+              v-for="article in articles"
+              :key="article.slug"
+              color="grey lighten-4"
+              :to="`/blog/${article.slug}`"
+              class="d-flex mb-4"
+              :class="{ active: $route.path === `/blog/${article.slug}` }"
+            >
+              <v-avatar class="ma-3" size="125" tile>
+                <v-img :src="article.image"></v-img>
+              </v-avatar>
+
+              <div class="">
+                <v-card-title class="text-h5 mb-2" v-html="article.title">
+                </v-card-title>
+                <v-card-subtitle class="pb-2">
+                  By {{ article.author }}
+                </v-card-subtitle>
+                <v-chip-group class="mx-4 mb-2">
+                  <v-chip
+                    v-for="tag in article.tags"
+                    :key="tag"
+                    color="grey"
+                    small
+                    outlined
+                  >
+                    {{ tag }}
+                  </v-chip>
+                </v-chip-group>
+              </div>
+            </v-card>
+
+            <!-- <v-list three-line color="grey lighten-4">
               <v-list-item
                 v-for="article in articles"
                 :key="article.slug"
                 :href="`/blog/${article.slug}`"
                 :class="{ active: $route.path === `/blog/${article.slug}` }"
               >
-                <!-- <pre>  {{ article }}</pre> -->
                 <v-list-item-group>
                   <v-list-item-title class="text-h5" v-html="article.title">
                   </v-list-item-title>
@@ -48,7 +80,7 @@
                   </v-list-item-subtitle>
                 </v-list-item-group>
               </v-list-item>
-            </v-list>
+            </v-list> -->
           </v-card>
         </v-col>
         <v-col cols="12" class="yellowC">
