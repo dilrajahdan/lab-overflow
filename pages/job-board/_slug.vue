@@ -70,7 +70,7 @@
                 >Apply now</v-btn
               >
               <v-btn
-                v-if="job.applyEmail"
+                v-else-if="job.applyEmail"
                 :href="`mailto:${job.applyEmail}`"
                 min-width="100%"
                 color="primary"
