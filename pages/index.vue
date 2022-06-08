@@ -152,14 +152,14 @@
 
       <v-row>
         <v-col cols="12" class="">
-          <v-card hover color="teal lighten-5" to="/growers/add">
+          <v-card color="pink lighten-5" to="/growers/add">
             <v-card-title
               ><h4 class="text-h4">Are you a grower?</h4></v-card-title
             >
             <v-card-subtitle class="pt-2"
               ><p class="mb-0">
-                Want to be featured on Lab Overflow... or want to connect you
-                with certified labs in your area? Add your details today!
+                Want to be featured on Lab Overflow... or want to connect with
+                certified labs in your area? Add your details today!
               </p></v-card-subtitle
             >
           </v-card>
