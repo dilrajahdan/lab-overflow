@@ -2,7 +2,7 @@
   <div>
     <v-card color="deep-purple" dark tile class="py-3">
       <v-container>
-        <v-row>
+        <v-row align="center">
           <v-col cols="12" md="8">
             <v-card-title>
               <h1 class="overline">Lab directory</h1>
@@ -57,6 +57,20 @@
               your product for potency and quality assurance.
             </v-card-subtitle>
           </v-col> -->
+
+          <v-col cols="12" md="4">
+            <v-card-text>
+              <v-btn
+                height="100"
+                block
+                x-large
+                color="teal accent-3"
+                light
+                to="/cannabis-testing-labs/add"
+                >Submit your lab</v-btn
+              >
+            </v-card-text>
+          </v-col>
         </v-row>
       </v-container>
     </v-card>

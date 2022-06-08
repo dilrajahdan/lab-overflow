@@ -62,7 +62,13 @@
 
         <v-col cols="12" md="3" order-md="2" class="">
           <div class="sticky-sm">
-            <v-card>
+            <v-card hover color="teal" dark to="/cannabis-testing-labs/add">
+              <v-card-title class="white--text text-decoration-none"
+                >Submit your lab</v-card-title
+              >
+            </v-card>
+
+            <!-- <v-card>
               <v-card-subtitle>Submit your Lab</v-card-subtitle>
               <v-card-text>
                 <v-btn
@@ -73,7 +79,7 @@
                   >Submit your Lab</v-btn
                 ></v-card-text
               >
-            </v-card>
+            </v-card> -->
 
             <share-the-love-card
               class="mt-4"
