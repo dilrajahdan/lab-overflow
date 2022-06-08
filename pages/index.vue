@@ -73,6 +73,29 @@
         </v-col>
       </v-row>
 
+      <v-row>
+        <v-col cols="12" class="">
+          <v-card hover color="teal lighten-5" to="/growers/add">
+            <!-- <v-container>
+              <v-row align="end" justify="center" class="">
+                <v-col cols="12">
+             -->
+            <v-card-title
+              ><h4 class="text-h4">Are you a grower?</h4></v-card-title
+            >
+            <v-card-subtitle class="pt-2"
+              ><p class="mb-0">
+                Want to be featured on Lab Overflow... or want to connect you
+                with certified labs in your area? Add your details today!
+              </p></v-card-subtitle
+            >
+            <!-- </v-col>
+              </v-row>
+            </v-container> -->
+          </v-card>
+        </v-col>
+      </v-row>
+
       <v-row class="">
         <v-col cols="12" sm="6" class="">
           <v-card class="fill-height d-flex flex-column">
