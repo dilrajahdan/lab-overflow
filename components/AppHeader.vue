@@ -50,11 +50,7 @@
             @click.stop="drawer = !drawer"
           />
 
-          <nuxt-link
-            v-show="$vuetify.breakpoint.smAndUp"
-            class="text-decoration-none ml-2"
-            to="/"
-          >
+          <nuxt-link class="text-decoration-none ml-2" to="/">
             <v-img
               contain
               height="50"
