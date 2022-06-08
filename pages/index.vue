@@ -84,12 +84,12 @@
                 dark
                 color=""
                 class="fill-height"
-                to="/cannabis-testing-labs/canada/ontario/sigma-analytical-services"
+                to="/cannabis-testing-labs/usa/hawaii/medcanlab"
               >
                 <!-- 282 -->
                 <v-img
                   position="0 0%"
-                  :src="require('~/assets/img/toronto2.jpg')"
+                  :src="require('~/assets/img/hawaii.webp')"
                   height=""
                   gradient="to top , rgba(0,0,0,.77) 10%, rgba(0,96,100,.3) 40%"
                   class="fill-height"
@@ -102,10 +102,10 @@
                   >
                     <v-col class="">
                       <v-card-subtitle class="overline pb-0"
-                        >Toronto, Canada</v-card-subtitle
+                        >Hawaii, USA</v-card-subtitle
                       >
                       <v-card-title class="text-h2 font-weight-medium pt-0"
-                        >Sigma Analytical Services</v-card-title
+                        >MedCan Lab</v-card-title
                       >
                     </v-col>
                   </v-row>
