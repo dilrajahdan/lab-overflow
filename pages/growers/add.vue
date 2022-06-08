@@ -14,8 +14,8 @@
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">
-                Get featured on Lab Overflow and let us help you connect with
-                the best labs in your area. Apply today!
+                Get featured on Lab Overflow and connect with certified labs in
+                your area. Apply today!
               </h2>
             </v-card-subtitle>
           </v-col>
