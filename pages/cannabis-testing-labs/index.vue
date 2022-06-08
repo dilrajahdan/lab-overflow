@@ -67,6 +67,11 @@
 
     <v-container>
       <v-row>
+        <v-col>
+          <h3 class="text-h5">{{ labCount }} cannabis testing labs</h3></v-col
+        >
+      </v-row>
+      <v-row>
         <v-col cols="12" sm="4" lg="4" offset-lg="0">
           <v-card>
             <v-list dense>
@@ -190,6 +195,10 @@ export default {
       })
     })
 
+    // Get number of labs
+    let labCount = await $content('labs').fetch()
+    labCount = labCount.length
+
     // console.log('searchList', searchList)
 
     return {
@@ -197,6 +206,7 @@ export default {
       allRegions,
       labs,
       params,
+      labCount,
     }
   },
   data: () => ({
