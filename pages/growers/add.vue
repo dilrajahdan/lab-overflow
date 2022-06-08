@@ -77,6 +77,12 @@
                   label="Business Website"
                   type="url"
                 ></v-text-field>
+
+                <v-text-field
+                  v-model="addgrower.data.businessType"
+                  name="businessType"
+                  label="Type of business (e.g. grower, extractor, dispensary)"
+                ></v-text-field>
               </v-card-text>
 
               <v-card-title>Contact Details</v-card-title>
@@ -110,9 +116,7 @@
 
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="grey " text @click="labDialog = false">
-                  Cancel
-                </v-btn>
+                <v-btn color="grey " text type="reset"> Cancel </v-btn>
                 <v-btn type="submit" color="primary"> Submit </v-btn>
               </v-card-actions>
               <!-- 
