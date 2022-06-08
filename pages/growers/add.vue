@@ -207,7 +207,7 @@ export default {
   }),
   head() {
     return {
-      title: this.title,
+      title: 'Add your grower business',
       meta: [
         {
           hid: 'Grower Directory',
