@@ -57,7 +57,6 @@ export const actions = {
 
   // Get jobs
   async nuxtServerInit({ commit }, payload) {
-    // console.log(payload)
     let scrapedJobs = await this.$content('jobs').fetch()
 
     let paidJobs = await this.$fire.firestore
@@ -70,6 +69,7 @@ export const actions = {
         })
         return jobs
       })
+    console.log('paidJobs', paidJobs)
 
     // Add jobType to jobs
     scrapedJobs = scrapedJobs.map((job) => ({
