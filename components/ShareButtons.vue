@@ -13,7 +13,7 @@
         v-btn v-btn--rounded
         rounded-sm
         v-size--x-small
-        pa-2
+        pa-4
         blue
         lighten-1
         white--text
@@ -37,7 +37,7 @@
         v-btn v-btn--rounded
         rounded-sm
         v-size--x-small
-        pa-2
+        pa-4
         blue
         lighten-1
         white--text
@@ -57,11 +57,10 @@
       :hashtags="hashtags"
       class="
         mr-4
-        mb-3
         v-btn v-btn--rounded
         rounded-sm
         v-size--x-small
-        pa-2
+        pa-4
         blue
         lighten-1
         white--text
@@ -108,7 +107,7 @@ export default {
 
 <style>
 .share-button {
-  width: 160px;
+  width: 100%;
   max-width: 100%;
 }
 </style>
