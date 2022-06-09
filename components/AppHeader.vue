@@ -119,7 +119,7 @@ export default {
           to: '/forum',
         },
         {
-          title: 'Lab directory',
+          title: 'Labs',
           to: '/cannabis-testing-labs',
         },
 
@@ -131,6 +131,10 @@ export default {
           title: 'Post a job',
           to: '/post-a-job',
           outlined: true,
+        },
+        {
+          title: 'Mastermind',
+          to: '/mastermind',
         },
         {
           title: 'Blog',

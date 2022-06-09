@@ -67,9 +67,12 @@ export default {
           outlined: true,
         },
         {
+          title: 'Mastermind',
+          to: '/mastermind',
+        },
+        {
           title: 'Contact',
           to: '/contact',
-          outlined: true,
         },
         {
           title: 'Blog',
