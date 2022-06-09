@@ -38,19 +38,33 @@
               :key="article.slug"
               color="grey lighten-4"
               :to="`/blog/${article.slug}`"
+              :class="
+                $vuetify.breakpoint.smAndDown ? 'flex-column' : 'flex-row'
+              "
               class="blog-list__item"
             >
-              <v-avatar class="ma-3" size="125" tile>
+              <v-avatar
+                class="ma-3 blog-list__item__image"
+                :size="
+                  $vuetify.breakpoint.smAndDown ? 'calc (100% - 20px)' : 125
+                "
+                max-height="200"
+                tile
+              >
                 <v-img :src="article.image"></v-img>
               </v-avatar>
 
-              <div class="">
-                <v-card-title class="text-h5 mb-2" v-html="article.title">
+              <div class="blog-list__item__content">
+                <v-card-title class="mb-2">
+                  <h4 class="text-h5" v-html="article.title"></h4>
                 </v-card-title>
                 <v-card-subtitle class="pb-2">
                   By {{ article.author }}
                 </v-card-subtitle>
-                <v-chip-group class="mx-4 mb-2">
+                <v-chip-group
+                  :column="$vuetify.breakpoint.smAndDown"
+                  class="mx-4 mb-2"
+                >
                   <v-chip
                     v-for="tag in article.tags"
                     :key="tag"
@@ -171,5 +185,11 @@ export default {
   &:last-child {
     margin-bottom: 0rem;
   }
+}
+
+.blog-list__item__image {
+}
+
+.blog-list__item__content {
 }
 </style>
