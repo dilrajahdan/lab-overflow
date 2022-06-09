@@ -151,18 +151,33 @@
       </v-row>
 
       <v-row>
-        <v-col cols="12" class="">
+        <v-col cols="12" sm="6" class="">
           <v-card color="pink lighten-5" to="/growers/add">
-            <v-card-title
-              ><h4 class="text-h4">Are you a grower?</h4></v-card-title
+            <v-img
+              gradient="to bottom , rgba(0,0,0,.77) 10%, rgba(0,96,100,.3) 40%"
+              dark
+              height="190"
+              :src="require('~/assets/img/baby-plant.jpeg')"
             >
-            <v-card-subtitle class="pt-2"
-              ><p class="mb-0">
-                Want to be featured on Lab Overflow... or want to connect with
-                certified labs in your area? Add your details today!
-              </p></v-card-subtitle
-            >
+              <v-card-title
+                ><h4 class="text-h4">Are you a grower?</h4></v-card-title
+              >
+              <v-card-subtitle class="pt-2"
+                ><p class="mb-0">
+                  Want to be featured on Lab Overflow... or want to connect with
+                  certified labs in your area? Add your details today!
+                </p></v-card-subtitle
+              >
+            </v-img>
           </v-card>
+        </v-col>
+        <v-col cols="12" sm="6" class="">
+          <share-the-love-card
+            :url="`https://laboverflow.com`"
+            :title="pageTitle"
+            :description="pageDescription"
+            hashtags="forum,job-board,lab-directory,cannabis,testing,lab,laboverflow"
+          ></share-the-love-card>
         </v-col>
       </v-row>
       <!-- <div id="discourse-comments"></div> -->
