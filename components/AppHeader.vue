@@ -52,17 +52,24 @@
 
           <nuxt-link class="text-decoration-none ml-2" to="/">
             <v-img
+              v-if="$vuetify.breakpoint.smAndDown"
               contain
               height="50"
               position="0% 50%"
               class=""
               alt="Lab Overflow logo"
-              :width="$vuetify.breakpoint.smAndDown ? 35 : 142"
-              :src="
-                $vuetify.breakpoint.smAndDown
-                  ? require('~/assets/img/laboverflow-icon.svg')
-                  : require('~/assets/img/laboverflow.png')
-              "
+              width="35"
+              :src="require('~/assets/img/laboverflow-icon.svg')"
+            ></v-img>
+            <v-img
+              v-if="$vuetify.breakpoint.mdAndUp"
+              contain
+              height="50"
+              position="0% 50%"
+              class=""
+              alt="Lab Overflow logo"
+              width=" 142"
+              :src="require('~/assets/img/laboverflow.png')"
             ></v-img>
           </nuxt-link>
           <!-- <v-toolbar-title class="d-flex align-center"
