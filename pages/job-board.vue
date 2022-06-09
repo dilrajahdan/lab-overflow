@@ -98,17 +98,17 @@
             <v-card>
               <v-card-title>Featured cannabis lab jobs</v-card-title>
               <v-card-text>
-                <client-only>
-                  <live-preview
-                    v-for="item in paidJobs"
-                    :key="`job-${item.id}`"
-                    :featured="true"
-                    :to="`/job-board/${item.slug}`"
-                    :job="item"
-                    @click.native="openJob(item)"
-                  >
-                  </live-preview>
-                </client-only>
+                <!-- <client-only> -->
+                <live-preview
+                  v-for="item in paidJobs"
+                  :key="`job-${item.id}`"
+                  :featured="true"
+                  :to="`/job-board/${item.slug}`"
+                  :job="item"
+                  @click.native="openJob(item)"
+                >
+                </live-preview>
+                <!-- </client-only> -->
               </v-card-text>
             </v-card>
 
@@ -268,10 +268,6 @@ export default {
       )
     },
   },
-  // mounted() {
-  //   this.paidJobs = this.$store.getters['jobs/getPaidJobs']
-  //   console.log('mounted', this.paidJobs)
-  // },
 
   methods: {
     encode(data) {

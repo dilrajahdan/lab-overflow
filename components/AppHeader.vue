@@ -54,11 +54,15 @@
             <v-img
               contain
               height="50"
-              width="142"
               position="0% 50%"
               class=""
-              alt="Lab Overflow"
-              :src="require('~/assets/img/laboverflow.png')"
+              alt="Lab Overflow logo"
+              :width="$vuetify.breakpoint.smAndDown ? 35 : 142"
+              :src="
+                $vuetify.breakpoint.smAndDown
+                  ? require('~/assets/img/laboverflow-icon.svg')
+                  : require('~/assets/img/laboverflow.png')
+              "
             ></v-img>
           </nuxt-link>
           <!-- <v-toolbar-title class="d-flex align-center"

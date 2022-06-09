@@ -32,7 +32,7 @@
           <v-card to="/blog/technical-overview-of-potency-determinization">
             <v-img
               dark
-              height="250"
+              height="400"
               src="/blog-content/shimadzu-HPLC.jpeg"
               class="align-end"
               position="0% 50%"
@@ -129,18 +129,18 @@
             </v-card-title>
             <v-card-text>
               <!-- {{ paidJobs }} -->
-              <client-only>
-                <live-preview
-                  v-for="item in paidJobs"
-                  :key="`job-${item.id}`"
-                  dense
-                  :featured="true"
-                  :to="`/job-board/${item.slug}`"
-                  :job="item"
-                  @click.native="openJob(item)"
-                >
-                </live-preview>
-              </client-only>
+              <!-- <client-only> -->
+              <live-preview
+                v-for="item in paidJobs"
+                :key="`job-${item.id}`"
+                dense
+                :featured="true"
+                :to="`/job-board/${item.slug}`"
+                :job="item"
+                @click.native="openJob(item)"
+              >
+              </live-preview>
+              <!-- </client-only> -->
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -165,6 +165,7 @@
           </v-card>
         </v-col>
       </v-row>
+      <!-- <div id="discourse-comments"></div> -->
     </v-container>
   </div>
 </template>
@@ -227,12 +228,12 @@ export default {
       return this.$store.getters['jobs/getPaidJobs'].slice(0, 3)
     },
   },
-  async mounted() {
+  mounted() {
     // console.log('mounted', await this.$store.getters['jobs/getPaidJobs'])
     // const DiscourseEmbed = {
-    //   discourseUrl: 'https://forum.laboverflow.com/categories',
-    //   // discourseEmbedUrl: 'https://laboverflow.com',
-    //   // discourseEmbedUrl: 'http://locallhost:3000',
+    //   discourseUrl: 'https://forum.laboverflow.com/',
+    //   // discourseEmbedUrl: 'https://laboverflow.com/',
+    //   discourseEmbedUrl: 'http://localhost:8888/',
     // }
     // ;(function () {
     //   const d = document.createElement('script')
