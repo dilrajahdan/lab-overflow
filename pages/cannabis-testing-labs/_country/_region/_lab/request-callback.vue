@@ -6,6 +6,7 @@
     data-netlify
     data-netlify-honeypot="bot-field"
     accept-charset="UTF-8"
+    action="/thank-you"
   >
     <input type="hidden" name="form-name" value="labcallback" />
     <input type="hidden" name="lab-name" :value="params.lab" />
@@ -122,12 +123,8 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn text @click="showRequestCallback = false"> Cancel </v-btn>
-        <v-btn
-          color="primary"
-          :disabled="!validRequestForm"
-          type="submit"
-          @click.prevent="sumitCallbackForm($event)"
-        >
+        <v-btn color="primary" :disabled="!requestForm.email" type="submit">
+          <!-- @click.prevent="sumitCallbackForm($event)" -->
           Request callback
         </v-btn>
       </v-card-actions>
