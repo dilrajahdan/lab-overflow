@@ -71,7 +71,14 @@
                   <v-btn
                     class="primary"
                     min-width="100%"
-                    @click="showCallBack()"
+                    :to="{
+                      name: 'cannabis-testing-labs-country-region-lab-request-callback',
+                      params: {
+                        country: $route.params.country,
+                        region: $route.params.region,
+                        lab: $route.params.lab,
+                      },
+                    }"
                     >Request Callback</v-btn
                   >
                 </v-col>
@@ -139,6 +146,7 @@
               data-netlify
               data-netlify-honeypot="bot-field"
               accept-charset="UTF-8"
+              action="/thank-you"
             >
               <input type="hidden" name="form-name" value="labcallback" />
               <input type="hidden" name="lab-name" :value="lab.Lab" />
@@ -264,8 +272,8 @@
                       color="primary"
                       :disabled="!validRequestForm"
                       type="submit"
-                      @click.prevent="sumitCallbackForm($event)"
                     >
+                      <!-- @click.prevent="sumitCallbackForm($event)" -->
                       Request callback
                     </v-btn>
                   </v-card-actions>
