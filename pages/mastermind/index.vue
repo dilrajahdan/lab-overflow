@@ -39,11 +39,7 @@
                 <input name="bot-field" />
               </label>
             </p>
-            <!-- <v-form
-              v-model="mastermind.valid"
-              lazy-validation
-              :rules="mastermind.rules"
-            > -->
+
             <v-card>
               <input type="hidden" name="form-name" value="mastermind" />
               <input type="hidden" name="url" :value="$route.path" />
@@ -52,11 +48,6 @@
                 >Fill in the details below so I can connect you with the perfect
                 group</v-card-title
               >
-              <!-- <v-card-text>
-        <p>Email dilrajahdan@gmail.com with you lab details</p>
-      </v-card-text> -->
-
-              <!-- <v-card-title>Lab Details</v-card-title> -->
 
               <v-card-text>
                 <v-text-field
@@ -112,11 +103,7 @@
                 <v-btn color="grey " text type="reset"> Cancel </v-btn>
                 <v-btn type="submit" color="primary"> Submit </v-btn>
               </v-card-actions>
-              <!-- 
-                <pre>{{ mastermind.valid }}</pre>
-                <pre>{{ mastermind }}</pre> -->
             </v-card>
-            <!-- </v-form> -->
           </form>
         </v-col>
       </v-row>
