@@ -7,14 +7,14 @@
         <v-row class="">
           <v-col cols="12" md="8">
             <v-card-title>
-              <h1 class="overline">
-                Mastermind
-                <!-- ({{ $vuetify.breakpoint.name }}) -->
-              </h1>
+              <h1 class="overline">Mastermind</h1>
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">
-                Want to connect with other cannabis lab professionals?
+                Excell your career forward with like-minded peers. Connect with
+                an intimate group of lab professionals to share challenges,
+                learn from each other, and hold each other accountable to
+                achieve your goal.
               </h2>
             </v-card-subtitle>
           </v-col>
@@ -123,9 +123,6 @@ import ogImage from '@/assets/img/laboverflow-bg.png'
 
 export default {
   data: () => ({
-    timeout: 2000,
-    snackbar: false,
-    labDialog: false,
     mastermind: {
       data: {
         name: '',
@@ -134,6 +131,8 @@ export default {
         role: '',
         week: false,
         month: false,
+        inside: false,
+        samerole: false,
       },
 
       rules: {
@@ -155,10 +154,10 @@ export default {
   }),
   head() {
     return {
-      title: 'Add your grower business',
+      title: 'Join a mastermind',
       meta: [
         {
-          hid: 'Grower Directory',
+          hid: 'Mastermind',
           name: 'description',
           content: this.description,
         },
