@@ -42,6 +42,7 @@
           hide-details
           name="email"
           type="email"
+          :rules="rules.email"
           dense
         />
         <v-text-field
@@ -54,6 +55,7 @@
           placeholder="Location"
           hide-details
           name="location"
+          :rules="rules.location"
           dense
         />
 
@@ -61,7 +63,7 @@
           type="submit"
           dark
           color="deep-purple accent-4"
-          :disabled="subscribeToJobsEmail === ''"
+          :disabled="!subscribeToJobsEmail || !subscribeToJobsLocation"
           @click.prevent="submitSubscribe($event)"
         >
           Subscribe
@@ -78,6 +80,16 @@ export default {
       subscribeToJobsEmail: '',
       subscribeToJobsLocation: '',
       subscribed: false,
+      rules: {
+        email: [
+          (v) => !!v || 'Email is required',
+          (v) => /.+@.+\..+/.test(v) || 'Email must be valid',
+        ],
+        location: [
+          (v) => !!v || 'Location is required',
+          (v) => v.length < 3 || 'Location must be at least 3 characters',
+        ],
+      },
     }
   },
 
