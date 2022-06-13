@@ -25,7 +25,7 @@
       </p> -->
       <p class="body-1 pb-0 mb-0">
         <!-- Get the latest jobs, articles and discussions straight to your inbox -->
-        Get lab articles, forum topics, and jobs straight to your inbox
+        Get the latest cannabis lab jobs straight to your inbox
       </p>
       <!-- <template #icon>
         <v-icon class="" color="white" dark>mdi-email-plus</v-icon>
