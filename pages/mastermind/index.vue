@@ -45,8 +45,8 @@
               <input type="hidden" name="url" :value="$route.path" />
 
               <v-card-title
-                >Fill in the details below so I can connect you with the perfect
-                group</v-card-title
+                >Fill in the details below so we can connect you with the
+                perfect group</v-card-title
               >
 
               <v-card-text>
@@ -94,6 +94,13 @@
                   v-model="mastermind.data.inside"
                   name="inside"
                   label="Only connect me with people inside in state/region"
+                >
+                </v-checkbox>
+
+                <v-checkbox
+                  v-model="mastermind.data.inside"
+                  name="samerole"
+                  label="Only connect me with people in my role"
                 >
                 </v-checkbox>
               </v-card-text>

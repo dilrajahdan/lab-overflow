@@ -14,7 +14,7 @@
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">
-                Book a call to see how we can help each other out
+                Book a call to see how we can help you cannabis business
               </h2>
             </v-card-subtitle>
           </v-col>
