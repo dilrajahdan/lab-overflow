@@ -13,8 +13,8 @@
               <h2 class="display-1">
                 Excell your career forward with like-minded peers. Connect with
                 an intimate group of lab professionals to share challenges,
-                learn from each other, and hold each other accountable to
-                achieve your goal.
+                learn from each other, and hold each other accountable to help
+                achieve your goals.
               </h2>
             </v-card-subtitle>
           </v-col>
