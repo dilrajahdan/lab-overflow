@@ -83,7 +83,7 @@
                 dark
                 color=""
                 class="fill-height"
-                to="/cannabis-testing-labs/usa/hawaii/medcanlab"
+                to="/cannabis-testing-labs/usa/hawaii/aeos-labs"
               >
                 <!-- 282 -->
                 <v-img
@@ -104,14 +104,17 @@
                         >Hawaii, USA</v-card-subtitle
                       >
                       <v-card-title class="text-h2 font-weight-medium pt-0"
-                        >MedCan Lab</v-card-title
+                        >Aeos Labs</v-card-title
                       >
                     </v-col>
                   </v-row>
+                  <!-- <v-row>
+                    
+                  </v-row> -->
                 </v-img>
               </v-card>
             </v-card-text>
-            <v-spacer></v-spacer>
+
             <v-card-actions>
               <v-spacer></v-spacer>
 
