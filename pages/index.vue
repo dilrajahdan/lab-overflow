@@ -29,11 +29,13 @@
     <v-container>
       <v-row>
         <v-col cols="12" class="">
-          <v-card to="/blog/cannabis-lab-101-validation">
+          <v-card
+            to="/blog/why-heavy-metals-testing-in-cannabis-is-so-important"
+          >
             <v-img
               dark
               height="200"
-              src="/blog-content/testing-vape-pens.jpeg"
+              src="/blog-content/heavy-metals.jpg"
               class="align-end"
               position="0% 50%"
               gradient="to top, rgba(0,0,0,.77) , rgba(25,32,72,.0)"
@@ -45,10 +47,11 @@
                       >Last article</v-card-subtitle
                     >
                     <v-card-title class="text-h4 pt-0"
-                      >Cannabis Lab 101: Validation</v-card-title
+                      >Why Heavy Metals Testing in Cannabis is so
+                      Important</v-card-title
                     >
                     <v-card-subtitle class="pt-2"
-                      >By Eric Burtin Martin</v-card-subtitle
+                      >By Apostol Todorovski</v-card-subtitle
                     >
                   </v-col>
                 </v-row>
