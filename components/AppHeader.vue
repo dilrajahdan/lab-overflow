@@ -110,19 +110,18 @@ export default {
       drawer: false,
       items: [
         {
-          title: 'Home',
-          to: '/',
-        },
-
-        {
           title: 'Forum',
           to: '/forum',
         },
         {
-          title: 'Labs',
+          title: 'Lab Directory',
           to: '/cannabis-testing-labs',
         },
 
+        {
+          title: 'Mastermind',
+          to: '/mastermind',
+        },
         {
           title: 'Job board',
           to: '/job-board',
@@ -132,10 +131,7 @@ export default {
           to: '/post-a-job',
           outlined: true,
         },
-        {
-          title: 'Mastermind',
-          to: '/mastermind',
-        },
+
         {
           title: 'Blog',
           to: '/blog',

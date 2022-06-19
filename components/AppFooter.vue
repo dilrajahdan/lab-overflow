@@ -58,6 +58,11 @@ export default {
         },
 
         {
+          title: 'Mastermind',
+          to: '/mastermind',
+        },
+
+        {
           title: 'Job board',
           to: '/job-board',
         },
@@ -66,10 +71,7 @@ export default {
           to: '/post-a-job',
           outlined: true,
         },
-        {
-          title: 'Mastermind',
-          to: '/mastermind',
-        },
+
         {
           title: 'Contact',
           to: '/contact',
