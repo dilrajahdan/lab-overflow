@@ -75,11 +75,11 @@
       </v-container>
     </v-card>
 
-    <v-container class="mt-2 sticky-md">
+    <!-- <v-container class="mt-2 sticky-md">
       <subscribe-to-jobs class=""></subscribe-to-jobs>
-    </v-container>
+    </v-container> -->
 
-    <v-container>
+    <v-container class="mt-2">
       <v-row>
         <v-col>
           <h3 class="text-h5">{{ labCount }} cannabis testing labs</h3></v-col
@@ -88,8 +88,11 @@
       <v-row>
         <v-col cols="12" sm="4" lg="4" offset-lg="0">
           <v-card>
-            <v-list dense>
-              <v-subheader>Canada</v-subheader>
+            <v-list dense
+              ><h4>
+                <v-card-title>Canada</v-card-title>
+              </h4>
+              <!-- <v-subheader>Canada</v-subheader> -->
               <v-list-item-group v-model="selectedItem" color="primary">
                 <v-list-item
                   v-for="item in regionsCanada.states"
@@ -116,7 +119,11 @@
         <v-col cols="12" sm="4" lg="4" offset-lg="0">
           <v-card>
             <v-list dense>
-              <v-subheader>Europe</v-subheader>
+              <h4>
+                <v-card-title>Europe</v-card-title>
+              </h4>
+
+              <!-- <v-subheader>Europe</v-subheader> -->
               <v-list-item-group v-model="selectedItem" color="primary">
                 <v-list-item
                   v-for="item in regionsEurope.states"
@@ -143,7 +150,9 @@
         <v-col cols="12" sm="4" lg="4" offset-lg="0">
           <v-card>
             <v-list dense>
-              <v-subheader>USA</v-subheader>
+              <!-- <v-subheader>USA</v-subheader> -->
+              <h4><v-card-title>USA</v-card-title></h4>
+
               <v-list-item-group v-model="selectedItem" color="primary">
                 <v-list-item
                   v-for="item in regionsUSA.states"

@@ -45,8 +45,9 @@
               <input type="hidden" name="url" :value="$route.path" />
 
               <v-card-title
-                >Fill in the details below so we can connect you with the
-                perfect group</v-card-title
+                >Fill in your details below. We will use this information to
+                connect you with a group that matches your
+                requirements</v-card-title
               >
 
               <v-card-text>

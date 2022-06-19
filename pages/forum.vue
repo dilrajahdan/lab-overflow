@@ -22,14 +22,17 @@
       </v-container>
     </v-sheet>
 
-    <v-container class="mt-2">
+    <!-- <v-container class="mt-2">
       <subscribe-to-jobs></subscribe-to-jobs>
-    </v-container>
+    </v-container> -->
     <v-container class="">
       <v-row>
         <v-col cols="12" sm="8">
           <v-card>
             <v-card-text>
+              <v-btn block color="primary" href="https://forum.laboverflow.com"
+                >Take me to the forum</v-btn
+              >
               <p class="body-1 mt-4 text-h5">
                 Currently, there exists no unified standardization in the
                 industry which can lead to inconsistent results, questionable
@@ -48,7 +51,7 @@
                 cannabis testing ecosystem for everyone involved.
               </p>
 
-              <v-btn color="primary" href="https://forum.laboverflow.com"
+              <v-btn block color="primary" href="https://forum.laboverflow.com"
                 >Take me to the forum</v-btn
               >
             </v-card-text>
