@@ -23,7 +23,7 @@
     </v-sheet>
     <v-container>
       <v-row>
-        <v-col>
+        <v-col cols="12" sm="8" lg="6">
           <form
             id="mastermind"
             ref="mastermind"

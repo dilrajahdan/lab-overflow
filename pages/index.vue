@@ -156,16 +156,16 @@
       </v-row>
 
       <v-row>
-        <v-col cols="12" sm="6" class="">
+        <v-col cols="12" sm="3" class="">
           <v-card color="pink lighten-5" to="/growers/add">
             <v-img
               gradient="to bottom , rgba(0,0,0,.77) 10%, rgba(0,96,100,.3) 40%"
               dark
-              height="190"
+              height="280"
               :src="require('~/assets/img/baby-plant.jpeg')"
             >
               <v-card-title
-                ><h4 class="text-h4">Are you a grower?</h4></v-card-title
+                ><h4 class="text-h6">Are you a grower?</h4></v-card-title
               >
               <v-card-subtitle class="pt-2"
                 ><p class="mb-0">
@@ -176,8 +176,52 @@
             </v-img>
           </v-card>
         </v-col>
-        <v-col cols="12" sm="6" class="">
+        <v-col cols="12" sm="3" class="">
+          <v-card
+            color="pink lighten-5"
+            href="https://www.reddit.com/r/laboverflow/"
+          >
+            <v-img
+              gradient="to bottom , rgba(0,0,0,.77) 10%, rgba(0,96,100,.3) 40%"
+              dark
+              height="280"
+              :src="require('~/assets/img/reddit.png')"
+            >
+              <v-card-title><h4 class="text-h6">Love Reddit?</h4></v-card-title>
+              <v-card-subtitle class="pt-2"
+                ><p class="mb-0">Join our sub here</p></v-card-subtitle
+              >
+            </v-img>
+          </v-card>
+        </v-col>
+
+        <v-col cols="12" sm="3" class="fill-height">
+          <v-card color="pink lighten-5" to="/mastermind">
+            <v-img
+              gradient="to bottom , rgba(0,0,0,.77) 10%, rgba(0,96,100,.3) 40%"
+              dark
+              height="280"
+              :src="require('~/assets/img/mindset.jpg')"
+            >
+              <v-card-title
+                ><h4 class="text-h6">
+                  Connect with an like-minded lab professionals
+                </h4></v-card-title
+              >
+              <v-card-subtitle class="pt-2"
+                ><p class="mb-0">
+                  Share challenges, learn from each other, and hold each other
+                  accountable to help achieve your goals? Join the Mastermind
+                  community today
+                </p></v-card-subtitle
+              >
+            </v-img>
+          </v-card>
+        </v-col>
+        <v-col cols="12" sm="3" class="fill-height">
           <share-the-love-card
+            class="fill-height"
+            fill-height
             :url="`https://laboverflow.com`"
             :title="pageTitle"
             :description="pageDescription"
