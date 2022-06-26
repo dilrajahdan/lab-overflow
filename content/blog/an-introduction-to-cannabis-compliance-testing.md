@@ -1,8 +1,8 @@
 ---
 title: An Introduction to Cannabis Compliance Testing
-author: Asrinus Subha
+author: Asrinus Subha MSc. PMP
 description: There is an increased demand for quality of Cannabis testing as the legalization of Cannabis storms through most to all of the United States and Canada. Unfortunately, as the rise in popularity of cannabis products continues over the years, the regulatory landscape has become substantially more difficult to navigate in the US.
-image: /blog-content/national-cancer-institute-XknuBmnjbKg-unsplash.jpg
+image: /blog-content/national-cancer-institute-XknuBmnjbKg-unsplash.webp
 date: 2022-06-21
 tags:
   - compliance
@@ -15,8 +15,7 @@ forumLinkText: US regulations and complience - join the discussion
 
 There is an increased demand for quality of Cannabis testing as the legalization of Cannabis storms through most to all of the United States and Canada. Unfortunately, as the rise in popularity of cannabis products continues over the years, the regulatory landscape has become substantially more difficult to navigate in the US. 
 
-
-![Compliance Testing](/blog-content/national-cancer-institute-XknuBmnjbKg-unsplash.jpg)
+![Compliance Testing](/blog-content/national-cancer-institute-XknuBmnjbKg-unsplash.webp)
 [National Cancer Institute @nci](https://unsplash.com/photos/XknuBmnjbKg)
 
 <!--more-->
