@@ -41,7 +41,7 @@
               outlined
               :href="`${article.forumLink}?utm_source=blog&utm_medium=link&utm_campaign=${article.slug}`"
             >
-              Continue the discussion on the forum
+              Continue the discussion in the forum
             </a>
           </v-card>
         </v-col>
