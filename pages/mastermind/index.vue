@@ -11,10 +11,9 @@
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">
-                Want to connect with an like-minded lab professionals to share
+                Want to connect with like-minded lab professionals to share
                 challenges, learn from each other, and hold each other
-                accountable to help achieve your goals? Join the Mastermind
-                community.
+                accountable to achieve goals? Join the Mastermind community
               </h2>
             </v-card-subtitle>
           </v-col>

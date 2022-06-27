@@ -189,7 +189,7 @@
             >
               <v-card-title><h4 class="text-h6">Love Reddit?</h4></v-card-title>
               <v-card-subtitle class="pt-2"
-                ><p class="mb-0">Join our sub here</p></v-card-subtitle
+                ><p class="mb-0">Join our sub</p></v-card-subtitle
               >
             </v-img>
           </v-card>
@@ -205,7 +205,7 @@
             >
               <v-card-title
                 ><h4 class="text-h6">
-                  Connect with an like-minded lab professionals
+                  Connect with like-minded lab professionals
                 </h4></v-card-title
               >
               <v-card-subtitle class="pt-2"
