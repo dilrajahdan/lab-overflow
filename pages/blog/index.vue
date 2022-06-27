@@ -11,7 +11,7 @@
             </v-card-title>
             <v-card-subtitle class="">
               <h2 class="display-1">
-                What do you want us to write about next?
+                Your feedback is important to us. We want to hear from you.
               </h2>
             </v-card-subtitle>
           </v-col>
@@ -20,13 +20,13 @@
     </v-sheet>
 
     <v-container>
-      <v-row class="mt-0 sticky-sm" style="z-index: 10">
+      <!-- <v-row class="mt-0" style="z-index: 10">
         <v-col>
           <subscribe-to-jobs class=""></subscribe-to-jobs>
         </v-col>
-      </v-row>
-      <v-row class="mt-4">
-        <v-col class="redX" cols="12">
+      </v-row> -->
+      <v-row class="mt-0">
+        <v-col class="redX" cols="12" sm="9">
           <v-card class="pa-6 blog-list">
             <v-card-title>
               <h3 class="text-h6">Blog articles for cannabis testing labs</h3>
@@ -96,7 +96,7 @@
             </v-list> -->
           </v-card>
         </v-col>
-        <v-col cols="12" class="yellowC">
+        <v-col cols="12" sm="3" class="yellowC">
           <share-the-love-card
             :url="`https://laboverflow.com${$route.path}`"
             :title="pageTitle"
@@ -104,7 +104,13 @@
             hashtags="blog,articles,cannabis,testing,labs,laboverflow"
             class="sticky-sm"
           ></share-the-love-card>
+
+          <!-- <subscribe-to-jobs class="mt-4"></subscribe-to-jobs> -->
         </v-col>
+
+        <!-- <v-row class="mt-0" style="z-index: 10"> -->
+        <!-- <v-col cols="12" sm="3" class="yellowC"> </v-col> -->
+        <!-- </v-row> -->
       </v-row>
     </v-container>
   </article>
@@ -191,5 +197,6 @@ export default {
 }
 
 .blog-list__item__content {
+  overflow: hidden;
 }
 </style>
