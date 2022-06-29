@@ -22,7 +22,7 @@
     </v-sheet>
     <v-container>
       <v-row>
-        <v-col cols="12" sm="8" lg="6">
+        <v-col cols="12" sm="9" lg="6">
           <form
             id="mastermind"
             ref="mastermind"
@@ -113,6 +113,10 @@
             </v-card>
           </form>
         </v-col>
+
+        <!-- <v-col cols="12" sm="3" lg="6">
+          <subscribe-to-jobs class=""></subscribe-to-jobs>
+        </v-col> -->
       </v-row>
     </v-container>
   </article>

@@ -52,6 +52,7 @@ export default {
   plugins: [
     { src: '~/plugins/persistedState.client.js', mode: 'client' },
     { src: '~/plugins/hotjar.client.js', mode: 'client' },
+    { src: '~/plugins/reddit.client.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

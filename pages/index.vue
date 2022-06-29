@@ -139,7 +139,7 @@
                 v-for="item in paidJobs"
                 :key="`job-${item.id}`"
                 dense
-                :featured="true"
+                :featured="false"
                 :to="`/job-board/${item.slug}`"
                 :job="item"
                 @click.native="openJob(item)"
@@ -289,7 +289,7 @@ export default {
   computed: {
     paidJobs() {
       // return this.$store.getters['jobs/getPaidJobs']
-      return this.$store.getters['jobs/getPaidJobs'].slice(0, 3)
+      return this.$store.getters['jobs/getFreeJobs'].slice(0, 3)
     },
   },
   mounted() {
