@@ -1,6 +1,6 @@
 ---
 title: An Introduction to Cannabis Compliance Testing
-author: Asrinus Subha MSc. PMP
+author: Asrinus Subha
 description: There is an increased demand for quality of Cannabis testing as the legalization of Cannabis storms through most to all of the United States and Canada. Unfortunately, as the rise in popularity of cannabis products continues over the years, the regulatory landscape has become substantially more difficult to navigate in the US.
 image: /blog-content/national-cancer-institute-XknuBmnjbKg-unsplash.webp
 date: 2022-06-21

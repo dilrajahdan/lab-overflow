@@ -1,6 +1,6 @@
 ---
 title: ​​Why is Testing for Mycotoxins in Cannabis Critical (and 7 ways you can reduce it)?
-author: Asrinus Subha MSc. PMP
+author: Asrinus Subha
 description: Literally, “mycotoxin” means “fungus poisons”. Mycotoxins are toxic secondary metabolites (a.k.a. by-products) produced during certain fungi and mold replication. These specific fungi or molds often colonize grains and forage, and unfortunately cannabis for reasons that will be discussed below. Mycotoxins contaminants have been around for a while and is not a new topic. The US Food and Drug Administration (FDA) has set a threshold of 0.02 micrograms per gram (20 ppb) for any products that are consumables for both animals and humans. Many studies have shown that mycotoxins can cause many types of illnesses in both animals and humans. Unfortunately, these compounds can be ridiculously stable for a long time and can sometimes even survive intense food processing. This being said, mycotoxins are heavily regulated in the food industry because of the potential toxicity, if and when consumed. So now…this directs us to the question on what and how the Cannabis industry is controlling this toxin?
 image: /blog-content/atoxin-red-sq-1.jpg
 date: 2022-06-21

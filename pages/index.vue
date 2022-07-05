@@ -30,12 +30,12 @@
       <v-row>
         <v-col cols="12" class="">
           <v-card
-            to="/blog/why-is-testing-for-mycotoxins-in-cannabis-critical-and-7-ways-you-can-reduce-it"
+            to="/blog/the-cost-of-testing-cannabis-for-small-medium-and-large-labs"
           >
             <v-img
               dark
               height="200"
-              src="/blog-content/atoxin-red-sq-1.jpg"
+              src="/blog-content/piggy-bank.jpg"
               class="align-end"
               position="0% 50%"
               gradient="to top, rgba(0,0,0,.77) , rgba(25,32,72,.0)"
@@ -47,8 +47,8 @@
                       >Last article</v-card-subtitle
                     >
                     <v-card-title class="text-h4 pt-0"
-                      >Why is Testing for Mycotoxins in Cannabis Critical (and 7
-                      ways you can reduce it)?</v-card-title
+                      >The cost of testing cannabis for small, medium, and large
+                      labs</v-card-title
                     >
                     <v-card-subtitle class="pt-2"
                       >By Asrinus Subha</v-card-subtitle

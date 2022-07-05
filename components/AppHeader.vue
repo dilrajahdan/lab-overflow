@@ -118,10 +118,10 @@ export default {
           to: '/cannabis-testing-labs',
         },
 
-        {
-          title: 'Mastermind',
-          to: '/mastermind',
-        },
+        // {
+        //   title: 'Mastermind',
+        //   to: '/mastermind',
+        // },
         {
           title: 'Job board',
           to: '/job-board',
