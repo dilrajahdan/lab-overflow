@@ -57,20 +57,6 @@
                 </v-row>
               </v-container>
             </v-img>
-
-            <!-- <v-img
-              class="white--text align-end"
-              height="200px"
-              src="/blog-content/Cannabis-flower-next-to-an-Erlenmeyer-flask.jpeg"
-            >
-              <v-card-subtitle class="text-overline py-0 my-0"
-                >Last article</v-card-subtitle
-              >
-              <v-card-title class="pt-0"
-                >Cannabis Lab 101: Cannabinoid Separation Methods in the Public
-                Domain -Everything you need to know</v-card-title
-              >
-            </v-img> -->
           </v-card>
         </v-col>
       </v-row>
@@ -248,8 +234,7 @@ export default {
     return {
       pageName: 'home',
       pageTitle: 'Lab Overflow',
-      pageDescription:
-        'Empowering cannabis testing labs to develop technology through collective knowledge',
+      pageDescription: 'Stack Overflow for Cannabis Labs',
     }
   },
   head() {
