@@ -70,7 +70,9 @@ export default {
     // https://github.com/LinusBorg/portal-vue
     'portal-vue/nuxt',
     // https://timbenniks.dev/writings/easy-dynamic-routes-in-your-nuxt-sitemap
-    '@/modules/sitemapRouteGenerator',
+    // '@/modules/sitemapRouteGenerator',
+    // Always make sitemap last element of the array. https://sitemap.nuxtjs.org/guide/setup
+    '@nuxtjs/sitemap',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -133,6 +135,7 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    // treeShake: true,
     theme: {
       dark: false,
       themes: {
@@ -168,8 +171,8 @@ export default {
       lastmod: new Date(),
     },
     hostname: process.env.BASE_URL || 'https://laboverflow.com',
-    routes: () => {
-      return getRoutes()
+    routes: async () => {
+      return await getRoutes()
       // https://jackwhiting.co.uk/posts/generating-sitemap-entries-for-nuxt-content/
       // const { $content } = require('@nuxt/content')
       // const blog = await $content('blog').fetch()
