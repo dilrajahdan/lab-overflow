@@ -29,13 +29,11 @@
     <v-container>
       <v-row>
         <v-col cols="12" class="">
-          <v-card
-            to="/blog/the-cost-of-testing-cannabis-for-small-medium-and-large-labs"
-          >
+          <v-card to="/blog/cannabis-terpene-testing-the-simple-explanation">
             <v-img
               dark
               height="200"
-              src="/blog-content/piggy-bank.jpg"
+              src="/blog-content/Multi-Photon-Microscopy-Image-of-Stalked-Glandular-Trichome-777x630.webp"
               class="align-end"
               position="0% 50%"
               gradient="to top, rgba(0,0,0,.77) , rgba(25,32,72,.0)"
@@ -46,9 +44,9 @@
                     <v-card-subtitle class="text-overline py-0 my-0"
                       >Last article</v-card-subtitle
                     >
-                    <v-card-title class="text-h4 pt-0"
-                      >The cost of testing cannabis for small, medium, and large
-                      labs</v-card-title
+                    <v-card-title class="text-h4 pt-0">
+                      Cannabis Terpene Testing - The Simple
+                      Explanation</v-card-title
                     >
                     <v-card-subtitle class="pt-2"
                       >By Asrinus Subha</v-card-subtitle
@@ -147,11 +145,11 @@
             <v-img
               gradient="to bottom , rgba(0,0,0,.77) 10%, rgba(0,96,100,.3) 40%"
               dark
-              height="280"
+              height="230"
               :src="require('~/assets/img/baby-plant.jpeg')"
             >
               <v-card-title
-                ><h4 class="text-h6">Are you a grower?</h4></v-card-title
+                ><h4 class="text-h6">Attention Cultivators</h4></v-card-title
               >
               <v-card-subtitle class="pt-2"
                 ><p class="mb-0">
@@ -170,7 +168,7 @@
             <v-img
               gradient="to bottom , rgba(0,0,0,.77) 10%, rgba(0,96,100,.3) 40%"
               dark
-              height="280"
+              height="230"
               :src="require('~/assets/img/reddit.png')"
             >
               <v-card-title><h4 class="text-h6">Love Reddit?</h4></v-card-title>
@@ -186,19 +184,15 @@
             <v-img
               gradient="to bottom , rgba(0,0,0,.77) 10%, rgba(0,96,100,.3) 40%"
               dark
-              height="280"
+              height="230"
               :src="require('~/assets/img/mindset.jpg')"
             >
               <v-card-title
-                ><h4 class="text-h6">
-                  Connect with like-minded lab professionals
-                </h4></v-card-title
+                ><h4 class="text-h6">Join the Mastermind</h4></v-card-title
               >
               <v-card-subtitle class="pt-2"
                 ><p class="mb-0">
-                  Share challenges, learn from each other, and hold each other
-                  accountable to help achieve your goals? Join the Mastermind
-                  community today
+                  Connect with like-minded lab professionals
                 </p></v-card-subtitle
               >
             </v-img>
