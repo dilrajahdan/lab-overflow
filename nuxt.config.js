@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import getRoutes from './utils/get-routes'
 
 export default {
   vue: {
@@ -161,7 +162,30 @@ export default {
   },
 
   sitemap: {
-    hostname: 'http://laboverflow.com',
+    defaults: {
+      changefreq: 'daily',
+      priority: 1,
+      lastmod: new Date(),
+    },
+    hostname: process.env.BASE_URL || 'https://laboverflow.com',
+    routes: () => {
+      return getRoutes()
+      // https://jackwhiting.co.uk/posts/generating-sitemap-entries-for-nuxt-content/
+      // const { $content } = require('@nuxt/content')
+      // const blog = await $content('blog').fetch()
+      // // Setup an empty array we will push to.
+      // const routes = []
+
+      // // Add an entry for the item including lastmod and priorty
+      // blog.forEach((article) =>
+      //   routes.push({
+      //     url: article.path,
+      //   })
+      // )
+      // console.log('routes', routes)
+      // // return all routes
+      // return [routes]
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

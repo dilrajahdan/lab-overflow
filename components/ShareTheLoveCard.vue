@@ -1,6 +1,6 @@
 <template>
   <v-card :class="fillHeight ? '100%' : ''">
-    <v-card-subtitle>Share the love {{ fillHeight }}</v-card-subtitle>
+    <v-card-subtitle>Share the love</v-card-subtitle>
     <v-card-text>
       <share-buttons
         :url="`https://laboverflow.com${$route.path}`"
