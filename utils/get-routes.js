@@ -27,7 +27,7 @@ export default async () => {
 
   // console.log('blogRoutes', blogRoutes)
   // console.log('jobRoutes', jobRoutes)
-  console.log('labRoutes', labRoutes)
+  // console.log('labRoutes', labRoutes)
   // return [...blogRoutes, ...jobRoutes, ...labRoutes]
   return blogRoutes
 

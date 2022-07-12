@@ -170,7 +170,7 @@ export default {
       priority: 1,
       lastmod: new Date(),
     },
-    hostname: process.env.BASE_URL || 'https://laboverflow.com',
+    hostname: process.env.BASE_URL || 'http://laboverflow.com',
     routes: async () => {
       return await getRoutes()
       // https://jackwhiting.co.uk/posts/generating-sitemap-entries-for-nuxt-content/
