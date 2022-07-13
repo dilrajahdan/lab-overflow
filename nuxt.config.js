@@ -70,7 +70,7 @@ export default {
     // https://github.com/LinusBorg/portal-vue
     'portal-vue/nuxt',
     // https://timbenniks.dev/writings/easy-dynamic-routes-in-your-nuxt-sitemap
-    // '@/modules/sitemapRouteGenerator',
+    '@/modules/sitemapRouteGenerator',
     // Always make sitemap last element of the array. https://sitemap.nuxtjs.org/guide/setup
     '@nuxtjs/sitemap',
   ],
