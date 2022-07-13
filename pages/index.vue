@@ -32,7 +32,7 @@
           <v-card to="/blog/cannabis-terpene-testing-the-simple-explanation">
             <v-img
               dark
-              height="200"
+              height="300"
               src="/blog-content/Multi-Photon-Microscopy-Image-of-Stalked-Glandular-Trichome-777x630.webp"
               class="align-end"
               position="0% 50%"
