@@ -19,7 +19,7 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   ssr: true,
-  mode: 'spa',
+  // mode: 'spa',
   // router: {
   //   trailingSlash: false,
   // },
