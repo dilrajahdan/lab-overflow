@@ -29,11 +29,13 @@
     <v-container>
       <v-row>
         <v-col cols="12" class="">
-          <v-card to="/blog/cannabis-terpene-testing-the-simple-explanation">
+          <v-card
+            to="/blog/cannabis-testing-lab-certification-how-to-prepare-cannabis-testing-labs-for-%20iso-17025-audits"
+          >
             <v-img
               dark
               height="300"
-              src="/blog-content/Multi-Photon-Microscopy-Image-of-Stalked-Glandular-Trichome-777x630.webp"
+              src="/blog-content/iso-certfied.jpg"
               class="align-end"
               position="0% 50%"
               gradient="to top, rgba(0,0,0,.77) , rgba(25,32,72,.0)"
@@ -45,11 +47,11 @@
                       >Last article</v-card-subtitle
                     >
                     <v-card-title class="text-h4 pt-0">
-                      Cannabis Terpene Testing - The Simple
-                      Explanation</v-card-title
+                      Cannabis Testing Lab Certification 101: How to Prepare
+                      Cannabis Testing Labs for ISO 17025 Audits</v-card-title
                     >
                     <v-card-subtitle class="pt-2"
-                      >By Asrinus Subha</v-card-subtitle
+                      >By Apostol Todorovski</v-card-subtitle
                     >
                   </v-col>
                 </v-row>
