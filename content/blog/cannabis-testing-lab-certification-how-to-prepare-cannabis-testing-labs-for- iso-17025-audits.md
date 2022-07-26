@@ -1,5 +1,5 @@
 ---
-title: Cannabis Testing Lab Certification 101&#58; How to Prepare Cannabis Testing Labs for ISO 17025 Audits
+title: Cannabis Testing Lab Certification&#58; How to Prepare Cannabis Testing Labs for ISO 17025 Audits
 author: Apostol Todorovski
 description: In 1973 Oregon was the first U.S. member state that decriminalized cannabis. California, in 1996 became the first state to legalize the medical use of cannabis. In 2012 Colorado and Washington became the first states to legalize the recreational use of cannabis. As of 2019, thirty-three states, four of the permanently inhabited U.S. territories, and the District of Columbia have legalized medical cannabis. Globally, cannabis is legalized in forty-four countries, with four countries legalizing recreational use of cannabis. 
 image: /blog-content/iso-certfied.jpg
