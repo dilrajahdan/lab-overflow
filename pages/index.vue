@@ -47,7 +47,7 @@
                       >Last article</v-card-subtitle
                     >
                     <v-card-title class="text-h4 pt-0">
-                      Cannabis Testing Lab Certification 101: How to Prepare
+                      Cannabis Testing Lab Certification: How to Prepare
                       Cannabis Testing Labs for ISO 17025 Audits</v-card-title
                     >
                     <v-card-subtitle class="pt-2"
